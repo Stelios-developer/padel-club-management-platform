@@ -12,7 +12,9 @@ A **1 minute 44 second** engineering demo of the working Padel Club application.
 - **Script:** [English narration](narration-en.txt) and [editable storyboard](storyboard.json).
 - **Evidence:** [capture and media verification](../results/frontend/recruiter-demo-2026-10-13.json).
 
-The delivered MP4 and copies of the captions/cover are in `.runtime/recruiter-demo-2026-10-13/output/` on the project computer. Generated footage and media builds remain ignored by Git. When the repository exists, the MP4 can be attached as a release asset or uploaded to a video host; the resulting actual video link can then be added to the repository overview and CV. No public video URL exists yet.
+The video is now available in the public [demo-v1 GitHub release](https://github.com/Stelios-developer/padel-club-management-platform/releases/tag/demo-v1): [MP4, 10.9 MB](https://github.com/Stelios-developer/padel-club-management-platform/releases/download/demo-v1/padel-club-recruiter-demo-en.mp4), English/Greek SRT and SHA-256 checksums. The uploaded MP4 matches the original recorded digest `761f671506700dce64392dc50ffc6ae4d014baea7248db3d7ba7ebe620c3e006`.
+
+Local source footage and media builds remain ignored under `.runtime/recruiter-demo-2026-10-13/`. The release publishes portfolio media; it does not establish a signed container release or cloud deployment. The recording and verification scope below retains its original dates. [Publication notes](../GITHUB-PUBLICATION.md).
 
 ## What the recruiter sees
 
