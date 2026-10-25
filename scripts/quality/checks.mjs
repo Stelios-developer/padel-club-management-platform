@@ -1,4 +1,4 @@
-import { readFile, stat } from "node:fs/promises";
+import { readFile, open } from "node:fs/promises";
 import { createHash } from "node:crypto";
 import { run } from "./process.mjs";
 import { syncConfig } from "../sync-k8s-config.mjs";
@@ -14,12 +14,19 @@ export async function checkRepository(files) {
   for (const file of files) {
     if (privatePublicationPath(file))
       problems.push(`Private/generated file in publication list: ${file}`);
-    if ((await stat(file)).size >= 100 * 1024 * 1024)
-      problems.push(`Oversized source file: ${file}`);
+    const handle = await open(file, "r");
+    let source;
+    try {
+      if ((await handle.stat()).size >= 100 * 1024 * 1024)
+        problems.push(`Oversized source file: ${file}`);
+      if (/\.(?:md|js|mjs|cjs|java)$/.test(file) || file.startsWith("web/ui/"))
+        source = await handle.readFile("utf8");
+    } finally {
+      await handle.close();
+    }
     if (/\.(?:js|mjs|cjs)$/.test(file))
       run(process.execPath, ["--check", file]);
     if (/\.(?:md|js|mjs|cjs|java)$/.test(file) || file.startsWith("web/ui/")) {
-      const source = await readFile(file, "utf8");
       sources.set(file, source);
       problems.push(...sourceProblems(file, source, published));
     }

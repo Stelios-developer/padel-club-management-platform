@@ -6,12 +6,24 @@ import org.springframework.security.config.web.server.ServerHttpSecurity;
 import org.springframework.security.oauth2.core.*;
 import org.springframework.security.oauth2.jwt.*;
 import org.springframework.security.web.server.SecurityWebFilterChain;
+import org.springframework.security.web.server.context.NoOpServerSecurityContextRepository;
+import org.springframework.security.web.server.csrf.CsrfWebFilter;
+import org.springframework.security.web.server.util.matcher.AndServerWebExchangeMatcher;
+import org.springframework.security.web.server.util.matcher.NegatedServerWebExchangeMatcher;
+import org.springframework.security.web.server.util.matcher.ServerWebExchangeMatchers;
 
 @Configuration
 public class GatewaySecurity {
   @Bean
   SecurityWebFilterChain security(ServerHttpSecurity http) {
-    return http.csrf(ServerHttpSecurity.CsrfSpec::disable)
+    return http.securityContextRepository(NoOpServerSecurityContextRepository.getInstance())
+        .csrf(
+            csrf ->
+                csrf.requireCsrfProtectionMatcher(
+                    new AndServerWebExchangeMatcher(
+                        CsrfWebFilter.DEFAULT_CSRF_MATCHER,
+                        new NegatedServerWebExchangeMatcher(
+                            ServerWebExchangeMatchers.pathMatchers("/api/**")))))
         .authorizeExchange(
             a ->
                 a.pathMatchers("/actuator/health/**", "/actuator/prometheus")

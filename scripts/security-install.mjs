@@ -38,9 +38,18 @@ for (const name of process.argv.slice(2).length
       throw new Error("Tool checksum mismatch");
     await writeFile(archive, bytes);
   }
-  const result = spawnSync("tar", ["-xf", archive, "-C", directory], {
-    stdio: "inherit",
-  });
+  // GNU tar on Linux cannot extract ZIP; Windows' bundled BSD tar can.
+  const zipOnLinux =
+    process.platform === "linux" && asset.name.endsWith(".zip");
+  const result = spawnSync(
+    zipOnLinux ? "unzip" : "tar",
+    zipOnLinux
+      ? ["-q", "-o", archive, "-d", directory]
+      : ["-xf", archive, "-C", directory],
+    {
+      stdio: "inherit",
+    },
+  );
   if (result.status !== 0) throw new Error(`Extraction failed: ${name}`);
   const executable = resolve(
     directory,

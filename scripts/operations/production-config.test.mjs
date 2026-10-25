@@ -1,7 +1,7 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
 import { createHash } from "node:crypto";
-import { readFile } from "node:fs/promises";
+import { readFile, stat } from "node:fs/promises";
 import { unlink, rmdir } from "node:fs/promises";
 import { spawnSync } from "node:child_process";
 import { randomUUID } from "node:crypto";
@@ -89,6 +89,20 @@ test("Generated secrets stay out of environment values, existing bundles are pre
       values.push(value);
     }
     assert.equal(new Set(values).size, values.length);
+    if (process.platform !== "win32") {
+      // Check the generated bundle on a real POSIX filesystem: host traversal
+      // remains private while read-only projections can be read by container UIDs.
+      const mode = async (file) => (await stat(join(local, file))).mode & 0o777;
+      assert.equal(await mode("."), 0o700);
+      assert.equal(await mode("secrets"), 0o700);
+      assert.equal(await mode(".env"), 0o600);
+      assert.equal(await mode("secrets/backup_key"), 0o600);
+      assert.equal(await mode("rabbit-definitions.json"), 0o644);
+      for (const file of manifest.secretFiles.filter(
+        (name) => name !== "secrets/backup_key",
+      ))
+        assert.equal(await mode(file), 0o644, file);
+    }
     const repeated = run([
       "scripts/prepare-production.mjs",
       "--local-test",

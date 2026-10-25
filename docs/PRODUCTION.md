@@ -14,6 +14,8 @@
 
 ## Τοπική πρόβα
 
+Στο Linux, το bundle και ο φάκελος `secrets/` έχουν `0700`. Το `.env` και το host-only backup key παραμένουν `0600`. Τα αρχεία που γίνονται read-only bind mounts στα συγκεκριμένα containers έχουν `0644`, ώστε να διαβάζονται από τα διαφορετικά container UIDs· οι ιδιωτικοί γονικοί φάκελοι συνεχίζουν να εμποδίζουν την πρόσβαση άλλων χρηστών στο host. Το ίδιο ισχύει για το mounted RabbitMQ definitions αρχείο. Τα Compose file-backed secrets διατηρούν τα host permissions, επομένως ένα `0600` αρχείο του Linux runner δεν διαβάζεται αυτομάτως από το Keycloak UID. Στα Windows εφαρμόζεται το υπάρχον ιδιωτικό ACL. Μην αντιγράφεις αυτές τις projections σε δημόσια προσβάσιμο φάκελο.
+
 Από τη ρίζα του repository, με Node 22 και Docker. Χτίσε πρώτα τις εικόνες:
 
 ```powershell
