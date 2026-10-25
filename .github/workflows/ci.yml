@@ -141,6 +141,8 @@ jobs:
         run: docker compose --env-file .env.example -p padel-e2e up -d --build --wait --wait-timeout 480
       - name: OIDC, PostgreSQL, RabbitMQ and SMTP integration / recovery tests
         run: node scripts/e2e.mjs --resilience
+      - name: Quiesce database writers before the backup rehearsal
+        run: docker compose --env-file .env.example -p padel-e2e stop web api-gateway member-service subscription-service booking-service access-service notification-service assistant-service keycloak
       - name: Encrypted backup and isolated restore rehearsal
         run: |
           node scripts/prepare-production.mjs --local-test --output .runtime/production-check
