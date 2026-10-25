@@ -386,7 +386,7 @@ export async function verifyReception({
     }
   });
   if (resilience)
-    await test("Reception audit and original move idempotency response survive a booking-service restart", async () => {
+    await test("Reception audit, original move response and dependent access recover after booking restart", async () => {
       await compose("restart", "booking-service");
       await until(
         async () => (await history(b.id)).status === 200,
@@ -408,6 +408,20 @@ export async function verifyReception({
           .length,
         2,
       );
+      // Gateway recovery does not imply the access-service Feign cache has
+      // observed booking's re-registration. Prove that dependent path too.
+      const access = await until(
+        async () => {
+          const response = await api(admin, "/api/access/validate", "POST", {
+            bookingId: liveBooking.id,
+          });
+          return response.status === 503 ? false : response;
+        },
+        "Access-service observes restarted booking-service",
+        180000,
+      );
+      assert.equal(access.status, 200, JSON.stringify(access.data));
+      assert.equal(access.data.allowed, true);
     });
   await test("Concurrent attendance records once, corrections retain history and outsiders cannot be marked", async () => {
     const path =
