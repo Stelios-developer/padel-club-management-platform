@@ -1,0 +1,34 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+namespace: padel
+resources: [resources.yml]
+configMapGenerator:
+  - name: padel-config
+    files:
+      [
+        config/api-gateway.yml,
+        config/member-service.yml,
+        config/subscription-service.yml,
+        config/booking-service.yml,
+        config/access-service.yml,
+      ]
+  - name: padel-realm
+    files: [config/padel-realm.json]
+  - name: padel-login-theme
+    files:
+      [
+        config/padel-theme.properties,
+        config/padel-theme.css,
+        config/padel-court.svg,
+      ]
+  - name: padel-postgres-init
+    files: [config/init.sql]
+  - name: padel-web-config
+    files: [config/app-config.json]
+secretGenerator:
+  - name: padel-login-messages
+    files: [config/padel-messages-el.properties]
+  - name: padel-spring-config
+    files: [config/application.yml, config/notification-service.yml]
+  - name: padel-secrets
+    envs: [secrets.env]

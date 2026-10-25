@@ -1,0 +1,21 @@
+{
+  "name": "player_get",
+  "description": "Consumer-facing player_get contract; synthetic fixtures only.",
+  "request":
+    {
+      "method": "GET",
+      "headers": { "Authorization": "Bearer contract-alice" },
+      "urlPath": "/api/players/aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa",
+    },
+  "response":
+    {
+      "status": 200,
+      "headers": { "Content-Type": "application/json" },
+      "body":
+        {
+          "id": "aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa",
+          "fullName": "Alice Player",
+          "enabled": true,
+        },
+    },
+}

@@ -1,0 +1,1761 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-10-05T10:43:37.076Z",
+  "scope": "Source and ten owned application images; local implementation, not GitHub execution",
+  "tools": {
+    "checkedAt": "2026-10-04",
+    "trivy": {
+      "version": "0.75.0",
+      "repository": "aquasecurity/trivy",
+      "assets": {
+        "linux-x64": {
+          "name": "trivy_0.75.0_Linux-64bit.tar.gz",
+          "sha256": "c6e65abddb348e25f10549df887045629cf28cc72453cd1c63acb717316b3f3f"
+        },
+        "win32-x64": {
+          "name": "trivy_0.75.0_windows-64bit.zip",
+          "sha256": "4e43bd71a30f51aee39525f60f2b47043af77eb8df8fe082aae4372b69c6660f"
+        }
+      }
+    },
+    "syft": {
+      "version": "1.54.0",
+      "repository": "anchore/syft",
+      "assets": {
+        "linux-x64": {
+          "name": "syft_1.54.0_linux_amd64.tar.gz",
+          "sha256": "54a87372498168b2d033e876fd41fa4e8035b872699e525a57046e1f2f09c860"
+        },
+        "win32-x64": {
+          "name": "syft_1.54.0_windows_amd64.zip",
+          "sha256": "77f4b472779058e819eec9a054753a5071a996aaa40db31a290f8b256748593f"
+        }
+      },
+      "container": "anchore/syft:v1.54.0@sha256:0356562f495d432056237fbea5cbc2d4839c9c75cd500784a66de2e7cc95ca7c"
+    },
+    "actionlint": {
+      "version": "1.7.12",
+      "repository": "rhysd/actionlint",
+      "assets": {
+        "linux-x64": {
+          "name": "actionlint_1.7.12_linux_amd64.tar.gz",
+          "sha256": "8aca8db96f1b94770f1b0d72b6dddcb1ebb8123cb3712530b08cc387b349a3d8"
+        },
+        "win32-x64": {
+          "name": "actionlint_1.7.12_windows_amd64.zip",
+          "sha256": "6e7241b51e6817ea6a047693d8e6fed13b31819c9a0dd6c5a726e1592d22f6e9"
+        }
+      }
+    }
+  },
+  "database": {
+    "Version": 2,
+    "NextUpdate": "2026-10-05T14:28:15.15296468Z",
+    "UpdatedAt": "2026-10-04T14:28:15.152965452Z",
+    "DownloadedAt": "2026-10-04T17:17:08.663679Z"
+  },
+  "gates": {
+    "source": "PASSED",
+    "ownedImages": "10/10 PASSED",
+    "codeql": "CONFIGURED_NOT_EXECUTED",
+    "signedAttestations": "CONFIGURED_NOT_PRODUCED",
+    "signedReleaseVerification": "POLICY_TESTED_NO_SIGNED_RELEASE"
+  },
+  "source": {
+    "schemaVersion": 1,
+    "scannedAt": "2026-10-05T13:43:24.6480769+03:00",
+    "artifact": ".",
+    "gate": "PASSED",
+    "findings": [
+      {
+        "kind": "vulnerability",
+        "id": "CVE-2026-64607",
+        "target": "access-service/pom.xml",
+        "severity": "MEDIUM",
+        "resource": null,
+        "package": "org.apache.httpcomponents.client5:httpclient5",
+        "version": "5.5.2",
+        "fixedVersion": "5.6.3",
+        "blocks": false,
+        "exception": null
+      },
+      {
+        "kind": "vulnerability",
+        "id": "CVE-2020-13956",
+        "target": "access-service/pom.xml",
+        "severity": "MEDIUM",
+        "resource": null,
+        "package": "org.apache.httpcomponents:httpclient",
+        "version": "4.5.3",
+        "fixedVersion": "4.5.13, 5.0.3",
+        "blocks": false,
+        "exception": null
+      },
+      {
+        "kind": "vulnerability",
+        "id": "CVE-2026-64607",
+        "target": "api-gateway/pom.xml",
+        "severity": "MEDIUM",
+        "resource": null,
+        "package": "org.apache.httpcomponents.client5:httpclient5",
+        "version": "5.5.2",
+        "fixedVersion": "5.6.3",
+        "blocks": false,
+        "exception": null
+      },
+      {
+        "kind": "vulnerability",
+        "id": "CVE-2020-13956",
+        "target": "api-gateway/pom.xml",
+        "severity": "MEDIUM",
+        "resource": null,
+        "package": "org.apache.httpcomponents:httpclient",
+        "version": "4.5.3",
+        "fixedVersion": "4.5.13, 5.0.3",
+        "blocks": false,
+        "exception": null
+      },
+      {
+        "kind": "vulnerability",
+        "id": "CVE-2026-64607",
+        "target": "assistant-service/pom.xml",
+        "severity": "MEDIUM",
+        "resource": null,
+        "package": "org.apache.httpcomponents.client5:httpclient5",
+        "version": "5.5.2",
+        "fixedVersion": "5.6.3",
+        "blocks": false,
+        "exception": null
+      },
+      {
+        "kind": "vulnerability",
+        "id": "CVE-2020-13956",
+        "target": "assistant-service/pom.xml",
+        "severity": "MEDIUM",
+        "resource": null,
+        "package": "org.apache.httpcomponents:httpclient",
+        "version": "4.5.3",
+        "fixedVersion": "4.5.13, 5.0.3",
+        "blocks": false,
+        "exception": null
+      },
+      {
+        "kind": "vulnerability",
+        "id": "CVE-2026-64607",
+        "target": "booking-service/pom.xml",
+        "severity": "MEDIUM",
+        "resource": null,
+        "package": "org.apache.httpcomponents.client5:httpclient5",
+        "version": "5.5.2",
+        "fixedVersion": "5.6.3",
+        "blocks": false,
+        "exception": null
+      },
+      {
+        "kind": "vulnerability",
+        "id": "CVE-2020-13956",
+        "target": "booking-service/pom.xml",
+        "severity": "MEDIUM",
+        "resource": null,
+        "package": "org.apache.httpcomponents:httpclient",
+        "version": "4.5.3",
+        "fixedVersion": "4.5.13, 5.0.3",
+        "blocks": false,
+        "exception": null
+      },
+      {
+        "kind": "vulnerability",
+        "id": "CVE-2026-64607",
+        "target": "config-server/pom.xml",
+        "severity": "MEDIUM",
+        "resource": null,
+        "package": "org.apache.httpcomponents.client5:httpclient5",
+        "version": "5.5.2",
+        "fixedVersion": "5.6.3",
+        "blocks": false,
+        "exception": null
+      },
+      {
+        "kind": "vulnerability",
+        "id": "CVE-2026-64607",
+        "target": "discovery-server/pom.xml",
+        "severity": "MEDIUM",
+        "resource": null,
+        "package": "org.apache.httpcomponents.client5:httpclient5",
+        "version": "5.5.2",
+        "fixedVersion": "5.6.3",
+        "blocks": false,
+        "exception": null
+      },
+      {
+        "kind": "vulnerability",
+        "id": "CVE-2020-13956",
+        "target": "discovery-server/pom.xml",
+        "severity": "MEDIUM",
+        "resource": null,
+        "package": "org.apache.httpcomponents:httpclient",
+        "version": "4.5.3",
+        "fixedVersion": "4.5.13, 5.0.3",
+        "blocks": false,
+        "exception": null
+      },
+      {
+        "kind": "vulnerability",
+        "id": "CVE-2026-93687",
+        "target": "evals/package-lock.json",
+        "severity": "HIGH",
+        "resource": null,
+        "package": "braces",
+        "version": "3.0.3",
+        "fixedVersion": null,
+        "blocks": false,
+        "exception": {
+          "owner": "Padel maintainers",
+          "reason": "No upstream fixed release on 2026-10-05. Optional chokidar peer of nunjucks in the local promptfoo CLI. The harness uses versioned local configuration and does not accept external glob/watch patterns; no promptfoo server is deployed. Reassess before exposing the evaluator or enabling watch mode. See docs/SUPPLY-CHAIN.md.",
+          "expires": "2026-11-04"
+        }
+      },
+      {
+        "kind": "vulnerability",
+        "id": "CVE-2026-85393",
+        "target": "evals/package-lock.json",
+        "severity": "HIGH",
+        "resource": null,
+        "package": "node-forge",
+        "version": "1.4.0",
+        "fixedVersion": null,
+        "blocks": false,
+        "exception": {
+          "owner": "Padel maintainers",
+          "reason": "No upstream fixed release on 2026-10-05. Optional jks-js dependency of promptfoo, unused by our local HTTP evaluator; no Java keystore integration or forge signature verification is enabled. Application JWT/TLS uses Java/Keycloak and does not ship this npm dependency. Reassess before changing providers. See docs/SUPPLY-CHAIN.md.",
+          "expires": "2026-11-04"
+        }
+      },
+      {
+        "kind": "vulnerability",
+        "id": "CVE-2026-64607",
+        "target": "member-service/pom.xml",
+        "severity": "MEDIUM",
+        "resource": null,
+        "package": "org.apache.httpcomponents.client5:httpclient5",
+        "version": "5.5.2",
+        "fixedVersion": "5.6.3",
+        "blocks": false,
+        "exception": null
+      },
+      {
+        "kind": "vulnerability",
+        "id": "CVE-2020-13956",
+        "target": "member-service/pom.xml",
+        "severity": "MEDIUM",
+        "resource": null,
+        "package": "org.apache.httpcomponents:httpclient",
+        "version": "4.5.3",
+        "fixedVersion": "4.5.13, 5.0.3",
+        "blocks": false,
+        "exception": null
+      },
+      {
+        "kind": "vulnerability",
+        "id": "CVE-2026-64607",
+        "target": "notification-service/pom.xml",
+        "severity": "MEDIUM",
+        "resource": null,
+        "package": "org.apache.httpcomponents.client5:httpclient5",
+        "version": "5.5.2",
+        "fixedVersion": "5.6.3",
+        "blocks": false,
+        "exception": null
+      },
+      {
+        "kind": "vulnerability",
+        "id": "CVE-2020-13956",
+        "target": "notification-service/pom.xml",
+        "severity": "MEDIUM",
+        "resource": null,
+        "package": "org.apache.httpcomponents:httpclient",
+        "version": "4.5.3",
+        "fixedVersion": "4.5.13, 5.0.3",
+        "blocks": false,
+        "exception": null
+      },
+      {
+        "kind": "vulnerability",
+        "id": "CVE-2026-64607",
+        "target": "pom.xml",
+        "severity": "MEDIUM",
+        "resource": null,
+        "package": "org.apache.httpcomponents.client5:httpclient5",
+        "version": "5.5.2",
+        "fixedVersion": "5.6.3",
+        "blocks": false,
+        "exception": null
+      },
+      {
+        "kind": "vulnerability",
+        "id": "CVE-2026-64607",
+        "target": "pom.xml",
+        "severity": "MEDIUM",
+        "resource": null,
+        "package": "org.apache.httpcomponents.client5:httpclient5",
+        "version": "5.5.2",
+        "fixedVersion": "5.6.3",
+        "blocks": false,
+        "exception": null
+      },
+      {
+        "kind": "vulnerability",
+        "id": "CVE-2026-64607",
+        "target": "pom.xml",
+        "severity": "MEDIUM",
+        "resource": null,
+        "package": "org.apache.httpcomponents.client5:httpclient5",
+        "version": "5.5.2",
+        "fixedVersion": "5.6.3",
+        "blocks": false,
+        "exception": null
+      },
+      {
+        "kind": "vulnerability",
+        "id": "CVE-2026-64607",
+        "target": "pom.xml",
+        "severity": "MEDIUM",
+        "resource": null,
+        "package": "org.apache.httpcomponents.client5:httpclient5",
+        "version": "5.5.2",
+        "fixedVersion": "5.6.3",
+        "blocks": false,
+        "exception": null
+      },
+      {
+        "kind": "vulnerability",
+        "id": "CVE-2026-64607",
+        "target": "pom.xml",
+        "severity": "MEDIUM",
+        "resource": null,
+        "package": "org.apache.httpcomponents.client5:httpclient5",
+        "version": "5.5.2",
+        "fixedVersion": "5.6.3",
+        "blocks": false,
+        "exception": null
+      },
+      {
+        "kind": "vulnerability",
+        "id": "CVE-2026-64607",
+        "target": "pom.xml",
+        "severity": "MEDIUM",
+        "resource": null,
+        "package": "org.apache.httpcomponents.client5:httpclient5",
+        "version": "5.5.2",
+        "fixedVersion": "5.6.3",
+        "blocks": false,
+        "exception": null
+      },
+      {
+        "kind": "vulnerability",
+        "id": "CVE-2026-64607",
+        "target": "pom.xml",
+        "severity": "MEDIUM",
+        "resource": null,
+        "package": "org.apache.httpcomponents.client5:httpclient5",
+        "version": "5.5.2",
+        "fixedVersion": "5.6.3",
+        "blocks": false,
+        "exception": null
+      },
+      {
+        "kind": "vulnerability",
+        "id": "CVE-2026-64607",
+        "target": "pom.xml",
+        "severity": "MEDIUM",
+        "resource": null,
+        "package": "org.apache.httpcomponents.client5:httpclient5",
+        "version": "5.5.2",
+        "fixedVersion": "5.6.3",
+        "blocks": false,
+        "exception": null
+      },
+      {
+        "kind": "vulnerability",
+        "id": "CVE-2026-64607",
+        "target": "pom.xml",
+        "severity": "MEDIUM",
+        "resource": null,
+        "package": "org.apache.httpcomponents.client5:httpclient5",
+        "version": "5.5.2",
+        "fixedVersion": "5.6.3",
+        "blocks": false,
+        "exception": null
+      },
+      {
+        "kind": "vulnerability",
+        "id": "CVE-2020-13956",
+        "target": "pom.xml",
+        "severity": "MEDIUM",
+        "resource": null,
+        "package": "org.apache.httpcomponents:httpclient",
+        "version": "4.5.3",
+        "fixedVersion": "4.5.13, 5.0.3",
+        "blocks": false,
+        "exception": null
+      },
+      {
+        "kind": "vulnerability",
+        "id": "CVE-2020-13956",
+        "target": "pom.xml",
+        "severity": "MEDIUM",
+        "resource": null,
+        "package": "org.apache.httpcomponents:httpclient",
+        "version": "4.5.3",
+        "fixedVersion": "4.5.13, 5.0.3",
+        "blocks": false,
+        "exception": null
+      },
+      {
+        "kind": "vulnerability",
+        "id": "CVE-2020-13956",
+        "target": "pom.xml",
+        "severity": "MEDIUM",
+        "resource": null,
+        "package": "org.apache.httpcomponents:httpclient",
+        "version": "4.5.3",
+        "fixedVersion": "4.5.13, 5.0.3",
+        "blocks": false,
+        "exception": null
+      },
+      {
+        "kind": "vulnerability",
+        "id": "CVE-2020-13956",
+        "target": "pom.xml",
+        "severity": "MEDIUM",
+        "resource": null,
+        "package": "org.apache.httpcomponents:httpclient",
+        "version": "4.5.3",
+        "fixedVersion": "4.5.13, 5.0.3",
+        "blocks": false,
+        "exception": null
+      },
+      {
+        "kind": "vulnerability",
+        "id": "CVE-2020-13956",
+        "target": "pom.xml",
+        "severity": "MEDIUM",
+        "resource": null,
+        "package": "org.apache.httpcomponents:httpclient",
+        "version": "4.5.3",
+        "fixedVersion": "4.5.13, 5.0.3",
+        "blocks": false,
+        "exception": null
+      },
+      {
+        "kind": "vulnerability",
+        "id": "CVE-2020-13956",
+        "target": "pom.xml",
+        "severity": "MEDIUM",
+        "resource": null,
+        "package": "org.apache.httpcomponents:httpclient",
+        "version": "4.5.3",
+        "fixedVersion": "4.5.13, 5.0.3",
+        "blocks": false,
+        "exception": null
+      },
+      {
+        "kind": "vulnerability",
+        "id": "CVE-2020-13956",
+        "target": "pom.xml",
+        "severity": "MEDIUM",
+        "resource": null,
+        "package": "org.apache.httpcomponents:httpclient",
+        "version": "4.5.3",
+        "fixedVersion": "4.5.13, 5.0.3",
+        "blocks": false,
+        "exception": null
+      },
+      {
+        "kind": "vulnerability",
+        "id": "CVE-2020-13956",
+        "target": "pom.xml",
+        "severity": "MEDIUM",
+        "resource": null,
+        "package": "org.apache.httpcomponents:httpclient",
+        "version": "4.5.3",
+        "fixedVersion": "4.5.13, 5.0.3",
+        "blocks": false,
+        "exception": null
+      },
+      {
+        "kind": "vulnerability",
+        "id": "CVE-2026-64607",
+        "target": "subscription-service/pom.xml",
+        "severity": "MEDIUM",
+        "resource": null,
+        "package": "org.apache.httpcomponents.client5:httpclient5",
+        "version": "5.5.2",
+        "fixedVersion": "5.6.3",
+        "blocks": false,
+        "exception": null
+      },
+      {
+        "kind": "vulnerability",
+        "id": "CVE-2020-13956",
+        "target": "subscription-service/pom.xml",
+        "severity": "MEDIUM",
+        "resource": null,
+        "package": "org.apache.httpcomponents:httpclient",
+        "version": "4.5.3",
+        "fixedVersion": "4.5.13, 5.0.3",
+        "blocks": false,
+        "exception": null
+      },
+      {
+        "kind": "misconfiguration",
+        "id": "DS-0026",
+        "target": "Dockerfile",
+        "severity": "LOW",
+        "resource": null,
+        "blocks": false,
+        "exception": null
+      },
+      {
+        "kind": "misconfiguration",
+        "id": "DS-0026",
+        "target": "assistant-service/Dockerfile",
+        "severity": "LOW",
+        "resource": null,
+        "blocks": false,
+        "exception": null
+      },
+      {
+        "kind": "misconfiguration",
+        "id": "DS-0026",
+        "target": "infra/performance/Dockerfile",
+        "severity": "LOW",
+        "resource": null,
+        "blocks": false,
+        "exception": null
+      },
+      {
+        "kind": "misconfiguration",
+        "id": "KSV-0003",
+        "target": "infra/k8s (Kustomize rendered with fixture secrets)",
+        "severity": "LOW",
+        "resource": "Deployment/keycloak",
+        "blocks": false,
+        "exception": null
+      },
+      {
+        "kind": "misconfiguration",
+        "id": "KSV-0003",
+        "target": "infra/k8s (Kustomize rendered with fixture secrets)",
+        "severity": "LOW",
+        "resource": "StatefulSet/postgres",
+        "blocks": false,
+        "exception": null
+      },
+      {
+        "kind": "misconfiguration",
+        "id": "KSV-0003",
+        "target": "infra/k8s (Kustomize rendered with fixture secrets)",
+        "severity": "LOW",
+        "resource": "StatefulSet/rabbitmq",
+        "blocks": false,
+        "exception": null
+      },
+      {
+        "kind": "misconfiguration",
+        "id": "KSV-0004",
+        "target": "infra/k8s (Kustomize rendered with fixture secrets)",
+        "severity": "LOW",
+        "resource": null,
+        "blocks": false,
+        "exception": null
+      },
+      {
+        "kind": "misconfiguration",
+        "id": "KSV-0004",
+        "target": "infra/k8s (Kustomize rendered with fixture secrets)",
+        "severity": "LOW",
+        "resource": null,
+        "blocks": false,
+        "exception": null
+      },
+      {
+        "kind": "misconfiguration",
+        "id": "KSV-0004",
+        "target": "infra/k8s (Kustomize rendered with fixture secrets)",
+        "severity": "LOW",
+        "resource": null,
+        "blocks": false,
+        "exception": null
+      },
+      {
+        "kind": "misconfiguration",
+        "id": "KSV-0011",
+        "target": "infra/k8s (Kustomize rendered with fixture secrets)",
+        "severity": "LOW",
+        "resource": "Deployment/access-service",
+        "blocks": false,
+        "exception": null
+      },
+      {
+        "kind": "misconfiguration",
+        "id": "KSV-0011",
+        "target": "infra/k8s (Kustomize rendered with fixture secrets)",
+        "severity": "LOW",
+        "resource": "Deployment/api-gateway",
+        "blocks": false,
+        "exception": null
+      },
+      {
+        "kind": "misconfiguration",
+        "id": "KSV-0011",
+        "target": "infra/k8s (Kustomize rendered with fixture secrets)",
+        "severity": "LOW",
+        "resource": "Deployment/booking-service",
+        "blocks": false,
+        "exception": null
+      },
+      {
+        "kind": "misconfiguration",
+        "id": "KSV-0011",
+        "target": "infra/k8s (Kustomize rendered with fixture secrets)",
+        "severity": "LOW",
+        "resource": "Deployment/config-server",
+        "blocks": false,
+        "exception": null
+      },
+      {
+        "kind": "misconfiguration",
+        "id": "KSV-0011",
+        "target": "infra/k8s (Kustomize rendered with fixture secrets)",
+        "severity": "LOW",
+        "resource": "Deployment/discovery-server",
+        "blocks": false,
+        "exception": null
+      },
+      {
+        "kind": "misconfiguration",
+        "id": "KSV-0011",
+        "target": "infra/k8s (Kustomize rendered with fixture secrets)",
+        "severity": "LOW",
+        "resource": "Deployment/keycloak",
+        "blocks": false,
+        "exception": null
+      },
+      {
+        "kind": "misconfiguration",
+        "id": "KSV-0011",
+        "target": "infra/k8s (Kustomize rendered with fixture secrets)",
+        "severity": "LOW",
+        "resource": "Deployment/mailpit",
+        "blocks": false,
+        "exception": null
+      },
+      {
+        "kind": "misconfiguration",
+        "id": "KSV-0011",
+        "target": "infra/k8s (Kustomize rendered with fixture secrets)",
+        "severity": "LOW",
+        "resource": "Deployment/member-service",
+        "blocks": false,
+        "exception": null
+      },
+      {
+        "kind": "misconfiguration",
+        "id": "KSV-0011",
+        "target": "infra/k8s (Kustomize rendered with fixture secrets)",
+        "severity": "LOW",
+        "resource": "Deployment/notification-service",
+        "blocks": false,
+        "exception": null
+      },
+      {
+        "kind": "misconfiguration",
+        "id": "KSV-0011",
+        "target": "infra/k8s (Kustomize rendered with fixture secrets)",
+        "severity": "LOW",
+        "resource": "StatefulSet/postgres",
+        "blocks": false,
+        "exception": null
+      },
+      {
+        "kind": "misconfiguration",
+        "id": "KSV-0011",
+        "target": "infra/k8s (Kustomize rendered with fixture secrets)",
+        "severity": "LOW",
+        "resource": "StatefulSet/rabbitmq",
+        "blocks": false,
+        "exception": null
+      },
+      {
+        "kind": "misconfiguration",
+        "id": "KSV-0011",
+        "target": "infra/k8s (Kustomize rendered with fixture secrets)",
+        "severity": "LOW",
+        "resource": "Deployment/subscription-service",
+        "blocks": false,
+        "exception": null
+      },
+      {
+        "kind": "misconfiguration",
+        "id": "KSV-0011",
+        "target": "infra/k8s (Kustomize rendered with fixture secrets)",
+        "severity": "LOW",
+        "resource": "Deployment/web",
+        "blocks": false,
+        "exception": null
+      },
+      {
+        "kind": "misconfiguration",
+        "id": "KSV-0012",
+        "target": "infra/k8s (Kustomize rendered with fixture secrets)",
+        "severity": "MEDIUM",
+        "resource": "Deployment/keycloak",
+        "blocks": false,
+        "exception": null
+      },
+      {
+        "kind": "misconfiguration",
+        "id": "KSV-0012",
+        "target": "infra/k8s (Kustomize rendered with fixture secrets)",
+        "severity": "MEDIUM",
+        "resource": "StatefulSet/postgres",
+        "blocks": false,
+        "exception": null
+      },
+      {
+        "kind": "misconfiguration",
+        "id": "KSV-0012",
+        "target": "infra/k8s (Kustomize rendered with fixture secrets)",
+        "severity": "MEDIUM",
+        "resource": "StatefulSet/rabbitmq",
+        "blocks": false,
+        "exception": null
+      },
+      {
+        "kind": "misconfiguration",
+        "id": "KSV-0014",
+        "target": "infra/k8s (Kustomize rendered with fixture secrets)",
+        "severity": "HIGH",
+        "resource": "Deployment/keycloak",
+        "blocks": false,
+        "exception": {
+          "owner": "Padel maintainers",
+          "reason": "Undeployed development Kubernetes scaffold uses start-dev, which performs image augmentation and writes runtime data. A prebuilt optimized Keycloak image plus writable data paths must be validated before read-only root and cluster deployment. No production cluster claim.",
+          "expires": "2026-11-04"
+        }
+      },
+      {
+        "kind": "misconfiguration",
+        "id": "KSV-0014",
+        "target": "infra/k8s (Kustomize rendered with fixture secrets)",
+        "severity": "HIGH",
+        "resource": "StatefulSet/postgres",
+        "blocks": false,
+        "exception": {
+          "owner": "Padel maintainers",
+          "reason": "Undeployed Kubernetes scaffold. Upstream database entrypoint initializes/chowns the data volume and creates runtime directories. Do not enable a read-only root until writable paths and volume ownership are validated in a real cluster. Application containers are read-only. No Kubernetes production claim.",
+          "expires": "2026-11-04"
+        }
+      },
+      {
+        "kind": "misconfiguration",
+        "id": "KSV-0014",
+        "target": "infra/k8s (Kustomize rendered with fixture secrets)",
+        "severity": "HIGH",
+        "resource": "StatefulSet/rabbitmq",
+        "blocks": false,
+        "exception": {
+          "owner": "Padel maintainers",
+          "reason": "Undeployed Kubernetes scaffold. Broker entrypoint and runtime filesystem layout require a tested writable-volume design before read-only root can be enforced. No Kubernetes production claim; review before any cluster deployment.",
+          "expires": "2026-11-04"
+        }
+      },
+      {
+        "kind": "misconfiguration",
+        "id": "KSV-0015",
+        "target": "infra/k8s (Kustomize rendered with fixture secrets)",
+        "severity": "LOW",
+        "resource": "StatefulSet/postgres",
+        "blocks": false,
+        "exception": null
+      },
+      {
+        "kind": "misconfiguration",
+        "id": "KSV-0015",
+        "target": "infra/k8s (Kustomize rendered with fixture secrets)",
+        "severity": "LOW",
+        "resource": "StatefulSet/rabbitmq",
+        "blocks": false,
+        "exception": null
+      },
+      {
+        "kind": "misconfiguration",
+        "id": "KSV-0016",
+        "target": "infra/k8s (Kustomize rendered with fixture secrets)",
+        "severity": "LOW",
+        "resource": "StatefulSet/postgres",
+        "blocks": false,
+        "exception": null
+      },
+      {
+        "kind": "misconfiguration",
+        "id": "KSV-0016",
+        "target": "infra/k8s (Kustomize rendered with fixture secrets)",
+        "severity": "LOW",
+        "resource": "StatefulSet/rabbitmq",
+        "blocks": false,
+        "exception": null
+      },
+      {
+        "kind": "misconfiguration",
+        "id": "KSV-0018",
+        "target": "infra/k8s (Kustomize rendered with fixture secrets)",
+        "severity": "LOW",
+        "resource": "StatefulSet/postgres",
+        "blocks": false,
+        "exception": null
+      },
+      {
+        "kind": "misconfiguration",
+        "id": "KSV-0018",
+        "target": "infra/k8s (Kustomize rendered with fixture secrets)",
+        "severity": "LOW",
+        "resource": "StatefulSet/rabbitmq",
+        "blocks": false,
+        "exception": null
+      },
+      {
+        "kind": "misconfiguration",
+        "id": "KSV-0020",
+        "target": "infra/k8s (Kustomize rendered with fixture secrets)",
+        "severity": "LOW",
+        "resource": "Deployment/keycloak",
+        "blocks": false,
+        "exception": null
+      },
+      {
+        "kind": "misconfiguration",
+        "id": "KSV-0020",
+        "target": "infra/k8s (Kustomize rendered with fixture secrets)",
+        "severity": "LOW",
+        "resource": "Deployment/mailpit",
+        "blocks": false,
+        "exception": null
+      },
+      {
+        "kind": "misconfiguration",
+        "id": "KSV-0020",
+        "target": "infra/k8s (Kustomize rendered with fixture secrets)",
+        "severity": "LOW",
+        "resource": "StatefulSet/postgres",
+        "blocks": false,
+        "exception": null
+      },
+      {
+        "kind": "misconfiguration",
+        "id": "KSV-0020",
+        "target": "infra/k8s (Kustomize rendered with fixture secrets)",
+        "severity": "LOW",
+        "resource": "StatefulSet/rabbitmq",
+        "blocks": false,
+        "exception": null
+      },
+      {
+        "kind": "misconfiguration",
+        "id": "KSV-0020",
+        "target": "infra/k8s (Kustomize rendered with fixture secrets)",
+        "severity": "LOW",
+        "resource": "Deployment/web",
+        "blocks": false,
+        "exception": null
+      },
+      {
+        "kind": "misconfiguration",
+        "id": "KSV-0021",
+        "target": "infra/k8s (Kustomize rendered with fixture secrets)",
+        "severity": "LOW",
+        "resource": "Deployment/access-service",
+        "blocks": false,
+        "exception": null
+      },
+      {
+        "kind": "misconfiguration",
+        "id": "KSV-0021",
+        "target": "infra/k8s (Kustomize rendered with fixture secrets)",
+        "severity": "LOW",
+        "resource": "Deployment/api-gateway",
+        "blocks": false,
+        "exception": null
+      },
+      {
+        "kind": "misconfiguration",
+        "id": "KSV-0021",
+        "target": "infra/k8s (Kustomize rendered with fixture secrets)",
+        "severity": "LOW",
+        "resource": "Deployment/booking-service",
+        "blocks": false,
+        "exception": null
+      },
+      {
+        "kind": "misconfiguration",
+        "id": "KSV-0021",
+        "target": "infra/k8s (Kustomize rendered with fixture secrets)",
+        "severity": "LOW",
+        "resource": "Deployment/config-server",
+        "blocks": false,
+        "exception": null
+      },
+      {
+        "kind": "misconfiguration",
+        "id": "KSV-0021",
+        "target": "infra/k8s (Kustomize rendered with fixture secrets)",
+        "severity": "LOW",
+        "resource": "Deployment/discovery-server",
+        "blocks": false,
+        "exception": null
+      },
+      {
+        "kind": "misconfiguration",
+        "id": "KSV-0021",
+        "target": "infra/k8s (Kustomize rendered with fixture secrets)",
+        "severity": "LOW",
+        "resource": "Deployment/keycloak",
+        "blocks": false,
+        "exception": null
+      },
+      {
+        "kind": "misconfiguration",
+        "id": "KSV-0021",
+        "target": "infra/k8s (Kustomize rendered with fixture secrets)",
+        "severity": "LOW",
+        "resource": "Deployment/mailpit",
+        "blocks": false,
+        "exception": null
+      },
+      {
+        "kind": "misconfiguration",
+        "id": "KSV-0021",
+        "target": "infra/k8s (Kustomize rendered with fixture secrets)",
+        "severity": "LOW",
+        "resource": "Deployment/member-service",
+        "blocks": false,
+        "exception": null
+      },
+      {
+        "kind": "misconfiguration",
+        "id": "KSV-0021",
+        "target": "infra/k8s (Kustomize rendered with fixture secrets)",
+        "severity": "LOW",
+        "resource": "Deployment/notification-service",
+        "blocks": false,
+        "exception": null
+      },
+      {
+        "kind": "misconfiguration",
+        "id": "KSV-0021",
+        "target": "infra/k8s (Kustomize rendered with fixture secrets)",
+        "severity": "LOW",
+        "resource": "StatefulSet/postgres",
+        "blocks": false,
+        "exception": null
+      },
+      {
+        "kind": "misconfiguration",
+        "id": "KSV-0021",
+        "target": "infra/k8s (Kustomize rendered with fixture secrets)",
+        "severity": "LOW",
+        "resource": "StatefulSet/rabbitmq",
+        "blocks": false,
+        "exception": null
+      },
+      {
+        "kind": "misconfiguration",
+        "id": "KSV-0021",
+        "target": "infra/k8s (Kustomize rendered with fixture secrets)",
+        "severity": "LOW",
+        "resource": "Deployment/subscription-service",
+        "blocks": false,
+        "exception": null
+      },
+      {
+        "kind": "misconfiguration",
+        "id": "KSV-0021",
+        "target": "infra/k8s (Kustomize rendered with fixture secrets)",
+        "severity": "LOW",
+        "resource": "Deployment/web",
+        "blocks": false,
+        "exception": null
+      },
+      {
+        "kind": "misconfiguration",
+        "id": "KSV-01010",
+        "target": "infra/k8s (Kustomize rendered with fixture secrets)",
+        "severity": "MEDIUM",
+        "resource": "ConfigMap/padel-config-622c952gd5",
+        "blocks": false,
+        "exception": null
+      },
+      {
+        "kind": "misconfiguration",
+        "id": "KSV-01010",
+        "target": "infra/k8s (Kustomize rendered with fixture secrets)",
+        "severity": "MEDIUM",
+        "resource": "ConfigMap/padel-realm-k65h2gmb2c",
+        "blocks": false,
+        "exception": null
+      },
+      {
+        "kind": "misconfiguration",
+        "id": "KSV-0106",
+        "target": "infra/k8s (Kustomize rendered with fixture secrets)",
+        "severity": "LOW",
+        "resource": null,
+        "blocks": false,
+        "exception": null
+      },
+      {
+        "kind": "misconfiguration",
+        "id": "KSV-0106",
+        "target": "infra/k8s (Kustomize rendered with fixture secrets)",
+        "severity": "LOW",
+        "resource": null,
+        "blocks": false,
+        "exception": null
+      },
+      {
+        "kind": "misconfiguration",
+        "id": "KSV-0106",
+        "target": "infra/k8s (Kustomize rendered with fixture secrets)",
+        "severity": "LOW",
+        "resource": null,
+        "blocks": false,
+        "exception": null
+      },
+      {
+        "kind": "misconfiguration",
+        "id": "KSV-0125",
+        "target": "infra/k8s (Kustomize rendered with fixture secrets)",
+        "severity": "MEDIUM",
+        "resource": null,
+        "blocks": false,
+        "exception": null
+      },
+      {
+        "kind": "misconfiguration",
+        "id": "KSV-0125",
+        "target": "infra/k8s (Kustomize rendered with fixture secrets)",
+        "severity": "MEDIUM",
+        "resource": null,
+        "blocks": false,
+        "exception": null
+      },
+      {
+        "kind": "misconfiguration",
+        "id": "KSV-0125",
+        "target": "infra/k8s (Kustomize rendered with fixture secrets)",
+        "severity": "MEDIUM",
+        "resource": null,
+        "blocks": false,
+        "exception": null
+      },
+      {
+        "kind": "misconfiguration",
+        "id": "KSV-0125",
+        "target": "infra/k8s (Kustomize rendered with fixture secrets)",
+        "severity": "MEDIUM",
+        "resource": null,
+        "blocks": false,
+        "exception": null
+      },
+      {
+        "kind": "misconfiguration",
+        "id": "KSV-0125",
+        "target": "infra/k8s (Kustomize rendered with fixture secrets)",
+        "severity": "MEDIUM",
+        "resource": null,
+        "blocks": false,
+        "exception": null
+      },
+      {
+        "kind": "misconfiguration",
+        "id": "KSV-0125",
+        "target": "infra/k8s (Kustomize rendered with fixture secrets)",
+        "severity": "MEDIUM",
+        "resource": null,
+        "blocks": false,
+        "exception": null
+      },
+      {
+        "kind": "misconfiguration",
+        "id": "KSV-0125",
+        "target": "infra/k8s (Kustomize rendered with fixture secrets)",
+        "severity": "MEDIUM",
+        "resource": null,
+        "blocks": false,
+        "exception": null
+      },
+      {
+        "kind": "misconfiguration",
+        "id": "KSV-0125",
+        "target": "infra/k8s (Kustomize rendered with fixture secrets)",
+        "severity": "MEDIUM",
+        "resource": null,
+        "blocks": false,
+        "exception": null
+      },
+      {
+        "kind": "misconfiguration",
+        "id": "KSV-0125",
+        "target": "infra/k8s (Kustomize rendered with fixture secrets)",
+        "severity": "MEDIUM",
+        "resource": null,
+        "blocks": false,
+        "exception": null
+      },
+      {
+        "kind": "misconfiguration",
+        "id": "KSV-0125",
+        "target": "infra/k8s (Kustomize rendered with fixture secrets)",
+        "severity": "MEDIUM",
+        "resource": null,
+        "blocks": false,
+        "exception": null
+      },
+      {
+        "kind": "misconfiguration",
+        "id": "KSV-0125",
+        "target": "infra/k8s (Kustomize rendered with fixture secrets)",
+        "severity": "MEDIUM",
+        "resource": null,
+        "blocks": false,
+        "exception": null
+      }
+    ]
+  },
+  "sourceBefore": {
+    "scannedAt": "2026-10-04T20:21:41.482676+03:00",
+    "blockingFindingOccurrences": 266,
+    "note": "Repeated Maven findings are occurrences, not distinct CVEs. This earlier scan did not include rendered Kubernetes."
+  },
+  "backend": {
+    "completed": true,
+    "totals": {
+      "tests": 135,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    "categories": {
+      "integrationTests": 30,
+      "producerContracts": 13,
+      "consumerContracts": 5
+    }
+  },
+  "localTests": {
+    "securityPolicyAndIdentity": 16,
+    "evaluator": 13,
+    "webUnit": 37,
+    "productionConfig": 4,
+    "actionlint": "PASSED",
+    "promptfooHarness": "PASSED_WITH_DETERMINISTIC_FIXTURE_NOT_REAL_MODEL"
+  },
+  "deployment": {
+    "createdAt": "2026-10-05T10:37:51.095Z",
+    "completed": true,
+    "checks": [
+      {
+        "name": "Court 01 · Panorama: 60 minute slots match original semantics",
+        "passed": true
+      },
+      {
+        "name": "Court 01 · Panorama: 90 minute slots match original semantics",
+        "passed": true
+      },
+      {
+        "name": "Court 01 · Panorama: 120 minute slots match original semantics",
+        "passed": true
+      },
+      {
+        "name": "Court 02 · Olive: 60 minute slots match original semantics",
+        "passed": true
+      },
+      {
+        "name": "Court 02 · Olive: 90 minute slots match original semantics",
+        "passed": true
+      },
+      {
+        "name": "Court 02 · Olive: 120 minute slots match original semantics",
+        "passed": true
+      },
+      {
+        "name": "Court 03 · Arena: 60 minute slots match original semantics",
+        "passed": true
+      },
+      {
+        "name": "Court 03 · Arena: 90 minute slots match original semantics",
+        "passed": true
+      },
+      {
+        "name": "Court 03 · Arena: 120 minute slots match original semantics",
+        "passed": true
+      },
+      {
+        "name": "Anonymous availability rejected",
+        "passed": true
+      },
+      {
+        "name": "Unsupported duration rejected",
+        "passed": true
+      },
+      {
+        "name": "Owned cancelled fixture remains visible",
+        "passed": true
+      },
+      {
+        "name": "Foreign fixture booking remains forbidden",
+        "passed": true
+      },
+      {
+        "name": "Original user booking preserved",
+        "passed": true
+      }
+    ],
+    "scope": "Live web/gateway/Keycloak/booking deployment; no model generation or business writes",
+    "originalBookingStatus": "CONFIRMED",
+    "fixturesCleanedAndDomainUnchanged": true
+  },
+  "readonlyWeb": {
+    "createdAt": "2026-10-05T10:39:04.380Z",
+    "completed": true,
+    "checks": [
+      {
+        "path": "/",
+        "status": 200,
+        "passed": true
+      },
+      {
+        "path": "/app.js",
+        "status": 200,
+        "passed": true
+      },
+      {
+        "path": "/api/courts",
+        "status": 401,
+        "passed": true
+      }
+    ],
+    "scope": "Isolated Docker Nginx runtime; not a Kubernetes deployment",
+    "imageId": "sha256:32b49b3463b5beca6accc8fc40903a0d9a5645290ade7113ce9d2395e1e9306b",
+    "temporaryContainerRemoved": true
+  },
+  "installed": {
+    "createdAt": "2026-10-05T10:43:36.995Z",
+    "domainUnchanged": true,
+    "webStatus": 200,
+    "images": [
+      {
+        "service": "config-server",
+        "container": "padel-e2e-config-server-1",
+        "imageId": "sha256:e06808007d5a44537a68b6b6215b8ab17234042539a38976fbbece1600050fb1",
+        "running": true,
+        "health": "healthy",
+        "user": "10001:10001"
+      },
+      {
+        "service": "discovery-server",
+        "container": "padel-e2e-discovery-server-1",
+        "imageId": "sha256:4eef6c767dcff8de4192afb3ddd6985ff60d2bf5741401df462db9cde474a215",
+        "running": true,
+        "health": "healthy",
+        "user": "10001:10001"
+      },
+      {
+        "service": "api-gateway",
+        "container": "padel-e2e-api-gateway-1",
+        "imageId": "sha256:eefb29f6c481713a3adc5107b774cbfa5049be9c8f1901365d232cb9bfc08077",
+        "running": true,
+        "health": "healthy",
+        "user": "10001:10001"
+      },
+      {
+        "service": "member-service",
+        "container": "padel-e2e-member-service-1",
+        "imageId": "sha256:af5d8ed49f2d4123d7569c29e208894ba0859c81118a95cbf3e83f846eb78b5d",
+        "running": true,
+        "health": "healthy",
+        "user": "10001:10001"
+      },
+      {
+        "service": "subscription-service",
+        "container": "padel-e2e-subscription-service-1",
+        "imageId": "sha256:c54190552450e24310e4af4a4b9cb88b5c62035382e21e14f93108bd010b56c7",
+        "running": true,
+        "health": "healthy",
+        "user": "10001:10001"
+      },
+      {
+        "service": "booking-service",
+        "container": "padel-e2e-booking-service-1",
+        "imageId": "sha256:b41ecdf22f0096cc1427d973da095dfb2d051cd7bb5ab40e7c3ff91a5606fb7d",
+        "running": true,
+        "health": "healthy",
+        "user": "10001:10001"
+      },
+      {
+        "service": "access-service",
+        "container": "padel-e2e-access-service-1",
+        "imageId": "sha256:2feb10fc64b380fe40d210da09e3a29d20de63236720f181ca773f5e10cb09d5",
+        "running": true,
+        "health": "healthy",
+        "user": "10001:10001"
+      },
+      {
+        "service": "notification-service",
+        "container": "padel-e2e-notification-service-1",
+        "imageId": "sha256:99f2cae54c1eb29c448216f41d5d94f6d104e1ad9ab4c524e5eb304d17cdbbb0",
+        "running": true,
+        "health": "healthy",
+        "user": "10001:10001"
+      },
+      {
+        "service": "assistant-service",
+        "container": "padel-ai-local-assistant-service-1",
+        "imageId": "sha256:47efb3e0ab7f46ed1d2e8388ecbc01474a01b2a2e31d414553684a91aa213d87",
+        "running": true,
+        "health": "healthy",
+        "user": "10001:10001"
+      },
+      {
+        "service": "web",
+        "container": "padel-e2e-web-1",
+        "imageId": "sha256:32b49b3463b5beca6accc8fc40903a0d9a5645290ade7113ce9d2395e1e9306b",
+        "running": true,
+        "health": "healthy",
+        "user": "101:101"
+      }
+    ]
+  },
+  "images": [
+    {
+      "schemaVersion": 1,
+      "scannedAt": "2026-10-05T13:21:05.2499759+03:00",
+      "artifact": "$WORKSPACE\\.runtime\\security\\config-server.cdx.json",
+      "gate": "PASSED",
+      "findings": [
+        {
+          "kind": "vulnerability",
+          "id": "CVE-2026-64607",
+          "target": "Java",
+          "severity": "MEDIUM",
+          "resource": null,
+          "package": "org.apache.httpcomponents.client5:httpclient5",
+          "version": "5.5.2",
+          "fixedVersion": "5.6.3",
+          "blocks": false,
+          "exception": null
+        }
+      ],
+      "image": "padel/config-server:security",
+      "imageId": "sha256:e06808007d5a44537a68b6b6215b8ab17234042539a38976fbbece1600050fb1",
+      "repoDigests": [
+        "padel/config-server@sha256:e06808007d5a44537a68b6b6215b8ab17234042539a38976fbbece1600050fb1"
+      ],
+      "created": "2026-10-05T10:12:19.992804765Z",
+      "imageConfigDigest": "sha256:3dcf5444e7e27ea30fd100e5194b7a947b4b944e58071f3320a73aa347548196",
+      "sbomSourceManifestDigest": "sha256:3c77bd5a9d580f6a55b889aff7ec22393bc00661ed590b1a89f1b58810ef0685",
+      "sbomComponents": 1374,
+      "packageComponents": 148,
+      "service": "config-server",
+      "sbomSha256": "b330fa711b40a3cc800161260b08cc334ea040344ad1b840f19ee350a220a298",
+      "localSbom": ".runtime/security/config-server.cdx.json"
+    },
+    {
+      "schemaVersion": 1,
+      "scannedAt": "2026-10-05T13:21:35.623659+03:00",
+      "artifact": "$WORKSPACE\\.runtime\\security\\discovery-server.cdx.json",
+      "gate": "PASSED",
+      "findings": [
+        {
+          "kind": "vulnerability",
+          "id": "CVE-2026-64607",
+          "target": "Java",
+          "severity": "MEDIUM",
+          "resource": null,
+          "package": "org.apache.httpcomponents.client5:httpclient5",
+          "version": "5.5.2",
+          "fixedVersion": "5.6.3",
+          "blocks": false,
+          "exception": null
+        },
+        {
+          "kind": "vulnerability",
+          "id": "CVE-2020-13956",
+          "target": "Java",
+          "severity": "MEDIUM",
+          "resource": null,
+          "package": "org.apache.httpcomponents:httpclient",
+          "version": "4.5.3",
+          "fixedVersion": "4.5.13, 5.0.3",
+          "blocks": false,
+          "exception": null
+        }
+      ],
+      "image": "padel/discovery-server:security",
+      "imageId": "sha256:4eef6c767dcff8de4192afb3ddd6985ff60d2bf5741401df462db9cde474a215",
+      "repoDigests": [
+        "padel/discovery-server@sha256:4eef6c767dcff8de4192afb3ddd6985ff60d2bf5741401df462db9cde474a215"
+      ],
+      "created": "2026-10-05T10:12:23.127991632Z",
+      "imageConfigDigest": "sha256:754f28794089c3e6de18a8748ee14d7ded8eff6e9fc44c130f74333294231152",
+      "sbomSourceManifestDigest": "sha256:123d86d98c13c7f22125efd3aebca86c0f732a05fbe79247c3cd89adec7061d6",
+      "sbomComponents": 1430,
+      "packageComponents": 204,
+      "service": "discovery-server",
+      "sbomSha256": "606fc1ee9d39baaae024df1beac3445d5b863e62df99d35b3181ab5e2e2846a4",
+      "localSbom": ".runtime/security/discovery-server.cdx.json"
+    },
+    {
+      "schemaVersion": 1,
+      "scannedAt": "2026-10-05T13:22:05.4151278+03:00",
+      "artifact": "$WORKSPACE\\.runtime\\security\\api-gateway.cdx.json",
+      "gate": "PASSED",
+      "findings": [
+        {
+          "kind": "vulnerability",
+          "id": "CVE-2026-64607",
+          "target": "Java",
+          "severity": "MEDIUM",
+          "resource": null,
+          "package": "org.apache.httpcomponents.client5:httpclient5",
+          "version": "5.5.2",
+          "fixedVersion": "5.6.3",
+          "blocks": false,
+          "exception": null
+        },
+        {
+          "kind": "vulnerability",
+          "id": "CVE-2020-13956",
+          "target": "Java",
+          "severity": "MEDIUM",
+          "resource": null,
+          "package": "org.apache.httpcomponents:httpclient",
+          "version": "4.5.3",
+          "fixedVersion": "4.5.13, 5.0.3",
+          "blocks": false,
+          "exception": null
+        }
+      ],
+      "image": "padel/api-gateway:security",
+      "imageId": "sha256:eefb29f6c481713a3adc5107b774cbfa5049be9c8f1901365d232cb9bfc08077",
+      "repoDigests": [
+        "padel/api-gateway@sha256:eefb29f6c481713a3adc5107b774cbfa5049be9c8f1901365d232cb9bfc08077"
+      ],
+      "created": "2026-10-05T10:12:26.643822511Z",
+      "imageConfigDigest": "sha256:4683f6a45df016197c46f60eca1c25afa0733fd93b8cb2df71d2b4cf3d9e7f7f",
+      "sbomSourceManifestDigest": "sha256:7db855eefa2253800c95fecb87860ba2f2be887a34dabca83c642c9654a61276",
+      "sbomComponents": 1451,
+      "packageComponents": 225,
+      "service": "api-gateway",
+      "sbomSha256": "eb4cc79f15451fbf0071c7530b443f01f1ac10cb387c8d07beed6ef41d9fa8b4",
+      "localSbom": ".runtime/security/api-gateway.cdx.json"
+    },
+    {
+      "schemaVersion": 1,
+      "scannedAt": "2026-10-05T13:22:43.2317811+03:00",
+      "artifact": "$WORKSPACE\\.runtime\\security\\member-service.cdx.json",
+      "gate": "PASSED",
+      "findings": [
+        {
+          "kind": "vulnerability",
+          "id": "CVE-2026-64607",
+          "target": "Java",
+          "severity": "MEDIUM",
+          "resource": null,
+          "package": "org.apache.httpcomponents.client5:httpclient5",
+          "version": "5.5.2",
+          "fixedVersion": "5.6.3",
+          "blocks": false,
+          "exception": null
+        },
+        {
+          "kind": "vulnerability",
+          "id": "CVE-2020-13956",
+          "target": "Java",
+          "severity": "MEDIUM",
+          "resource": null,
+          "package": "org.apache.httpcomponents:httpclient",
+          "version": "4.5.3",
+          "fixedVersion": "4.5.13, 5.0.3",
+          "blocks": false,
+          "exception": null
+        }
+      ],
+      "image": "padel/member-service:security",
+      "imageId": "sha256:af5d8ed49f2d4123d7569c29e208894ba0859c81118a95cbf3e83f846eb78b5d",
+      "repoDigests": [
+        "padel/member-service@sha256:af5d8ed49f2d4123d7569c29e208894ba0859c81118a95cbf3e83f846eb78b5d"
+      ],
+      "created": "2026-10-05T10:12:30.682943586Z",
+      "imageConfigDigest": "sha256:c13d6874ab5df542590e2b673ca8462a83e452252fb9890aa17becabf24a1b70",
+      "sbomSourceManifestDigest": "sha256:367b62eb4532bf828ea2c15edc64a307f40b5ff14ab51b0991d4a0b2d9c6e0aa",
+      "sbomComponents": 1499,
+      "packageComponents": 273,
+      "service": "member-service",
+      "sbomSha256": "4a3f0faaba87ecf7f2345043c31a9407508eec34a304ef1f367d624a85a75cb5",
+      "localSbom": ".runtime/security/member-service.cdx.json"
+    },
+    {
+      "schemaVersion": 1,
+      "scannedAt": "2026-10-05T13:23:19.3850223+03:00",
+      "artifact": "$WORKSPACE\\.runtime\\security\\subscription-service.cdx.json",
+      "gate": "PASSED",
+      "findings": [
+        {
+          "kind": "vulnerability",
+          "id": "CVE-2026-64607",
+          "target": "Java",
+          "severity": "MEDIUM",
+          "resource": null,
+          "package": "org.apache.httpcomponents.client5:httpclient5",
+          "version": "5.5.2",
+          "fixedVersion": "5.6.3",
+          "blocks": false,
+          "exception": null
+        },
+        {
+          "kind": "vulnerability",
+          "id": "CVE-2020-13956",
+          "target": "Java",
+          "severity": "MEDIUM",
+          "resource": null,
+          "package": "org.apache.httpcomponents:httpclient",
+          "version": "4.5.3",
+          "fixedVersion": "4.5.13, 5.0.3",
+          "blocks": false,
+          "exception": null
+        }
+      ],
+      "image": "padel/subscription-service:security",
+      "imageId": "sha256:c54190552450e24310e4af4a4b9cb88b5c62035382e21e14f93108bd010b56c7",
+      "repoDigests": [
+        "padel/subscription-service@sha256:c54190552450e24310e4af4a4b9cb88b5c62035382e21e14f93108bd010b56c7"
+      ],
+      "created": "2026-10-05T10:12:35.281383368Z",
+      "imageConfigDigest": "sha256:26a6d561e456b4d0124664bbb850237ac29f7921d3f0837af06bb28b8c298515",
+      "sbomSourceManifestDigest": "sha256:a66db4186edd11538e7ff88867007df3ec297c4ddbd9806ba2667491c577b1b2",
+      "sbomComponents": 1499,
+      "packageComponents": 273,
+      "service": "subscription-service",
+      "sbomSha256": "df73d8c62b8206021df7288af0914f059782f93fd783755178b2f26f63964e9d",
+      "localSbom": ".runtime/security/subscription-service.cdx.json"
+    },
+    {
+      "schemaVersion": 1,
+      "scannedAt": "2026-10-05T13:20:42.1981614+03:00",
+      "artifact": "$WORKSPACE\\.runtime\\security\\booking-service.cdx.json",
+      "gate": "PASSED",
+      "findings": [
+        {
+          "kind": "vulnerability",
+          "id": "CVE-2026-64607",
+          "target": "Java",
+          "severity": "MEDIUM",
+          "resource": null,
+          "package": "org.apache.httpcomponents.client5:httpclient5",
+          "version": "5.5.2",
+          "fixedVersion": "5.6.3",
+          "blocks": false,
+          "exception": null
+        },
+        {
+          "kind": "vulnerability",
+          "id": "CVE-2020-13956",
+          "target": "Java",
+          "severity": "MEDIUM",
+          "resource": null,
+          "package": "org.apache.httpcomponents:httpclient",
+          "version": "4.5.3",
+          "fixedVersion": "4.5.13, 5.0.3",
+          "blocks": false,
+          "exception": null
+        }
+      ],
+      "image": "padel/booking-service:security",
+      "imageId": "sha256:b41ecdf22f0096cc1427d973da095dfb2d051cd7bb5ab40e7c3ff91a5606fb7d",
+      "repoDigests": [
+        "padel/booking-service@sha256:b41ecdf22f0096cc1427d973da095dfb2d051cd7bb5ab40e7c3ff91a5606fb7d"
+      ],
+      "created": "2026-10-05T10:11:57.613834054Z",
+      "imageConfigDigest": "sha256:61a3e65749ba9a56b5c3d572f2e983d30b5ff4faab8c5f8fba62cb28db61e27b",
+      "sbomSourceManifestDigest": "sha256:5a854f4f312591771782527fa9e68e9ffff57968eec0a79792093a8231417dfd",
+      "sbomComponents": 1499,
+      "packageComponents": 273,
+      "service": "booking-service",
+      "sbomSha256": "e1210d427793229bf044641e0a644b2887ba181f38ea4bd21152d0140aa1728a",
+      "localSbom": ".runtime/security/booking-service.cdx.json"
+    },
+    {
+      "schemaVersion": 1,
+      "scannedAt": "2026-10-05T13:23:56.3591395+03:00",
+      "artifact": "$WORKSPACE\\.runtime\\security\\access-service.cdx.json",
+      "gate": "PASSED",
+      "findings": [
+        {
+          "kind": "vulnerability",
+          "id": "CVE-2026-64607",
+          "target": "Java",
+          "severity": "MEDIUM",
+          "resource": null,
+          "package": "org.apache.httpcomponents.client5:httpclient5",
+          "version": "5.5.2",
+          "fixedVersion": "5.6.3",
+          "blocks": false,
+          "exception": null
+        },
+        {
+          "kind": "vulnerability",
+          "id": "CVE-2020-13956",
+          "target": "Java",
+          "severity": "MEDIUM",
+          "resource": null,
+          "package": "org.apache.httpcomponents:httpclient",
+          "version": "4.5.3",
+          "fixedVersion": "4.5.13, 5.0.3",
+          "blocks": false,
+          "exception": null
+        }
+      ],
+      "image": "padel/access-service:security",
+      "imageId": "sha256:2feb10fc64b380fe40d210da09e3a29d20de63236720f181ca773f5e10cb09d5",
+      "repoDigests": [
+        "padel/access-service@sha256:2feb10fc64b380fe40d210da09e3a29d20de63236720f181ca773f5e10cb09d5"
+      ],
+      "created": "2026-10-05T10:12:40.08183629Z",
+      "imageConfigDigest": "sha256:85f2b14a3667d190c3ae01ede6964f3d56c55a6fc1a09ec30f4003f8965f0f0c",
+      "sbomSourceManifestDigest": "sha256:580580c1c3cb0b6c09e5c788b4658fe6f8230b452a24e0638208249fb4bc3198",
+      "sbomComponents": 1499,
+      "packageComponents": 273,
+      "service": "access-service",
+      "sbomSha256": "62eab4903571d91345856ac73e4baba0318e636506616f480974d2f7cc5912eb",
+      "localSbom": ".runtime/security/access-service.cdx.json"
+    },
+    {
+      "schemaVersion": 1,
+      "scannedAt": "2026-10-05T13:24:34.0367103+03:00",
+      "artifact": "$WORKSPACE\\.runtime\\security\\notification-service.cdx.json",
+      "gate": "PASSED",
+      "findings": [
+        {
+          "kind": "vulnerability",
+          "id": "CVE-2026-64607",
+          "target": "Java",
+          "severity": "MEDIUM",
+          "resource": null,
+          "package": "org.apache.httpcomponents.client5:httpclient5",
+          "version": "5.5.2",
+          "fixedVersion": "5.6.3",
+          "blocks": false,
+          "exception": null
+        },
+        {
+          "kind": "vulnerability",
+          "id": "CVE-2020-13956",
+          "target": "Java",
+          "severity": "MEDIUM",
+          "resource": null,
+          "package": "org.apache.httpcomponents:httpclient",
+          "version": "4.5.3",
+          "fixedVersion": "4.5.13, 5.0.3",
+          "blocks": false,
+          "exception": null
+        }
+      ],
+      "image": "padel/notification-service:security",
+      "imageId": "sha256:99f2cae54c1eb29c448216f41d5d94f6d104e1ad9ab4c524e5eb304d17cdbbb0",
+      "repoDigests": [
+        "padel/notification-service@sha256:99f2cae54c1eb29c448216f41d5d94f6d104e1ad9ab4c524e5eb304d17cdbbb0"
+      ],
+      "created": "2026-10-05T10:12:44.621354231Z",
+      "imageConfigDigest": "sha256:87a9f50273c1accd724c068576d82d39f6d86177e8dca1ab9b31fb031ebf867c",
+      "sbomSourceManifestDigest": "sha256:bcd0b8d51a349df0ceae1afdc7d61259f4b0d9d4792df8927b7272c6909fcb9f",
+      "sbomComponents": 1507,
+      "packageComponents": 281,
+      "service": "notification-service",
+      "sbomSha256": "ba062c78e7c2a473595c032846affab218a1503dbd55341d6f649efda8e720f7",
+      "localSbom": ".runtime/security/notification-service.cdx.json"
+    },
+    {
+      "schemaVersion": 1,
+      "scannedAt": "2026-10-05T13:25:09.5942013+03:00",
+      "artifact": "$WORKSPACE\\.runtime\\security\\assistant-service.cdx.json",
+      "gate": "PASSED",
+      "findings": [
+        {
+          "kind": "vulnerability",
+          "id": "CVE-2026-64607",
+          "target": "Java",
+          "severity": "MEDIUM",
+          "resource": null,
+          "package": "org.apache.httpcomponents.client5:httpclient5",
+          "version": "5.5.2",
+          "fixedVersion": "5.6.3",
+          "blocks": false,
+          "exception": null
+        },
+        {
+          "kind": "vulnerability",
+          "id": "CVE-2020-13956",
+          "target": "Java",
+          "severity": "MEDIUM",
+          "resource": null,
+          "package": "org.apache.httpcomponents:httpclient",
+          "version": "4.5.3",
+          "fixedVersion": "4.5.13, 5.0.3",
+          "blocks": false,
+          "exception": null
+        }
+      ],
+      "image": "padel/assistant-service:security",
+      "imageId": "sha256:47efb3e0ab7f46ed1d2e8388ecbc01474a01b2a2e31d414553684a91aa213d87",
+      "repoDigests": [
+        "padel/assistant-service@sha256:47efb3e0ab7f46ed1d2e8388ecbc01474a01b2a2e31d414553684a91aa213d87"
+      ],
+      "created": "2026-10-05T10:12:49.011151403Z",
+      "imageConfigDigest": "sha256:d2eddc937e8a3c71569c0783412984cdd17d8ec75e6149214b209afc00bc0c39",
+      "sbomSourceManifestDigest": "sha256:ec21b53a4603aa8f9c9930c4d6908e402a75b684c1856d653f4df961346908cb",
+      "sbomComponents": 1513,
+      "packageComponents": 287,
+      "service": "assistant-service",
+      "sbomSha256": "f9cad6acf072f368ad33337525e2866ae466065f985b9a4d7ec001a414414df7",
+      "localSbom": ".runtime/security/assistant-service.cdx.json"
+    },
+    {
+      "schemaVersion": 1,
+      "scannedAt": "2026-10-05T13:36:12.4750484+03:00",
+      "artifact": "$WORKSPACE\\.runtime\\security\\web.cdx.json",
+      "gate": "PASSED",
+      "findings": [],
+      "image": "padel/web:security",
+      "imageId": "sha256:32b49b3463b5beca6accc8fc40903a0d9a5645290ade7113ce9d2395e1e9306b",
+      "repoDigests": [
+        "padel/web@sha256:32b49b3463b5beca6accc8fc40903a0d9a5645290ade7113ce9d2395e1e9306b"
+      ],
+      "created": "2026-10-05T10:36:03.207553142Z",
+      "imageConfigDigest": "sha256:ffaeb9a42ff412b6019be65f41a9a3372920e6cb9de4398a2b06ac54df53292a",
+      "sbomSourceManifestDigest": "sha256:6d89b78a4f8587c1aa049869dab18cc5747b471ba04ff9ee1f50433a91f026a6",
+      "sbomComponents": 1286,
+      "packageComponents": 71,
+      "service": "web",
+      "sbomSha256": "0cf7e7915451f6b8f6fe7d4ba8f234211aa9dc0c434a251314d6319508a881d1",
+      "localSbom": ".runtime/security/web.cdx.json"
+    }
+  ],
+  "limits": [
+    "Five temporary exceptions expire 2026-11-04; accepted risk remains visible.",
+    "Medium/low findings do not block under this policy.",
+    "No GitHub repository, CodeQL run, signed public release, Kubernetes deployment, penetration test or SLSA level verified.",
+    "Infrastructure images, build-stage images and scanner binaries are outside the ten-image vulnerability result.",
+    "Real-model AI quality remains failed; not rerun."
+  ]
+}

@@ -1,0 +1,20 @@
+{
+  "generatedAt": "2026-10-02T14:45:02.881Z",
+  "completed": true,
+  "cases": [
+    {
+      "question": "Αύριο ή μεθαύριο στις 18:00",
+      "passed": true,
+      "kind": "CLARIFY",
+      "promptVersion": "padel-assistant-v4-unambiguous-dates"
+    },
+    {
+      "question": "Tomorrow or day after tomorrow at 18:00",
+      "passed": true,
+      "kind": "CLARIFY",
+      "promptVersion": "padel-assistant-v4-unambiguous-dates"
+    }
+  ],
+  "scope": "Focused HTTP regression for development date guards; inference is not required by these server guards.",
+  "cleanupSucceeded": true
+}

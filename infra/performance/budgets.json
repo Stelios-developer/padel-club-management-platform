@@ -1,0 +1,5 @@
+{
+  "availabilityP95Ms": 50,
+  "scope": "Local regression budget for the documented 2 availability requests/s, 60,400-booking fixture and fixed container limits",
+  "basis": "Selected after measuring the baseline; verified against all three optimized runs. Applies to this benchmark, not a production SLO or arbitrary CI hardware."
+}

@@ -1,0 +1,17 @@
+{
+  "name": "booking_not_found",
+  "description": "Consumer-facing booking_not_found contract; synthetic fixtures only.",
+  "request":
+    {
+      "method": "GET",
+      "headers": { "Authorization": "Bearer contract-alice" },
+      "urlPath": "/api/bookings/eeeeeeee-eeee-eeee-eeee-eeeeeeeeeeee",
+    },
+  "response":
+    {
+      "status": 404,
+      "headers": { "Content-Type": "application/problem+json" },
+      "body":
+        { "status": 404, "title": "Not Found", "detail": "Booking not found." },
+    },
+}

@@ -1,0 +1,2061 @@
+{
+  "stage": 5,
+  "completed": true,
+  "createdAt": "2026-10-02T18:38:40.810Z",
+  "scope": "Direct synchronous domain HTTP with real Keycloak/Feign/PostgreSQL and committed outbox; excludes gateway, broker delivery, SMTP, AI and frontend",
+  "host": {
+    "cpus": 12,
+    "memoryBytes": 7951450112,
+    "kernel": "6.6.114.1-microsoft-standard-WSL2",
+    "operatingSystem": "Docker Desktop",
+    "architecture": "x86_64",
+    "serverVersion": "29.8.0",
+    "host": {
+      "cpuModel": "AMD Ryzen 5 5600G with Radeon Graphics         ",
+      "logicalCpus": 12,
+      "memoryBytes": 16422854656,
+      "platform": "win32",
+      "release": "10.0.26200"
+    }
+  },
+  "dataset": {
+    "date": "2026-10-04",
+    "readCourt": "7ab77b3b-1126-22be-d3c8-15e19a8977ec",
+    "totalBookings": 60400,
+    "dayBookings": 20400,
+    "confirmedPerReadCourt": 10,
+    "cancelledOnReadDay": 20000,
+    "historicalCancelled": 40000,
+    "syntheticReadCourts": 40,
+    "syntheticWriteCourts": 2,
+    "memberProfiles": 1,
+    "subscriptions": 1,
+    "ownerScheduleTriggerEnabled": true,
+    "seedSha256": "fed6e45e1227c9e804554cb2491352e620a77c0d4a564acf93ff5debf2a226ee"
+  },
+  "baselineBuild": {
+    "createdAt": "2026-10-02T17:41:51.927Z",
+    "jars": {
+      "member": "d9acc652df43e0b648557e0f968034b0c6bc9d47cfc5cbf817f490428060b044",
+      "subscription": "d17245b0b4c3be45300b245c5d46b89856f938d410f7dd318bc182e957fd60fa",
+      "booking": "6b4677307cc52a7ca1ac8fb04cfaf4429d34ffefeadfd5b6ad816d2f6ca2e0fc"
+    },
+    "controller": "da71dd707c25efdf3a46fb061764556205fc147dedc6c3b38d336c798487bb9f",
+    "repository": "a2059d17fed54db3d191cd6a29e02a37bf6f95816256ed984c806eb804b4ddd4"
+  },
+  "optimizedSourceSha256": {
+    "controller": "85db3ed094904107e047e42275960e8549a67f290fa714671ba83fdd335daac3",
+    "repository": "fdf78b3da5a4d6011caf705bebfbf0b3f37670b0cb649cc6cb19a840bfba8211",
+    "projection": "d9cc5cca429ceeec5ebeda879c40b27a8a2ceac558ebfdc5caf9db14b30e16fe"
+  },
+  "traffic": {
+    "durationSeconds": 30,
+    "warmupSecondsPerVariant": 30,
+    "repetitionsPerVariant": 3,
+    "availabilityPerSecond": 2,
+    "membershipPerSecond": 2,
+    "bookingPerSecond": 1,
+    "contentionRequests": 8,
+    "model": "Open constant-arrival-rate for steady traffic; one eight-VU contention burst"
+  },
+  "variants": {
+    "baseline": [
+      {
+        "name": "baseline-1",
+        "startedAt": "2026-10-02T18:07:39.749Z",
+        "endedAt": "2026-10-02T18:08:18.087Z",
+        "k6DurationMs": 30329.809204,
+        "httpRequests": 160,
+        "httpRequestsPerSecond": 5.275338163976931,
+        "technicalErrorRate": 0,
+        "expectedConflicts": 7,
+        "droppedIterations": 0,
+        "correctness": {
+          "writtenBookings": 32,
+          "contentionBookings": 1,
+          "auditEntries": 32,
+          "outboxEvents": 32,
+          "idempotencyRecords": 32,
+          "courtOverlaps": 0,
+          "playerOverlaps": 0
+        },
+        "endpoints": {
+          "availability": {
+            "requests": 61,
+            "p50Ms": 80.07621,
+            "p95Ms": 1123.034223,
+            "p99Ms": 1276.8290649999994,
+            "averageMs": 231.30161408196724,
+            "maxMs": 1483.688506
+          },
+          "membership": {
+            "requests": 60,
+            "p50Ms": 3.191344,
+            "p95Ms": 10.109188,
+            "p99Ms": 14.068751589999996,
+            "averageMs": 4.174265883333334,
+            "maxMs": 14.662055
+          },
+          "booking": {
+            "requests": 31,
+            "p50Ms": 50.014044,
+            "p95Ms": 2679.5008125,
+            "p99Ms": 3853.349865599999,
+            "averageMs": 417.3548598387098,
+            "maxMs": 4204.20321
+          },
+          "contention": {
+            "requests": 8,
+            "p50Ms": 244.9707125,
+            "p95Ms": 245.88020225,
+            "p99Ms": 245.91133405,
+            "averageMs": 222.00949612499997,
+            "maxMs": 245.919117
+          }
+        },
+        "resources": [
+          {
+            "service": "booking-service",
+            "samples": 9,
+            "meanCpuPercent": 31.507777777777775,
+            "peakCpuPercent": 99.43,
+            "peakMemoryBytes": 506986496
+          },
+          {
+            "service": "member-service",
+            "samples": 9,
+            "meanCpuPercent": 2.891111111111111,
+            "peakCpuPercent": 7.14,
+            "peakMemoryBytes": 384198246.4
+          },
+          {
+            "service": "subscription-service",
+            "samples": 9,
+            "meanCpuPercent": 3.386666666666667,
+            "peakCpuPercent": 15.48,
+            "peakMemoryBytes": 363017011.2
+          },
+          {
+            "service": "postgres",
+            "samples": 9,
+            "meanCpuPercent": 7.903333333333332,
+            "peakCpuPercent": 12.83,
+            "peakMemoryBytes": 133169152
+          },
+          {
+            "service": "keycloak",
+            "samples": 9,
+            "meanCpuPercent": 0.22666666666666668,
+            "peakCpuPercent": 0.26,
+            "peakMemoryBytes": 471439769.6
+          }
+        ],
+        "jfr": {
+          "recordingSha256": "537bf587b3f142ede84957155e3a91c8831f9795466a9a030f3ed91ae9f567b4",
+          "executionSamples": 52,
+          "samplesWithHibernate": 24,
+          "samplesWithPostgresDriver": 13,
+          "allocationSamples": 411,
+          "estimatedAllocatedBytes": 3431834592,
+          "gcCollections": 32,
+          "gcPauseMs": 1040.357754,
+          "maximumObservedHeapBytes": 216843632,
+          "topSampledMethods": [
+            {
+              "method": "org.hibernate.engine.internal.StatefulPersistenceContext.clear",
+              "samples": 3
+            },
+            {
+              "method": "org.postgresql.util.ByteConverter.int8",
+              "samples": 2
+            },
+            {
+              "method": "java.util.HashMap$HashIterator.nextNode",
+              "samples": 2
+            },
+            {
+              "method": "org.postgresql.core.VisibleBufferedInputStream.ensureBytes",
+              "samples": 2
+            },
+            {
+              "method": "java.util.IdentityHashMap.resize",
+              "samples": 2
+            },
+            {
+              "method": "java.util.IdentityHashMap.get",
+              "samples": 2
+            },
+            {
+              "method": "java.util.concurrent.ConcurrentHashMap.get",
+              "samples": 2
+            },
+            {
+              "method": "org.postgresql.core.v3.QueryExecutorImpl.sendSimpleQuery",
+              "samples": 1
+            },
+            {
+              "method": "org.postgresql.core.VisibleBufferedInputStream.readInt4",
+              "samples": 1
+            },
+            {
+              "method": "org.postgresql.jdbc.PgResultSet.getRawValue",
+              "samples": 1
+            }
+          ]
+        },
+        "limits": [
+          {
+            "service": "booking-service",
+            "image": "eclipse-temurin:21-jdk-alpine",
+            "imageId": "sha256:0bfc69a4758a86710e5c474032d28400a8bd00874766f9e8b1642ac2fd293159",
+            "memoryBytes": 805306368,
+            "nanoCpus": 1000000000,
+            "oomKilled": false,
+            "restarts": 0
+          },
+          {
+            "service": "keycloak",
+            "image": "quay.io/keycloak/keycloak:26.7.4",
+            "imageId": "sha256:82a77884f3af238beab1e7afd63b5f530e1b5c0590bd7aa60b40a40463e29b2c",
+            "memoryBytes": 536870912,
+            "nanoCpus": 1000000000,
+            "oomKilled": false,
+            "restarts": 0
+          },
+          {
+            "service": "member-service",
+            "image": "eclipse-temurin:21-jdk-alpine",
+            "imageId": "sha256:0bfc69a4758a86710e5c474032d28400a8bd00874766f9e8b1642ac2fd293159",
+            "memoryBytes": 805306368,
+            "nanoCpus": 1000000000,
+            "oomKilled": false,
+            "restarts": 0
+          },
+          {
+            "service": "postgres",
+            "image": "postgres:17-alpine",
+            "imageId": "sha256:b0f9560a2de083e2cc7382e75f808c7381a32852a7ec49117deedb300e552b24",
+            "memoryBytes": 268435456,
+            "nanoCpus": 1000000000,
+            "oomKilled": false,
+            "restarts": 0
+          },
+          {
+            "service": "subscription-service",
+            "image": "eclipse-temurin:21-jdk-alpine",
+            "imageId": "sha256:0bfc69a4758a86710e5c474032d28400a8bd00874766f9e8b1642ac2fd293159",
+            "memoryBytes": 805306368,
+            "nanoCpus": 1000000000,
+            "oomKilled": false,
+            "restarts": 0
+          }
+        ],
+        "bookingJarSha256": "6b4677307cc52a7ca1ac8fb04cfaf4429d34ffefeadfd5b6ad816d2f6ca2e0fc",
+        "workloadSha256": "4c6135f250ca18a3c55520f9fe8b9c180fc0e8e5810cc84eb3a57492c8f24d53",
+        "fixtureSha256": "f5f00574270275222b8f5da063f317fc5a4e61208f93aae8603d645a40462486",
+        "configurationSha256": "68964ca67637380afef5326e87f7315be84c9f1bd0baee310d04e0ff22709cb8",
+        "rawSummarySha256": "9fb0d22c34cd8de8f43a242fcdfed9ef918ec7afd8fcd65d4f9d96ed2b7a63c6",
+        "rawRunSha256": "fb2b65a02e969eae6b01cb1036877fa10866e7d6738ada0a81733c1836ef03d4"
+      },
+      {
+        "name": "baseline-2",
+        "startedAt": "2026-10-02T18:08:19.267Z",
+        "endedAt": "2026-10-02T18:08:57.874Z",
+        "k6DurationMs": 30423.390198,
+        "httpRequests": 161,
+        "httpRequestsPerSecond": 5.291980905224164,
+        "technicalErrorRate": 0,
+        "expectedConflicts": 7,
+        "droppedIterations": 0,
+        "correctness": {
+          "writtenBookings": 32,
+          "contentionBookings": 1,
+          "auditEntries": 32,
+          "outboxEvents": 32,
+          "idempotencyRecords": 32,
+          "courtOverlaps": 0,
+          "playerOverlaps": 0
+        },
+        "endpoints": {
+          "availability": {
+            "requests": 61,
+            "p50Ms": 61.974981,
+            "p95Ms": 129.381152,
+            "p99Ms": 375.4068765999996,
+            "averageMs": 79.92385486885246,
+            "maxMs": 571.283635
+          },
+          "membership": {
+            "requests": 61,
+            "p50Ms": 3.061184,
+            "p95Ms": 16.222461,
+            "p99Ms": 20.358950599999993,
+            "averageMs": 4.5735945573770485,
+            "maxMs": 22.715801
+          },
+          "booking": {
+            "requests": 31,
+            "p50Ms": 36.382464,
+            "p95Ms": 68.445266,
+            "p99Ms": 99.12635069999997,
+            "averageMs": 41.007005290322574,
+            "maxMs": 108.199632
+          },
+          "contention": {
+            "requests": 8,
+            "p50Ms": 94.91563450000001,
+            "p95Ms": 186.0953318,
+            "p99Ms": 186.59726316,
+            "averageMs": 126.36395650000001,
+            "maxMs": 186.722746
+          }
+        },
+        "resources": [
+          {
+            "service": "booking-service",
+            "samples": 9,
+            "meanCpuPercent": 12.447777777777777,
+            "peakCpuPercent": 27.13,
+            "peakMemoryBytes": 509503078.4
+          },
+          {
+            "service": "member-service",
+            "samples": 9,
+            "meanCpuPercent": 1.9222222222222223,
+            "peakCpuPercent": 5.39,
+            "peakMemoryBytes": 384512819.2
+          },
+          {
+            "service": "subscription-service",
+            "samples": 9,
+            "meanCpuPercent": 1.1766666666666665,
+            "peakCpuPercent": 2.93,
+            "peakMemoryBytes": 369308467.2
+          },
+          {
+            "service": "postgres",
+            "samples": 9,
+            "meanCpuPercent": 7.307777777777779,
+            "peakCpuPercent": 11.27,
+            "peakMemoryBytes": 133064294.4
+          },
+          {
+            "service": "keycloak",
+            "samples": 9,
+            "meanCpuPercent": 0.2255555555555556,
+            "peakCpuPercent": 0.28,
+            "peakMemoryBytes": 470915481.6
+          }
+        ],
+        "jfr": {
+          "recordingSha256": "164735151c675b9b1318e0ae4d9faca0034b4beb612c50940a58492b862577c6",
+          "executionSamples": 19,
+          "samplesWithHibernate": 11,
+          "samplesWithPostgresDriver": 1,
+          "allocationSamples": 374,
+          "estimatedAllocatedBytes": 4866393800,
+          "gcCollections": 28,
+          "gcPauseMs": 633.6752080000001,
+          "maximumObservedHeapBytes": 219795056,
+          "topSampledMethods": [
+            {
+              "method": "org.hibernate.engine.internal.StatefulPersistenceContext.clear",
+              "samples": 2
+            },
+            {
+              "method": "java.util.IdentityHashMap.get",
+              "samples": 2
+            },
+            {
+              "method": "org.hibernate.query.sqm.internal.SqmQueryImpl$$Lambda.0x000077e28603da00.getAsBoolean",
+              "samples": 1
+            },
+            {
+              "method": "io.micrometer.core.instrument.internal.DefaultLongTaskTimer.start",
+              "samples": 1
+            },
+            {
+              "method": "java.util.IdentityHashMap.hash",
+              "samples": 1
+            },
+            {
+              "method": "org.apache.catalina.connector.CoyoteAdapter.postParseRequest",
+              "samples": 1
+            },
+            {
+              "method": "org.hibernate.engine.internal.EntityEntryContext.clear",
+              "samples": 1
+            },
+            {
+              "method": "tools.jackson.databind.deser.bean.BeanDeserializer._deserializeUsingPropertyBased",
+              "samples": 1
+            },
+            {
+              "method": "org.hibernate.resource.jdbc.internal.ResourceRegistryStandardImpl.close",
+              "samples": 1
+            },
+            {
+              "method": "java.lang.invoke.Invokers$Holder.linkToTargetMethod",
+              "samples": 1
+            }
+          ]
+        },
+        "limits": [
+          {
+            "service": "booking-service",
+            "image": "eclipse-temurin:21-jdk-alpine",
+            "imageId": "sha256:0bfc69a4758a86710e5c474032d28400a8bd00874766f9e8b1642ac2fd293159",
+            "memoryBytes": 805306368,
+            "nanoCpus": 1000000000,
+            "oomKilled": false,
+            "restarts": 0
+          },
+          {
+            "service": "keycloak",
+            "image": "quay.io/keycloak/keycloak:26.7.4",
+            "imageId": "sha256:82a77884f3af238beab1e7afd63b5f530e1b5c0590bd7aa60b40a40463e29b2c",
+            "memoryBytes": 536870912,
+            "nanoCpus": 1000000000,
+            "oomKilled": false,
+            "restarts": 0
+          },
+          {
+            "service": "member-service",
+            "image": "eclipse-temurin:21-jdk-alpine",
+            "imageId": "sha256:0bfc69a4758a86710e5c474032d28400a8bd00874766f9e8b1642ac2fd293159",
+            "memoryBytes": 805306368,
+            "nanoCpus": 1000000000,
+            "oomKilled": false,
+            "restarts": 0
+          },
+          {
+            "service": "postgres",
+            "image": "postgres:17-alpine",
+            "imageId": "sha256:b0f9560a2de083e2cc7382e75f808c7381a32852a7ec49117deedb300e552b24",
+            "memoryBytes": 268435456,
+            "nanoCpus": 1000000000,
+            "oomKilled": false,
+            "restarts": 0
+          },
+          {
+            "service": "subscription-service",
+            "image": "eclipse-temurin:21-jdk-alpine",
+            "imageId": "sha256:0bfc69a4758a86710e5c474032d28400a8bd00874766f9e8b1642ac2fd293159",
+            "memoryBytes": 805306368,
+            "nanoCpus": 1000000000,
+            "oomKilled": false,
+            "restarts": 0
+          }
+        ],
+        "bookingJarSha256": "6b4677307cc52a7ca1ac8fb04cfaf4429d34ffefeadfd5b6ad816d2f6ca2e0fc",
+        "workloadSha256": "4c6135f250ca18a3c55520f9fe8b9c180fc0e8e5810cc84eb3a57492c8f24d53",
+        "fixtureSha256": "f5f00574270275222b8f5da063f317fc5a4e61208f93aae8603d645a40462486",
+        "configurationSha256": "68964ca67637380afef5326e87f7315be84c9f1bd0baee310d04e0ff22709cb8",
+        "rawSummarySha256": "3b4ce7283a52bdd37ec313ec09edf9ac851a859b76f8f385a6c55022c080b4a5",
+        "rawRunSha256": "e92c02652ddc6625863d997bc4f195b603abf4436644c3ce03c53be6780fa93b"
+      },
+      {
+        "name": "baseline-3",
+        "startedAt": "2026-10-02T18:08:59.109Z",
+        "endedAt": "2026-10-02T18:09:37.415Z",
+        "k6DurationMs": 30389.453829,
+        "httpRequests": 160,
+        "httpRequestsPerSecond": 5.26498438900259,
+        "technicalErrorRate": 0,
+        "expectedConflicts": 7,
+        "droppedIterations": 0,
+        "correctness": {
+          "writtenBookings": 31,
+          "contentionBookings": 1,
+          "auditEntries": 31,
+          "outboxEvents": 31,
+          "idempotencyRecords": 31,
+          "courtOverlaps": 0,
+          "playerOverlaps": 0
+        },
+        "endpoints": {
+          "availability": {
+            "requests": 61,
+            "p50Ms": 61.752547,
+            "p95Ms": 97.273411,
+            "p99Ms": 212.37244779999997,
+            "averageMs": 68.69682659016394,
+            "maxMs": 213.868363
+          },
+          "membership": {
+            "requests": 61,
+            "p50Ms": 3.150397,
+            "p95Ms": 16.751597,
+            "p99Ms": 23.249052399999982,
+            "averageMs": 5.067611442622951,
+            "maxMs": 29.91415
+          },
+          "booking": {
+            "requests": 30,
+            "p50Ms": 33.1886735,
+            "p95Ms": 65.07629159999999,
+            "p99Ms": 75.09763070000001,
+            "averageMs": 37.936801066666675,
+            "maxMs": 78.142738
+          },
+          "contention": {
+            "requests": 8,
+            "p50Ms": 78.8723505,
+            "p95Ms": 88.8301981,
+            "p99Ms": 89.09887882,
+            "averageMs": 71.12521550000001,
+            "maxMs": 89.166049
+          }
+        },
+        "resources": [
+          {
+            "service": "booking-service",
+            "samples": 9,
+            "meanCpuPercent": 7.908888888888888,
+            "peakCpuPercent": 15.06,
+            "peakMemoryBytes": 510761369.6
+          },
+          {
+            "service": "member-service",
+            "samples": 9,
+            "meanCpuPercent": 2.433333333333333,
+            "peakCpuPercent": 4.34,
+            "peakMemoryBytes": 386609971.2
+          },
+          {
+            "service": "subscription-service",
+            "samples": 9,
+            "meanCpuPercent": 2.5,
+            "peakCpuPercent": 9.55,
+            "peakMemoryBytes": 368784179.2
+          },
+          {
+            "service": "postgres",
+            "samples": 9,
+            "meanCpuPercent": 6.359999999999999,
+            "peakCpuPercent": 10.52,
+            "peakMemoryBytes": 134008012.8
+          },
+          {
+            "service": "keycloak",
+            "samples": 9,
+            "meanCpuPercent": 0.25555555555555554,
+            "peakCpuPercent": 0.46,
+            "peakMemoryBytes": 470600908.8
+          }
+        ],
+        "jfr": {
+          "recordingSha256": "e11c79de9d8c342bbd3597400c7d461ecbda41323a92642e12b26a49271654d4",
+          "executionSamples": 13,
+          "samplesWithHibernate": 4,
+          "samplesWithPostgresDriver": 1,
+          "allocationSamples": 282,
+          "estimatedAllocatedBytes": 6324841280,
+          "gcCollections": 27,
+          "gcPauseMs": 599.9418069999999,
+          "maximumObservedHeapBytes": 216581704,
+          "topSampledMethods": [
+            {
+              "method": "java.lang.String.valueOf",
+              "samples": 1
+            },
+            {
+              "method": "sun.net.www.ParseUtil.checkPath",
+              "samples": 1
+            },
+            {
+              "method": "sun.net.www.MessageHeader.filterAndAddHeaders",
+              "samples": 1
+            },
+            {
+              "method": "sun.nio.ch.NativeThread.current",
+              "samples": 1
+            },
+            {
+              "method": "java.util.concurrent.ConcurrentHashMap.get",
+              "samples": 1
+            },
+            {
+              "method": "sun.net.www.protocol.http.HttpURLConnection.setCookieHeader",
+              "samples": 1
+            },
+            {
+              "method": "org.apache.catalina.connector.CoyoteAdapter.postParseRequest",
+              "samples": 1
+            },
+            {
+              "method": "java.util.IdentityHashMap.get",
+              "samples": 1
+            },
+            {
+              "method": "java.lang.invoke.LambdaForm$MH.0x000077e285bc0000.invokeExact_MT",
+              "samples": 1
+            },
+            {
+              "method": "java.lang.String.hashCode",
+              "samples": 1
+            }
+          ]
+        },
+        "limits": [
+          {
+            "service": "booking-service",
+            "image": "eclipse-temurin:21-jdk-alpine",
+            "imageId": "sha256:0bfc69a4758a86710e5c474032d28400a8bd00874766f9e8b1642ac2fd293159",
+            "memoryBytes": 805306368,
+            "nanoCpus": 1000000000,
+            "oomKilled": false,
+            "restarts": 0
+          },
+          {
+            "service": "keycloak",
+            "image": "quay.io/keycloak/keycloak:26.7.4",
+            "imageId": "sha256:82a77884f3af238beab1e7afd63b5f530e1b5c0590bd7aa60b40a40463e29b2c",
+            "memoryBytes": 536870912,
+            "nanoCpus": 1000000000,
+            "oomKilled": false,
+            "restarts": 0
+          },
+          {
+            "service": "member-service",
+            "image": "eclipse-temurin:21-jdk-alpine",
+            "imageId": "sha256:0bfc69a4758a86710e5c474032d28400a8bd00874766f9e8b1642ac2fd293159",
+            "memoryBytes": 805306368,
+            "nanoCpus": 1000000000,
+            "oomKilled": false,
+            "restarts": 0
+          },
+          {
+            "service": "postgres",
+            "image": "postgres:17-alpine",
+            "imageId": "sha256:b0f9560a2de083e2cc7382e75f808c7381a32852a7ec49117deedb300e552b24",
+            "memoryBytes": 268435456,
+            "nanoCpus": 1000000000,
+            "oomKilled": false,
+            "restarts": 0
+          },
+          {
+            "service": "subscription-service",
+            "image": "eclipse-temurin:21-jdk-alpine",
+            "imageId": "sha256:0bfc69a4758a86710e5c474032d28400a8bd00874766f9e8b1642ac2fd293159",
+            "memoryBytes": 805306368,
+            "nanoCpus": 1000000000,
+            "oomKilled": false,
+            "restarts": 0
+          }
+        ],
+        "bookingJarSha256": "6b4677307cc52a7ca1ac8fb04cfaf4429d34ffefeadfd5b6ad816d2f6ca2e0fc",
+        "workloadSha256": "4c6135f250ca18a3c55520f9fe8b9c180fc0e8e5810cc84eb3a57492c8f24d53",
+        "fixtureSha256": "f5f00574270275222b8f5da063f317fc5a4e61208f93aae8603d645a40462486",
+        "configurationSha256": "68964ca67637380afef5326e87f7315be84c9f1bd0baee310d04e0ff22709cb8",
+        "rawSummarySha256": "612014d080aded86949da7a570e5cadc08f61a772eeec47d0baedbee218b933e",
+        "rawRunSha256": "e9564ab0c51c8d1b5421f1b030fffd22566a50750b2f5630debafb327e746a53"
+      }
+    ],
+    "optimized": [
+      {
+        "name": "optimized-1",
+        "startedAt": "2026-10-02T18:21:17.925Z",
+        "endedAt": "2026-10-02T18:21:55.221Z",
+        "k6DurationMs": 30226.610546,
+        "httpRequests": 160,
+        "httpRequestsPerSecond": 5.29334904277494,
+        "technicalErrorRate": 0,
+        "expectedConflicts": 7,
+        "droppedIterations": 0,
+        "correctness": {
+          "writtenBookings": 32,
+          "contentionBookings": 1,
+          "auditEntries": 32,
+          "outboxEvents": 32,
+          "idempotencyRecords": 32,
+          "courtOverlaps": 0,
+          "playerOverlaps": 0
+        },
+        "endpoints": {
+          "availability": {
+            "requests": 60,
+            "p50Ms": 8.5964865,
+            "p95Ms": 18.066316349999987,
+            "p99Ms": 59.73971096999972,
+            "averageMs": 11.521002049999998,
+            "maxMs": 109.099888
+          },
+          "membership": {
+            "requests": 61,
+            "p50Ms": 5.6868,
+            "p95Ms": 8.431523,
+            "p99Ms": 8.762100199999999,
+            "averageMs": 5.850781918032787,
+            "maxMs": 8.786321
+          },
+          "booking": {
+            "requests": 31,
+            "p50Ms": 46.285,
+            "p95Ms": 1085.9202675,
+            "p99Ms": 2217.1588371999997,
+            "averageMs": 193.3186681935485,
+            "maxMs": 2506.548451
+          },
+          "contention": {
+            "requests": 8,
+            "p50Ms": 392.8979345,
+            "p95Ms": 474.90802675000003,
+            "p99Ms": 476.17003575,
+            "averageMs": 377.10128925000004,
+            "maxMs": 476.485538
+          }
+        },
+        "resources": [
+          {
+            "service": "booking-service",
+            "samples": 8,
+            "meanCpuPercent": 15.00625,
+            "peakCpuPercent": 36.46,
+            "peakMemoryBytes": 419849830.4
+          },
+          {
+            "service": "member-service",
+            "samples": 8,
+            "meanCpuPercent": 5.17875,
+            "peakCpuPercent": 9.16,
+            "peakMemoryBytes": 373397913.6
+          },
+          {
+            "service": "subscription-service",
+            "samples": 8,
+            "meanCpuPercent": 2.8125,
+            "peakCpuPercent": 6.11,
+            "peakMemoryBytes": 362283008
+          },
+          {
+            "service": "postgres",
+            "samples": 8,
+            "meanCpuPercent": 1.24,
+            "peakCpuPercent": 3.99,
+            "peakMemoryBytes": 132015718.4
+          },
+          {
+            "service": "keycloak",
+            "samples": 8,
+            "meanCpuPercent": 1.7625,
+            "peakCpuPercent": 12.61,
+            "peakMemoryBytes": 481086668.8
+          }
+        ],
+        "jfr": {
+          "recordingSha256": "532e38be0dececa75b73849b8753746b4295e4ccd139b646b6f0aae7f4214a62",
+          "executionSamples": 10,
+          "samplesWithHibernate": 3,
+          "samplesWithPostgresDriver": 1,
+          "allocationSamples": 258,
+          "estimatedAllocatedBytes": 172270936,
+          "gcCollections": 1,
+          "gcPauseMs": 9.468717,
+          "maximumObservedHeapBytes": 113084264,
+          "topSampledMethods": [
+            {
+              "method": "java.lang.invoke.ConstantCallSite.<init>",
+              "samples": 1
+            },
+            {
+              "method": "tools.jackson.databind.introspect.AnnotatedConstructor.getRawParameterType",
+              "samples": 1
+            },
+            {
+              "method": "org.springframework.web.method.support.InvocableHandlerMethod.doInvoke",
+              "samples": 1
+            },
+            {
+              "method": "ch.qos.logback.classic.Logger.filterAndLog_0_Or3Plus",
+              "samples": 1
+            },
+            {
+              "method": "org.apache.tomcat.util.http.parser.HttpHeaderParser.parseHeader",
+              "samples": 1
+            },
+            {
+              "method": "org.postgresql.core.v3.QueryExecutorImpl.sendDescribePortal",
+              "samples": 1
+            },
+            {
+              "method": "org.hibernate.sql.exec.internal.JdbcSelectExecutorStandardImpl.resolveJdbcValuesSource",
+              "samples": 1
+            },
+            {
+              "method": "org.hibernate.internal.AbstractSharedSessionContract.checkOpen",
+              "samples": 1
+            },
+            {
+              "method": "org.apache.tomcat.util.buf.ByteChunk.allocate",
+              "samples": 1
+            },
+            {
+              "method": "org.hibernate.engine.jdbc.mutation.internal.MutationExecutorSingleNonBatched.<init>",
+              "samples": 1
+            }
+          ]
+        },
+        "limits": [
+          {
+            "service": "booking-service",
+            "image": "eclipse-temurin:21-jdk-alpine",
+            "imageId": "sha256:0bfc69a4758a86710e5c474032d28400a8bd00874766f9e8b1642ac2fd293159",
+            "memoryBytes": 805306368,
+            "nanoCpus": 1000000000,
+            "oomKilled": false,
+            "restarts": 0
+          },
+          {
+            "service": "keycloak",
+            "image": "quay.io/keycloak/keycloak:26.7.4",
+            "imageId": "sha256:82a77884f3af238beab1e7afd63b5f530e1b5c0590bd7aa60b40a40463e29b2c",
+            "memoryBytes": 536870912,
+            "nanoCpus": 1000000000,
+            "oomKilled": false,
+            "restarts": 0
+          },
+          {
+            "service": "member-service",
+            "image": "eclipse-temurin:21-jdk-alpine",
+            "imageId": "sha256:0bfc69a4758a86710e5c474032d28400a8bd00874766f9e8b1642ac2fd293159",
+            "memoryBytes": 805306368,
+            "nanoCpus": 1000000000,
+            "oomKilled": false,
+            "restarts": 0
+          },
+          {
+            "service": "postgres",
+            "image": "postgres:17-alpine",
+            "imageId": "sha256:b0f9560a2de083e2cc7382e75f808c7381a32852a7ec49117deedb300e552b24",
+            "memoryBytes": 268435456,
+            "nanoCpus": 1000000000,
+            "oomKilled": false,
+            "restarts": 0
+          },
+          {
+            "service": "subscription-service",
+            "image": "eclipse-temurin:21-jdk-alpine",
+            "imageId": "sha256:0bfc69a4758a86710e5c474032d28400a8bd00874766f9e8b1642ac2fd293159",
+            "memoryBytes": 805306368,
+            "nanoCpus": 1000000000,
+            "oomKilled": false,
+            "restarts": 0
+          }
+        ],
+        "bookingJarSha256": "bb41225c263ab4835c4cb481fccfc76b9342f64e3a65fe4f87945797a2400242",
+        "workloadSha256": "4c6135f250ca18a3c55520f9fe8b9c180fc0e8e5810cc84eb3a57492c8f24d53",
+        "fixtureSha256": "f5f00574270275222b8f5da063f317fc5a4e61208f93aae8603d645a40462486",
+        "configurationSha256": "68964ca67637380afef5326e87f7315be84c9f1bd0baee310d04e0ff22709cb8",
+        "rawSummarySha256": "7c536ec76e928d08b6793a07496d72eda01d6ffc5df664f1b179ced25b1a053e",
+        "rawRunSha256": "31f8e2b54489ee03cf91f6b5b765e42cb20fcc4275d0d5eda4e1ce2942cfe0a8"
+      },
+      {
+        "name": "optimized-2",
+        "startedAt": "2026-10-02T18:21:56.581Z",
+        "endedAt": "2026-10-02T18:22:33.753Z",
+        "k6DurationMs": 30206.707523,
+        "httpRequests": 161,
+        "httpRequestsPerSecond": 5.329942029511536,
+        "technicalErrorRate": 0,
+        "expectedConflicts": 7,
+        "droppedIterations": 0,
+        "correctness": {
+          "writtenBookings": 32,
+          "contentionBookings": 1,
+          "auditEntries": 32,
+          "outboxEvents": 32,
+          "idempotencyRecords": 32,
+          "courtOverlaps": 0,
+          "playerOverlaps": 0
+        },
+        "endpoints": {
+          "availability": {
+            "requests": 61,
+            "p50Ms": 6.77023,
+            "p95Ms": 14.670229,
+            "p99Ms": 24.578933999999986,
+            "averageMs": 8.092555114754099,
+            "maxMs": 30.539532
+          },
+          "membership": {
+            "requests": 61,
+            "p50Ms": 4.855412,
+            "p95Ms": 9.72276,
+            "p99Ms": 23.813558799999957,
+            "averageMs": 5.83869006557377,
+            "maxMs": 42.603616
+          },
+          "booking": {
+            "requests": 31,
+            "p50Ms": 37.037993,
+            "p95Ms": 54.911116,
+            "p99Ms": 59.3171793,
+            "averageMs": 39.492725580645164,
+            "maxMs": 60.492162
+          },
+          "contention": {
+            "requests": 8,
+            "p50Ms": 55.841937,
+            "p95Ms": 79.77587165,
+            "p99Ms": 80.02405273000001,
+            "averageMs": 61.827485249999995,
+            "maxMs": 80.086098
+          }
+        },
+        "resources": [
+          {
+            "service": "booking-service",
+            "samples": 8,
+            "meanCpuPercent": 6.550000000000001,
+            "peakCpuPercent": 14.73,
+            "peakMemoryBytes": 428448153.6
+          },
+          {
+            "service": "member-service",
+            "samples": 8,
+            "meanCpuPercent": 3.2874999999999996,
+            "peakCpuPercent": 5.67,
+            "peakMemoryBytes": 378640793.6
+          },
+          {
+            "service": "subscription-service",
+            "samples": 8,
+            "meanCpuPercent": 2.2075,
+            "peakCpuPercent": 4.44,
+            "peakMemoryBytes": 361863577.6
+          },
+          {
+            "service": "postgres",
+            "samples": 8,
+            "meanCpuPercent": 1.9837500000000001,
+            "peakCpuPercent": 4.2,
+            "peakMemoryBytes": 134846873.6
+          },
+          {
+            "service": "keycloak",
+            "samples": 8,
+            "meanCpuPercent": 0.21749999999999997,
+            "peakCpuPercent": 0.33,
+            "peakMemoryBytes": 475738931.2
+          }
+        ],
+        "jfr": {
+          "recordingSha256": "549b89407b384560650032cab0875b9acc519bf043f588599db2238b3e6a9330",
+          "executionSamples": 11,
+          "samplesWithHibernate": 1,
+          "samplesWithPostgresDriver": 0,
+          "allocationSamples": 245,
+          "estimatedAllocatedBytes": 198146576,
+          "gcCollections": 1,
+          "gcPauseMs": 8.694690999999999,
+          "maximumObservedHeapBytes": 113020720,
+          "topSampledMethods": [
+            {
+              "method": "feign.template.Template$ChunkTokenizer.<init>",
+              "samples": 2
+            },
+            {
+              "method": "sun.nio.ch.SocketChannelImpl.lockedConfigureBlocking",
+              "samples": 1
+            },
+            {
+              "method": "java.time.LocalTime.create",
+              "samples": 1
+            },
+            {
+              "method": "feign.ResponseHandler.handleResponse",
+              "samples": 1
+            },
+            {
+              "method": "tools.jackson.core.json.JsonFactory._createUTF8Generator",
+              "samples": 1
+            },
+            {
+              "method": "org.hibernate.sql.results.jdbc.internal.DeferredResultSetAccess.bindParameters",
+              "samples": 1
+            },
+            {
+              "method": "org.springframework.transaction.support.TransactionSynchronizationManager.getSynchronizations",
+              "samples": 1
+            },
+            {
+              "method": "feign.RequestTemplate.url",
+              "samples": 1
+            },
+            {
+              "method": "tools.jackson.databind.DeserializationConfig.useRootWrapping",
+              "samples": 1
+            },
+            {
+              "method": "org.apache.tomcat.util.buf.MessageBytes.equalsIgnoreCase",
+              "samples": 1
+            }
+          ]
+        },
+        "limits": [
+          {
+            "service": "booking-service",
+            "image": "eclipse-temurin:21-jdk-alpine",
+            "imageId": "sha256:0bfc69a4758a86710e5c474032d28400a8bd00874766f9e8b1642ac2fd293159",
+            "memoryBytes": 805306368,
+            "nanoCpus": 1000000000,
+            "oomKilled": false,
+            "restarts": 0
+          },
+          {
+            "service": "keycloak",
+            "image": "quay.io/keycloak/keycloak:26.7.4",
+            "imageId": "sha256:82a77884f3af238beab1e7afd63b5f530e1b5c0590bd7aa60b40a40463e29b2c",
+            "memoryBytes": 536870912,
+            "nanoCpus": 1000000000,
+            "oomKilled": false,
+            "restarts": 0
+          },
+          {
+            "service": "member-service",
+            "image": "eclipse-temurin:21-jdk-alpine",
+            "imageId": "sha256:0bfc69a4758a86710e5c474032d28400a8bd00874766f9e8b1642ac2fd293159",
+            "memoryBytes": 805306368,
+            "nanoCpus": 1000000000,
+            "oomKilled": false,
+            "restarts": 0
+          },
+          {
+            "service": "postgres",
+            "image": "postgres:17-alpine",
+            "imageId": "sha256:b0f9560a2de083e2cc7382e75f808c7381a32852a7ec49117deedb300e552b24",
+            "memoryBytes": 268435456,
+            "nanoCpus": 1000000000,
+            "oomKilled": false,
+            "restarts": 0
+          },
+          {
+            "service": "subscription-service",
+            "image": "eclipse-temurin:21-jdk-alpine",
+            "imageId": "sha256:0bfc69a4758a86710e5c474032d28400a8bd00874766f9e8b1642ac2fd293159",
+            "memoryBytes": 805306368,
+            "nanoCpus": 1000000000,
+            "oomKilled": false,
+            "restarts": 0
+          }
+        ],
+        "bookingJarSha256": "bb41225c263ab4835c4cb481fccfc76b9342f64e3a65fe4f87945797a2400242",
+        "workloadSha256": "4c6135f250ca18a3c55520f9fe8b9c180fc0e8e5810cc84eb3a57492c8f24d53",
+        "fixtureSha256": "f5f00574270275222b8f5da063f317fc5a4e61208f93aae8603d645a40462486",
+        "configurationSha256": "68964ca67637380afef5326e87f7315be84c9f1bd0baee310d04e0ff22709cb8",
+        "rawSummarySha256": "e468ef6d357ff4bf22f854f9a7c46100b65551faa729c9d7e9dab5d8648263b8",
+        "rawRunSha256": "c7878ef5a6b98a8544f690ec68f2242be75d4672c9d8f695a436ef2716d0320c"
+      },
+      {
+        "name": "optimized-3",
+        "startedAt": "2026-10-02T18:22:35.034Z",
+        "endedAt": "2026-10-02T18:23:12.292Z",
+        "k6DurationMs": 30219.806288,
+        "httpRequests": 160,
+        "httpRequestsPerSecond": 5.294540887362818,
+        "technicalErrorRate": 0,
+        "expectedConflicts": 7,
+        "droppedIterations": 0,
+        "correctness": {
+          "writtenBookings": 32,
+          "contentionBookings": 1,
+          "auditEntries": 32,
+          "outboxEvents": 32,
+          "idempotencyRecords": 32,
+          "courtOverlaps": 0,
+          "playerOverlaps": 0
+        },
+        "endpoints": {
+          "availability": {
+            "requests": 61,
+            "p50Ms": 5.975226,
+            "p95Ms": 8.440191,
+            "p99Ms": 13.911009999999997,
+            "averageMs": 6.4752843934426245,
+            "maxMs": 15.292483
+          },
+          "membership": {
+            "requests": 60,
+            "p50Ms": 4.4648805,
+            "p95Ms": 8.349406,
+            "p99Ms": 14.85674369999999,
+            "averageMs": 5.031887350000001,
+            "maxMs": 16.463178
+          },
+          "booking": {
+            "requests": 31,
+            "p50Ms": 34.143985,
+            "p95Ms": 56.693211,
+            "p99Ms": 179.04110369999987,
+            "averageMs": 42.35096974193548,
+            "maxMs": 231.375789
+          },
+          "contention": {
+            "requests": 8,
+            "p50Ms": 45.8781385,
+            "p95Ms": 92.20639859999997,
+            "p99Ms": 110.06225171999998,
+            "averageMs": 53.546178125,
+            "maxMs": 114.526215
+          }
+        },
+        "resources": [
+          {
+            "service": "booking-service",
+            "samples": 8,
+            "meanCpuPercent": 5.727499999999999,
+            "peakCpuPercent": 14.21,
+            "peakMemoryBytes": 434949324.8
+          },
+          {
+            "service": "member-service",
+            "samples": 8,
+            "meanCpuPercent": 4.21375,
+            "peakCpuPercent": 6.71,
+            "peakMemoryBytes": 382520524.8
+          },
+          {
+            "service": "subscription-service",
+            "samples": 8,
+            "meanCpuPercent": 2.1337500000000005,
+            "peakCpuPercent": 5.85,
+            "peakMemoryBytes": 363855872
+          },
+          {
+            "service": "postgres",
+            "samples": 8,
+            "meanCpuPercent": 1.16375,
+            "peakCpuPercent": 4.06,
+            "peakMemoryBytes": 136105164.8
+          },
+          {
+            "service": "keycloak",
+            "samples": 8,
+            "meanCpuPercent": 0.26125,
+            "peakCpuPercent": 0.33,
+            "peakMemoryBytes": 475004928
+          }
+        ],
+        "jfr": {
+          "recordingSha256": "3ae284b005876d131f7b5f0b53da3bf9533b4538c574be14f6d7bc5eedd9f6da",
+          "executionSamples": 11,
+          "samplesWithHibernate": 4,
+          "samplesWithPostgresDriver": 0,
+          "allocationSamples": 246,
+          "estimatedAllocatedBytes": 228239448,
+          "gcCollections": 1,
+          "gcPauseMs": 190.601436,
+          "maximumObservedHeapBytes": 113456152,
+          "topSampledMethods": [
+            {
+              "method": "org.hibernate.event.internal.DefaultFlushEntityEventListener.wrapCollections",
+              "samples": 1
+            },
+            {
+              "method": "java.lang.Class.getName",
+              "samples": 1
+            },
+            {
+              "method": "tools.jackson.core.json.UTF8StreamJsonParser._releaseBuffers",
+              "samples": 1
+            },
+            {
+              "method": "sun.nio.cs.ISO_8859_1$Encoder.encodeBufferLoop",
+              "samples": 1
+            },
+            {
+              "method": "tools.jackson.core.json.UTF8StreamJsonParser._parseUnsignedNumber",
+              "samples": 1
+            },
+            {
+              "method": "org.hibernate.validator.internal.constraintvalidators.bv.number.bound.MaxValidatorForInteger.compare",
+              "samples": 1
+            },
+            {
+              "method": "org.hibernate.internal.CoreMessageLogger_$logger.beginningTransaction",
+              "samples": 1
+            },
+            {
+              "method": "org.springframework.web.servlet.mvc.method.annotation.AbstractMessageConverterMethodProcessor.getProducibleMediaTypes",
+              "samples": 1
+            },
+            {
+              "method": "java.util.concurrent.ThreadPoolExecutor.getTask",
+              "samples": 1
+            },
+            {
+              "method": "club.padel.booking.Court$HibernateAccessOptimizer5enabled5hourlyPriceCents5name5type.setPropertyValues",
+              "samples": 1
+            }
+          ]
+        },
+        "limits": [
+          {
+            "service": "booking-service",
+            "image": "eclipse-temurin:21-jdk-alpine",
+            "imageId": "sha256:0bfc69a4758a86710e5c474032d28400a8bd00874766f9e8b1642ac2fd293159",
+            "memoryBytes": 805306368,
+            "nanoCpus": 1000000000,
+            "oomKilled": false,
+            "restarts": 0
+          },
+          {
+            "service": "keycloak",
+            "image": "quay.io/keycloak/keycloak:26.7.4",
+            "imageId": "sha256:82a77884f3af238beab1e7afd63b5f530e1b5c0590bd7aa60b40a40463e29b2c",
+            "memoryBytes": 536870912,
+            "nanoCpus": 1000000000,
+            "oomKilled": false,
+            "restarts": 0
+          },
+          {
+            "service": "member-service",
+            "image": "eclipse-temurin:21-jdk-alpine",
+            "imageId": "sha256:0bfc69a4758a86710e5c474032d28400a8bd00874766f9e8b1642ac2fd293159",
+            "memoryBytes": 805306368,
+            "nanoCpus": 1000000000,
+            "oomKilled": false,
+            "restarts": 0
+          },
+          {
+            "service": "postgres",
+            "image": "postgres:17-alpine",
+            "imageId": "sha256:b0f9560a2de083e2cc7382e75f808c7381a32852a7ec49117deedb300e552b24",
+            "memoryBytes": 268435456,
+            "nanoCpus": 1000000000,
+            "oomKilled": false,
+            "restarts": 0
+          },
+          {
+            "service": "subscription-service",
+            "image": "eclipse-temurin:21-jdk-alpine",
+            "imageId": "sha256:0bfc69a4758a86710e5c474032d28400a8bd00874766f9e8b1642ac2fd293159",
+            "memoryBytes": 805306368,
+            "nanoCpus": 1000000000,
+            "oomKilled": false,
+            "restarts": 0
+          }
+        ],
+        "bookingJarSha256": "bb41225c263ab4835c4cb481fccfc76b9342f64e3a65fe4f87945797a2400242",
+        "workloadSha256": "4c6135f250ca18a3c55520f9fe8b9c180fc0e8e5810cc84eb3a57492c8f24d53",
+        "fixtureSha256": "f5f00574270275222b8f5da063f317fc5a4e61208f93aae8603d645a40462486",
+        "configurationSha256": "68964ca67637380afef5326e87f7315be84c9f1bd0baee310d04e0ff22709cb8",
+        "rawSummarySha256": "9fceb3ba1b88cc477b2f152735d49f81dc4d20a220aa6f2fdec00fe9d6c51166",
+        "rawRunSha256": "ecb4926aa3e3ddff7e5cf89c28c5796de2d9dde4aa15a139c98f84b075e25e96"
+      }
+    ]
+  },
+  "comparison": {
+    "medianOfRunP95": {
+      "availability": {
+        "baselineP95Ms": 129.381152,
+        "optimizedP95Ms": 14.670229,
+        "p95ReductionPercent": 88.66123173798917
+      },
+      "membership": {
+        "baselineP95Ms": 16.222461,
+        "optimizedP95Ms": 8.431523,
+        "p95ReductionPercent": 48.02562323928533
+      },
+      "booking": {
+        "baselineP95Ms": 68.445266,
+        "optimizedP95Ms": 56.693211,
+        "p95ReductionPercent": 17.17000413147639
+      },
+      "contention": {
+        "baselineP95Ms": 186.0953318,
+        "optimizedP95Ms": 92.20639859999997,
+        "p95ReductionPercent": 50.452062548728605
+      }
+    },
+    "sql": {
+      "baseline": {
+        "query": "SELECT * FROM bookings WHERE starts_at < ('2026-10-04'::date+1)::timestamp AT TIME ZONE 'Europe/Athens' AND ends_at > '2026-10-04'::date::timestamp AT TIME ZONE 'Europe/Athens' ORDER BY starts_at",
+        "plans": [
+          {
+            "Plan": {
+              "Node Type": "Sort",
+              "Parallel Aware": false,
+              "Async Capable": false,
+              "Startup Cost": 3593.14,
+              "Total Cost": 3643.98,
+              "Plan Rows": 20335,
+              "Plan Width": 129,
+              "Actual Startup Time": 11.438,
+              "Actual Total Time": 13.157,
+              "Actual Rows": 20400,
+              "Actual Loops": 1,
+              "Sort Key": [
+                "starts_at"
+              ],
+              "Sort Method": "quicksort",
+              "Sort Space Used": 3582,
+              "Sort Space Type": "Memory",
+              "Shared Hit Blocks": 1235,
+              "Shared Read Blocks": 0,
+              "Shared Dirtied Blocks": 0,
+              "Shared Written Blocks": 0,
+              "Local Hit Blocks": 0,
+              "Local Read Blocks": 0,
+              "Local Dirtied Blocks": 0,
+              "Local Written Blocks": 0,
+              "Temp Read Blocks": 0,
+              "Temp Written Blocks": 0,
+              "Plans": [
+                {
+                  "Node Type": "Seq Scan",
+                  "Parent Relationship": "Outer",
+                  "Parallel Aware": false,
+                  "Async Capable": false,
+                  "Relation Name": "bookings",
+                  "Alias": "bookings",
+                  "Startup Cost": 0,
+                  "Total Cost": 2138,
+                  "Plan Rows": 20335,
+                  "Plan Width": 129,
+                  "Actual Startup Time": 0.006,
+                  "Actual Total Time": 5.944,
+                  "Actual Rows": 20400,
+                  "Actual Loops": 1,
+                  "Filter": "((starts_at < '2026-10-04 21:00:00+00'::timestamp with time zone) AND (ends_at > '2026-10-03 21:00:00+00'::timestamp with time zone))",
+                  "Rows Removed by Filter": 40000,
+                  "Shared Hit Blocks": 1232,
+                  "Shared Read Blocks": 0,
+                  "Shared Dirtied Blocks": 0,
+                  "Shared Written Blocks": 0,
+                  "Local Hit Blocks": 0,
+                  "Local Read Blocks": 0,
+                  "Local Dirtied Blocks": 0,
+                  "Local Written Blocks": 0,
+                  "Temp Read Blocks": 0,
+                  "Temp Written Blocks": 0
+                }
+              ]
+            },
+            "Planning": {
+              "Shared Hit Blocks": 235,
+              "Shared Read Blocks": 0,
+              "Shared Dirtied Blocks": 0,
+              "Shared Written Blocks": 0,
+              "Local Hit Blocks": 0,
+              "Local Read Blocks": 0,
+              "Local Dirtied Blocks": 0,
+              "Local Written Blocks": 0,
+              "Temp Read Blocks": 0,
+              "Temp Written Blocks": 0
+            },
+            "Planning Time": 3.466,
+            "Triggers": [],
+            "Execution Time": 14.061
+          },
+          {
+            "Plan": {
+              "Node Type": "Sort",
+              "Parallel Aware": false,
+              "Async Capable": false,
+              "Startup Cost": 3593.14,
+              "Total Cost": 3643.98,
+              "Plan Rows": 20335,
+              "Plan Width": 129,
+              "Actual Startup Time": 13.713,
+              "Actual Total Time": 15.656,
+              "Actual Rows": 20400,
+              "Actual Loops": 1,
+              "Sort Key": [
+                "starts_at"
+              ],
+              "Sort Method": "quicksort",
+              "Sort Space Used": 3582,
+              "Sort Space Type": "Memory",
+              "Shared Hit Blocks": 1235,
+              "Shared Read Blocks": 0,
+              "Shared Dirtied Blocks": 0,
+              "Shared Written Blocks": 0,
+              "Local Hit Blocks": 0,
+              "Local Read Blocks": 0,
+              "Local Dirtied Blocks": 0,
+              "Local Written Blocks": 0,
+              "Temp Read Blocks": 0,
+              "Temp Written Blocks": 0,
+              "Plans": [
+                {
+                  "Node Type": "Seq Scan",
+                  "Parent Relationship": "Outer",
+                  "Parallel Aware": false,
+                  "Async Capable": false,
+                  "Relation Name": "bookings",
+                  "Alias": "bookings",
+                  "Startup Cost": 0,
+                  "Total Cost": 2138,
+                  "Plan Rows": 20335,
+                  "Plan Width": 129,
+                  "Actual Startup Time": 0.008,
+                  "Actual Total Time": 6.938,
+                  "Actual Rows": 20400,
+                  "Actual Loops": 1,
+                  "Filter": "((starts_at < '2026-10-04 21:00:00+00'::timestamp with time zone) AND (ends_at > '2026-10-03 21:00:00+00'::timestamp with time zone))",
+                  "Rows Removed by Filter": 40000,
+                  "Shared Hit Blocks": 1232,
+                  "Shared Read Blocks": 0,
+                  "Shared Dirtied Blocks": 0,
+                  "Shared Written Blocks": 0,
+                  "Local Hit Blocks": 0,
+                  "Local Read Blocks": 0,
+                  "Local Dirtied Blocks": 0,
+                  "Local Written Blocks": 0,
+                  "Temp Read Blocks": 0,
+                  "Temp Written Blocks": 0
+                }
+              ]
+            },
+            "Planning": {
+              "Shared Hit Blocks": 213,
+              "Shared Read Blocks": 0,
+              "Shared Dirtied Blocks": 0,
+              "Shared Written Blocks": 0,
+              "Local Hit Blocks": 0,
+              "Local Read Blocks": 0,
+              "Local Dirtied Blocks": 0,
+              "Local Written Blocks": 0,
+              "Temp Read Blocks": 0,
+              "Temp Written Blocks": 0
+            },
+            "Planning Time": 1.849,
+            "Triggers": [],
+            "Execution Time": 16.64
+          },
+          {
+            "Plan": {
+              "Node Type": "Sort",
+              "Parallel Aware": false,
+              "Async Capable": false,
+              "Startup Cost": 3593.14,
+              "Total Cost": 3643.98,
+              "Plan Rows": 20335,
+              "Plan Width": 129,
+              "Actual Startup Time": 11.948,
+              "Actual Total Time": 13.769,
+              "Actual Rows": 20400,
+              "Actual Loops": 1,
+              "Sort Key": [
+                "starts_at"
+              ],
+              "Sort Method": "quicksort",
+              "Sort Space Used": 3582,
+              "Sort Space Type": "Memory",
+              "Shared Hit Blocks": 1235,
+              "Shared Read Blocks": 0,
+              "Shared Dirtied Blocks": 0,
+              "Shared Written Blocks": 0,
+              "Local Hit Blocks": 0,
+              "Local Read Blocks": 0,
+              "Local Dirtied Blocks": 0,
+              "Local Written Blocks": 0,
+              "Temp Read Blocks": 0,
+              "Temp Written Blocks": 0,
+              "Plans": [
+                {
+                  "Node Type": "Seq Scan",
+                  "Parent Relationship": "Outer",
+                  "Parallel Aware": false,
+                  "Async Capable": false,
+                  "Relation Name": "bookings",
+                  "Alias": "bookings",
+                  "Startup Cost": 0,
+                  "Total Cost": 2138,
+                  "Plan Rows": 20335,
+                  "Plan Width": 129,
+                  "Actual Startup Time": 0.007,
+                  "Actual Total Time": 6.081,
+                  "Actual Rows": 20400,
+                  "Actual Loops": 1,
+                  "Filter": "((starts_at < '2026-10-04 21:00:00+00'::timestamp with time zone) AND (ends_at > '2026-10-03 21:00:00+00'::timestamp with time zone))",
+                  "Rows Removed by Filter": 40000,
+                  "Shared Hit Blocks": 1232,
+                  "Shared Read Blocks": 0,
+                  "Shared Dirtied Blocks": 0,
+                  "Shared Written Blocks": 0,
+                  "Local Hit Blocks": 0,
+                  "Local Read Blocks": 0,
+                  "Local Dirtied Blocks": 0,
+                  "Local Written Blocks": 0,
+                  "Temp Read Blocks": 0,
+                  "Temp Written Blocks": 0
+                }
+              ]
+            },
+            "Planning": {
+              "Shared Hit Blocks": 213,
+              "Shared Read Blocks": 0,
+              "Shared Dirtied Blocks": 0,
+              "Shared Written Blocks": 0,
+              "Local Hit Blocks": 0,
+              "Local Read Blocks": 0,
+              "Local Dirtied Blocks": 0,
+              "Local Written Blocks": 0,
+              "Temp Read Blocks": 0,
+              "Temp Written Blocks": 0
+            },
+            "Planning Time": 1.693,
+            "Triggers": [],
+            "Execution Time": 14.729
+          },
+          {
+            "Plan": {
+              "Node Type": "Sort",
+              "Parallel Aware": false,
+              "Async Capable": false,
+              "Startup Cost": 3593.14,
+              "Total Cost": 3643.98,
+              "Plan Rows": 20335,
+              "Plan Width": 129,
+              "Actual Startup Time": 14.229,
+              "Actual Total Time": 16.179,
+              "Actual Rows": 20400,
+              "Actual Loops": 1,
+              "Sort Key": [
+                "starts_at"
+              ],
+              "Sort Method": "quicksort",
+              "Sort Space Used": 3582,
+              "Sort Space Type": "Memory",
+              "Shared Hit Blocks": 1235,
+              "Shared Read Blocks": 0,
+              "Shared Dirtied Blocks": 0,
+              "Shared Written Blocks": 0,
+              "Local Hit Blocks": 0,
+              "Local Read Blocks": 0,
+              "Local Dirtied Blocks": 0,
+              "Local Written Blocks": 0,
+              "Temp Read Blocks": 0,
+              "Temp Written Blocks": 0,
+              "Plans": [
+                {
+                  "Node Type": "Seq Scan",
+                  "Parent Relationship": "Outer",
+                  "Parallel Aware": false,
+                  "Async Capable": false,
+                  "Relation Name": "bookings",
+                  "Alias": "bookings",
+                  "Startup Cost": 0,
+                  "Total Cost": 2138,
+                  "Plan Rows": 20335,
+                  "Plan Width": 129,
+                  "Actual Startup Time": 0.009,
+                  "Actual Total Time": 7.961,
+                  "Actual Rows": 20400,
+                  "Actual Loops": 1,
+                  "Filter": "((starts_at < '2026-10-04 21:00:00+00'::timestamp with time zone) AND (ends_at > '2026-10-03 21:00:00+00'::timestamp with time zone))",
+                  "Rows Removed by Filter": 40000,
+                  "Shared Hit Blocks": 1232,
+                  "Shared Read Blocks": 0,
+                  "Shared Dirtied Blocks": 0,
+                  "Shared Written Blocks": 0,
+                  "Local Hit Blocks": 0,
+                  "Local Read Blocks": 0,
+                  "Local Dirtied Blocks": 0,
+                  "Local Written Blocks": 0,
+                  "Temp Read Blocks": 0,
+                  "Temp Written Blocks": 0
+                }
+              ]
+            },
+            "Planning": {
+              "Shared Hit Blocks": 213,
+              "Shared Read Blocks": 0,
+              "Shared Dirtied Blocks": 0,
+              "Shared Written Blocks": 0,
+              "Local Hit Blocks": 0,
+              "Local Read Blocks": 0,
+              "Local Dirtied Blocks": 0,
+              "Local Written Blocks": 0,
+              "Temp Read Blocks": 0,
+              "Temp Written Blocks": 0
+            },
+            "Planning Time": 1.856,
+            "Triggers": [],
+            "Execution Time": 17.176
+          },
+          {
+            "Plan": {
+              "Node Type": "Sort",
+              "Parallel Aware": false,
+              "Async Capable": false,
+              "Startup Cost": 3593.14,
+              "Total Cost": 3643.98,
+              "Plan Rows": 20335,
+              "Plan Width": 129,
+              "Actual Startup Time": 12.717,
+              "Actual Total Time": 14.717,
+              "Actual Rows": 20400,
+              "Actual Loops": 1,
+              "Sort Key": [
+                "starts_at"
+              ],
+              "Sort Method": "quicksort",
+              "Sort Space Used": 3582,
+              "Sort Space Type": "Memory",
+              "Shared Hit Blocks": 1235,
+              "Shared Read Blocks": 0,
+              "Shared Dirtied Blocks": 0,
+              "Shared Written Blocks": 0,
+              "Local Hit Blocks": 0,
+              "Local Read Blocks": 0,
+              "Local Dirtied Blocks": 0,
+              "Local Written Blocks": 0,
+              "Temp Read Blocks": 0,
+              "Temp Written Blocks": 0,
+              "Plans": [
+                {
+                  "Node Type": "Seq Scan",
+                  "Parent Relationship": "Outer",
+                  "Parallel Aware": false,
+                  "Async Capable": false,
+                  "Relation Name": "bookings",
+                  "Alias": "bookings",
+                  "Startup Cost": 0,
+                  "Total Cost": 2138,
+                  "Plan Rows": 20335,
+                  "Plan Width": 129,
+                  "Actual Startup Time": 0.006,
+                  "Actual Total Time": 6.152,
+                  "Actual Rows": 20400,
+                  "Actual Loops": 1,
+                  "Filter": "((starts_at < '2026-10-04 21:00:00+00'::timestamp with time zone) AND (ends_at > '2026-10-03 21:00:00+00'::timestamp with time zone))",
+                  "Rows Removed by Filter": 40000,
+                  "Shared Hit Blocks": 1232,
+                  "Shared Read Blocks": 0,
+                  "Shared Dirtied Blocks": 0,
+                  "Shared Written Blocks": 0,
+                  "Local Hit Blocks": 0,
+                  "Local Read Blocks": 0,
+                  "Local Dirtied Blocks": 0,
+                  "Local Written Blocks": 0,
+                  "Temp Read Blocks": 0,
+                  "Temp Written Blocks": 0
+                }
+              ]
+            },
+            "Planning": {
+              "Shared Hit Blocks": 213,
+              "Shared Read Blocks": 0,
+              "Shared Dirtied Blocks": 0,
+              "Shared Written Blocks": 0,
+              "Local Hit Blocks": 0,
+              "Local Read Blocks": 0,
+              "Local Dirtied Blocks": 0,
+              "Local Written Blocks": 0,
+              "Temp Read Blocks": 0,
+              "Temp Written Blocks": 0
+            },
+            "Planning Time": 1.584,
+            "Triggers": [],
+            "Execution Time": 15.757
+          }
+        ],
+        "medianExecutionMs": 15.757,
+        "medianReturnedRows": 20400
+      },
+      "optimized": {
+        "query": "SELECT starts_at,ends_at FROM bookings WHERE court_id='7ab77b3b-1126-22be-d3c8-15e19a8977ec' AND status='CONFIRMED' AND starts_at < ('2026-10-04'::date+1)::timestamp AT TIME ZONE 'Europe/Athens' AND ends_at > '2026-10-04'::date::timestamp AT TIME ZONE 'Europe/Athens'",
+        "plans": [
+          {
+            "Plan": {
+              "Node Type": "Bitmap Heap Scan",
+              "Parallel Aware": false,
+              "Async Capable": false,
+              "Relation Name": "bookings",
+              "Alias": "bookings",
+              "Startup Cost": 4.22,
+              "Total Cost": 41.72,
+              "Plan Rows": 3,
+              "Plan Width": 16,
+              "Actual Startup Time": 0.136,
+              "Actual Total Time": 0.293,
+              "Actual Rows": 10,
+              "Actual Loops": 1,
+              "Recheck Cond": "((court_id = '7ab77b3b-1126-22be-d3c8-15e19a8977ec'::uuid) AND ((status)::text = 'CONFIRMED'::text))",
+              "Rows Removed by Index Recheck": 0,
+              "Filter": "((starts_at < '2026-10-04 21:00:00+00'::timestamp with time zone) AND (ends_at > '2026-10-03 21:00:00+00'::timestamp with time zone))",
+              "Rows Removed by Filter": 0,
+              "Exact Heap Blocks": 7,
+              "Lossy Heap Blocks": 0,
+              "Shared Hit Blocks": 9,
+              "Shared Read Blocks": 0,
+              "Shared Dirtied Blocks": 0,
+              "Shared Written Blocks": 0,
+              "Local Hit Blocks": 0,
+              "Local Read Blocks": 0,
+              "Local Dirtied Blocks": 0,
+              "Local Written Blocks": 0,
+              "Temp Read Blocks": 0,
+              "Temp Written Blocks": 0,
+              "Plans": [
+                {
+                  "Node Type": "Bitmap Index Scan",
+                  "Parent Relationship": "Outer",
+                  "Parallel Aware": false,
+                  "Async Capable": false,
+                  "Index Name": "bookings_no_confirmed_overlap",
+                  "Startup Cost": 0,
+                  "Total Cost": 4.22,
+                  "Plan Rows": 10,
+                  "Plan Width": 0,
+                  "Actual Startup Time": 0.101,
+                  "Actual Total Time": 0.102,
+                  "Actual Rows": 10,
+                  "Actual Loops": 1,
+                  "Index Cond": "(court_id = '7ab77b3b-1126-22be-d3c8-15e19a8977ec'::uuid)",
+                  "Shared Hit Blocks": 2,
+                  "Shared Read Blocks": 0,
+                  "Shared Dirtied Blocks": 0,
+                  "Shared Written Blocks": 0,
+                  "Local Hit Blocks": 0,
+                  "Local Read Blocks": 0,
+                  "Local Dirtied Blocks": 0,
+                  "Local Written Blocks": 0,
+                  "Temp Read Blocks": 0,
+                  "Temp Written Blocks": 0
+                }
+              ]
+            },
+            "Planning": {
+              "Shared Hit Blocks": 191,
+              "Shared Read Blocks": 0,
+              "Shared Dirtied Blocks": 0,
+              "Shared Written Blocks": 0,
+              "Local Hit Blocks": 0,
+              "Local Read Blocks": 0,
+              "Local Dirtied Blocks": 0,
+              "Local Written Blocks": 0,
+              "Temp Read Blocks": 0,
+              "Temp Written Blocks": 0
+            },
+            "Planning Time": 3.144,
+            "Triggers": [],
+            "Execution Time": 8.363
+          },
+          {
+            "Plan": {
+              "Node Type": "Bitmap Heap Scan",
+              "Parallel Aware": false,
+              "Async Capable": false,
+              "Relation Name": "bookings",
+              "Alias": "bookings",
+              "Startup Cost": 4.22,
+              "Total Cost": 41.72,
+              "Plan Rows": 3,
+              "Plan Width": 16,
+              "Actual Startup Time": 0.033,
+              "Actual Total Time": 0.045,
+              "Actual Rows": 10,
+              "Actual Loops": 1,
+              "Recheck Cond": "((court_id = '7ab77b3b-1126-22be-d3c8-15e19a8977ec'::uuid) AND ((status)::text = 'CONFIRMED'::text))",
+              "Rows Removed by Index Recheck": 0,
+              "Filter": "((starts_at < '2026-10-04 21:00:00+00'::timestamp with time zone) AND (ends_at > '2026-10-03 21:00:00+00'::timestamp with time zone))",
+              "Rows Removed by Filter": 0,
+              "Exact Heap Blocks": 7,
+              "Lossy Heap Blocks": 0,
+              "Shared Hit Blocks": 9,
+              "Shared Read Blocks": 0,
+              "Shared Dirtied Blocks": 0,
+              "Shared Written Blocks": 0,
+              "Local Hit Blocks": 0,
+              "Local Read Blocks": 0,
+              "Local Dirtied Blocks": 0,
+              "Local Written Blocks": 0,
+              "Temp Read Blocks": 0,
+              "Temp Written Blocks": 0,
+              "Plans": [
+                {
+                  "Node Type": "Bitmap Index Scan",
+                  "Parent Relationship": "Outer",
+                  "Parallel Aware": false,
+                  "Async Capable": false,
+                  "Index Name": "bookings_no_confirmed_overlap",
+                  "Startup Cost": 0,
+                  "Total Cost": 4.22,
+                  "Plan Rows": 10,
+                  "Plan Width": 0,
+                  "Actual Startup Time": 0.026,
+                  "Actual Total Time": 0.026,
+                  "Actual Rows": 10,
+                  "Actual Loops": 1,
+                  "Index Cond": "(court_id = '7ab77b3b-1126-22be-d3c8-15e19a8977ec'::uuid)",
+                  "Shared Hit Blocks": 2,
+                  "Shared Read Blocks": 0,
+                  "Shared Dirtied Blocks": 0,
+                  "Shared Written Blocks": 0,
+                  "Local Hit Blocks": 0,
+                  "Local Read Blocks": 0,
+                  "Local Dirtied Blocks": 0,
+                  "Local Written Blocks": 0,
+                  "Temp Read Blocks": 0,
+                  "Temp Written Blocks": 0
+                }
+              ]
+            },
+            "Planning": {
+              "Shared Hit Blocks": 191,
+              "Shared Read Blocks": 0,
+              "Shared Dirtied Blocks": 0,
+              "Shared Written Blocks": 0,
+              "Local Hit Blocks": 0,
+              "Local Read Blocks": 0,
+              "Local Dirtied Blocks": 0,
+              "Local Written Blocks": 0,
+              "Temp Read Blocks": 0,
+              "Temp Written Blocks": 0
+            },
+            "Planning Time": 1.558,
+            "Triggers": [],
+            "Execution Time": 0.653
+          },
+          {
+            "Plan": {
+              "Node Type": "Bitmap Heap Scan",
+              "Parallel Aware": false,
+              "Async Capable": false,
+              "Relation Name": "bookings",
+              "Alias": "bookings",
+              "Startup Cost": 4.22,
+              "Total Cost": 41.72,
+              "Plan Rows": 3,
+              "Plan Width": 16,
+              "Actual Startup Time": 0.039,
+              "Actual Total Time": 0.053,
+              "Actual Rows": 10,
+              "Actual Loops": 1,
+              "Recheck Cond": "((court_id = '7ab77b3b-1126-22be-d3c8-15e19a8977ec'::uuid) AND ((status)::text = 'CONFIRMED'::text))",
+              "Rows Removed by Index Recheck": 0,
+              "Filter": "((starts_at < '2026-10-04 21:00:00+00'::timestamp with time zone) AND (ends_at > '2026-10-03 21:00:00+00'::timestamp with time zone))",
+              "Rows Removed by Filter": 0,
+              "Exact Heap Blocks": 7,
+              "Lossy Heap Blocks": 0,
+              "Shared Hit Blocks": 9,
+              "Shared Read Blocks": 0,
+              "Shared Dirtied Blocks": 0,
+              "Shared Written Blocks": 0,
+              "Local Hit Blocks": 0,
+              "Local Read Blocks": 0,
+              "Local Dirtied Blocks": 0,
+              "Local Written Blocks": 0,
+              "Temp Read Blocks": 0,
+              "Temp Written Blocks": 0,
+              "Plans": [
+                {
+                  "Node Type": "Bitmap Index Scan",
+                  "Parent Relationship": "Outer",
+                  "Parallel Aware": false,
+                  "Async Capable": false,
+                  "Index Name": "bookings_no_confirmed_overlap",
+                  "Startup Cost": 0,
+                  "Total Cost": 4.22,
+                  "Plan Rows": 10,
+                  "Plan Width": 0,
+                  "Actual Startup Time": 0.028,
+                  "Actual Total Time": 0.028,
+                  "Actual Rows": 10,
+                  "Actual Loops": 1,
+                  "Index Cond": "(court_id = '7ab77b3b-1126-22be-d3c8-15e19a8977ec'::uuid)",
+                  "Shared Hit Blocks": 2,
+                  "Shared Read Blocks": 0,
+                  "Shared Dirtied Blocks": 0,
+                  "Shared Written Blocks": 0,
+                  "Local Hit Blocks": 0,
+                  "Local Read Blocks": 0,
+                  "Local Dirtied Blocks": 0,
+                  "Local Written Blocks": 0,
+                  "Temp Read Blocks": 0,
+                  "Temp Written Blocks": 0
+                }
+              ]
+            },
+            "Planning": {
+              "Shared Hit Blocks": 191,
+              "Shared Read Blocks": 0,
+              "Shared Dirtied Blocks": 0,
+              "Shared Written Blocks": 0,
+              "Local Hit Blocks": 0,
+              "Local Read Blocks": 0,
+              "Local Dirtied Blocks": 0,
+              "Local Written Blocks": 0,
+              "Temp Read Blocks": 0,
+              "Temp Written Blocks": 0
+            },
+            "Planning Time": 2.252,
+            "Triggers": [],
+            "Execution Time": 0.677
+          },
+          {
+            "Plan": {
+              "Node Type": "Bitmap Heap Scan",
+              "Parallel Aware": false,
+              "Async Capable": false,
+              "Relation Name": "bookings",
+              "Alias": "bookings",
+              "Startup Cost": 4.22,
+              "Total Cost": 41.72,
+              "Plan Rows": 3,
+              "Plan Width": 16,
+              "Actual Startup Time": 0.033,
+              "Actual Total Time": 0.046,
+              "Actual Rows": 10,
+              "Actual Loops": 1,
+              "Recheck Cond": "((court_id = '7ab77b3b-1126-22be-d3c8-15e19a8977ec'::uuid) AND ((status)::text = 'CONFIRMED'::text))",
+              "Rows Removed by Index Recheck": 0,
+              "Filter": "((starts_at < '2026-10-04 21:00:00+00'::timestamp with time zone) AND (ends_at > '2026-10-03 21:00:00+00'::timestamp with time zone))",
+              "Rows Removed by Filter": 0,
+              "Exact Heap Blocks": 7,
+              "Lossy Heap Blocks": 0,
+              "Shared Hit Blocks": 9,
+              "Shared Read Blocks": 0,
+              "Shared Dirtied Blocks": 0,
+              "Shared Written Blocks": 0,
+              "Local Hit Blocks": 0,
+              "Local Read Blocks": 0,
+              "Local Dirtied Blocks": 0,
+              "Local Written Blocks": 0,
+              "Temp Read Blocks": 0,
+              "Temp Written Blocks": 0,
+              "Plans": [
+                {
+                  "Node Type": "Bitmap Index Scan",
+                  "Parent Relationship": "Outer",
+                  "Parallel Aware": false,
+                  "Async Capable": false,
+                  "Index Name": "bookings_no_confirmed_overlap",
+                  "Startup Cost": 0,
+                  "Total Cost": 4.22,
+                  "Plan Rows": 10,
+                  "Plan Width": 0,
+                  "Actual Startup Time": 0.026,
+                  "Actual Total Time": 0.027,
+                  "Actual Rows": 10,
+                  "Actual Loops": 1,
+                  "Index Cond": "(court_id = '7ab77b3b-1126-22be-d3c8-15e19a8977ec'::uuid)",
+                  "Shared Hit Blocks": 2,
+                  "Shared Read Blocks": 0,
+                  "Shared Dirtied Blocks": 0,
+                  "Shared Written Blocks": 0,
+                  "Local Hit Blocks": 0,
+                  "Local Read Blocks": 0,
+                  "Local Dirtied Blocks": 0,
+                  "Local Written Blocks": 0,
+                  "Temp Read Blocks": 0,
+                  "Temp Written Blocks": 0
+                }
+              ]
+            },
+            "Planning": {
+              "Shared Hit Blocks": 191,
+              "Shared Read Blocks": 0,
+              "Shared Dirtied Blocks": 0,
+              "Shared Written Blocks": 0,
+              "Local Hit Blocks": 0,
+              "Local Read Blocks": 0,
+              "Local Dirtied Blocks": 0,
+              "Local Written Blocks": 0,
+              "Temp Read Blocks": 0,
+              "Temp Written Blocks": 0
+            },
+            "Planning Time": 1.667,
+            "Triggers": [],
+            "Execution Time": 1.185
+          },
+          {
+            "Plan": {
+              "Node Type": "Bitmap Heap Scan",
+              "Parallel Aware": false,
+              "Async Capable": false,
+              "Relation Name": "bookings",
+              "Alias": "bookings",
+              "Startup Cost": 4.22,
+              "Total Cost": 41.72,
+              "Plan Rows": 3,
+              "Plan Width": 16,
+              "Actual Startup Time": 0.031,
+              "Actual Total Time": 0.044,
+              "Actual Rows": 10,
+              "Actual Loops": 1,
+              "Recheck Cond": "((court_id = '7ab77b3b-1126-22be-d3c8-15e19a8977ec'::uuid) AND ((status)::text = 'CONFIRMED'::text))",
+              "Rows Removed by Index Recheck": 0,
+              "Filter": "((starts_at < '2026-10-04 21:00:00+00'::timestamp with time zone) AND (ends_at > '2026-10-03 21:00:00+00'::timestamp with time zone))",
+              "Rows Removed by Filter": 0,
+              "Exact Heap Blocks": 7,
+              "Lossy Heap Blocks": 0,
+              "Shared Hit Blocks": 9,
+              "Shared Read Blocks": 0,
+              "Shared Dirtied Blocks": 0,
+              "Shared Written Blocks": 0,
+              "Local Hit Blocks": 0,
+              "Local Read Blocks": 0,
+              "Local Dirtied Blocks": 0,
+              "Local Written Blocks": 0,
+              "Temp Read Blocks": 0,
+              "Temp Written Blocks": 0,
+              "Plans": [
+                {
+                  "Node Type": "Bitmap Index Scan",
+                  "Parent Relationship": "Outer",
+                  "Parallel Aware": false,
+                  "Async Capable": false,
+                  "Index Name": "bookings_no_confirmed_overlap",
+                  "Startup Cost": 0,
+                  "Total Cost": 4.22,
+                  "Plan Rows": 10,
+                  "Plan Width": 0,
+                  "Actual Startup Time": 0.025,
+                  "Actual Total Time": 0.025,
+                  "Actual Rows": 10,
+                  "Actual Loops": 1,
+                  "Index Cond": "(court_id = '7ab77b3b-1126-22be-d3c8-15e19a8977ec'::uuid)",
+                  "Shared Hit Blocks": 2,
+                  "Shared Read Blocks": 0,
+                  "Shared Dirtied Blocks": 0,
+                  "Shared Written Blocks": 0,
+                  "Local Hit Blocks": 0,
+                  "Local Read Blocks": 0,
+                  "Local Dirtied Blocks": 0,
+                  "Local Written Blocks": 0,
+                  "Temp Read Blocks": 0,
+                  "Temp Written Blocks": 0
+                }
+              ]
+            },
+            "Planning": {
+              "Shared Hit Blocks": 191,
+              "Shared Read Blocks": 0,
+              "Shared Dirtied Blocks": 0,
+              "Shared Written Blocks": 0,
+              "Local Hit Blocks": 0,
+              "Local Read Blocks": 0,
+              "Local Dirtied Blocks": 0,
+              "Local Written Blocks": 0,
+              "Temp Read Blocks": 0,
+              "Temp Written Blocks": 0
+            },
+            "Planning Time": 1.468,
+            "Triggers": [],
+            "Execution Time": 0.58
+          }
+        ],
+        "medianExecutionMs": 0.677,
+        "medianReturnedRows": 10
+      }
+    }
+  },
+  "caveats": [
+    "Shared Docker Desktop host; background containers remained active.",
+    "Short warm-cache runs, single replicas, fixed modest arrival rate; no maximum capacity or production SLO claim.",
+    "p95/p99 per run; medians of three run percentiles are not pooled percentiles. Only 30–31 writes and eight contention requests per run.",
+    "JFR samples are statistical and allocation weights are estimates; profile overhead enabled identically for both measured variants."
+  ],
+  "localRegressionBudget": {
+    "availabilityP95Ms": 50,
+    "scope": "Local regression budget for the documented 2 availability requests/s, 60,400-booking fixture and fixed container limits",
+    "basis": "Selected after measuring the baseline; verified against all three optimized runs. Applies to this benchmark, not a production SLO or arbitrary CI hardware.",
+    "passed": true
+  }
+}

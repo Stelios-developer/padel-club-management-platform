@@ -1,0 +1,111 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-10-05T11:31:57.765Z",
+  "local": {
+    "createdAt": "2026-10-05T11:18:57.913Z",
+    "completed": true,
+    "scope": "Terraform schema and mock-provider plan/apply simulations only; no AWS account, API calls, resources or GitHub OIDC execution",
+    "modules": [
+      {
+        "module": "bootstrap",
+        "valid": true,
+        "status": "pass",
+        "passed": 1,
+        "failed": 0,
+        "errored": 0,
+        "skipped": 0
+      },
+      {
+        "module": "demo",
+        "valid": true,
+        "status": "pass",
+        "passed": 8,
+        "failed": 0,
+        "errored": 0,
+        "skipped": 0
+      }
+    ]
+  },
+  "configuration": {
+    "schemaVersion": 1,
+    "scannedAt": "2026-10-05T14:16:43.6658789+03:00",
+    "artifact": "infra/cloud",
+    "gate": "PASSED",
+    "findings": [
+      {
+        "kind": "misconfiguration",
+        "id": "AWS-0089",
+        "target": "infra/cloud/bootstrap/main.tf",
+        "severity": "LOW",
+        "resource": "aws_s3_bucket.state",
+        "blocks": false,
+        "exception": null
+      },
+      {
+        "kind": "misconfiguration",
+        "id": "AWS-0089",
+        "target": "infra/cloud/demo/main.tf",
+        "severity": "LOW",
+        "resource": "aws_s3_bucket.artifacts",
+        "blocks": false,
+        "exception": null
+      },
+      {
+        "kind": "misconfiguration",
+        "id": "AWS-0104",
+        "target": "infra/cloud/demo/main.tf",
+        "severity": "CRITICAL",
+        "resource": "aws_vpc_security_group_egress_rule.https",
+        "blocks": false,
+        "exception": {
+          "owner": "Padel maintainers",
+          "reason": "Undeployed single-host demo scaffold. TCP 443 egress reaches dynamic AWS/GitHub/registry/package/ACME endpoints with normal TLS validation; static CDN CIDRs are not a reliable allowlist. All other generic internet ports are denied and SMTP requires explicit destination CIDRs. Review destination-aware egress proxy/VPC endpoints and associated cost before a real cloud rollout. This accepts a destination restriction gap, not unrestricted protocols or inbound management access. See docs/CLOUD.md.",
+          "expires": "2026-11-04"
+        }
+      }
+    ]
+  },
+  "source": {
+    "scannedAt": "2026-10-05T14:27:03.9342918+03:00",
+    "gate": "PASSED",
+    "acceptedExceptionOccurrences": 6,
+    "blockingFindings": 0
+  },
+  "tools": {
+    "terraform": "1.16.5",
+    "awsProvider": "6.67.0",
+    "trivy": "0.75.0"
+  },
+  "nodePolicyTests": {
+    "tests": 32,
+    "passed": 32,
+    "failed": 0,
+    "cloudRelease": 11,
+    "sharedSecurity": 17,
+    "productionConfig": 4
+  },
+  "workflowLint": "PASSED_WITHOUT_LOCAL_SHELLCHECK_OR_PYFLAKES",
+  "bootstrapSyntax": "BASH_N_PASSED_NOT_EXECUTED",
+  "existingLocalStack": {
+    "verifiedAt": "2026-10-05T11:31:22.167Z",
+    "runningImages": 10,
+    "webStatus": 200,
+    "domainUnchanged": true
+  },
+  "externalEvidence": {
+    "awsResourcesCreated": false,
+    "awsOidcSessionVerified": false,
+    "realTerraformPlan": false,
+    "githubWorkflowRun": false,
+    "publicDemoDeployed": false,
+    "cloudRollbackOrRestoreVerified": false,
+    "cloudCostMeasured": false
+  },
+  "limitations": [
+    "Nine Terraform tests use mocked AWS state, not AWS execution.",
+    "Eleven cloud release tests use deliberate fixtures, not real signatures or a live rollout.",
+    "One cloud-specific HTTPS egress exception expires 2026-11-04; accepted destination restriction risk remains.",
+    "Third-party infrastructure images and cloud host OS/runtime installations need a fresh inventory/rehearsal.",
+    "Stage-6 signed release/GitHub execution and real-model AI quality remain pending."
+  ]
+}

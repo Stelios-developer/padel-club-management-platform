@@ -1,0 +1,18 @@
+{
+  "name": "eligibility_active",
+  "description": "Consumer-facing eligibility_active contract; synthetic fixtures only.",
+  "request":
+    {
+      "method": "GET",
+      "headers": { "Authorization": "Bearer contract-alice" },
+      "urlPath": "/api/subscriptions/eligibility/aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa",
+      "queryParameters": { "date": "2026-10-31" },
+    },
+  "response":
+    {
+      "status": 200,
+      "headers": { "Content-Type": "application/json" },
+      "body":
+        { "eligible": true, "reason": "ACTIVE", "validUntil": "2026-10-31" },
+    },
+}

@@ -1,0 +1,115 @@
+rule_files: [/etc/prometheus/alerts.yml]
+evaluation_interval: 1m
+tests:
+  - interval: 1m
+    input_series:
+      - series: 'resilience4j_circuitbreaker_state{service="booking-service",name="SubscriptionClienteligibility",state="open"}'
+        values: "0 1 1 0 0"
+      - series: 'resilience4j_bulkhead_available_concurrent_calls{service="booking-service",name="subscription-service"}'
+        values: "8 0 0 0 8"
+    alert_rule_test:
+      - { eval_time: 1m, alertname: PadelDependencyCircuitOpen, exp_alerts: [] }
+      - eval_time: 2m
+        alertname: PadelDependencyCircuitOpen
+        exp_alerts:
+          - exp_labels:
+              {
+                service: booking-service,
+                name: SubscriptionClienteligibility,
+                state: open,
+                severity: warning,
+              }
+            exp_annotations:
+              summary: "A dependency circuit remains open"
+              description: "Check the named dependency and timeouts. Restore it and observe half-open probes; do not bypass eligibility checks."
+      - { eval_time: 3m, alertname: PadelDependencyCircuitOpen, exp_alerts: [] }
+      - {
+          eval_time: 2m,
+          alertname: PadelDependencyCapacityExhausted,
+          exp_alerts: [],
+        }
+      - eval_time: 3m
+        alertname: PadelDependencyCapacityExhausted
+        exp_alerts:
+          - exp_labels:
+              {
+                service: booking-service,
+                name: subscription-service,
+                severity: warning,
+              }
+            exp_annotations:
+              summary: "A dependency bulkhead remains saturated"
+              description: "Check request latency and dependency health before increasing concurrency."
+      - {
+          eval_time: 4m,
+          alertname: PadelDependencyCapacityExhausted,
+          exp_alerts: [],
+        }
+  - interval: 1m
+    input_series:
+      - series: 'padel_mail_failed{service="notification-service"}'
+        values: "0x20"
+      - series: 'padel_mail_pending{service="notification-service"}'
+        values: "0x20"
+      - series: 'padel_mail_oldest_age_seconds{service="notification-service"}'
+        values: "0x20"
+      - series: 'padel_outbox_pending{service="booking-service"}'
+        values: "0x20"
+      - series: 'padel_outbox_oldest_age_seconds{service="booking-service"}'
+        values: "0x20"
+      - series: 'up{job="padel-services",service="booking-service"}'
+        values: "1x20"
+    alert_rule_test:
+      - { eval_time: 20m, alertname: PadelEmailFailed, exp_alerts: [] }
+      - { eval_time: 20m, alertname: PadelEmailDelayed, exp_alerts: [] }
+      - { eval_time: 20m, alertname: PadelEventsDelayed, exp_alerts: [] }
+      - { eval_time: 20m, alertname: PadelServiceUnavailable, exp_alerts: [] }
+  - interval: 1m
+    input_series:
+      - series: 'padel_mail_failed{service="notification-service"}'
+        values: "1x20"
+      - series: 'padel_mail_pending{service="notification-service"}'
+        values: "2x20"
+      - series: 'padel_mail_oldest_age_seconds{service="notification-service"}'
+        values: "901x20"
+      - series: 'padel_outbox_pending{service="booking-service"}'
+        values: "2x20"
+      - series: 'padel_outbox_oldest_age_seconds{service="booking-service"}'
+        values: "301x20"
+      - series: 'up{job="padel-services",service="booking-service"}'
+        values: "0x20"
+    alert_rule_test:
+      - { eval_time: 1m, alertname: PadelEmailFailed, exp_alerts: [] }
+      - { eval_time: 1m, alertname: PadelEmailDelayed, exp_alerts: [] }
+      - { eval_time: 1m, alertname: PadelEventsDelayed, exp_alerts: [] }
+      - { eval_time: 1m, alertname: PadelServiceUnavailable, exp_alerts: [] }
+      - eval_time: 8m
+        alertname: PadelEmailFailed
+        exp_alerts:
+          - exp_labels: { service: notification-service, severity: critical }
+            exp_annotations:
+              summary: "Email delivery exhausted its retry budget"
+              description: "Investigate notification-service and SMTP. Do not delete notifications to silence this alert."
+      - eval_time: 8m
+        alertname: PadelEmailDelayed
+        exp_alerts:
+          - exp_labels: { service: notification-service, severity: warning }
+            exp_annotations:
+              { summary: "Pending emails are more than 15 minutes old" }
+      - eval_time: 8m
+        alertname: PadelEventsDelayed
+        exp_alerts:
+          - exp_labels: { service: booking-service, severity: critical }
+            exp_annotations:
+              summary: "Events are pending for more than 5 minutes"
+              description: "Check RabbitMQ routing and publisher confirms before replaying events."
+      - eval_time: 8m
+        alertname: PadelServiceUnavailable
+        exp_alerts:
+          - exp_labels:
+              {
+                job: padel-services,
+                service: booking-service,
+                severity: critical,
+              }
+            exp_annotations: { summary: "A Padel service cannot be scraped" }

@@ -1,0 +1,15 @@
+{
+  "finishedAt": "2026-10-02T15:00:48.374Z",
+  "completed": false,
+  "model": "qwen3:1.7b",
+  "plannedCases": 40,
+  "observedFinishedCases": 2,
+  "reason": "Evaluation aborted after repeated transport timeouts and Docker command unresponsiveness. Resource pressure suspected, not confirmed. This is not a completed model-quality measurement.",
+  "cleanupSucceeded": true,
+  "existingRecordsPreservedDuringCleanup": true,
+  "removedUsers": 2,
+  "removedClients": 2,
+  "removedMembers": 2,
+  "removedCancelledBooking": 1,
+  "notes": "Exact journal UUIDs, invalid-domain email, identity names, member subjects and generated canary verified before cleanup. Excluding these fixtures before deletion matched the full domain snapshot after cleanup; the original pre-experiment snapshot was not journaled by the old runner."
+}

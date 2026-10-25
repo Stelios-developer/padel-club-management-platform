@@ -1,0 +1,25 @@
+# Additional configuration for the dedicated, disposable performance stack only.
+eureka:
+  client:
+    enabled: false
+spring:
+  datasource:
+    hikari:
+      maximum-pool-size: 8
+  cloud:
+    openfeign:
+      client:
+        config:
+          member-service:
+            url: http://member-service:8080
+          subscription-service:
+            url: http://subscription-service:8080
+  rabbitmq:
+    dynamic: false
+padel:
+  events:
+    publish-enabled: false
+management:
+  health:
+    rabbit:
+      enabled: false

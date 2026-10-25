@@ -1,0 +1,238 @@
+name: padel-club
+
+x-environment: &environment
+  CONFIG_SERVER_URL: http://config-server:8888
+  EUREKA_URL: http://discovery-server:8761/eureka/
+  DB_HOST: postgres
+  DB_USER: ${DB_USER:-padel}
+  DB_PASSWORD: ${DB_PASSWORD:?Copy .env.example to .env}
+  RABBIT_HOST: rabbitmq
+  RABBIT_USER: ${RABBIT_USER:-padel}
+  RABBIT_PASSWORD: ${RABBIT_PASSWORD:?Copy .env.example to .env}
+  KEYCLOAK_ISSUER: http://localhost:8081/realms/padel
+  KEYCLOAK_JWK_URI: http://keycloak:8080/realms/padel/protocol/openid-connect/certs
+  JAVA_TOOL_OPTIONS: -javaagent:/app/otel-agent.jar -Xms64m -Xmx256m
+  OTEL_EXPORTER_OTLP_ENDPOINT: http://tempo:4317
+  OTEL_EXPORTER_OTLP_PROTOCOL: grpc
+  OTEL_TRACES_EXPORTER: ${OTEL_TRACES_EXPORTER:-none}
+  OTEL_METRICS_EXPORTER: none
+  OTEL_LOGS_EXPORTER: none
+
+x-app: &app
+  restart: unless-stopped
+  mem_limit: 768m
+  environment: *environment
+  depends_on:
+    config-server: { condition: service_healthy }
+    discovery-server: { condition: service_healthy }
+    postgres: { condition: service_healthy }
+    rabbitmq: { condition: service_healthy }
+    keycloak: { condition: service_started }
+  healthcheck:
+    test:
+      [
+        CMD,
+        wget,
+        -q,
+        -O,
+        /dev/null,
+        http://localhost:8080/actuator/health/liveness,
+      ]
+    interval: 15s
+    timeout: 5s
+    start_period: 100s
+    retries: 12
+
+services:
+  postgres:
+    image: postgres:17-alpine
+    environment:
+      POSTGRES_USER: ${DB_USER:-padel}
+      POSTGRES_PASSWORD: ${DB_PASSWORD:?Copy .env.example to .env}
+      POSTGRES_DB: padel
+    volumes:
+      [
+        "postgres-data:/var/lib/postgresql/data",
+        "./infra/postgres/init.sql:/docker-entrypoint-initdb.d/01-init.sql:ro",
+      ]
+    healthcheck:
+      test: [CMD-SHELL, "pg_isready -U $$POSTGRES_USER -d padel"]
+      interval: 5s
+      retries: 20
+    restart: unless-stopped
+  rabbitmq:
+    image: rabbitmq:4.1-management-alpine
+    environment:
+      RABBITMQ_DEFAULT_USER: ${RABBIT_USER:-padel}
+      RABBITMQ_DEFAULT_PASS: ${RABBIT_PASSWORD:?Copy .env.example to .env}
+    ports: ["127.0.0.1:15672:15672"]
+    volumes: ["rabbit-data:/var/lib/rabbitmq"]
+    healthcheck:
+      test: [CMD, rabbitmq-diagnostics, -q, ping]
+      interval: 10s
+      retries: 20
+    restart: unless-stopped
+  keycloak:
+    image: quay.io/keycloak/keycloak:26.7.4
+    command: [start-dev, --import-realm]
+    environment:
+      KC_BOOTSTRAP_ADMIN_USERNAME: ${KEYCLOAK_ADMIN:-admin}
+      KC_BOOTSTRAP_ADMIN_PASSWORD: ${KEYCLOAK_ADMIN_PASSWORD:?Copy .env.example to .env}
+      KC_DB: postgres
+      KC_DB_URL: jdbc:postgresql://postgres:5432/padel_identity
+      KC_DB_USERNAME: ${DB_USER:-padel}
+      KC_DB_PASSWORD: ${DB_PASSWORD}
+      KC_HOSTNAME: http://localhost:8081
+      KC_HTTP_ENABLED: "true"
+      KC_HEALTH_ENABLED: "true"
+    volumes:
+      [
+        "./infra/keycloak/padel-realm.json:/opt/keycloak/data/import/padel-realm.json:ro",
+        "./infra/keycloak/themes/padel:/opt/keycloak/themes/padel:ro",
+      ]
+    ports: ["127.0.0.1:8081:8080"]
+    depends_on:
+      postgres: { condition: service_healthy }
+    restart: unless-stopped
+  mailpit:
+    image: axllent/mailpit:v1.27
+    ports: ["127.0.0.1:8025:8025"]
+    restart: unless-stopped
+  config-server:
+    build: { context: ., args: { SERVICE: config-server } }
+    image: padel/config-server:local
+    volumes: ["./backend/config-repo:/app/config-repo:ro"]
+    environment:
+      JAVA_TOOL_OPTIONS: -javaagent:/app/otel-agent.jar
+      OTEL_TRACES_EXPORTER: none
+      OTEL_METRICS_EXPORTER: none
+      OTEL_LOGS_EXPORTER: none
+    healthcheck:
+      test:
+        [CMD, wget, -q, -O, /dev/null, http://localhost:8888/actuator/health]
+      interval: 10s
+      timeout: 5s
+      start_period: 40s
+      retries: 20
+    restart: unless-stopped
+  discovery-server:
+    build: { context: ., args: { SERVICE: discovery-server } }
+    image: padel/discovery-server:local
+    ports: ["127.0.0.1:8761:8761"]
+    environment:
+      JAVA_TOOL_OPTIONS: -javaagent:/app/otel-agent.jar
+      OTEL_TRACES_EXPORTER: none
+      OTEL_METRICS_EXPORTER: none
+      OTEL_LOGS_EXPORTER: none
+    healthcheck:
+      test:
+        [CMD, wget, -q, -O, /dev/null, http://localhost:8761/actuator/health]
+      interval: 10s
+      timeout: 5s
+      start_period: 40s
+      retries: 20
+    restart: unless-stopped
+  api-gateway:
+    <<: *app
+    build: { context: ., args: { SERVICE: api-gateway } }
+    image: padel/api-gateway:local
+    ports: ["127.0.0.1:8080:8080"]
+    environment: { <<: *environment, OTEL_SERVICE_NAME: api-gateway }
+  member-service:
+    <<: *app
+    build: { context: ., args: { SERVICE: member-service } }
+    image: padel/member-service:local
+    environment: { <<: *environment, OTEL_SERVICE_NAME: member-service }
+  subscription-service:
+    <<: *app
+    build: { context: ., args: { SERVICE: subscription-service } }
+    image: padel/subscription-service:local
+    environment: { <<: *environment, OTEL_SERVICE_NAME: subscription-service }
+  booking-service:
+    <<: *app
+    build: { context: ., args: { SERVICE: booking-service } }
+    image: padel/booking-service:local
+    environment: { <<: *environment, OTEL_SERVICE_NAME: booking-service }
+  access-service:
+    <<: *app
+    build: { context: ., args: { SERVICE: access-service } }
+    image: padel/access-service:local
+    environment: { <<: *environment, OTEL_SERVICE_NAME: access-service }
+  notification-service:
+    <<: *app
+    build: { context: ., args: { SERVICE: notification-service } }
+    image: padel/notification-service:local
+    environment:
+      {
+        <<: *environment,
+        OTEL_SERVICE_NAME: notification-service,
+        SMTP_HOST: mailpit,
+        SMTP_PORT: 1025,
+      }
+  web:
+    build: ./web
+    image: padel/web:local
+    ports: ["127.0.0.1:3000:8080"]
+    depends_on: { api-gateway: { condition: service_healthy } }
+    restart: unless-stopped
+  prometheus:
+    image: prom/prometheus:v3.5.0
+    profiles: [observability]
+    volumes:
+      [
+        "./infra/observability/prometheus.yml:/etc/prometheus/prometheus.yml:ro",
+        "./infra/production/alerts.yml:/etc/prometheus/alerts.yml:ro",
+        "prometheus-data:/prometheus",
+      ]
+    restart: unless-stopped
+  loki:
+    image: grafana/loki:3.5.3
+    profiles: [observability]
+    command: [-config.file=/etc/loki/local-config.yaml]
+    volumes: ["loki-data:/loki"]
+    restart: unless-stopped
+  alloy:
+    image: grafana/alloy:v1.10.2
+    profiles: [observability]
+    command: [run, /etc/alloy/config.alloy, --storage.path=/var/lib/alloy]
+    volumes:
+      [
+        "./infra/observability/config.alloy:/etc/alloy/config.alloy:ro",
+        "/var/run/docker.sock:/var/run/docker.sock:ro",
+        "alloy-data:/var/lib/alloy",
+      ]
+    depends_on: [loki]
+    restart: unless-stopped
+  tempo:
+    image: grafana/tempo:2.8.2
+    profiles: [observability]
+    command: [-config.file=/etc/tempo.yml]
+    volumes:
+      [
+        "./infra/observability/tempo.yml:/etc/tempo.yml:ro",
+        "tempo-data:/var/tempo",
+      ]
+    restart: unless-stopped
+  grafana:
+    image: grafana/grafana:12.1.1
+    profiles: [observability]
+    ports: ["127.0.0.1:3001:3000"]
+    environment:
+      GF_SECURITY_ADMIN_PASSWORD: ${GRAFANA_PASSWORD:?Copy .env.example to .env}
+      GF_USERS_ALLOW_SIGN_UP: "false"
+    volumes:
+      [
+        "./infra/observability/grafana:/etc/grafana/provisioning:ro",
+        "grafana-data:/var/lib/grafana",
+      ]
+    depends_on: [prometheus, loki, tempo]
+    restart: unless-stopped
+
+volumes:
+  postgres-data:
+  rabbit-data:
+  prometheus-data:
+  loki-data:
+  alloy-data:
+  tempo-data:
+  grafana-data:

@@ -1,0 +1,7 @@
+{
+  "name": "member_unauthorized",
+  "description": "Consumer-facing member_unauthorized contract; synthetic fixtures only.",
+  "request": { "method": "GET", "urlPath": "/api/members/me" },
+  "response": { "status": 401 },
+  "priority": 100,
+}

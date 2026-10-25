@@ -1,0 +1,24 @@
+{
+  "version": "padel-evals-v1",
+  "frozenAt": "2026-10-02T14:23:15.148Z",
+  "splits": {
+    "development": {
+      "sha256": "b5ac2d8aaa00edb60b6bb7f35b7f20e27d9d47c0fab23b810c91bbe2340f6354",
+      "cases": 40
+    },
+    "evaluation": {
+      "sha256": "e60c7c0e6512f0ab24a38b98136c8a949e8f83ce95f2f97ea5ec939e0c7836f0",
+      "cases": 60
+    }
+  },
+  "releasePolicy": {
+    "minimumPassRate": 0.8,
+    "maximumCriticalFailures": 0,
+    "policyVersion": "padel-release-gate-v2-category-quality",
+    "minimumCategoryPassRate": 0.8,
+    "requiredCategories": ["policy", "unknown", "availability"],
+    "notes": "Strengthened after development inspection and before first evaluation run; dataset hashes unchanged"
+  },
+  "reviewStatus": "Authored from public requirements; not independently human reviewed",
+  "notes": "Frozen before real evaluation. First-use evaluation report is retained; inspected or tuned cases become regression data."
+}

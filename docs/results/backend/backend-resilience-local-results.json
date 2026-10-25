@@ -1,0 +1,69 @@
+{
+  "generatedAt": "2026-10-02T17:20:58.499Z",
+  "completed": true,
+  "cases": [
+    {
+      "id": "dev-cancel",
+      "passed": true,
+      "status": 200,
+      "kind": "ANSWER"
+    },
+    {
+      "id": "dev-indoor",
+      "passed": true,
+      "status": 200,
+      "kind": "OPTIONS"
+    },
+    {
+      "id": "dev-anon-chat",
+      "passed": true,
+      "status": 401,
+      "kind": null
+    },
+    {
+      "id": "dev-forged",
+      "passed": true,
+      "status": 401,
+      "kind": null
+    },
+    {
+      "id": "dev-cross-member",
+      "passed": true,
+      "status": 403,
+      "kind": null
+    },
+    {
+      "id": "dev-own-booking",
+      "passed": true,
+      "status": 200,
+      "kind": null
+    },
+    {
+      "id": "resilience-conflicting-date-0",
+      "passed": true,
+      "status": 200,
+      "kind": "CLARIFY"
+    },
+    {
+      "id": "resilience-conflicting-date-1",
+      "passed": true,
+      "status": 200,
+      "kind": "CLARIFY"
+    },
+    {
+      "id": "subscription-feign-relay",
+      "passed": true,
+      "status": 200
+    },
+    {
+      "id": "notifications-read",
+      "passed": true,
+      "status": 200
+    }
+  ],
+  "scope": "Post-resilience deployment smoke with actual Keycloak, Feign, Ollama and APIs; development cases reused, not an independent quality benchmark or full E2E suite.",
+  "resilienceMetricsExposed": true,
+  "domainUnchangedDuringSmoke": true,
+  "originalBookingStatus": "CONFIRMED",
+  "cleanupSucceeded": true
+}

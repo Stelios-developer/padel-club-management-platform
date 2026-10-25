@@ -1,0 +1,24 @@
+{
+  "name": "member_get",
+  "description": "Consumer-facing member_get contract; synthetic fixtures only.",
+  "request":
+    {
+      "method": "GET",
+      "headers": { "Authorization": "Bearer contract-alice" },
+      "urlPath": "/api/members/aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa",
+    },
+  "response":
+    {
+      "status": 200,
+      "headers": { "Content-Type": "application/json" },
+      "body":
+        {
+          "id": "aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa",
+          "subject": "alice",
+          "fullName": "Alice Player",
+          "email": "alice@example.invalid",
+          "phone": "+306900000001",
+          "enabled": true,
+        },
+    },
+}

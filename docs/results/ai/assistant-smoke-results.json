@@ -1,0 +1,407 @@
+{
+  "generatedAt": "2026-10-02T13:48:05.236Z",
+  "completed": true,
+  "realModel": true,
+  "cases": [
+    {
+      "id": "cancel-el",
+      "passed": true,
+      "status": 200,
+      "kind": "ANSWER",
+      "factIds": ["cancellations:1"],
+      "citations": [
+        {
+          "sourceId": "cancellations",
+          "title": "Ακύρωση και πληρωμές",
+          "version": "2026-10-02",
+          "url": "/api/assistant/sources/cancellations"
+        }
+      ],
+      "durationMs": 6136,
+      "grounded": true,
+      "model": "qwen3:0.6b",
+      "embeddingModel": "embeddinggemma:300m",
+      "knowledgeVersion": "9261247dfa56c957161bdf6e7f9d99ae5d4bf0ea4d0afb52e1c848542f15dc5c",
+      "promptVersion": "padel-assistant-v2-single-fact"
+    },
+    {
+      "id": "duration-el",
+      "passed": true,
+      "status": 200,
+      "kind": "ANSWER",
+      "factIds": ["booking-rules:2"],
+      "citations": [
+        {
+          "sourceId": "booking-rules",
+          "title": "Κρατήσεις και συμμετοχές",
+          "version": "2026-10-02",
+          "url": "/api/assistant/sources/booking-rules"
+        }
+      ],
+      "durationMs": 5074,
+      "grounded": true,
+      "model": "qwen3:0.6b",
+      "embeddingModel": "embeddinggemma:300m",
+      "knowledgeVersion": "9261247dfa56c957161bdf6e7f9d99ae5d4bf0ea4d0afb52e1c848542f15dc5c",
+      "promptVersion": "padel-assistant-v2-single-fact"
+    },
+    {
+      "id": "entry-el",
+      "passed": true,
+      "status": 200,
+      "kind": "ANSWER",
+      "factIds": ["access:2"],
+      "citations": [
+        {
+          "sourceId": "access",
+          "title": "Είσοδος στη λέσχη",
+          "version": "2026-10-02",
+          "url": "/api/assistant/sources/access"
+        }
+      ],
+      "durationMs": 4962,
+      "grounded": true,
+      "model": "qwen3:0.6b",
+      "embeddingModel": "embeddinggemma:300m",
+      "knowledgeVersion": "9261247dfa56c957161bdf6e7f9d99ae5d4bf0ea4d0afb52e1c848542f15dc5c",
+      "promptVersion": "padel-assistant-v2-single-fact"
+    },
+    {
+      "id": "refund-el",
+      "passed": true,
+      "status": 200,
+      "kind": "ANSWER",
+      "factIds": ["cancellations:7"],
+      "citations": [
+        {
+          "sourceId": "cancellations",
+          "title": "Ακύρωση και πληρωμές",
+          "version": "2026-10-02",
+          "url": "/api/assistant/sources/cancellations"
+        }
+      ],
+      "durationMs": 5084,
+      "grounded": true,
+      "model": "qwen3:0.6b",
+      "embeddingModel": "embeddinggemma:300m",
+      "knowledgeVersion": "9261247dfa56c957161bdf6e7f9d99ae5d4bf0ea4d0afb52e1c848542f15dc5c",
+      "promptVersion": "padel-assistant-v2-single-fact"
+    },
+    {
+      "id": "waitlist-el",
+      "passed": true,
+      "status": 200,
+      "kind": "ANSWER",
+      "factIds": ["booking-rules:6"],
+      "citations": [
+        {
+          "sourceId": "booking-rules",
+          "title": "Κρατήσεις και συμμετοχές",
+          "version": "2026-10-02",
+          "url": "/api/assistant/sources/booking-rules"
+        }
+      ],
+      "durationMs": 5571,
+      "grounded": true,
+      "model": "qwen3:0.6b",
+      "embeddingModel": "embeddinggemma:300m",
+      "knowledgeVersion": "9261247dfa56c957161bdf6e7f9d99ae5d4bf0ea4d0afb52e1c848542f15dc5c",
+      "promptVersion": "padel-assistant-v2-single-fact"
+    },
+    {
+      "id": "overlap-el",
+      "passed": true,
+      "status": 200,
+      "kind": "ANSWER",
+      "factIds": ["booking-rules:4"],
+      "citations": [
+        {
+          "sourceId": "booking-rules",
+          "title": "Κρατήσεις και συμμετοχές",
+          "version": "2026-10-02",
+          "url": "/api/assistant/sources/booking-rules"
+        }
+      ],
+      "durationMs": 5242,
+      "grounded": true,
+      "model": "qwen3:0.6b",
+      "embeddingModel": "embeddinggemma:300m",
+      "knowledgeVersion": "9261247dfa56c957161bdf6e7f9d99ae5d4bf0ea4d0afb52e1c848542f15dc5c",
+      "promptVersion": "padel-assistant-v2-single-fact"
+    },
+    {
+      "id": "cancel-en",
+      "passed": true,
+      "status": 200,
+      "kind": "ANSWER",
+      "factIds": ["cancellations:1"],
+      "citations": [
+        {
+          "sourceId": "cancellations",
+          "title": "Ακύρωση και πληρωμές",
+          "version": "2026-10-02",
+          "url": "/api/assistant/sources/cancellations"
+        }
+      ],
+      "durationMs": 4706,
+      "grounded": true,
+      "model": "qwen3:0.6b",
+      "embeddingModel": "embeddinggemma:300m",
+      "knowledgeVersion": "9261247dfa56c957161bdf6e7f9d99ae5d4bf0ea4d0afb52e1c848542f15dc5c",
+      "promptVersion": "padel-assistant-v2-single-fact"
+    },
+    {
+      "id": "unknown",
+      "passed": true,
+      "status": 200,
+      "kind": "UNKNOWN",
+      "factIds": [],
+      "citations": [],
+      "durationMs": 1751,
+      "grounded": true,
+      "model": "qwen3:0.6b",
+      "embeddingModel": "embeddinggemma:300m",
+      "knowledgeVersion": "9261247dfa56c957161bdf6e7f9d99ae5d4bf0ea4d0afb52e1c848542f15dc5c",
+      "promptVersion": "padel-assistant-v2-single-fact"
+    },
+    {
+      "id": "live-availability-el",
+      "passed": true,
+      "kind": "OPTIONS",
+      "optionCount": 3,
+      "options": [
+        {
+          "courtId": "33333333-3333-3333-3333-333333333333",
+          "courtName": "Court 03 · Arena",
+          "courtType": "INDOOR",
+          "startsAt": "2026-10-03T15:00:00Z",
+          "endsAt": "2026-10-03T16:30:00Z",
+          "priceCents": 4500,
+          "players": 4
+        },
+        {
+          "courtId": "33333333-3333-3333-3333-333333333333",
+          "courtName": "Court 03 · Arena",
+          "courtType": "INDOOR",
+          "startsAt": "2026-10-03T15:30:00Z",
+          "endsAt": "2026-10-03T17:00:00Z",
+          "priceCents": 4500,
+          "players": 4
+        },
+        {
+          "courtId": "33333333-3333-3333-3333-333333333333",
+          "courtName": "Court 03 · Arena",
+          "courtType": "INDOOR",
+          "startsAt": "2026-10-03T16:00:00Z",
+          "endsAt": "2026-10-03T17:30:00Z",
+          "priceCents": 4500,
+          "players": 4
+        }
+      ],
+      "matchedLiveBackend": true,
+      "durationMs": 5617
+    },
+    {
+      "id": "no-write-tool",
+      "passed": true,
+      "kind": "CLARIFY",
+      "bookingRowsBefore": 235,
+      "bookingRowsAfter": 235
+    }
+  ],
+  "transportChecks": [
+    {
+      "name": "anonymous denied",
+      "passed": true
+    },
+    {
+      "name": "input validation before inference",
+      "passed": true
+    }
+  ],
+  "notes": "Small development smoke dataset; not a held-out evaluation or a general safety guarantee.",
+  "status": {
+    "readOnly": true,
+    "knowledgeReady": true,
+    "promptVersion": "padel-assistant-v2-single-fact",
+    "provider": "local-ollama",
+    "factCount": 21,
+    "sourceCount": 3
+  },
+  "retrievalComparison": {
+    "cases": [
+      {
+        "id": "cancel-el",
+        "lexicalTop6": [
+          "booking-rules:1",
+          "access:1",
+          "access:2",
+          "booking-rules:6",
+          "booking-rules:7",
+          "booking-rules:8"
+        ],
+        "semanticTop6": [
+          "cancellations:1",
+          "booking-rules:1",
+          "booking-rules:6",
+          "cancellations:2",
+          "access:2",
+          "access:4"
+        ],
+        "lexicalRelevantRank": 0,
+        "semanticRelevantRank": 1
+      },
+      {
+        "id": "duration-el",
+        "lexicalTop6": [
+          "booking-rules:2",
+          "access:1",
+          "booking-rules:1",
+          "access:2",
+          "access:4",
+          "access:5"
+        ],
+        "semanticTop6": [
+          "booking-rules:2",
+          "booking-rules:1",
+          "cancellations:1",
+          "booking-rules:3",
+          "booking-rules:4",
+          "cancellations:2"
+        ],
+        "lexicalRelevantRank": 1,
+        "semanticRelevantRank": 1
+      },
+      {
+        "id": "entry-el",
+        "lexicalTop6": [
+          "access:2",
+          "access:3",
+          "cancellations:5",
+          "cancellations:6",
+          "access:1",
+          "access:4"
+        ],
+        "semanticTop6": [
+          "access:2",
+          "access:3",
+          "access:1",
+          "cancellations:1",
+          "booking-rules:1",
+          "booking-rules:2"
+        ],
+        "lexicalRelevantRank": 1,
+        "semanticRelevantRank": 1
+      },
+      {
+        "id": "refund-el",
+        "lexicalTop6": [
+          "cancellations:7",
+          "cancellations:5",
+          "access:1",
+          "access:2",
+          "access:3",
+          "access:4"
+        ],
+        "semanticTop6": [
+          "cancellations:7",
+          "cancellations:3",
+          "cancellations:5",
+          "booking-rules:5",
+          "cancellations:1",
+          "cancellations:2"
+        ],
+        "lexicalRelevantRank": 1,
+        "semanticRelevantRank": 1
+      },
+      {
+        "id": "waitlist-el",
+        "lexicalTop6": [
+          "booking-rules:6",
+          "booking-rules:3",
+          "cancellations:4",
+          "access:1",
+          "access:2",
+          "access:3"
+        ],
+        "semanticTop6": [
+          "booking-rules:6",
+          "booking-rules:3",
+          "access:3",
+          "booking-rules:4",
+          "cancellations:4",
+          "cancellations:1"
+        ],
+        "lexicalRelevantRank": 1,
+        "semanticRelevantRank": 1
+      },
+      {
+        "id": "overlap-el",
+        "lexicalTop6": [
+          "booking-rules:4",
+          "cancellations:1",
+          "access:2",
+          "access:3",
+          "access:4",
+          "booking-rules:1"
+        ],
+        "semanticTop6": [
+          "booking-rules:4",
+          "booking-rules:3",
+          "booking-rules:2",
+          "cancellations:1",
+          "booking-rules:1",
+          "cancellations:4"
+        ],
+        "lexicalRelevantRank": 1,
+        "semanticRelevantRank": 1
+      },
+      {
+        "id": "cancel-en",
+        "lexicalTop6": [
+          "access:1",
+          "access:2",
+          "access:3",
+          "access:4",
+          "access:5",
+          "access:6"
+        ],
+        "semanticTop6": [
+          "cancellations:1",
+          "cancellations:2",
+          "cancellations:7",
+          "booking-rules:1",
+          "access:2",
+          "access:3"
+        ],
+        "lexicalRelevantRank": 0,
+        "semanticRelevantRank": 1
+      }
+    ],
+    "semanticRecallAt6": 1,
+    "lexicalRecallAt6": 0.7142857142857143,
+    "semanticMrrAt6": 1,
+    "lexicalMrrAt6": 0.7142857142857143,
+    "note": "Seven development queries, 21 approved facts; simple accent-normalized token-overlap baseline, not BM25. Exact pgvector cosine retrieval uses actual EmbeddingGemma embeddings. Not a held-out benchmark."
+  },
+  "installedModels": "NAME                   ID              SIZE      MODIFIED       \nqwen3:0.6b             7df6b6e09427    522 MB    30 minutes ago    \nembeddinggemma:300m    85462619ee72    621 MB    30 minutes ago",
+  "modelDigests": [
+    {
+      "name": "qwen3:0.6b",
+      "digest": "7df6b6e09427a769808717c0a93cadc4ae99ed4eb8bf5ca557c90846becea435",
+      "size": 522653767
+    },
+    {
+      "name": "embeddinggemma:300m",
+      "digest": "85462619ee721b466c5927d109d4cb765861907d5417b9109caebc4e614679f1",
+      "size": 621875917
+    }
+  ],
+  "liveUi": {
+    "passed": true,
+    "realPkceLogin": true,
+    "realModel": true,
+    "domainMutations": 0
+  },
+  "cleanupSucceeded": true
+}

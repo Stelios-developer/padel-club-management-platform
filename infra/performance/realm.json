@@ -1,0 +1,47 @@
+{
+  "realm": "performance",
+  "enabled": true,
+  "sslRequired": "none",
+  "accessTokenLifespan": 3600,
+  "roles": { "realm": [{ "name": "MEMBER" }] },
+  "clients": [
+    {
+      "clientId": "performance-only",
+      "enabled": true,
+      "publicClient": true,
+      "standardFlowEnabled": false,
+      "directAccessGrantsEnabled": true,
+      "defaultClientScopes": ["basic", "profile", "email", "roles"],
+      "protocolMappers": [
+        {
+          "name": "padel-api-audience",
+          "protocol": "openid-connect",
+          "protocolMapper": "oidc-audience-mapper",
+          "config": {
+            "included.custom.audience": "padel-api",
+            "access.token.claim": "true"
+          }
+        }
+      ]
+    }
+  ],
+  "users": [
+    {
+      "id": "aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa",
+      "username": "performance-player",
+      "email": "performance@example.invalid",
+      "firstName": "Performance",
+      "lastName": "Player",
+      "enabled": true,
+      "emailVerified": true,
+      "realmRoles": ["MEMBER"],
+      "credentials": [
+        {
+          "type": "password",
+          "value": "isolated-performance-only",
+          "temporary": false
+        }
+      ]
+    }
+  ]
+}

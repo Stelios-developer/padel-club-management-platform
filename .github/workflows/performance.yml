@@ -1,0 +1,50 @@
+name: Domain performance rehearsal
+on:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  performance:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with: { persist-credentials: false }
+      - uses: actions/setup-java@de7274f081f381c8f8158605e0321c36c376e2e6 # v6.0.1
+        with: { distribution: temurin, java-version: "21", cache: maven }
+      - uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7.0.0
+        with: { node-version: "24" }
+      - name: Build the current domain services
+        env:
+          MAVEN_OPTS: -Xmx512m
+        run: mvn -B -pl :member-service,:subscription-service,:booking-service -am package -DskipTests
+      - name: Prepare isolated jars and record host limits
+        run: node scripts/performance.mjs prepare
+      - name: Start dedicated PostgreSQL, Keycloak and three domain services
+        run: |
+          docker compose -f infra/performance/compose.yml --profile load pull
+          docker compose -f infra/performance/compose.yml up -d
+          node scripts/performance.mjs ready
+          node scripts/performance.mjs seed
+      - name: Warm up, then verify HTTP and persisted correctness under load
+        run: |
+          node scripts/performance.mjs run optimized-warmup
+          node scripts/performance.mjs run optimized-1
+      - name: Save sanitized container logs
+        if: always()
+        run: docker compose -f infra/performance/compose.yml logs --no-color > .runtime/performance/containers.log
+      - uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
+        if: always()
+        with:
+          name: domain-performance
+          include-hidden-files: true
+          path: |
+            .runtime/performance/optimized-*.k6.json
+            .runtime/performance/optimized-*.run.json
+            .runtime/performance/optimized-*.jfr
+            .runtime/performance/dataset.json
+            .runtime/performance/docker-host.json
+            .runtime/performance/containers.log
+      - name: Stop this job's isolated stack
+        if: always()
+        run: docker compose -f infra/performance/compose.yml down

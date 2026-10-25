@@ -1,0 +1,131 @@
+{
+  "runId": "muo01svg89a3a8",
+  "finishedAt": "2026-09-30T11:08:14.136Z",
+  "project": "padel-e2e",
+  "resilience": true,
+  "passed": 24,
+  "failed": 0,
+  "completed": true,
+  "results": [
+    {
+      "name": "Real stack readiness and web proxy",
+      "passed": true,
+      "durationMs": 57
+    },
+    {
+      "name": "Keycloak authorization code + S256 PKCE, issuer, audience and roles",
+      "passed": true,
+      "durationMs": 751
+    },
+    {
+      "name": "PKCE required, wrong verifier rejected and authorization code single-use",
+      "passed": true,
+      "durationMs": 137
+    },
+    {
+      "name": "Anonymous and tampered JWT rejected; member password grant disabled",
+      "passed": true,
+      "durationMs": 14
+    },
+    {
+      "name": "Real refresh token produces a usable API token",
+      "passed": true,
+      "durationMs": 25
+    },
+    {
+      "name": "Real tokens with wrong issuer or missing padel-api audience rejected",
+      "passed": true,
+      "durationMs": 204
+    },
+    {
+      "name": "Real Keycloak token without subject rejected before profile creation",
+      "passed": true,
+      "durationMs": 124
+    },
+    {
+      "name": "Member onboarding, PostgreSQL persistence and identity email",
+      "passed": true,
+      "durationMs": 471
+    },
+    {
+      "name": "Member ownership and staff-only APIs enforced across services",
+      "passed": true,
+      "durationMs": 108
+    },
+    {
+      "name": "Inactive subscription blocks a booking; staff activation enables it",
+      "passed": true,
+      "durationMs": 514
+    },
+    {
+      "name": "Eight concurrent PostgreSQL booking requests allow exactly one winner",
+      "passed": true,
+      "durationMs": 502
+    },
+    {
+      "name": "Greek and British browser locales keep ISO dates and 90-minute bookings correct",
+      "passed": true,
+      "durationMs": 152
+    },
+    {
+      "name": "Availability reflects occupied slots; adjacent slots remain bookable",
+      "passed": true,
+      "durationMs": 141
+    },
+    {
+      "name": "Access denial persisted in PostgreSQL and visible to reception",
+      "passed": true,
+      "durationMs": 696
+    },
+    {
+      "name": "Disabled member and disabled court block new bookings",
+      "passed": true,
+      "durationMs": 223
+    },
+    {
+      "name": "Transactional outbox -> real RabbitMQ -> notification DB -> SMTP/Mailpit",
+      "passed": true,
+      "durationMs": 5118
+    },
+    {
+      "name": "Repeated RabbitMQ event is stored once and sends one email",
+      "passed": true,
+      "durationMs": 8587
+    },
+    {
+      "name": "Cancellation releases the court and emits an email",
+      "passed": true,
+      "durationMs": 1693
+    },
+    {
+      "name": "Valid entry allowed; late member cancellation blocked and staff override allowed",
+      "passed": true,
+      "durationMs": 1066
+    },
+    {
+      "name": "Gateway container recreation keeps the existing Nginx proxy working",
+      "passed": true,
+      "durationMs": 15879
+    },
+    {
+      "name": "Booking persists across a booking-service restart",
+      "passed": true,
+      "durationMs": 18285
+    },
+    {
+      "name": "RabbitMQ outage preserves committed booking/outbox; recovery delivers event",
+      "passed": true,
+      "durationMs": 14678
+    },
+    {
+      "name": "SMTP outage records a pending retry; recovery sends persisted email",
+      "passed": true,
+      "durationMs": 70357
+    },
+    {
+      "name": "Cancelled subscription blocks further bookings",
+      "passed": true,
+      "durationMs": 236
+    }
+  ]
+}

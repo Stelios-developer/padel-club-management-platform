@@ -1,0 +1,12 @@
+{
+  "name": "eligibility_unauthorized",
+  "description": "Consumer-facing eligibility_unauthorized contract; synthetic fixtures only.",
+  "request":
+    {
+      "method": "GET",
+      "urlPath": "/api/subscriptions/eligibility/aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa",
+      "queryParameters": { "date": "2026-10-31" },
+    },
+  "response": { "status": 401 },
+  "priority": 100,
+}

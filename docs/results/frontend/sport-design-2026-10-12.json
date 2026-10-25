@@ -1,0 +1,423 @@
+{
+  "recordedAt": "2026-10-12T07:34:19.692Z",
+  "scope": "Sports visual redesign; backend code unchanged",
+  "reference": "https://dribbble.com/shots/26630436-Padel-Sport-Website",
+  "node": {
+    "tests": 94,
+    "passed": 94,
+    "failed": 0,
+    "skipped": 0
+  },
+  "browser": {
+    "stats": {
+      "startTime": "2026-10-12T07:26:31.681Z",
+      "duration": 29037.39,
+      "expected": 57,
+      "skipped": 0,
+      "unexpected": 0,
+      "flaky": 0
+    },
+    "viewports": [
+      {
+        "width": 1280,
+        "height": 900
+      },
+      {
+        "width": 390,
+        "height": 844
+      },
+      {
+        "width": 320,
+        "height": 740
+      }
+    ],
+    "tests": [
+      {
+        "title": "policy text and sources are escaped and source URLs stay authenticated",
+        "project": "desktop-chromium",
+        "status": "expected",
+        "attempts": 1
+      },
+      {
+        "title": "an AI option opens the confirmation form without creating a booking",
+        "project": "desktop-chromium",
+        "status": "expected",
+        "attempts": 1
+      },
+      {
+        "title": "demo mode explains that real AI needs authenticated access",
+        "project": "desktop-chromium",
+        "status": "expected",
+        "attempts": 1
+      },
+      {
+        "title": "policy text and sources are escaped and source URLs stay authenticated",
+        "project": "mobile-chromium",
+        "status": "expected",
+        "attempts": 1
+      },
+      {
+        "title": "an AI option opens the confirmation form without creating a booking",
+        "project": "mobile-chromium",
+        "status": "expected",
+        "attempts": 1
+      },
+      {
+        "title": "demo mode explains that real AI needs authenticated access",
+        "project": "mobile-chromium",
+        "status": "expected",
+        "attempts": 1
+      },
+      {
+        "title": "policy text and sources are escaped and source URLs stay authenticated",
+        "project": "small-mobile-chromium",
+        "status": "expected",
+        "attempts": 1
+      },
+      {
+        "title": "an AI option opens the confirmation form without creating a booking",
+        "project": "small-mobile-chromium",
+        "status": "expected",
+        "attempts": 1
+      },
+      {
+        "title": "demo mode explains that real AI needs authenticated access",
+        "project": "small-mobile-chromium",
+        "status": "expected",
+        "attempts": 1
+      },
+      {
+        "title": "welcome and every member page fit the viewport",
+        "project": "desktop-chromium",
+        "status": "expected",
+        "attempts": 1
+      },
+      {
+        "title": "profile is reachable, saves and persists after reload",
+        "project": "desktop-chromium",
+        "status": "expected",
+        "attempts": 1
+      },
+      {
+        "title": "dialog closes with Escape and can reopen without stale slots",
+        "project": "desktop-chromium",
+        "status": "expected",
+        "attempts": 1
+      },
+      {
+        "title": "booking, named roster and cancellation work through the UI",
+        "project": "desktop-chromium",
+        "status": "expected",
+        "attempts": 1
+      },
+      {
+        "title": "weekly booking summary and occupied-slot waitlist remain usable",
+        "project": "desktop-chromium",
+        "status": "expected",
+        "attempts": 1
+      },
+      {
+        "title": "staff search and role changes clear staff-only screens",
+        "project": "desktop-chromium",
+        "status": "expected",
+        "attempts": 1
+      },
+      {
+        "title": "staff calendar scrolls locally, filters and navigates weeks",
+        "project": "desktop-chromium",
+        "status": "expected",
+        "attempts": 1
+      },
+      {
+        "title": "staff moves a booking and reviews the resulting history",
+        "project": "desktop-chromium",
+        "status": "expected",
+        "attempts": 1
+      },
+      {
+        "title": "touch targets and text inputs are usable on mobile",
+        "project": "desktop-chromium",
+        "status": "expected",
+        "attempts": 1
+      },
+      {
+        "title": "welcome and every member page fit the viewport",
+        "project": "mobile-chromium",
+        "status": "expected",
+        "attempts": 1
+      },
+      {
+        "title": "profile is reachable, saves and persists after reload",
+        "project": "mobile-chromium",
+        "status": "expected",
+        "attempts": 1
+      },
+      {
+        "title": "dialog closes with Escape and can reopen without stale slots",
+        "project": "mobile-chromium",
+        "status": "expected",
+        "attempts": 1
+      },
+      {
+        "title": "booking, named roster and cancellation work through the UI",
+        "project": "mobile-chromium",
+        "status": "expected",
+        "attempts": 1
+      },
+      {
+        "title": "weekly booking summary and occupied-slot waitlist remain usable",
+        "project": "mobile-chromium",
+        "status": "expected",
+        "attempts": 1
+      },
+      {
+        "title": "staff search and role changes clear staff-only screens",
+        "project": "mobile-chromium",
+        "status": "expected",
+        "attempts": 1
+      },
+      {
+        "title": "staff calendar scrolls locally, filters and navigates weeks",
+        "project": "mobile-chromium",
+        "status": "expected",
+        "attempts": 1
+      },
+      {
+        "title": "staff moves a booking and reviews the resulting history",
+        "project": "mobile-chromium",
+        "status": "expected",
+        "attempts": 1
+      },
+      {
+        "title": "touch targets and text inputs are usable on mobile",
+        "project": "mobile-chromium",
+        "status": "expected",
+        "attempts": 1
+      },
+      {
+        "title": "welcome and every member page fit the viewport",
+        "project": "small-mobile-chromium",
+        "status": "expected",
+        "attempts": 1
+      },
+      {
+        "title": "profile is reachable, saves and persists after reload",
+        "project": "small-mobile-chromium",
+        "status": "expected",
+        "attempts": 1
+      },
+      {
+        "title": "dialog closes with Escape and can reopen without stale slots",
+        "project": "small-mobile-chromium",
+        "status": "expected",
+        "attempts": 1
+      },
+      {
+        "title": "booking, named roster and cancellation work through the UI",
+        "project": "small-mobile-chromium",
+        "status": "expected",
+        "attempts": 1
+      },
+      {
+        "title": "weekly booking summary and occupied-slot waitlist remain usable",
+        "project": "small-mobile-chromium",
+        "status": "expected",
+        "attempts": 1
+      },
+      {
+        "title": "staff search and role changes clear staff-only screens",
+        "project": "small-mobile-chromium",
+        "status": "expected",
+        "attempts": 1
+      },
+      {
+        "title": "staff calendar scrolls locally, filters and navigates weeks",
+        "project": "small-mobile-chromium",
+        "status": "expected",
+        "attempts": 1
+      },
+      {
+        "title": "staff moves a booking and reviews the resulting history",
+        "project": "small-mobile-chromium",
+        "status": "expected",
+        "attempts": 1
+      },
+      {
+        "title": "touch targets and text inputs are usable on mobile",
+        "project": "small-mobile-chromium",
+        "status": "expected",
+        "attempts": 1
+      },
+      {
+        "title": "a failed service leaves bookings usable and targeted retry recovers",
+        "project": "desktop-chromium",
+        "status": "expected",
+        "attempts": 1
+      },
+      {
+        "title": "expired authentication clears protected content and disables profile actions",
+        "project": "desktop-chromium",
+        "status": "expected",
+        "attempts": 1
+      },
+      {
+        "title": "refresh preserves horizontal navigation and keyboard focus",
+        "project": "desktop-chromium",
+        "status": "expected",
+        "attempts": 1
+      },
+      {
+        "title": "a failed service leaves bookings usable and targeted retry recovers",
+        "project": "mobile-chromium",
+        "status": "expected",
+        "attempts": 1
+      },
+      {
+        "title": "expired authentication clears protected content and disables profile actions",
+        "project": "mobile-chromium",
+        "status": "expected",
+        "attempts": 1
+      },
+      {
+        "title": "refresh preserves horizontal navigation and keyboard focus",
+        "project": "mobile-chromium",
+        "status": "expected",
+        "attempts": 1
+      },
+      {
+        "title": "a failed service leaves bookings usable and targeted retry recovers",
+        "project": "small-mobile-chromium",
+        "status": "expected",
+        "attempts": 1
+      },
+      {
+        "title": "expired authentication clears protected content and disables profile actions",
+        "project": "small-mobile-chromium",
+        "status": "expected",
+        "attempts": 1
+      },
+      {
+        "title": "refresh preserves horizontal navigation and keyboard focus",
+        "project": "small-mobile-chromium",
+        "status": "expected",
+        "attempts": 1
+      },
+      {
+        "title": "sports navigation stays above every club page and photo assets load",
+        "project": "desktop-chromium",
+        "status": "expected",
+        "attempts": 1
+      },
+      {
+        "title": "sports navigation stays above every club page and photo assets load",
+        "project": "mobile-chromium",
+        "status": "expected",
+        "attempts": 1
+      },
+      {
+        "title": "sports navigation stays above every club page and photo assets load",
+        "project": "small-mobile-chromium",
+        "status": "expected",
+        "attempts": 1
+      },
+      {
+        "title": "member subscriptions can be granted and cancelled from their dialog",
+        "project": "desktop-chromium",
+        "status": "expected",
+        "attempts": 1
+      },
+      {
+        "title": "court settings update availability and price through the UI",
+        "project": "desktop-chromium",
+        "status": "expected",
+        "attempts": 1
+      },
+      {
+        "title": "attendance corrections and access checks remain separate",
+        "project": "desktop-chromium",
+        "status": "expected",
+        "attempts": 1
+      },
+      {
+        "title": "member subscriptions can be granted and cancelled from their dialog",
+        "project": "mobile-chromium",
+        "status": "expected",
+        "attempts": 1
+      },
+      {
+        "title": "court settings update availability and price through the UI",
+        "project": "mobile-chromium",
+        "status": "expected",
+        "attempts": 1
+      },
+      {
+        "title": "attendance corrections and access checks remain separate",
+        "project": "mobile-chromium",
+        "status": "expected",
+        "attempts": 1
+      },
+      {
+        "title": "member subscriptions can be granted and cancelled from their dialog",
+        "project": "small-mobile-chromium",
+        "status": "expected",
+        "attempts": 1
+      },
+      {
+        "title": "court settings update availability and price through the UI",
+        "project": "small-mobile-chromium",
+        "status": "expected",
+        "attempts": 1
+      },
+      {
+        "title": "attendance corrections and access checks remain separate",
+        "project": "small-mobile-chromium",
+        "status": "expected",
+        "attempts": 1
+      }
+    ]
+  },
+  "asset": {
+    "path": "web/assets/padel-court-blue.webp",
+    "width": 1536,
+    "height": 1024,
+    "bytes": 648010,
+    "originalPngBytes": 3827452,
+    "sha256": "b50c48593120d459c147b7c11bb52e8a671fb76b92e47fe12f9b946349e390a0",
+    "provenance": "Original built-in image generation, then WebP quality 87 conversion"
+  },
+  "live": {
+    "observedAt": "2026-10-12T07:29:20.913Z",
+    "web": {
+      "status": 200,
+      "assetType": "image/webp",
+      "assetBytes": 648010,
+      "imageDecoded": true
+    },
+    "keycloak": {
+      "loginFormLoaded": true,
+      "registrationFormLoaded": true,
+      "loginTheme": "blue-gradient",
+      "viewports": [
+        1280,
+        390,
+        320
+      ],
+      "pageOverflow": false,
+      "credentialsSubmitted": false,
+      "accountCreated": false
+    },
+    "browserErrors": []
+  },
+  "nginxConfiguration": "passed",
+  "localRollout": {
+    "project": "padel-e2e",
+    "rebuiltService": "web",
+    "otherServicesRecreated": false
+  },
+  "limitations": [
+    "Chromium only; no physical-device or complete accessibility audit",
+    "Demo/browser fixtures do not establish real authenticated backend workflows",
+    "Live login and registration checks did not submit credentials or create an account",
+    "No backend retest, GitHub workflow execution or public deployment"
+  ]
+}

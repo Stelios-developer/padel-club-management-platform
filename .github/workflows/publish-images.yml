@@ -1,0 +1,138 @@
+name: Publish verified container images
+on:
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: Release label (source SHA is appended)
+        required: true
+        default: dev
+permissions:
+  contents: read
+concurrency:
+  group: release-${{ github.ref }}
+  cancel-in-progress: false
+jobs:
+  security:
+    permissions:
+      contents: read
+      security-events: write
+    uses: ./.github/workflows/security.yml
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with: { persist-credentials: false }
+      - uses: actions/setup-java@de7274f081f381c8f8158605e0321c36c376e2e6 # v6.0.1
+        with: { distribution: temurin, java-version: "21", cache: maven }
+      - uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7.0.0
+        with: { node-version: "24" }
+      - env: { MAVEN_OPTS: "-Xmx512m" }
+        run: mvn -B -Pcontracts,postgres-it clean verify
+      - run: npm --prefix web run check && npm --prefix web test
+      - run: node --test scripts/operations/production-config.test.mjs scripts/security/*.test.mjs scripts/verify-release.test.mjs
+  release:
+    needs: [verify, security]
+    if: github.ref == format('refs/heads/{0}', github.event.repository.default_branch)
+    environment: release
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    permissions:
+      contents: read
+      packages: write
+      id-token: write
+      attestations: write
+    strategy:
+      fail-fast: false
+      max-parallel: 2
+      matrix:
+        service:
+          [
+            config-server,
+            discovery-server,
+            api-gateway,
+            member-service,
+            subscription-service,
+            booking-service,
+            access-service,
+            notification-service,
+            assistant-service,
+            web,
+          ]
+    env:
+      SERVICE: ${{ matrix.service }}
+      RELEASE_LABEL: ${{ inputs.tag }}
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with: { persist-credentials: false }
+      - uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7.0.0
+        with: { node-version: "24" }
+      - run: node scripts/security-install.mjs trivy syft
+      - uses: docker/setup-buildx-action@f87e5991a6d7451dcb8d9637bfbc97413f497069 # v4.4.1
+      - name: Validate release label and registry namespace
+        run: |
+          set -euo pipefail
+          [[ "$RELEASE_LABEL" =~ ^[a-zA-Z0-9][a-zA-Z0-9_.-]{0,63}$ ]]
+          echo "IMAGE_NAME=ghcr.io/${GITHUB_REPOSITORY,,}/$SERVICE" >> "$GITHUB_ENV"
+          echo "IMAGE_TAG=$RELEASE_LABEL-$GITHUB_SHA" >> "$GITHUB_ENV"
+      - uses: docker/build-push-action@c3c9e263c25d99ce0380d002d59b67737d91b0dc # v7.4.0
+        with:
+          context: ${{ matrix.service == 'web' && './web' || '.' }}
+          file: ${{ matrix.service == 'web' && './web/Dockerfile' || './Dockerfile' }}
+          build-args: SERVICE=${{ matrix.service }}
+          platforms: linux/amd64
+          load: true
+          push: false
+          tags: padel/release-scan:${{ matrix.service }}
+          cache-from: type=gha,scope=${{ matrix.service }}
+          cache-to: type=gha,mode=max,scope=${{ matrix.service }}
+      - name: Scan image and generate its SBOM before publishing
+        run: node scripts/security-scan.mjs image "padel/release-scan:$SERVICE" "$SERVICE"
+      - uses: docker/login-action@dbcb813823bdd20940b903addbd779551569679f # v4.6.0
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+      - name: Push scanned image and verify registry content identity
+        id: published
+        run: |
+          set -euo pipefail
+          local_id=$(docker image inspect "padel/release-scan:$SERVICE" --format '{{.Id}}')
+          docker tag "$local_id" "$IMAGE_NAME:$IMAGE_TAG"
+          docker push "$IMAGE_NAME:$IMAGE_TAG"
+          digest=$(docker buildx imagetools inspect "$IMAGE_NAME:$IMAGE_TAG" --format '{{json .Manifest}}' | jq -r '.digest')
+          [[ "$digest" =~ ^sha256:[a-f0-9]{64}$ ]]
+          docker pull "$IMAGE_NAME@$digest"
+          [ "$(docker image inspect "$IMAGE_NAME@$digest" --format '{{.Id}}')" = "$local_id" ]
+          echo "digest=$digest" >> "$GITHUB_OUTPUT"
+          printf '%s@%s\n' "$IMAGE_NAME" "$digest" > ".runtime/security/$SERVICE.image.txt"
+      - name: Sign build provenance
+        uses: actions/attest@1e69f48acb82d1966a394da916b4c1698aa569d6 # v4.2.2
+        with:
+          subject-name: ${{ env.IMAGE_NAME }}
+          subject-digest: ${{ steps.published.outputs.digest }}
+          push-to-registry: true
+      - name: Sign SBOM for same image digest
+        uses: actions/attest@1e69f48acb82d1966a394da916b4c1698aa569d6 # v4.2.2
+        with:
+          subject-name: ${{ env.IMAGE_NAME }}
+          subject-digest: ${{ steps.published.outputs.digest }}
+          sbom-path: .runtime/security/${{ matrix.service }}.cdx.json
+          push-to-registry: true
+      - name: Verify attestations with source and workflow identity policy
+        env:
+          GH_TOKEN: ${{ github.token }}
+          DIGEST: ${{ steps.published.outputs.digest }}
+        run: node scripts/verify-release.mjs --repo "$GITHUB_REPOSITORY" --commit "$GITHUB_SHA" --image "$IMAGE_NAME@$DIGEST" --report ".runtime/security/$SERVICE.verified.json"
+      - uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
+        if: always()
+        with:
+          name: release-${{ matrix.service }}
+          include-hidden-files: true
+          retention-days: 30
+          if-no-files-found: error
+          path: |
+            .runtime/security/*.gate.json
+            .runtime/security/*.cdx.json
+            .runtime/security/*.image.txt
+            .runtime/security/*.verified.json

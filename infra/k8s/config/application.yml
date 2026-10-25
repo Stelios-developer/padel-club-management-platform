@@ -1,0 +1,94 @@
+eureka:
+  client:
+    service-url:
+      defaultZone: ${EUREKA_URL:http://localhost:8761/eureka/}
+  instance:
+    prefer-ip-address: true
+spring:
+  datasource:
+    username: ${DB_USER:padel}
+    password: ${DB_PASSWORD}
+  jpa:
+    open-in-view: false
+    hibernate:
+      ddl-auto: validate
+  flyway:
+    enabled: true
+  rabbitmq:
+    connection-timeout: 1500ms
+    host: ${RABBIT_HOST:localhost}
+    username: ${RABBIT_USER:padel}
+    password: ${RABBIT_PASSWORD}
+    publisher-confirm-type: correlated
+    publisher-returns: true
+    template:
+      mandatory: true
+    listener:
+      simple:
+        default-requeue-rejected: false
+        retry:
+          enabled: true
+          max-attempts: 3
+          initial-interval: 1000ms
+  cloud:
+    circuitbreaker:
+      resilience4j:
+        disable-thread-pool: true
+        disable-time-limiter: true
+        enable-semaphore-default-bulkhead: true
+    openfeign:
+      circuitbreaker:
+        enabled: true
+        group:
+          enabled: true
+      client:
+        config:
+          default:
+            connectTimeout: 1000
+            readTimeout: 2000
+    loadbalancer:
+      retry:
+        enabled: false
+resilience4j:
+  circuitbreaker:
+    configs:
+      default:
+        sliding-window-type: COUNT_BASED
+        sliding-window-size: 10
+        minimum-number-of-calls: 5
+        failure-rate-threshold: 50
+        slow-call-duration-threshold: 1500ms
+        slow-call-rate-threshold: 80
+        wait-duration-in-open-state: 15s
+        permitted-number-of-calls-in-half-open-state: 2
+        automatic-transition-from-open-to-half-open-enabled: false
+        ignore-exception-predicate: club.padel.common.ExpectedDownstreamResponse
+  bulkhead:
+    configs:
+      default:
+        max-concurrent-calls: 8
+        max-wait-duration: 0
+padel:
+  security:
+    issuer: ${KEYCLOAK_ISSUER:http://localhost:8081/realms/padel}
+    jwk-uri: ${KEYCLOAK_JWK_URI:http://localhost:8081/realms/padel/protocol/openid-connect/certs}
+management:
+  metrics:
+    distribution:
+      percentiles-histogram:
+        http.server.requests: true
+      slo:
+        http.server.requests: 300ms,1s,3s
+  endpoints:
+    web:
+      exposure:
+        include: health,info,prometheus
+  endpoint:
+    health:
+      show-details: never
+      probes:
+        enabled: true
+logging:
+  structured:
+    format:
+      console: logstash

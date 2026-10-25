@@ -1,0 +1,14 @@
+{
+  "generatedAt": "2026-10-02T17:15:18.010Z",
+  "completed": false,
+  "cases": [
+    {
+      "id": "dev-cancel",
+      "passed": false,
+      "status": 200,
+      "kind": "UNAVAILABLE"
+    }
+  ],
+  "scope": "Post-resilience deployment smoke with actual Keycloak, Feign, Ollama and APIs; development cases reused, not an independent quality benchmark or full E2E suite.",
+  "cleanupSucceeded": true
+}

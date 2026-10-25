@@ -1,0 +1,12 @@
+{
+  "datasetVersion": "padel-evals-v1",
+  "reviews": [
+    {
+      "caseId": "eval-exact-refund",
+      "status": "disputed-after-first-use",
+      "frozenExpectedKind": "UNKNOWN",
+      "alternativeReasonableAnswerFactId": "cancellations:7",
+      "reason": "The question asks for a refund timeline that is not implemented. Canonical text denying an implemented refund process can be a reasonable answer. The frozen UNKNOWN label is conservative and remains unchanged in all raw scores. This review is not independent human adjudication."
+    }
+  ]
+}

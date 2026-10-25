@@ -1,0 +1,5 @@
+{
+  "issuer": "http://localhost:8081/realms/padel",
+  "clientId": "padel-web",
+  "apiBase": ""
+}

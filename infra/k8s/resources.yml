@@ -1,0 +1,1961 @@
+{
+  "apiVersion": "v1",
+  "kind": "Namespace",
+  "metadata": {
+    "name": "padel"
+  }
+}
+---
+
+{
+  "apiVersion": "v1",
+  "kind": "Service",
+  "metadata": {
+    "name": "config-server"
+  },
+  "spec": {
+    "selector": {
+      "app": "config-server"
+    },
+    "ports": [
+      {
+        "port": 8888,
+        "targetPort": 8888
+      }
+    ]
+  }
+}
+---
+
+{
+  "apiVersion": "apps/v1",
+  "kind": "Deployment",
+  "metadata": {
+    "name": "config-server"
+  },
+  "spec": {
+    "replicas": 1,
+    "selector": {
+      "matchLabels": {
+        "app": "config-server"
+      }
+    },
+    "template": {
+      "metadata": {
+        "labels": {
+          "app": "config-server"
+        }
+      },
+      "spec": {
+        "containers": [
+          {
+            "name": "config-server",
+            "image": "padel/config-server:local",
+            "ports": [
+              {
+                "containerPort": 8888
+              }
+            ],
+            "env": [],
+            "resources": {
+              "requests": {
+                "cpu": "100m",
+                "memory": "256Mi"
+              },
+              "limits": {
+                "memory": "768Mi"
+              }
+            },
+            "volumeMounts": [
+              {
+                "name": "config",
+                "mountPath": "/app/config-repo",
+                "readOnly": true
+              },
+              {
+                "mountPath": "/tmp",
+                "name": "runtime-tmp"
+              }
+            ],
+            "startupProbe": {
+              "httpGet": {
+                "path": "/actuator/health",
+                "port": 8888
+              },
+              "periodSeconds": 10,
+              "failureThreshold": 36
+            },
+            "livenessProbe": {
+              "httpGet": {
+                "path": "/actuator/health",
+                "port": 8888
+              },
+              "periodSeconds": 15
+            },
+            "readinessProbe": {
+              "httpGet": {
+                "path": "/actuator/health/readiness",
+                "port": 8888
+              },
+              "periodSeconds": 10
+            },
+            "securityContext": {
+              "capabilities": {
+                "drop": [
+                  "ALL"
+                ]
+              },
+              "allowPrivilegeEscalation": false,
+              "readOnlyRootFilesystem": true,
+              "runAsNonRoot": true,
+              "runAsUser": 10001
+            }
+          }
+        ],
+        "volumes": [
+          {
+            "name": "config",
+            "projected": {
+              "sources": [
+                {
+                  "configMap": {
+                    "name": "padel-config"
+                  }
+                },
+                {
+                  "secret": {
+                    "name": "padel-spring-config"
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "name": "runtime-tmp",
+            "emptyDir": {
+              "sizeLimit": "128Mi"
+            }
+          }
+        ],
+        "securityContext": {
+          "seccompProfile": {
+            "type": "RuntimeDefault"
+          }
+        },
+        "automountServiceAccountToken": false
+      }
+    }
+  }
+}
+---
+
+{
+  "apiVersion": "v1",
+  "kind": "Service",
+  "metadata": {
+    "name": "discovery-server"
+  },
+  "spec": {
+    "selector": {
+      "app": "discovery-server"
+    },
+    "ports": [
+      {
+        "port": 8761,
+        "targetPort": 8761
+      }
+    ]
+  }
+}
+---
+
+{
+  "apiVersion": "apps/v1",
+  "kind": "Deployment",
+  "metadata": {
+    "name": "discovery-server"
+  },
+  "spec": {
+    "replicas": 1,
+    "selector": {
+      "matchLabels": {
+        "app": "discovery-server"
+      }
+    },
+    "template": {
+      "metadata": {
+        "labels": {
+          "app": "discovery-server"
+        }
+      },
+      "spec": {
+        "containers": [
+          {
+            "name": "discovery-server",
+            "image": "padel/discovery-server:local",
+            "ports": [
+              {
+                "containerPort": 8761
+              }
+            ],
+            "env": [],
+            "resources": {
+              "requests": {
+                "cpu": "100m",
+                "memory": "256Mi"
+              },
+              "limits": {
+                "memory": "768Mi"
+              }
+            },
+            "volumeMounts": [
+              {
+                "mountPath": "/tmp",
+                "name": "runtime-tmp"
+              }
+            ],
+            "startupProbe": {
+              "httpGet": {
+                "path": "/actuator/health",
+                "port": 8761
+              },
+              "periodSeconds": 10,
+              "failureThreshold": 36
+            },
+            "livenessProbe": {
+              "httpGet": {
+                "path": "/actuator/health",
+                "port": 8761
+              },
+              "periodSeconds": 15
+            },
+            "readinessProbe": {
+              "httpGet": {
+                "path": "/actuator/health/readiness",
+                "port": 8761
+              },
+              "periodSeconds": 10
+            },
+            "securityContext": {
+              "capabilities": {
+                "drop": [
+                  "ALL"
+                ]
+              },
+              "allowPrivilegeEscalation": false,
+              "readOnlyRootFilesystem": true,
+              "runAsNonRoot": true,
+              "runAsUser": 10001
+            }
+          }
+        ],
+        "volumes": [
+          {
+            "name": "runtime-tmp",
+            "emptyDir": {
+              "sizeLimit": "128Mi"
+            }
+          }
+        ],
+        "securityContext": {
+          "seccompProfile": {
+            "type": "RuntimeDefault"
+          }
+        },
+        "automountServiceAccountToken": false
+      }
+    }
+  }
+}
+---
+
+{
+  "apiVersion": "v1",
+  "kind": "Service",
+  "metadata": {
+    "name": "api-gateway"
+  },
+  "spec": {
+    "selector": {
+      "app": "api-gateway"
+    },
+    "ports": [
+      {
+        "port": 8080,
+        "targetPort": 8080
+      }
+    ]
+  }
+}
+---
+
+{
+  "apiVersion": "apps/v1",
+  "kind": "Deployment",
+  "metadata": {
+    "name": "api-gateway"
+  },
+  "spec": {
+    "replicas": 1,
+    "selector": {
+      "matchLabels": {
+        "app": "api-gateway"
+      }
+    },
+    "template": {
+      "metadata": {
+        "labels": {
+          "app": "api-gateway"
+        }
+      },
+      "spec": {
+        "containers": [
+          {
+            "name": "api-gateway",
+            "image": "padel/api-gateway:local",
+            "ports": [
+              {
+                "containerPort": 8080
+              }
+            ],
+            "env": [
+              {
+                "name": "CONFIG_SERVER_URL",
+                "value": "http://config-server:8888"
+              },
+              {
+                "name": "EUREKA_URL",
+                "value": "http://discovery-server:8761/eureka/"
+              },
+              {
+                "name": "DB_HOST",
+                "value": "postgres"
+              },
+              {
+                "name": "DB_USER",
+                "value": "padel"
+              },
+              {
+                "name": "SPRING_DATASOURCE_PASSWORD",
+                "valueFrom": {
+                  "secretKeyRef": {
+                    "name": "padel-secrets",
+                    "key": "DB_PASSWORD"
+                  }
+                }
+              },
+              {
+                "name": "RABBIT_HOST",
+                "value": "rabbitmq"
+              },
+              {
+                "name": "RABBIT_USER",
+                "value": "padel"
+              },
+              {
+                "name": "SPRING_RABBITMQ_PASSWORD",
+                "valueFrom": {
+                  "secretKeyRef": {
+                    "name": "padel-secrets",
+                    "key": "RABBIT_PASSWORD"
+                  }
+                }
+              },
+              {
+                "name": "KEYCLOAK_ISSUER",
+                "value": "http://localhost:8081/realms/padel"
+              },
+              {
+                "name": "KEYCLOAK_JWK_URI",
+                "value": "http://keycloak:8080/realms/padel/protocol/openid-connect/certs"
+              },
+              {
+                "name": "OTEL_SERVICE_NAME",
+                "value": "api-gateway"
+              }
+            ],
+            "resources": {
+              "requests": {
+                "cpu": "100m",
+                "memory": "256Mi"
+              },
+              "limits": {
+                "memory": "768Mi"
+              }
+            },
+            "volumeMounts": [
+              {
+                "mountPath": "/tmp",
+                "name": "runtime-tmp"
+              }
+            ],
+            "startupProbe": {
+              "httpGet": {
+                "path": "/actuator/health/liveness",
+                "port": 8080
+              },
+              "periodSeconds": 10,
+              "failureThreshold": 36
+            },
+            "livenessProbe": {
+              "httpGet": {
+                "path": "/actuator/health/liveness",
+                "port": 8080
+              },
+              "periodSeconds": 15
+            },
+            "readinessProbe": {
+              "httpGet": {
+                "path": "/actuator/health/readiness",
+                "port": 8080
+              },
+              "periodSeconds": 10
+            },
+            "securityContext": {
+              "capabilities": {
+                "drop": [
+                  "ALL"
+                ]
+              },
+              "allowPrivilegeEscalation": false,
+              "readOnlyRootFilesystem": true,
+              "runAsNonRoot": true,
+              "runAsUser": 10001
+            }
+          }
+        ],
+        "volumes": [
+          {
+            "name": "runtime-tmp",
+            "emptyDir": {
+              "sizeLimit": "128Mi"
+            }
+          }
+        ],
+        "securityContext": {
+          "seccompProfile": {
+            "type": "RuntimeDefault"
+          }
+        },
+        "automountServiceAccountToken": false
+      }
+    }
+  }
+}
+---
+
+{
+  "apiVersion": "v1",
+  "kind": "Service",
+  "metadata": {
+    "name": "member-service"
+  },
+  "spec": {
+    "selector": {
+      "app": "member-service"
+    },
+    "ports": [
+      {
+        "port": 8080,
+        "targetPort": 8080
+      }
+    ]
+  }
+}
+---
+
+{
+  "apiVersion": "apps/v1",
+  "kind": "Deployment",
+  "metadata": {
+    "name": "member-service"
+  },
+  "spec": {
+    "replicas": 1,
+    "selector": {
+      "matchLabels": {
+        "app": "member-service"
+      }
+    },
+    "template": {
+      "metadata": {
+        "labels": {
+          "app": "member-service"
+        }
+      },
+      "spec": {
+        "containers": [
+          {
+            "name": "member-service",
+            "image": "padel/member-service:local",
+            "ports": [
+              {
+                "containerPort": 8080
+              }
+            ],
+            "env": [
+              {
+                "name": "CONFIG_SERVER_URL",
+                "value": "http://config-server:8888"
+              },
+              {
+                "name": "EUREKA_URL",
+                "value": "http://discovery-server:8761/eureka/"
+              },
+              {
+                "name": "DB_HOST",
+                "value": "postgres"
+              },
+              {
+                "name": "DB_USER",
+                "value": "padel"
+              },
+              {
+                "name": "SPRING_DATASOURCE_PASSWORD",
+                "valueFrom": {
+                  "secretKeyRef": {
+                    "name": "padel-secrets",
+                    "key": "DB_PASSWORD"
+                  }
+                }
+              },
+              {
+                "name": "RABBIT_HOST",
+                "value": "rabbitmq"
+              },
+              {
+                "name": "RABBIT_USER",
+                "value": "padel"
+              },
+              {
+                "name": "SPRING_RABBITMQ_PASSWORD",
+                "valueFrom": {
+                  "secretKeyRef": {
+                    "name": "padel-secrets",
+                    "key": "RABBIT_PASSWORD"
+                  }
+                }
+              },
+              {
+                "name": "KEYCLOAK_ISSUER",
+                "value": "http://localhost:8081/realms/padel"
+              },
+              {
+                "name": "KEYCLOAK_JWK_URI",
+                "value": "http://keycloak:8080/realms/padel/protocol/openid-connect/certs"
+              },
+              {
+                "name": "OTEL_SERVICE_NAME",
+                "value": "member-service"
+              }
+            ],
+            "resources": {
+              "requests": {
+                "cpu": "100m",
+                "memory": "256Mi"
+              },
+              "limits": {
+                "memory": "768Mi"
+              }
+            },
+            "volumeMounts": [
+              {
+                "mountPath": "/tmp",
+                "name": "runtime-tmp"
+              }
+            ],
+            "startupProbe": {
+              "httpGet": {
+                "path": "/actuator/health/liveness",
+                "port": 8080
+              },
+              "periodSeconds": 10,
+              "failureThreshold": 36
+            },
+            "livenessProbe": {
+              "httpGet": {
+                "path": "/actuator/health/liveness",
+                "port": 8080
+              },
+              "periodSeconds": 15
+            },
+            "readinessProbe": {
+              "httpGet": {
+                "path": "/actuator/health/readiness",
+                "port": 8080
+              },
+              "periodSeconds": 10
+            },
+            "securityContext": {
+              "capabilities": {
+                "drop": [
+                  "ALL"
+                ]
+              },
+              "allowPrivilegeEscalation": false,
+              "readOnlyRootFilesystem": true,
+              "runAsNonRoot": true,
+              "runAsUser": 10001
+            }
+          }
+        ],
+        "volumes": [
+          {
+            "name": "runtime-tmp",
+            "emptyDir": {
+              "sizeLimit": "128Mi"
+            }
+          }
+        ],
+        "securityContext": {
+          "seccompProfile": {
+            "type": "RuntimeDefault"
+          }
+        },
+        "automountServiceAccountToken": false
+      }
+    }
+  }
+}
+---
+
+{
+  "apiVersion": "v1",
+  "kind": "Service",
+  "metadata": {
+    "name": "subscription-service"
+  },
+  "spec": {
+    "selector": {
+      "app": "subscription-service"
+    },
+    "ports": [
+      {
+        "port": 8080,
+        "targetPort": 8080
+      }
+    ]
+  }
+}
+---
+
+{
+  "apiVersion": "apps/v1",
+  "kind": "Deployment",
+  "metadata": {
+    "name": "subscription-service"
+  },
+  "spec": {
+    "replicas": 1,
+    "selector": {
+      "matchLabels": {
+        "app": "subscription-service"
+      }
+    },
+    "template": {
+      "metadata": {
+        "labels": {
+          "app": "subscription-service"
+        }
+      },
+      "spec": {
+        "containers": [
+          {
+            "name": "subscription-service",
+            "image": "padel/subscription-service:local",
+            "ports": [
+              {
+                "containerPort": 8080
+              }
+            ],
+            "env": [
+              {
+                "name": "CONFIG_SERVER_URL",
+                "value": "http://config-server:8888"
+              },
+              {
+                "name": "EUREKA_URL",
+                "value": "http://discovery-server:8761/eureka/"
+              },
+              {
+                "name": "DB_HOST",
+                "value": "postgres"
+              },
+              {
+                "name": "DB_USER",
+                "value": "padel"
+              },
+              {
+                "name": "SPRING_DATASOURCE_PASSWORD",
+                "valueFrom": {
+                  "secretKeyRef": {
+                    "name": "padel-secrets",
+                    "key": "DB_PASSWORD"
+                  }
+                }
+              },
+              {
+                "name": "RABBIT_HOST",
+                "value": "rabbitmq"
+              },
+              {
+                "name": "RABBIT_USER",
+                "value": "padel"
+              },
+              {
+                "name": "SPRING_RABBITMQ_PASSWORD",
+                "valueFrom": {
+                  "secretKeyRef": {
+                    "name": "padel-secrets",
+                    "key": "RABBIT_PASSWORD"
+                  }
+                }
+              },
+              {
+                "name": "KEYCLOAK_ISSUER",
+                "value": "http://localhost:8081/realms/padel"
+              },
+              {
+                "name": "KEYCLOAK_JWK_URI",
+                "value": "http://keycloak:8080/realms/padel/protocol/openid-connect/certs"
+              },
+              {
+                "name": "OTEL_SERVICE_NAME",
+                "value": "subscription-service"
+              }
+            ],
+            "resources": {
+              "requests": {
+                "cpu": "100m",
+                "memory": "256Mi"
+              },
+              "limits": {
+                "memory": "768Mi"
+              }
+            },
+            "volumeMounts": [
+              {
+                "mountPath": "/tmp",
+                "name": "runtime-tmp"
+              }
+            ],
+            "startupProbe": {
+              "httpGet": {
+                "path": "/actuator/health/liveness",
+                "port": 8080
+              },
+              "periodSeconds": 10,
+              "failureThreshold": 36
+            },
+            "livenessProbe": {
+              "httpGet": {
+                "path": "/actuator/health/liveness",
+                "port": 8080
+              },
+              "periodSeconds": 15
+            },
+            "readinessProbe": {
+              "httpGet": {
+                "path": "/actuator/health/readiness",
+                "port": 8080
+              },
+              "periodSeconds": 10
+            },
+            "securityContext": {
+              "capabilities": {
+                "drop": [
+                  "ALL"
+                ]
+              },
+              "allowPrivilegeEscalation": false,
+              "readOnlyRootFilesystem": true,
+              "runAsNonRoot": true,
+              "runAsUser": 10001
+            }
+          }
+        ],
+        "volumes": [
+          {
+            "name": "runtime-tmp",
+            "emptyDir": {
+              "sizeLimit": "128Mi"
+            }
+          }
+        ],
+        "securityContext": {
+          "seccompProfile": {
+            "type": "RuntimeDefault"
+          }
+        },
+        "automountServiceAccountToken": false
+      }
+    }
+  }
+}
+---
+
+{
+  "apiVersion": "v1",
+  "kind": "Service",
+  "metadata": {
+    "name": "booking-service"
+  },
+  "spec": {
+    "selector": {
+      "app": "booking-service"
+    },
+    "ports": [
+      {
+        "port": 8080,
+        "targetPort": 8080
+      }
+    ]
+  }
+}
+---
+
+{
+  "apiVersion": "apps/v1",
+  "kind": "Deployment",
+  "metadata": {
+    "name": "booking-service"
+  },
+  "spec": {
+    "replicas": 1,
+    "selector": {
+      "matchLabels": {
+        "app": "booking-service"
+      }
+    },
+    "template": {
+      "metadata": {
+        "labels": {
+          "app": "booking-service"
+        }
+      },
+      "spec": {
+        "containers": [
+          {
+            "name": "booking-service",
+            "image": "padel/booking-service:local",
+            "ports": [
+              {
+                "containerPort": 8080
+              }
+            ],
+            "env": [
+              {
+                "name": "CONFIG_SERVER_URL",
+                "value": "http://config-server:8888"
+              },
+              {
+                "name": "EUREKA_URL",
+                "value": "http://discovery-server:8761/eureka/"
+              },
+              {
+                "name": "DB_HOST",
+                "value": "postgres"
+              },
+              {
+                "name": "DB_USER",
+                "value": "padel"
+              },
+              {
+                "name": "SPRING_DATASOURCE_PASSWORD",
+                "valueFrom": {
+                  "secretKeyRef": {
+                    "name": "padel-secrets",
+                    "key": "DB_PASSWORD"
+                  }
+                }
+              },
+              {
+                "name": "RABBIT_HOST",
+                "value": "rabbitmq"
+              },
+              {
+                "name": "RABBIT_USER",
+                "value": "padel"
+              },
+              {
+                "name": "SPRING_RABBITMQ_PASSWORD",
+                "valueFrom": {
+                  "secretKeyRef": {
+                    "name": "padel-secrets",
+                    "key": "RABBIT_PASSWORD"
+                  }
+                }
+              },
+              {
+                "name": "KEYCLOAK_ISSUER",
+                "value": "http://localhost:8081/realms/padel"
+              },
+              {
+                "name": "KEYCLOAK_JWK_URI",
+                "value": "http://keycloak:8080/realms/padel/protocol/openid-connect/certs"
+              },
+              {
+                "name": "OTEL_SERVICE_NAME",
+                "value": "booking-service"
+              }
+            ],
+            "resources": {
+              "requests": {
+                "cpu": "100m",
+                "memory": "256Mi"
+              },
+              "limits": {
+                "memory": "768Mi"
+              }
+            },
+            "volumeMounts": [
+              {
+                "mountPath": "/tmp",
+                "name": "runtime-tmp"
+              }
+            ],
+            "startupProbe": {
+              "httpGet": {
+                "path": "/actuator/health/liveness",
+                "port": 8080
+              },
+              "periodSeconds": 10,
+              "failureThreshold": 36
+            },
+            "livenessProbe": {
+              "httpGet": {
+                "path": "/actuator/health/liveness",
+                "port": 8080
+              },
+              "periodSeconds": 15
+            },
+            "readinessProbe": {
+              "httpGet": {
+                "path": "/actuator/health/readiness",
+                "port": 8080
+              },
+              "periodSeconds": 10
+            },
+            "securityContext": {
+              "capabilities": {
+                "drop": [
+                  "ALL"
+                ]
+              },
+              "allowPrivilegeEscalation": false,
+              "readOnlyRootFilesystem": true,
+              "runAsNonRoot": true,
+              "runAsUser": 10001
+            }
+          }
+        ],
+        "volumes": [
+          {
+            "name": "runtime-tmp",
+            "emptyDir": {
+              "sizeLimit": "128Mi"
+            }
+          }
+        ],
+        "securityContext": {
+          "seccompProfile": {
+            "type": "RuntimeDefault"
+          }
+        },
+        "automountServiceAccountToken": false
+      }
+    }
+  }
+}
+---
+
+{
+  "apiVersion": "v1",
+  "kind": "Service",
+  "metadata": {
+    "name": "access-service"
+  },
+  "spec": {
+    "selector": {
+      "app": "access-service"
+    },
+    "ports": [
+      {
+        "port": 8080,
+        "targetPort": 8080
+      }
+    ]
+  }
+}
+---
+
+{
+  "apiVersion": "apps/v1",
+  "kind": "Deployment",
+  "metadata": {
+    "name": "access-service"
+  },
+  "spec": {
+    "replicas": 1,
+    "selector": {
+      "matchLabels": {
+        "app": "access-service"
+      }
+    },
+    "template": {
+      "metadata": {
+        "labels": {
+          "app": "access-service"
+        }
+      },
+      "spec": {
+        "containers": [
+          {
+            "name": "access-service",
+            "image": "padel/access-service:local",
+            "ports": [
+              {
+                "containerPort": 8080
+              }
+            ],
+            "env": [
+              {
+                "name": "CONFIG_SERVER_URL",
+                "value": "http://config-server:8888"
+              },
+              {
+                "name": "EUREKA_URL",
+                "value": "http://discovery-server:8761/eureka/"
+              },
+              {
+                "name": "DB_HOST",
+                "value": "postgres"
+              },
+              {
+                "name": "DB_USER",
+                "value": "padel"
+              },
+              {
+                "name": "SPRING_DATASOURCE_PASSWORD",
+                "valueFrom": {
+                  "secretKeyRef": {
+                    "name": "padel-secrets",
+                    "key": "DB_PASSWORD"
+                  }
+                }
+              },
+              {
+                "name": "RABBIT_HOST",
+                "value": "rabbitmq"
+              },
+              {
+                "name": "RABBIT_USER",
+                "value": "padel"
+              },
+              {
+                "name": "SPRING_RABBITMQ_PASSWORD",
+                "valueFrom": {
+                  "secretKeyRef": {
+                    "name": "padel-secrets",
+                    "key": "RABBIT_PASSWORD"
+                  }
+                }
+              },
+              {
+                "name": "KEYCLOAK_ISSUER",
+                "value": "http://localhost:8081/realms/padel"
+              },
+              {
+                "name": "KEYCLOAK_JWK_URI",
+                "value": "http://keycloak:8080/realms/padel/protocol/openid-connect/certs"
+              },
+              {
+                "name": "OTEL_SERVICE_NAME",
+                "value": "access-service"
+              }
+            ],
+            "resources": {
+              "requests": {
+                "cpu": "100m",
+                "memory": "256Mi"
+              },
+              "limits": {
+                "memory": "768Mi"
+              }
+            },
+            "volumeMounts": [
+              {
+                "mountPath": "/tmp",
+                "name": "runtime-tmp"
+              }
+            ],
+            "startupProbe": {
+              "httpGet": {
+                "path": "/actuator/health/liveness",
+                "port": 8080
+              },
+              "periodSeconds": 10,
+              "failureThreshold": 36
+            },
+            "livenessProbe": {
+              "httpGet": {
+                "path": "/actuator/health/liveness",
+                "port": 8080
+              },
+              "periodSeconds": 15
+            },
+            "readinessProbe": {
+              "httpGet": {
+                "path": "/actuator/health/readiness",
+                "port": 8080
+              },
+              "periodSeconds": 10
+            },
+            "securityContext": {
+              "capabilities": {
+                "drop": [
+                  "ALL"
+                ]
+              },
+              "allowPrivilegeEscalation": false,
+              "readOnlyRootFilesystem": true,
+              "runAsNonRoot": true,
+              "runAsUser": 10001
+            }
+          }
+        ],
+        "volumes": [
+          {
+            "name": "runtime-tmp",
+            "emptyDir": {
+              "sizeLimit": "128Mi"
+            }
+          }
+        ],
+        "securityContext": {
+          "seccompProfile": {
+            "type": "RuntimeDefault"
+          }
+        },
+        "automountServiceAccountToken": false
+      }
+    }
+  }
+}
+---
+
+{
+  "apiVersion": "v1",
+  "kind": "Service",
+  "metadata": {
+    "name": "notification-service"
+  },
+  "spec": {
+    "selector": {
+      "app": "notification-service"
+    },
+    "ports": [
+      {
+        "port": 8080,
+        "targetPort": 8080
+      }
+    ]
+  }
+}
+---
+
+{
+  "apiVersion": "apps/v1",
+  "kind": "Deployment",
+  "metadata": {
+    "name": "notification-service"
+  },
+  "spec": {
+    "replicas": 1,
+    "selector": {
+      "matchLabels": {
+        "app": "notification-service"
+      }
+    },
+    "template": {
+      "metadata": {
+        "labels": {
+          "app": "notification-service"
+        }
+      },
+      "spec": {
+        "containers": [
+          {
+            "name": "notification-service",
+            "image": "padel/notification-service:local",
+            "ports": [
+              {
+                "containerPort": 8080
+              }
+            ],
+            "env": [
+              {
+                "name": "CONFIG_SERVER_URL",
+                "value": "http://config-server:8888"
+              },
+              {
+                "name": "EUREKA_URL",
+                "value": "http://discovery-server:8761/eureka/"
+              },
+              {
+                "name": "DB_HOST",
+                "value": "postgres"
+              },
+              {
+                "name": "DB_USER",
+                "value": "padel"
+              },
+              {
+                "name": "SPRING_DATASOURCE_PASSWORD",
+                "valueFrom": {
+                  "secretKeyRef": {
+                    "name": "padel-secrets",
+                    "key": "DB_PASSWORD"
+                  }
+                }
+              },
+              {
+                "name": "RABBIT_HOST",
+                "value": "rabbitmq"
+              },
+              {
+                "name": "RABBIT_USER",
+                "value": "padel"
+              },
+              {
+                "name": "SPRING_RABBITMQ_PASSWORD",
+                "valueFrom": {
+                  "secretKeyRef": {
+                    "name": "padel-secrets",
+                    "key": "RABBIT_PASSWORD"
+                  }
+                }
+              },
+              {
+                "name": "KEYCLOAK_ISSUER",
+                "value": "http://localhost:8081/realms/padel"
+              },
+              {
+                "name": "KEYCLOAK_JWK_URI",
+                "value": "http://keycloak:8080/realms/padel/protocol/openid-connect/certs"
+              },
+              {
+                "name": "OTEL_SERVICE_NAME",
+                "value": "notification-service"
+              },
+              {
+                "name": "SMTP_HOST",
+                "value": "mailpit"
+              },
+              {
+                "name": "SMTP_PORT",
+                "value": "1025"
+              }
+            ],
+            "resources": {
+              "requests": {
+                "cpu": "100m",
+                "memory": "256Mi"
+              },
+              "limits": {
+                "memory": "768Mi"
+              }
+            },
+            "volumeMounts": [
+              {
+                "mountPath": "/tmp",
+                "name": "runtime-tmp"
+              }
+            ],
+            "startupProbe": {
+              "httpGet": {
+                "path": "/actuator/health/liveness",
+                "port": 8080
+              },
+              "periodSeconds": 10,
+              "failureThreshold": 36
+            },
+            "livenessProbe": {
+              "httpGet": {
+                "path": "/actuator/health/liveness",
+                "port": 8080
+              },
+              "periodSeconds": 15
+            },
+            "readinessProbe": {
+              "httpGet": {
+                "path": "/actuator/health/readiness",
+                "port": 8080
+              },
+              "periodSeconds": 10
+            },
+            "securityContext": {
+              "capabilities": {
+                "drop": [
+                  "ALL"
+                ]
+              },
+              "allowPrivilegeEscalation": false,
+              "readOnlyRootFilesystem": true,
+              "runAsNonRoot": true,
+              "runAsUser": 10001
+            }
+          }
+        ],
+        "volumes": [
+          {
+            "name": "runtime-tmp",
+            "emptyDir": {
+              "sizeLimit": "128Mi"
+            }
+          }
+        ],
+        "securityContext": {
+          "seccompProfile": {
+            "type": "RuntimeDefault"
+          }
+        },
+        "automountServiceAccountToken": false
+      }
+    }
+  }
+}
+---
+
+{
+  "apiVersion": "v1",
+  "kind": "Service",
+  "metadata": {
+    "name": "web"
+  },
+  "spec": {
+    "selector": {
+      "app": "web"
+    },
+    "ports": [
+      {
+        "port": 80,
+        "targetPort": 8080
+      }
+    ]
+  }
+}
+---
+
+{
+  "apiVersion": "apps/v1",
+  "kind": "Deployment",
+  "metadata": {
+    "name": "web"
+  },
+  "spec": {
+    "replicas": 1,
+    "selector": {
+      "matchLabels": {
+        "app": "web"
+      }
+    },
+    "template": {
+      "metadata": {
+        "labels": {
+          "app": "web"
+        }
+      },
+      "spec": {
+        "containers": [
+          {
+            "name": "web",
+            "image": "padel/web:local",
+            "ports": [
+              {
+                "containerPort": 8080
+              }
+            ],
+            "env": [],
+            "resources": {
+              "requests": {
+                "cpu": "100m",
+                "memory": "32Mi"
+              },
+              "limits": {
+                "memory": "128Mi"
+              }
+            },
+            "volumeMounts": [
+              {
+                "name": "web-config",
+                "mountPath": "/usr/share/nginx/html/app-config.json",
+                "subPath": "app-config.json",
+                "readOnly": true
+              },
+              {
+                "mountPath": "/tmp",
+                "name": "runtime-tmp"
+              },
+              {
+                "mountPath": "/var/cache/nginx",
+                "name": "nginx-cache"
+              }
+            ],
+            "securityContext": {
+              "capabilities": {
+                "drop": [
+                  "ALL"
+                ]
+              },
+              "allowPrivilegeEscalation": false,
+              "readOnlyRootFilesystem": true,
+              "runAsNonRoot": true,
+              "runAsUser": 101
+            }
+          }
+        ],
+        "volumes": [
+          {
+            "name": "web-config",
+            "configMap": {
+              "name": "padel-web-config"
+            }
+          },
+          {
+            "name": "runtime-tmp",
+            "emptyDir": {
+              "sizeLimit": "128Mi"
+            }
+          },
+          {
+            "name": "nginx-cache",
+            "emptyDir": {
+              "sizeLimit": "64Mi"
+            }
+          }
+        ],
+        "securityContext": {
+          "fsGroup": 101,
+          "seccompProfile": {
+            "type": "RuntimeDefault"
+          }
+        },
+        "automountServiceAccountToken": false
+      }
+    }
+  }
+}
+---
+
+{
+  "apiVersion": "v1",
+  "kind": "Service",
+  "metadata": {
+    "name": "postgres"
+  },
+  "spec": {
+    "selector": {
+      "app": "postgres"
+    },
+    "ports": [
+      {
+        "port": 5432,
+        "targetPort": 5432
+      }
+    ]
+  }
+}
+---
+
+{
+  "apiVersion": "apps/v1",
+  "kind": "StatefulSet",
+  "metadata": {
+    "name": "postgres"
+  },
+  "spec": {
+    "serviceName": "postgres",
+    "replicas": 1,
+    "selector": {
+      "matchLabels": {
+        "app": "postgres"
+      }
+    },
+    "template": {
+      "metadata": {
+        "labels": {
+          "app": "postgres"
+        }
+      },
+      "spec": {
+        "containers": [
+          {
+            "name": "postgres",
+            "image": "postgres:17-alpine",
+            "ports": [
+              {
+                "containerPort": 5432
+              }
+            ],
+            "env": [
+              {
+                "name": "POSTGRES_USER",
+                "value": "padel"
+              },
+              {
+                "name": "POSTGRES_PASSWORD",
+                "valueFrom": {
+                  "secretKeyRef": {
+                    "name": "padel-secrets",
+                    "key": "DB_PASSWORD"
+                  }
+                }
+              },
+              {
+                "name": "POSTGRES_DB",
+                "value": "padel"
+              },
+              {
+                "name": "PGDATA",
+                "value": "/var/lib/postgresql/data/pgdata"
+              }
+            ],
+            "volumeMounts": [
+              {
+                "name": "data",
+                "mountPath": "/var/lib/postgresql/data"
+              },
+              {
+                "name": "init",
+                "mountPath": "/docker-entrypoint-initdb.d",
+                "readOnly": true
+              }
+            ],
+            "securityContext": {
+              "readOnlyRootFilesystem": false,
+              "allowPrivilegeEscalation": false
+            }
+          }
+        ],
+        "volumes": [
+          {
+            "name": "init",
+            "configMap": {
+              "name": "padel-postgres-init"
+            }
+          }
+        ],
+        "securityContext": {
+          "seccompProfile": {
+            "type": "RuntimeDefault"
+          }
+        },
+        "automountServiceAccountToken": false
+      }
+    },
+    "volumeClaimTemplates": [
+      {
+        "metadata": {
+          "name": "data"
+        },
+        "spec": {
+          "accessModes": [
+            "ReadWriteOnce"
+          ],
+          "resources": {
+            "requests": {
+              "storage": "2Gi"
+            }
+          }
+        }
+      }
+    ]
+  }
+}
+---
+
+{
+  "apiVersion": "v1",
+  "kind": "Service",
+  "metadata": {
+    "name": "rabbitmq"
+  },
+  "spec": {
+    "selector": {
+      "app": "rabbitmq"
+    },
+    "ports": [
+      {
+        "port": 5672,
+        "targetPort": 5672
+      }
+    ]
+  }
+}
+---
+
+{
+  "apiVersion": "apps/v1",
+  "kind": "StatefulSet",
+  "metadata": {
+    "name": "rabbitmq"
+  },
+  "spec": {
+    "serviceName": "rabbitmq",
+    "replicas": 1,
+    "selector": {
+      "matchLabels": {
+        "app": "rabbitmq"
+      }
+    },
+    "template": {
+      "metadata": {
+        "labels": {
+          "app": "rabbitmq"
+        }
+      },
+      "spec": {
+        "containers": [
+          {
+            "name": "rabbitmq",
+            "image": "rabbitmq:4.1-management-alpine",
+            "ports": [
+              {
+                "containerPort": 5672
+              }
+            ],
+            "env": [
+              {
+                "name": "RABBITMQ_DEFAULT_USER",
+                "value": "padel"
+              },
+              {
+                "name": "RABBITMQ_DEFAULT_PASS",
+                "valueFrom": {
+                  "secretKeyRef": {
+                    "name": "padel-secrets",
+                    "key": "RABBIT_PASSWORD"
+                  }
+                }
+              }
+            ],
+            "volumeMounts": [
+              {
+                "name": "data",
+                "mountPath": "/var/lib/rabbitmq"
+              }
+            ],
+            "securityContext": {
+              "readOnlyRootFilesystem": false,
+              "allowPrivilegeEscalation": false
+            }
+          }
+        ],
+        "volumes": [],
+        "securityContext": {
+          "seccompProfile": {
+            "type": "RuntimeDefault"
+          }
+        },
+        "automountServiceAccountToken": false
+      }
+    },
+    "volumeClaimTemplates": [
+      {
+        "metadata": {
+          "name": "data"
+        },
+        "spec": {
+          "accessModes": [
+            "ReadWriteOnce"
+          ],
+          "resources": {
+            "requests": {
+              "storage": "2Gi"
+            }
+          }
+        }
+      }
+    ]
+  }
+}
+---
+
+{
+  "apiVersion": "v1",
+  "kind": "Service",
+  "metadata": {
+    "name": "keycloak"
+  },
+  "spec": {
+    "selector": {
+      "app": "keycloak"
+    },
+    "ports": [
+      {
+        "port": 8080,
+        "targetPort": 8080
+      }
+    ]
+  }
+}
+---
+
+{
+  "apiVersion": "apps/v1",
+  "kind": "Deployment",
+  "metadata": {
+    "name": "keycloak"
+  },
+  "spec": {
+    "replicas": 1,
+    "selector": {
+      "matchLabels": {
+        "app": "keycloak"
+      }
+    },
+    "template": {
+      "metadata": {
+        "labels": {
+          "app": "keycloak"
+        }
+      },
+      "spec": {
+        "containers": [
+          {
+            "name": "keycloak",
+            "image": "quay.io/keycloak/keycloak:26.7.4",
+            "ports": [
+              {
+                "containerPort": 8080
+              }
+            ],
+            "env": [
+              {
+                "name": "KC_BOOTSTRAP_ADMIN_USERNAME",
+                "value": "admin"
+              },
+              {
+                "name": "KC_BOOTSTRAP_ADMIN_PASSWORD",
+                "valueFrom": {
+                  "secretKeyRef": {
+                    "name": "padel-secrets",
+                    "key": "KEYCLOAK_ADMIN_PASSWORD"
+                  }
+                }
+              },
+              {
+                "name": "KC_DB",
+                "value": "postgres"
+              },
+              {
+                "name": "KC_DB_URL",
+                "value": "jdbc:postgresql://postgres:5432/padel_identity"
+              },
+              {
+                "name": "KC_DB_USERNAME",
+                "value": "padel"
+              },
+              {
+                "name": "KC_DB_PASSWORD",
+                "valueFrom": {
+                  "secretKeyRef": {
+                    "name": "padel-secrets",
+                    "key": "DB_PASSWORD"
+                  }
+                }
+              },
+              {
+                "name": "KC_HOSTNAME",
+                "value": "http://localhost:8081"
+              },
+              {
+                "name": "KC_HTTP_ENABLED",
+                "value": "true"
+              }
+            ],
+            "resources": {
+              "requests": {
+                "cpu": "100m",
+                "memory": "256Mi"
+              },
+              "limits": {
+                "memory": "768Mi"
+              }
+            },
+            "volumeMounts": [
+              {
+                "name": "realm",
+                "mountPath": "/opt/keycloak/data/import",
+                "readOnly": true
+              },
+              {
+                "name": "login-theme",
+                "mountPath": "/opt/keycloak/themes/padel",
+                "readOnly": true
+              }
+            ],
+            "args": [
+              "start-dev",
+              "--import-realm"
+            ],
+            "securityContext": {
+              "readOnlyRootFilesystem": false,
+              "allowPrivilegeEscalation": false
+            }
+          }
+        ],
+        "volumes": [
+          {
+            "name": "realm",
+            "configMap": {
+              "name": "padel-realm"
+            }
+          },
+          {
+            "name": "login-theme",
+            "projected": {
+              "sources": [
+                {
+                  "configMap": {
+                    "name": "padel-login-theme",
+                    "items": [
+                      {
+                        "key": "padel-theme.properties",
+                        "path": "login/theme.properties"
+                      },
+                      {
+                        "key": "padel-theme.css",
+                        "path": "login/resources/css/padel.css"
+                      },
+                      {
+                        "key": "padel-court.svg",
+                        "path": "login/resources/img/court.svg"
+                      }
+                    ]
+                  }
+                },
+                {
+                  "secret": {
+                    "name": "padel-login-messages",
+                    "items": [
+                      {
+                        "key": "padel-messages-el.properties",
+                        "path": "login/messages/messages_el.properties"
+                      }
+                    ]
+                  }
+                }
+              ]
+            }
+          }
+        ],
+        "securityContext": {
+          "seccompProfile": {
+            "type": "RuntimeDefault"
+          }
+        },
+        "automountServiceAccountToken": false
+      }
+    }
+  }
+}
+---
+
+{
+  "apiVersion": "v1",
+  "kind": "Service",
+  "metadata": {
+    "name": "mailpit"
+  },
+  "spec": {
+    "selector": {
+      "app": "mailpit"
+    },
+    "ports": [
+      {
+        "port": 1025,
+        "targetPort": 1025
+      }
+    ]
+  }
+}
+---
+
+{
+  "apiVersion": "apps/v1",
+  "kind": "Deployment",
+  "metadata": {
+    "name": "mailpit"
+  },
+  "spec": {
+    "replicas": 1,
+    "selector": {
+      "matchLabels": {
+        "app": "mailpit"
+      }
+    },
+    "template": {
+      "metadata": {
+        "labels": {
+          "app": "mailpit"
+        }
+      },
+      "spec": {
+        "containers": [
+          {
+            "name": "mailpit",
+            "image": "axllent/mailpit:v1.27",
+            "ports": [
+              {
+                "containerPort": 1025
+              }
+            ],
+            "env": [],
+            "resources": {
+              "requests": {
+                "cpu": "100m",
+                "memory": "256Mi"
+              },
+              "limits": {
+                "memory": "768Mi"
+              }
+            },
+            "volumeMounts": [
+              {
+                "mountPath": "/tmp",
+                "name": "runtime-tmp"
+              }
+            ],
+            "securityContext": {
+              "capabilities": {
+                "drop": [
+                  "ALL"
+                ]
+              },
+              "allowPrivilegeEscalation": false,
+              "readOnlyRootFilesystem": true,
+              "runAsNonRoot": true,
+              "runAsUser": 1000
+            }
+          }
+        ],
+        "volumes": [
+          {
+            "name": "runtime-tmp",
+            "emptyDir": {
+              "sizeLimit": "128Mi"
+            }
+          }
+        ],
+        "securityContext": {
+          "seccompProfile": {
+            "type": "RuntimeDefault"
+          }
+        },
+        "automountServiceAccountToken": false
+      }
+    }
+  }
+}

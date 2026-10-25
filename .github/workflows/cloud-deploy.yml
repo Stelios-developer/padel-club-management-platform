@@ -1,0 +1,71 @@
+name: Deploy signed images to AWS demo
+on:
+  workflow_dispatch:
+    inputs:
+      release_run_id:
+        description: Successful Publish verified container images run ID
+        required: true
+      source_commit:
+        description: Exact source commit of that release
+        required: true
+permissions:
+  contents: read
+concurrency:
+  group: cloud-deploy
+  cancel-in-progress: false
+jobs:
+  deploy:
+    if: github.ref == format('refs/heads/{0}', github.event.repository.default_branch) && vars.CLOUD_DEPLOY_ENABLED == 'true'
+    environment: cloud-deploy
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    permissions:
+      contents: read
+      attestations: read
+      id-token: write
+    env:
+      GH_TOKEN: ${{ github.token }}
+      RELEASE_RUN_ID: ${{ inputs.release_run_id }}
+      SOURCE_COMMIT: ${{ inputs.source_commit }}
+      ARTIFACT_BUCKET: ${{ vars.CLOUD_ARTIFACT_BUCKET }}
+      ARTIFACT_KMS_KEY: ${{ vars.CLOUD_ARTIFACT_KMS_KEY_ARN }}
+      INSTANCE_ID: ${{ vars.CLOUD_INSTANCE_ID }}
+      DEPLOY_DOCUMENT: ${{ vars.CLOUD_DEPLOY_DOCUMENT }}
+      DEPLOY_LOG_GROUP: ${{ vars.CLOUD_DEPLOY_LOG_GROUP }}
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with: { persist-credentials: false }
+      - uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7.0.0
+        with: { node-version: "24" }
+      - name: Collect and reverify the complete signed release before AWS access
+        run: |
+          set -euo pipefail
+          [[ "$RELEASE_RUN_ID" =~ ^[0-9]+$ ]]
+          [[ "$SOURCE_COMMIT" =~ ^[a-f0-9]{40}$ ]]
+          mkdir -p .runtime/cloud/release
+          gh api "repos/$GITHUB_REPOSITORY/actions/runs/$RELEASE_RUN_ID" > .runtime/cloud/release-run.json
+          gh run download "$RELEASE_RUN_ID" --repo "$GITHUB_REPOSITORY" --pattern 'release-*' --dir .runtime/cloud/release
+          node scripts/cloud-release.mjs --artifacts .runtime/cloud/release --run-metadata .runtime/cloud/release-run.json --repo "$GITHUB_REPOSITORY" --revision "$SOURCE_COMMIT" --output .runtime/cloud/manifest.json > .runtime/cloud/manifest-summary.json
+      - uses: aws-actions/configure-aws-credentials@e1253824e5c10ff9df46874f81ed3ec929e19cfd # v6.3.0
+        with:
+          role-to-assume: ${{ vars.AWS_DEPLOY_ROLE_ARN }}
+          aws-region: ${{ vars.AWS_REGION }}
+          allowed-account-ids: ${{ vars.AWS_ACCOUNT_ID }}
+          role-duration-seconds: 1800
+          mask-aws-account-id: true
+      - name: Upload only the manifest and invoke the fixed deployment document
+        run: |
+          set -euo pipefail
+          aws s3api put-object --bucket "$ARTIFACT_BUCKET" --key "releases/$SOURCE_COMMIT/manifest.json" --body .runtime/cloud/manifest.json --server-side-encryption aws:kms --ssekms-key-id "$ARTIFACT_KMS_KEY" > /dev/null
+          jq -n --arg revision "$SOURCE_COMMIT" --arg digest "$(jq -r .sha256 .runtime/cloud/manifest-summary.json)" '{revision:[$revision],manifestDigest:[$digest]}' > .runtime/cloud/parameters.json
+          command_id=$(aws ssm send-command --document-name "$DEPLOY_DOCUMENT" --instance-ids "$INSTANCE_ID" --parameters file://.runtime/cloud/parameters.json --cloud-watch-output-config "CloudWatchOutputEnabled=true,CloudWatchLogGroupName=$DEPLOY_LOG_GROUP" --query Command.CommandId --output text)
+          for attempt in $(seq 1 90); do
+            status=$(aws ssm get-command-invocation --command-id "$command_id" --instance-id "$INSTANCE_ID" --query Status --output text 2>/dev/null || echo Pending)
+            case "$status" in
+              Success) exit 0 ;;
+              Failed|Cancelled|TimedOut|Cancelling) echo "Deployment failed: $status"; exit 1 ;;
+            esac
+            sleep 10
+          done
+          echo 'Deployment result timed out; inspect the retained CloudWatch logs.'
+          exit 1

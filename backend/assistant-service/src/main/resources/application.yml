@@ -1,0 +1,76 @@
+server:
+  port: ${PORT:8080}
+spring:
+  application:
+    name: assistant-service
+  config:
+    import: optional:configtree:/run/secrets/
+  datasource:
+    url: ${AI_DB_URL:jdbc:postgresql://localhost:5544/padel_assistant}
+    username: padel_assistant
+    hikari:
+      maximum-pool-size: 3
+      connection-timeout: 5000
+  jdbc:
+    template:
+      query-timeout: 5s
+  ai:
+    model:
+      chat: ollama
+      embedding: ollama
+    ollama:
+      base-url: ${OLLAMA_URL:http://localhost:11435}
+      init:
+        pull-model-strategy: never
+      chat:
+        model: ${AI_CHAT_MODEL:qwen3:0.6b}
+        keep-alive: 0s
+        temperature: 0
+        num-ctx: 4096
+        num-predict: 256
+        num-thread: 2
+      embedding:
+        model: ${AI_EMBEDDING_MODEL:embeddinggemma:300m}
+        keep-alive: 0s
+        truncate: false
+        options:
+          num-thread: 2
+    vectorstore:
+      pgvector:
+        dimensions: 768
+        index-type: NONE
+        distance-type: COSINE_DISTANCE
+        initialize-schema: false
+        remove-existing-vector-store-table: false
+        max-document-batch-size: 32
+eureka:
+  client:
+    service-url:
+      defaultZone: ${EUREKA_URL:http://localhost:8761/eureka/}
+  instance:
+    prefer-ip-address: true
+padel:
+  assistant:
+    knowledge-directory: ${AI_KNOWLEDGE_DIRECTORY:infra/ai/knowledge}
+    knowledge-manifest: ${AI_KNOWLEDGE_MANIFEST:.runtime/ai-local/knowledge-manifest.json}
+    booking-base-url: ${BOOKING_URL:http://localhost:8080}
+    auto-index: ${AI_AUTO_INDEX:true}
+  security:
+    issuer: ${KEYCLOAK_ISSUER:http://localhost:8081/realms/padel}
+    jwk-uri: ${KEYCLOAK_JWK_URI:http://localhost:8081/realms/padel/protocol/openid-connect/certs}
+management:
+  metrics:
+    distribution:
+      percentiles-histogram:
+        padel.assistant.duration: true
+      slo:
+        padel.assistant.duration: 5s,10s,15s,25s
+  endpoints:
+    web:
+      exposure:
+        include: health,info,prometheus
+  endpoint:
+    health:
+      show-details: never
+      probes:
+        enabled: true

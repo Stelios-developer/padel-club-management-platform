@@ -1,0 +1,1194 @@
+{
+  "schemaVersion": 1,
+  "scannedAt": "2026-10-25T12:17:17.9865334+02:00",
+  "artifact": ".",
+  "gate": "PASSED",
+  "findings": [
+    {
+      "kind": "vulnerability",
+      "id": "CVE-2026-64607",
+      "target": "backend/access-service/pom.xml",
+      "severity": "MEDIUM",
+      "resource": null,
+      "package": "org.apache.httpcomponents.client5:httpclient5",
+      "version": "5.5.2",
+      "fixedVersion": "5.6.3",
+      "blocks": false,
+      "exception": null
+    },
+    {
+      "kind": "vulnerability",
+      "id": "CVE-2020-13956",
+      "target": "backend/access-service/pom.xml",
+      "severity": "MEDIUM",
+      "resource": null,
+      "package": "org.apache.httpcomponents:httpclient",
+      "version": "4.5.3",
+      "fixedVersion": "4.5.13, 5.0.3",
+      "blocks": false,
+      "exception": null
+    },
+    {
+      "kind": "vulnerability",
+      "id": "CVE-2026-64607",
+      "target": "backend/api-gateway/pom.xml",
+      "severity": "MEDIUM",
+      "resource": null,
+      "package": "org.apache.httpcomponents.client5:httpclient5",
+      "version": "5.5.2",
+      "fixedVersion": "5.6.3",
+      "blocks": false,
+      "exception": null
+    },
+    {
+      "kind": "vulnerability",
+      "id": "CVE-2020-13956",
+      "target": "backend/api-gateway/pom.xml",
+      "severity": "MEDIUM",
+      "resource": null,
+      "package": "org.apache.httpcomponents:httpclient",
+      "version": "4.5.3",
+      "fixedVersion": "4.5.13, 5.0.3",
+      "blocks": false,
+      "exception": null
+    },
+    {
+      "kind": "vulnerability",
+      "id": "CVE-2026-64607",
+      "target": "backend/assistant-service/pom.xml",
+      "severity": "MEDIUM",
+      "resource": null,
+      "package": "org.apache.httpcomponents.client5:httpclient5",
+      "version": "5.5.2",
+      "fixedVersion": "5.6.3",
+      "blocks": false,
+      "exception": null
+    },
+    {
+      "kind": "vulnerability",
+      "id": "CVE-2020-13956",
+      "target": "backend/assistant-service/pom.xml",
+      "severity": "MEDIUM",
+      "resource": null,
+      "package": "org.apache.httpcomponents:httpclient",
+      "version": "4.5.3",
+      "fixedVersion": "4.5.13, 5.0.3",
+      "blocks": false,
+      "exception": null
+    },
+    {
+      "kind": "vulnerability",
+      "id": "CVE-2026-64607",
+      "target": "backend/booking-service/pom.xml",
+      "severity": "MEDIUM",
+      "resource": null,
+      "package": "org.apache.httpcomponents.client5:httpclient5",
+      "version": "5.5.2",
+      "fixedVersion": "5.6.3",
+      "blocks": false,
+      "exception": null
+    },
+    {
+      "kind": "vulnerability",
+      "id": "CVE-2020-13956",
+      "target": "backend/booking-service/pom.xml",
+      "severity": "MEDIUM",
+      "resource": null,
+      "package": "org.apache.httpcomponents:httpclient",
+      "version": "4.5.3",
+      "fixedVersion": "4.5.13, 5.0.3",
+      "blocks": false,
+      "exception": null
+    },
+    {
+      "kind": "vulnerability",
+      "id": "CVE-2026-106121",
+      "target": "backend/common/pom.xml",
+      "severity": "MEDIUM",
+      "resource": null,
+      "package": "com.rabbitmq:amqp-client",
+      "version": "5.34.0",
+      "fixedVersion": "5.36.1",
+      "blocks": false,
+      "exception": null
+    },
+    {
+      "kind": "vulnerability",
+      "id": "CVE-2026-106122",
+      "target": "backend/common/pom.xml",
+      "severity": "MEDIUM",
+      "resource": null,
+      "package": "com.rabbitmq:amqp-client",
+      "version": "5.34.0",
+      "fixedVersion": "5.36.0",
+      "blocks": false,
+      "exception": null
+    },
+    {
+      "kind": "vulnerability",
+      "id": "CVE-2026-106123",
+      "target": "backend/common/pom.xml",
+      "severity": "MEDIUM",
+      "resource": null,
+      "package": "com.rabbitmq:amqp-client",
+      "version": "5.34.0",
+      "fixedVersion": "5.35.0",
+      "blocks": false,
+      "exception": null
+    },
+    {
+      "kind": "vulnerability",
+      "id": "CVE-2026-64607",
+      "target": "backend/config-server/pom.xml",
+      "severity": "MEDIUM",
+      "resource": null,
+      "package": "org.apache.httpcomponents.client5:httpclient5",
+      "version": "5.5.2",
+      "fixedVersion": "5.6.3",
+      "blocks": false,
+      "exception": null
+    },
+    {
+      "kind": "vulnerability",
+      "id": "CVE-2026-64607",
+      "target": "backend/discovery-server/pom.xml",
+      "severity": "MEDIUM",
+      "resource": null,
+      "package": "org.apache.httpcomponents.client5:httpclient5",
+      "version": "5.5.2",
+      "fixedVersion": "5.6.3",
+      "blocks": false,
+      "exception": null
+    },
+    {
+      "kind": "vulnerability",
+      "id": "CVE-2020-13956",
+      "target": "backend/discovery-server/pom.xml",
+      "severity": "MEDIUM",
+      "resource": null,
+      "package": "org.apache.httpcomponents:httpclient",
+      "version": "4.5.3",
+      "fixedVersion": "4.5.13, 5.0.3",
+      "blocks": false,
+      "exception": null
+    },
+    {
+      "kind": "vulnerability",
+      "id": "CVE-2026-64607",
+      "target": "backend/member-service/pom.xml",
+      "severity": "MEDIUM",
+      "resource": null,
+      "package": "org.apache.httpcomponents.client5:httpclient5",
+      "version": "5.5.2",
+      "fixedVersion": "5.6.3",
+      "blocks": false,
+      "exception": null
+    },
+    {
+      "kind": "vulnerability",
+      "id": "CVE-2020-13956",
+      "target": "backend/member-service/pom.xml",
+      "severity": "MEDIUM",
+      "resource": null,
+      "package": "org.apache.httpcomponents:httpclient",
+      "version": "4.5.3",
+      "fixedVersion": "4.5.13, 5.0.3",
+      "blocks": false,
+      "exception": null
+    },
+    {
+      "kind": "vulnerability",
+      "id": "CVE-2026-64607",
+      "target": "backend/notification-service/pom.xml",
+      "severity": "MEDIUM",
+      "resource": null,
+      "package": "org.apache.httpcomponents.client5:httpclient5",
+      "version": "5.5.2",
+      "fixedVersion": "5.6.3",
+      "blocks": false,
+      "exception": null
+    },
+    {
+      "kind": "vulnerability",
+      "id": "CVE-2020-13956",
+      "target": "backend/notification-service/pom.xml",
+      "severity": "MEDIUM",
+      "resource": null,
+      "package": "org.apache.httpcomponents:httpclient",
+      "version": "4.5.3",
+      "fixedVersion": "4.5.13, 5.0.3",
+      "blocks": false,
+      "exception": null
+    },
+    {
+      "kind": "vulnerability",
+      "id": "CVE-2026-64607",
+      "target": "backend/subscription-service/pom.xml",
+      "severity": "MEDIUM",
+      "resource": null,
+      "package": "org.apache.httpcomponents.client5:httpclient5",
+      "version": "5.5.2",
+      "fixedVersion": "5.6.3",
+      "blocks": false,
+      "exception": null
+    },
+    {
+      "kind": "vulnerability",
+      "id": "CVE-2020-13956",
+      "target": "backend/subscription-service/pom.xml",
+      "severity": "MEDIUM",
+      "resource": null,
+      "package": "org.apache.httpcomponents:httpclient",
+      "version": "4.5.3",
+      "fixedVersion": "4.5.13, 5.0.3",
+      "blocks": false,
+      "exception": null
+    },
+    {
+      "kind": "vulnerability",
+      "id": "CVE-2026-110180",
+      "target": "evals/package-lock.json",
+      "severity": "MEDIUM",
+      "resource": null,
+      "package": "fast-uri",
+      "version": "3.1.8",
+      "fixedVersion": "2.4.8, 3.1.9, 4.2.3",
+      "blocks": false,
+      "exception": null
+    },
+    {
+      "kind": "vulnerability",
+      "id": "CVE-2026-110306",
+      "target": "evals/package-lock.json",
+      "severity": "MEDIUM",
+      "resource": null,
+      "package": "fast-uri",
+      "version": "3.1.8",
+      "fixedVersion": "2.4.8, 3.1.9, 4.2.3",
+      "blocks": false,
+      "exception": null
+    },
+    {
+      "kind": "vulnerability",
+      "id": "CVE-2026-110095",
+      "target": "evals/package-lock.json",
+      "severity": "LOW",
+      "resource": null,
+      "package": "fast-uri",
+      "version": "3.1.8",
+      "fixedVersion": "2.4.8, 3.1.9, 4.2.3",
+      "blocks": false,
+      "exception": null
+    },
+    {
+      "kind": "vulnerability",
+      "id": "CVE-2026-110725",
+      "target": "evals/package-lock.json",
+      "severity": "LOW",
+      "resource": null,
+      "package": "fast-uri",
+      "version": "3.1.8",
+      "fixedVersion": "2.4.8, 3.1.9, 4.2.3",
+      "blocks": false,
+      "exception": null
+    },
+    {
+      "kind": "vulnerability",
+      "id": "CVE-2026-111997",
+      "target": "evals/package-lock.json",
+      "severity": "MEDIUM",
+      "resource": null,
+      "package": "ip-address",
+      "version": "10.7.3",
+      "fixedVersion": "10.7.4",
+      "blocks": false,
+      "exception": null
+    },
+    {
+      "kind": "vulnerability",
+      "id": "CVE-2026-106121",
+      "target": "pom.xml",
+      "severity": "MEDIUM",
+      "resource": null,
+      "package": "com.rabbitmq:amqp-client",
+      "version": "5.34.0",
+      "fixedVersion": "5.36.1",
+      "blocks": false,
+      "exception": null
+    },
+    {
+      "kind": "vulnerability",
+      "id": "CVE-2026-106122",
+      "target": "pom.xml",
+      "severity": "MEDIUM",
+      "resource": null,
+      "package": "com.rabbitmq:amqp-client",
+      "version": "5.34.0",
+      "fixedVersion": "5.36.0",
+      "blocks": false,
+      "exception": null
+    },
+    {
+      "kind": "vulnerability",
+      "id": "CVE-2026-106123",
+      "target": "pom.xml",
+      "severity": "MEDIUM",
+      "resource": null,
+      "package": "com.rabbitmq:amqp-client",
+      "version": "5.34.0",
+      "fixedVersion": "5.35.0",
+      "blocks": false,
+      "exception": null
+    },
+    {
+      "kind": "vulnerability",
+      "id": "CVE-2026-64607",
+      "target": "pom.xml",
+      "severity": "MEDIUM",
+      "resource": null,
+      "package": "org.apache.httpcomponents.client5:httpclient5",
+      "version": "5.5.2",
+      "fixedVersion": "5.6.3",
+      "blocks": false,
+      "exception": null
+    },
+    {
+      "kind": "vulnerability",
+      "id": "CVE-2026-64607",
+      "target": "pom.xml",
+      "severity": "MEDIUM",
+      "resource": null,
+      "package": "org.apache.httpcomponents.client5:httpclient5",
+      "version": "5.5.2",
+      "fixedVersion": "5.6.3",
+      "blocks": false,
+      "exception": null
+    },
+    {
+      "kind": "vulnerability",
+      "id": "CVE-2026-64607",
+      "target": "pom.xml",
+      "severity": "MEDIUM",
+      "resource": null,
+      "package": "org.apache.httpcomponents.client5:httpclient5",
+      "version": "5.5.2",
+      "fixedVersion": "5.6.3",
+      "blocks": false,
+      "exception": null
+    },
+    {
+      "kind": "vulnerability",
+      "id": "CVE-2026-64607",
+      "target": "pom.xml",
+      "severity": "MEDIUM",
+      "resource": null,
+      "package": "org.apache.httpcomponents.client5:httpclient5",
+      "version": "5.5.2",
+      "fixedVersion": "5.6.3",
+      "blocks": false,
+      "exception": null
+    },
+    {
+      "kind": "vulnerability",
+      "id": "CVE-2026-64607",
+      "target": "pom.xml",
+      "severity": "MEDIUM",
+      "resource": null,
+      "package": "org.apache.httpcomponents.client5:httpclient5",
+      "version": "5.5.2",
+      "fixedVersion": "5.6.3",
+      "blocks": false,
+      "exception": null
+    },
+    {
+      "kind": "vulnerability",
+      "id": "CVE-2026-64607",
+      "target": "pom.xml",
+      "severity": "MEDIUM",
+      "resource": null,
+      "package": "org.apache.httpcomponents.client5:httpclient5",
+      "version": "5.5.2",
+      "fixedVersion": "5.6.3",
+      "blocks": false,
+      "exception": null
+    },
+    {
+      "kind": "vulnerability",
+      "id": "CVE-2026-64607",
+      "target": "pom.xml",
+      "severity": "MEDIUM",
+      "resource": null,
+      "package": "org.apache.httpcomponents.client5:httpclient5",
+      "version": "5.5.2",
+      "fixedVersion": "5.6.3",
+      "blocks": false,
+      "exception": null
+    },
+    {
+      "kind": "vulnerability",
+      "id": "CVE-2026-64607",
+      "target": "pom.xml",
+      "severity": "MEDIUM",
+      "resource": null,
+      "package": "org.apache.httpcomponents.client5:httpclient5",
+      "version": "5.5.2",
+      "fixedVersion": "5.6.3",
+      "blocks": false,
+      "exception": null
+    },
+    {
+      "kind": "vulnerability",
+      "id": "CVE-2026-64607",
+      "target": "pom.xml",
+      "severity": "MEDIUM",
+      "resource": null,
+      "package": "org.apache.httpcomponents.client5:httpclient5",
+      "version": "5.5.2",
+      "fixedVersion": "5.6.3",
+      "blocks": false,
+      "exception": null
+    },
+    {
+      "kind": "vulnerability",
+      "id": "CVE-2020-13956",
+      "target": "pom.xml",
+      "severity": "MEDIUM",
+      "resource": null,
+      "package": "org.apache.httpcomponents:httpclient",
+      "version": "4.5.3",
+      "fixedVersion": "4.5.13, 5.0.3",
+      "blocks": false,
+      "exception": null
+    },
+    {
+      "kind": "vulnerability",
+      "id": "CVE-2020-13956",
+      "target": "pom.xml",
+      "severity": "MEDIUM",
+      "resource": null,
+      "package": "org.apache.httpcomponents:httpclient",
+      "version": "4.5.3",
+      "fixedVersion": "4.5.13, 5.0.3",
+      "blocks": false,
+      "exception": null
+    },
+    {
+      "kind": "vulnerability",
+      "id": "CVE-2020-13956",
+      "target": "pom.xml",
+      "severity": "MEDIUM",
+      "resource": null,
+      "package": "org.apache.httpcomponents:httpclient",
+      "version": "4.5.3",
+      "fixedVersion": "4.5.13, 5.0.3",
+      "blocks": false,
+      "exception": null
+    },
+    {
+      "kind": "vulnerability",
+      "id": "CVE-2020-13956",
+      "target": "pom.xml",
+      "severity": "MEDIUM",
+      "resource": null,
+      "package": "org.apache.httpcomponents:httpclient",
+      "version": "4.5.3",
+      "fixedVersion": "4.5.13, 5.0.3",
+      "blocks": false,
+      "exception": null
+    },
+    {
+      "kind": "vulnerability",
+      "id": "CVE-2020-13956",
+      "target": "pom.xml",
+      "severity": "MEDIUM",
+      "resource": null,
+      "package": "org.apache.httpcomponents:httpclient",
+      "version": "4.5.3",
+      "fixedVersion": "4.5.13, 5.0.3",
+      "blocks": false,
+      "exception": null
+    },
+    {
+      "kind": "vulnerability",
+      "id": "CVE-2020-13956",
+      "target": "pom.xml",
+      "severity": "MEDIUM",
+      "resource": null,
+      "package": "org.apache.httpcomponents:httpclient",
+      "version": "4.5.3",
+      "fixedVersion": "4.5.13, 5.0.3",
+      "blocks": false,
+      "exception": null
+    },
+    {
+      "kind": "vulnerability",
+      "id": "CVE-2020-13956",
+      "target": "pom.xml",
+      "severity": "MEDIUM",
+      "resource": null,
+      "package": "org.apache.httpcomponents:httpclient",
+      "version": "4.5.3",
+      "fixedVersion": "4.5.13, 5.0.3",
+      "blocks": false,
+      "exception": null
+    },
+    {
+      "kind": "vulnerability",
+      "id": "CVE-2020-13956",
+      "target": "pom.xml",
+      "severity": "MEDIUM",
+      "resource": null,
+      "package": "org.apache.httpcomponents:httpclient",
+      "version": "4.5.3",
+      "fixedVersion": "4.5.13, 5.0.3",
+      "blocks": false,
+      "exception": null
+    },
+    {
+      "kind": "misconfiguration",
+      "id": "DS-0026",
+      "target": "Dockerfile",
+      "severity": "LOW",
+      "resource": null,
+      "blocks": false,
+      "exception": null
+    },
+    {
+      "kind": "misconfiguration",
+      "id": "DS-0026",
+      "target": "backend/assistant-service/Dockerfile",
+      "severity": "LOW",
+      "resource": null,
+      "blocks": false,
+      "exception": null
+    },
+    {
+      "kind": "misconfiguration",
+      "id": "AWS-0089",
+      "target": "infra/cloud/bootstrap/main.tf",
+      "severity": "LOW",
+      "resource": "aws_s3_bucket.state",
+      "blocks": false,
+      "exception": null
+    },
+    {
+      "kind": "misconfiguration",
+      "id": "AWS-0089",
+      "target": "infra/cloud/demo/main.tf",
+      "severity": "LOW",
+      "resource": "aws_s3_bucket.artifacts",
+      "blocks": false,
+      "exception": null
+    },
+    {
+      "kind": "misconfiguration",
+      "id": "AWS-0104",
+      "target": "infra/cloud/demo/main.tf",
+      "severity": "CRITICAL",
+      "resource": "aws_vpc_security_group_egress_rule.https",
+      "blocks": false,
+      "exception": {
+        "owner": "Padel maintainers",
+        "reason": "Undeployed single-host demo scaffold. TCP 443 egress reaches dynamic AWS/GitHub/registry/package/ACME endpoints with normal TLS validation; static CDN CIDRs are not a reliable allowlist. All other generic internet ports are denied and SMTP requires explicit destination CIDRs. Review destination-aware egress proxy/VPC endpoints and associated cost before a real cloud rollout. This accepts a destination restriction gap, not unrestricted protocols or inbound management access. See docs/CLOUD.md.",
+        "expires": "2026-11-04"
+      }
+    },
+    {
+      "kind": "misconfiguration",
+      "id": "DS-0026",
+      "target": "infra/performance/Dockerfile",
+      "severity": "LOW",
+      "resource": null,
+      "blocks": false,
+      "exception": null
+    },
+    {
+      "kind": "misconfiguration",
+      "id": "KSV-0003",
+      "target": "infra/k8s (Kustomize rendered with fixture secrets)",
+      "severity": "LOW",
+      "resource": "Deployment/keycloak",
+      "blocks": false,
+      "exception": null
+    },
+    {
+      "kind": "misconfiguration",
+      "id": "KSV-0003",
+      "target": "infra/k8s (Kustomize rendered with fixture secrets)",
+      "severity": "LOW",
+      "resource": "StatefulSet/postgres",
+      "blocks": false,
+      "exception": null
+    },
+    {
+      "kind": "misconfiguration",
+      "id": "KSV-0003",
+      "target": "infra/k8s (Kustomize rendered with fixture secrets)",
+      "severity": "LOW",
+      "resource": "StatefulSet/rabbitmq",
+      "blocks": false,
+      "exception": null
+    },
+    {
+      "kind": "misconfiguration",
+      "id": "KSV-0004",
+      "target": "infra/k8s (Kustomize rendered with fixture secrets)",
+      "severity": "LOW",
+      "resource": null,
+      "blocks": false,
+      "exception": null
+    },
+    {
+      "kind": "misconfiguration",
+      "id": "KSV-0004",
+      "target": "infra/k8s (Kustomize rendered with fixture secrets)",
+      "severity": "LOW",
+      "resource": null,
+      "blocks": false,
+      "exception": null
+    },
+    {
+      "kind": "misconfiguration",
+      "id": "KSV-0004",
+      "target": "infra/k8s (Kustomize rendered with fixture secrets)",
+      "severity": "LOW",
+      "resource": null,
+      "blocks": false,
+      "exception": null
+    },
+    {
+      "kind": "misconfiguration",
+      "id": "KSV-0011",
+      "target": "infra/k8s (Kustomize rendered with fixture secrets)",
+      "severity": "LOW",
+      "resource": "Deployment/access-service",
+      "blocks": false,
+      "exception": null
+    },
+    {
+      "kind": "misconfiguration",
+      "id": "KSV-0011",
+      "target": "infra/k8s (Kustomize rendered with fixture secrets)",
+      "severity": "LOW",
+      "resource": "Deployment/api-gateway",
+      "blocks": false,
+      "exception": null
+    },
+    {
+      "kind": "misconfiguration",
+      "id": "KSV-0011",
+      "target": "infra/k8s (Kustomize rendered with fixture secrets)",
+      "severity": "LOW",
+      "resource": "Deployment/booking-service",
+      "blocks": false,
+      "exception": null
+    },
+    {
+      "kind": "misconfiguration",
+      "id": "KSV-0011",
+      "target": "infra/k8s (Kustomize rendered with fixture secrets)",
+      "severity": "LOW",
+      "resource": "Deployment/config-server",
+      "blocks": false,
+      "exception": null
+    },
+    {
+      "kind": "misconfiguration",
+      "id": "KSV-0011",
+      "target": "infra/k8s (Kustomize rendered with fixture secrets)",
+      "severity": "LOW",
+      "resource": "Deployment/discovery-server",
+      "blocks": false,
+      "exception": null
+    },
+    {
+      "kind": "misconfiguration",
+      "id": "KSV-0011",
+      "target": "infra/k8s (Kustomize rendered with fixture secrets)",
+      "severity": "LOW",
+      "resource": "Deployment/keycloak",
+      "blocks": false,
+      "exception": null
+    },
+    {
+      "kind": "misconfiguration",
+      "id": "KSV-0011",
+      "target": "infra/k8s (Kustomize rendered with fixture secrets)",
+      "severity": "LOW",
+      "resource": "Deployment/mailpit",
+      "blocks": false,
+      "exception": null
+    },
+    {
+      "kind": "misconfiguration",
+      "id": "KSV-0011",
+      "target": "infra/k8s (Kustomize rendered with fixture secrets)",
+      "severity": "LOW",
+      "resource": "Deployment/member-service",
+      "blocks": false,
+      "exception": null
+    },
+    {
+      "kind": "misconfiguration",
+      "id": "KSV-0011",
+      "target": "infra/k8s (Kustomize rendered with fixture secrets)",
+      "severity": "LOW",
+      "resource": "Deployment/notification-service",
+      "blocks": false,
+      "exception": null
+    },
+    {
+      "kind": "misconfiguration",
+      "id": "KSV-0011",
+      "target": "infra/k8s (Kustomize rendered with fixture secrets)",
+      "severity": "LOW",
+      "resource": "StatefulSet/postgres",
+      "blocks": false,
+      "exception": null
+    },
+    {
+      "kind": "misconfiguration",
+      "id": "KSV-0011",
+      "target": "infra/k8s (Kustomize rendered with fixture secrets)",
+      "severity": "LOW",
+      "resource": "StatefulSet/rabbitmq",
+      "blocks": false,
+      "exception": null
+    },
+    {
+      "kind": "misconfiguration",
+      "id": "KSV-0011",
+      "target": "infra/k8s (Kustomize rendered with fixture secrets)",
+      "severity": "LOW",
+      "resource": "Deployment/subscription-service",
+      "blocks": false,
+      "exception": null
+    },
+    {
+      "kind": "misconfiguration",
+      "id": "KSV-0011",
+      "target": "infra/k8s (Kustomize rendered with fixture secrets)",
+      "severity": "LOW",
+      "resource": "Deployment/web",
+      "blocks": false,
+      "exception": null
+    },
+    {
+      "kind": "misconfiguration",
+      "id": "KSV-0012",
+      "target": "infra/k8s (Kustomize rendered with fixture secrets)",
+      "severity": "MEDIUM",
+      "resource": "Deployment/keycloak",
+      "blocks": false,
+      "exception": null
+    },
+    {
+      "kind": "misconfiguration",
+      "id": "KSV-0012",
+      "target": "infra/k8s (Kustomize rendered with fixture secrets)",
+      "severity": "MEDIUM",
+      "resource": "StatefulSet/postgres",
+      "blocks": false,
+      "exception": null
+    },
+    {
+      "kind": "misconfiguration",
+      "id": "KSV-0012",
+      "target": "infra/k8s (Kustomize rendered with fixture secrets)",
+      "severity": "MEDIUM",
+      "resource": "StatefulSet/rabbitmq",
+      "blocks": false,
+      "exception": null
+    },
+    {
+      "kind": "misconfiguration",
+      "id": "KSV-0014",
+      "target": "infra/k8s (Kustomize rendered with fixture secrets)",
+      "severity": "HIGH",
+      "resource": "Deployment/keycloak",
+      "blocks": false,
+      "exception": {
+        "owner": "Padel maintainers",
+        "reason": "Undeployed development Kubernetes scaffold uses start-dev, which performs image augmentation and writes runtime data. A prebuilt optimized Keycloak image plus writable data paths must be validated before read-only root and cluster deployment. No production cluster claim.",
+        "expires": "2026-11-04"
+      }
+    },
+    {
+      "kind": "misconfiguration",
+      "id": "KSV-0014",
+      "target": "infra/k8s (Kustomize rendered with fixture secrets)",
+      "severity": "HIGH",
+      "resource": "StatefulSet/postgres",
+      "blocks": false,
+      "exception": {
+        "owner": "Padel maintainers",
+        "reason": "Undeployed Kubernetes scaffold. Upstream database entrypoint initializes/chowns the data volume and creates runtime directories. Do not enable a read-only root until writable paths and volume ownership are validated in a real cluster. Application containers are read-only. No Kubernetes production claim.",
+        "expires": "2026-11-04"
+      }
+    },
+    {
+      "kind": "misconfiguration",
+      "id": "KSV-0014",
+      "target": "infra/k8s (Kustomize rendered with fixture secrets)",
+      "severity": "HIGH",
+      "resource": "StatefulSet/rabbitmq",
+      "blocks": false,
+      "exception": {
+        "owner": "Padel maintainers",
+        "reason": "Undeployed Kubernetes scaffold. Broker entrypoint and runtime filesystem layout require a tested writable-volume design before read-only root can be enforced. No Kubernetes production claim; review before any cluster deployment.",
+        "expires": "2026-11-04"
+      }
+    },
+    {
+      "kind": "misconfiguration",
+      "id": "KSV-0015",
+      "target": "infra/k8s (Kustomize rendered with fixture secrets)",
+      "severity": "LOW",
+      "resource": "StatefulSet/postgres",
+      "blocks": false,
+      "exception": null
+    },
+    {
+      "kind": "misconfiguration",
+      "id": "KSV-0015",
+      "target": "infra/k8s (Kustomize rendered with fixture secrets)",
+      "severity": "LOW",
+      "resource": "StatefulSet/rabbitmq",
+      "blocks": false,
+      "exception": null
+    },
+    {
+      "kind": "misconfiguration",
+      "id": "KSV-0016",
+      "target": "infra/k8s (Kustomize rendered with fixture secrets)",
+      "severity": "LOW",
+      "resource": "StatefulSet/postgres",
+      "blocks": false,
+      "exception": null
+    },
+    {
+      "kind": "misconfiguration",
+      "id": "KSV-0016",
+      "target": "infra/k8s (Kustomize rendered with fixture secrets)",
+      "severity": "LOW",
+      "resource": "StatefulSet/rabbitmq",
+      "blocks": false,
+      "exception": null
+    },
+    {
+      "kind": "misconfiguration",
+      "id": "KSV-0018",
+      "target": "infra/k8s (Kustomize rendered with fixture secrets)",
+      "severity": "LOW",
+      "resource": "StatefulSet/postgres",
+      "blocks": false,
+      "exception": null
+    },
+    {
+      "kind": "misconfiguration",
+      "id": "KSV-0018",
+      "target": "infra/k8s (Kustomize rendered with fixture secrets)",
+      "severity": "LOW",
+      "resource": "StatefulSet/rabbitmq",
+      "blocks": false,
+      "exception": null
+    },
+    {
+      "kind": "misconfiguration",
+      "id": "KSV-0020",
+      "target": "infra/k8s (Kustomize rendered with fixture secrets)",
+      "severity": "LOW",
+      "resource": "Deployment/keycloak",
+      "blocks": false,
+      "exception": null
+    },
+    {
+      "kind": "misconfiguration",
+      "id": "KSV-0020",
+      "target": "infra/k8s (Kustomize rendered with fixture secrets)",
+      "severity": "LOW",
+      "resource": "Deployment/mailpit",
+      "blocks": false,
+      "exception": null
+    },
+    {
+      "kind": "misconfiguration",
+      "id": "KSV-0020",
+      "target": "infra/k8s (Kustomize rendered with fixture secrets)",
+      "severity": "LOW",
+      "resource": "StatefulSet/postgres",
+      "blocks": false,
+      "exception": null
+    },
+    {
+      "kind": "misconfiguration",
+      "id": "KSV-0020",
+      "target": "infra/k8s (Kustomize rendered with fixture secrets)",
+      "severity": "LOW",
+      "resource": "StatefulSet/rabbitmq",
+      "blocks": false,
+      "exception": null
+    },
+    {
+      "kind": "misconfiguration",
+      "id": "KSV-0020",
+      "target": "infra/k8s (Kustomize rendered with fixture secrets)",
+      "severity": "LOW",
+      "resource": "Deployment/web",
+      "blocks": false,
+      "exception": null
+    },
+    {
+      "kind": "misconfiguration",
+      "id": "KSV-0021",
+      "target": "infra/k8s (Kustomize rendered with fixture secrets)",
+      "severity": "LOW",
+      "resource": "Deployment/access-service",
+      "blocks": false,
+      "exception": null
+    },
+    {
+      "kind": "misconfiguration",
+      "id": "KSV-0021",
+      "target": "infra/k8s (Kustomize rendered with fixture secrets)",
+      "severity": "LOW",
+      "resource": "Deployment/api-gateway",
+      "blocks": false,
+      "exception": null
+    },
+    {
+      "kind": "misconfiguration",
+      "id": "KSV-0021",
+      "target": "infra/k8s (Kustomize rendered with fixture secrets)",
+      "severity": "LOW",
+      "resource": "Deployment/booking-service",
+      "blocks": false,
+      "exception": null
+    },
+    {
+      "kind": "misconfiguration",
+      "id": "KSV-0021",
+      "target": "infra/k8s (Kustomize rendered with fixture secrets)",
+      "severity": "LOW",
+      "resource": "Deployment/config-server",
+      "blocks": false,
+      "exception": null
+    },
+    {
+      "kind": "misconfiguration",
+      "id": "KSV-0021",
+      "target": "infra/k8s (Kustomize rendered with fixture secrets)",
+      "severity": "LOW",
+      "resource": "Deployment/discovery-server",
+      "blocks": false,
+      "exception": null
+    },
+    {
+      "kind": "misconfiguration",
+      "id": "KSV-0021",
+      "target": "infra/k8s (Kustomize rendered with fixture secrets)",
+      "severity": "LOW",
+      "resource": "Deployment/keycloak",
+      "blocks": false,
+      "exception": null
+    },
+    {
+      "kind": "misconfiguration",
+      "id": "KSV-0021",
+      "target": "infra/k8s (Kustomize rendered with fixture secrets)",
+      "severity": "LOW",
+      "resource": "Deployment/mailpit",
+      "blocks": false,
+      "exception": null
+    },
+    {
+      "kind": "misconfiguration",
+      "id": "KSV-0021",
+      "target": "infra/k8s (Kustomize rendered with fixture secrets)",
+      "severity": "LOW",
+      "resource": "Deployment/member-service",
+      "blocks": false,
+      "exception": null
+    },
+    {
+      "kind": "misconfiguration",
+      "id": "KSV-0021",
+      "target": "infra/k8s (Kustomize rendered with fixture secrets)",
+      "severity": "LOW",
+      "resource": "Deployment/notification-service",
+      "blocks": false,
+      "exception": null
+    },
+    {
+      "kind": "misconfiguration",
+      "id": "KSV-0021",
+      "target": "infra/k8s (Kustomize rendered with fixture secrets)",
+      "severity": "LOW",
+      "resource": "StatefulSet/postgres",
+      "blocks": false,
+      "exception": null
+    },
+    {
+      "kind": "misconfiguration",
+      "id": "KSV-0021",
+      "target": "infra/k8s (Kustomize rendered with fixture secrets)",
+      "severity": "LOW",
+      "resource": "StatefulSet/rabbitmq",
+      "blocks": false,
+      "exception": null
+    },
+    {
+      "kind": "misconfiguration",
+      "id": "KSV-0021",
+      "target": "infra/k8s (Kustomize rendered with fixture secrets)",
+      "severity": "LOW",
+      "resource": "Deployment/subscription-service",
+      "blocks": false,
+      "exception": null
+    },
+    {
+      "kind": "misconfiguration",
+      "id": "KSV-0021",
+      "target": "infra/k8s (Kustomize rendered with fixture secrets)",
+      "severity": "LOW",
+      "resource": "Deployment/web",
+      "blocks": false,
+      "exception": null
+    },
+    {
+      "kind": "misconfiguration",
+      "id": "KSV-01010",
+      "target": "infra/k8s (Kustomize rendered with fixture secrets)",
+      "severity": "MEDIUM",
+      "resource": "ConfigMap/padel-realm-ktm6btktgk",
+      "blocks": false,
+      "exception": null
+    },
+    {
+      "kind": "misconfiguration",
+      "id": "KSV-0106",
+      "target": "infra/k8s (Kustomize rendered with fixture secrets)",
+      "severity": "LOW",
+      "resource": null,
+      "blocks": false,
+      "exception": null
+    },
+    {
+      "kind": "misconfiguration",
+      "id": "KSV-0106",
+      "target": "infra/k8s (Kustomize rendered with fixture secrets)",
+      "severity": "LOW",
+      "resource": null,
+      "blocks": false,
+      "exception": null
+    },
+    {
+      "kind": "misconfiguration",
+      "id": "KSV-0106",
+      "target": "infra/k8s (Kustomize rendered with fixture secrets)",
+      "severity": "LOW",
+      "resource": null,
+      "blocks": false,
+      "exception": null
+    },
+    {
+      "kind": "misconfiguration",
+      "id": "KSV-0125",
+      "target": "infra/k8s (Kustomize rendered with fixture secrets)",
+      "severity": "MEDIUM",
+      "resource": null,
+      "blocks": false,
+      "exception": null
+    },
+    {
+      "kind": "misconfiguration",
+      "id": "KSV-0125",
+      "target": "infra/k8s (Kustomize rendered with fixture secrets)",
+      "severity": "MEDIUM",
+      "resource": null,
+      "blocks": false,
+      "exception": null
+    },
+    {
+      "kind": "misconfiguration",
+      "id": "KSV-0125",
+      "target": "infra/k8s (Kustomize rendered with fixture secrets)",
+      "severity": "MEDIUM",
+      "resource": null,
+      "blocks": false,
+      "exception": null
+    },
+    {
+      "kind": "misconfiguration",
+      "id": "KSV-0125",
+      "target": "infra/k8s (Kustomize rendered with fixture secrets)",
+      "severity": "MEDIUM",
+      "resource": null,
+      "blocks": false,
+      "exception": null
+    },
+    {
+      "kind": "misconfiguration",
+      "id": "KSV-0125",
+      "target": "infra/k8s (Kustomize rendered with fixture secrets)",
+      "severity": "MEDIUM",
+      "resource": null,
+      "blocks": false,
+      "exception": null
+    },
+    {
+      "kind": "misconfiguration",
+      "id": "KSV-0125",
+      "target": "infra/k8s (Kustomize rendered with fixture secrets)",
+      "severity": "MEDIUM",
+      "resource": null,
+      "blocks": false,
+      "exception": null
+    },
+    {
+      "kind": "misconfiguration",
+      "id": "KSV-0125",
+      "target": "infra/k8s (Kustomize rendered with fixture secrets)",
+      "severity": "MEDIUM",
+      "resource": null,
+      "blocks": false,
+      "exception": null
+    },
+    {
+      "kind": "misconfiguration",
+      "id": "KSV-0125",
+      "target": "infra/k8s (Kustomize rendered with fixture secrets)",
+      "severity": "MEDIUM",
+      "resource": null,
+      "blocks": false,
+      "exception": null
+    },
+    {
+      "kind": "misconfiguration",
+      "id": "KSV-0125",
+      "target": "infra/k8s (Kustomize rendered with fixture secrets)",
+      "severity": "MEDIUM",
+      "resource": null,
+      "blocks": false,
+      "exception": null
+    },
+    {
+      "kind": "misconfiguration",
+      "id": "KSV-0125",
+      "target": "infra/k8s (Kustomize rendered with fixture secrets)",
+      "severity": "MEDIUM",
+      "resource": null,
+      "blocks": false,
+      "exception": null
+    },
+    {
+      "kind": "misconfiguration",
+      "id": "KSV-0125",
+      "target": "infra/k8s (Kustomize rendered with fixture secrets)",
+      "severity": "MEDIUM",
+      "resource": null,
+      "blocks": false,
+      "exception": null
+    }
+  ]
+}

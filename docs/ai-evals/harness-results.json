@@ -1,0 +1,11 @@
+{
+  "generatedAt": "2026-10-05T09:59:15.205Z",
+  "completed": true,
+  "promptfooVersion": "0.123.1",
+  "realModel": false,
+  "positivePassed": 1,
+  "intentionallyFailingCasesRejected": 2,
+  "criticalGateRejected": true,
+  "cancellationPreventedFurtherCalls": true,
+  "notes": "Actual promptfoo engine with deterministic fixture output; not AI quality evidence."
+}

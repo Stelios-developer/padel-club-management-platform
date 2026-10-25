@@ -1,0 +1,37 @@
+{
+  "generatedAt": "2026-10-02T17:23:52.2864653Z",
+  "scope": "Point-in-time local resource observations, not a load benchmark or production sizing",
+  "initialModelServerObservation": "Ollama logged llama-server terminated by signal: killed during the first post-deployment smoke",
+  "oomKillCountBeforeHeapBounds": 1,
+  "oomKillCountAfterSuccessfulSmoke": 1,
+  "heapMin": "64m",
+  "heapMax": "256m",
+  "containerLimit": "768m",
+  "appliedTo": [
+    "api-gateway",
+    "member-service",
+    "subscription-service",
+    "booking-service",
+    "access-service",
+    "notification-service"
+  ],
+  "statsAfter": [
+    "padel-e2e-member-service-1 436.3MiB / 768MiB",
+    "padel-e2e-subscription-service-1 444.6MiB / 768MiB",
+    "padel-e2e-api-gateway-1 308.1MiB / 768MiB",
+    "padel-e2e-access-service-1 428.7MiB / 768MiB",
+    "padel-e2e-booking-service-1 501.5MiB / 768MiB",
+    "padel-e2e-notification-service-1 455MiB / 768MiB",
+    "padel-ai-local-assistant-service-1 283.7MiB / 512MiB",
+    "padel-e2e-web-1 5.82MiB / 7.405GiB",
+    "padel-ai-local-ollama-1 258.5MiB / 3GiB",
+    "padel-ai-local-vector-db-1 36.11MiB / 256MiB",
+    "padel-e2e-keycloak-1 399.3MiB / 7.405GiB",
+    "padel-e2e-discovery-server-1 262.5MiB / 7.405GiB",
+    "padel-e2e-config-server-1 285.4MiB / 7.405GiB",
+    "padel-e2e-postgres-1 130MiB / 7.405GiB",
+    "padel-e2e-rabbitmq-1 49.11MiB / 7.405GiB",
+    "padel-e2e-mailpit-1 23.03MiB / 7.405GiB"
+  ],
+  "notes": "The OOM counter does not identify the exact historical trigger. The first failure and subsequent 10/10 success are preserved separately. Model weights/context and transport timeouts were not changed during recovery."
+}

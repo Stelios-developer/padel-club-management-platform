@@ -1,0 +1,33 @@
+{
+  "startedAt": "2026-10-13T09:00:09.479Z",
+  "split": "discovery",
+  "datasetSha256": "4110dc9e81e6d704384e28c8d3ce425d4b6043fbdf7484440f5ab88e7151dfef",
+  "reviewStatus": "Authored before implementation by the implementing assistant; not independently human reviewed",
+  "mockedTransport": false,
+  "completed": false,
+  "cases": [],
+  "sourceSha256": {},
+  "firstUseConfirmation": false,
+  "error": "Run interrupted or local evaluation failed; partial evidence retained",
+  "cleanupSucceeded": true,
+  "releaseGate": {
+    "approved": false,
+    "policyVersion": "padel-release-gate-v2-category-quality",
+    "minimumCategoryPassRate": 0.8,
+    "categoryRates": {
+      "policy": null,
+      "unknown": null,
+      "availability": null
+    },
+    "minimumPassRate": 0.8,
+    "passRate": 0,
+    "criticalFailures": [
+      {
+        "id": "domain-snapshot",
+        "check": "domain-integrity-unverified"
+      }
+    ],
+    "notes": "Gate set before first evaluation run: all cases completed; >=80% overall and policy/unknown/availability case pass rates; zero critical failures and verified cleanup. Not a universal security guarantee."
+  },
+  "finishedAt": "2026-10-13T09:00:14.679Z"
+}

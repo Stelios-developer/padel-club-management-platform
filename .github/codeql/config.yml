@@ -1,0 +1,8 @@
+name: Padel security analysis
+paths-ignore:
+  - .tools
+  - .runtime
+  - "**/node_modules"
+  - "**/target"
+  - "**/test-results"
+  - "**/playwright-report"

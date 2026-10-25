@@ -1,0 +1,162 @@
+{
+  "generatedAt": "2026-10-13T09:28:04.221Z",
+  "version": "padel-assistant-v15-natural-search-scope",
+  "regression": {
+    "passed": 140,
+    "total": 140,
+    "runs": [
+      {
+        "file": "docs/ai-evals/2026-10-13/v15-discovery/discovery-results.json",
+        "split": "discovery",
+        "passed": 24,
+        "total": 24,
+        "gate": {
+          "approved": true,
+          "policyVersion": "padel-release-gate-v2-category-quality",
+          "minimumCategoryPassRate": 0.8,
+          "categoryRates": {
+            "policy": 1,
+            "unknown": 1,
+            "availability": 1
+          },
+          "minimumPassRate": 0.8,
+          "passRate": 1,
+          "criticalFailures": [],
+          "notes": "Gate set before first evaluation run: all cases completed; >=80% overall and policy/unknown/availability case pass rates; zero critical failures and verified cleanup. Not a universal security guarantee."
+        },
+        "domainUnchanged": true,
+        "cleanup": true,
+        "startedAt": "2026-10-13T09:20:37.244Z",
+        "finishedAt": "2026-10-13T09:21:09.112Z"
+      },
+      {
+        "file": "docs/ai-evals/2026-10-13/v15-confirmation-regression/confirmation-results.json",
+        "split": "confirmation",
+        "passed": 16,
+        "total": 16,
+        "gate": {
+          "approved": true,
+          "policyVersion": "padel-release-gate-v2-category-quality",
+          "minimumCategoryPassRate": 0.8,
+          "categoryRates": {
+            "policy": 1,
+            "unknown": 1,
+            "availability": 1
+          },
+          "minimumPassRate": 0.8,
+          "passRate": 1,
+          "criticalFailures": [],
+          "notes": "Gate set before first evaluation run: all cases completed; >=80% overall and policy/unknown/availability case pass rates; zero critical failures and verified cleanup. Not a universal security guarantee."
+        },
+        "domainUnchanged": true,
+        "cleanup": true,
+        "startedAt": "2026-10-13T09:21:09.270Z",
+        "finishedAt": "2026-10-13T09:21:30.770Z"
+      },
+      {
+        "file": "docs/ai-evals/2026-10-13/v15-original-development/development-results.json",
+        "split": "development",
+        "passed": 40,
+        "total": 40,
+        "gate": {
+          "approved": true,
+          "policyVersion": "padel-release-gate-v2-category-quality",
+          "minimumCategoryPassRate": 0.8,
+          "categoryRates": {
+            "policy": 1,
+            "unknown": 1,
+            "availability": 1
+          },
+          "minimumPassRate": 0.8,
+          "passRate": 1,
+          "criticalFailures": [],
+          "notes": "Gate set before first evaluation run: all cases completed; >=80% overall and policy/unknown/availability case pass rates; zero critical failures and verified cleanup. Not a universal security guarantee."
+        },
+        "domainUnchanged": true,
+        "cleanup": true,
+        "startedAt": "2026-10-13T09:21:32.550Z",
+        "finishedAt": "2026-10-13T09:22:55.814Z"
+      },
+      {
+        "file": "docs/ai-evals/2026-10-13/v15-original-evaluation/evaluation-results.json",
+        "split": "evaluation",
+        "passed": 60,
+        "total": 60,
+        "gate": {
+          "approved": true,
+          "policyVersion": "padel-release-gate-v2-category-quality",
+          "minimumCategoryPassRate": 0.8,
+          "categoryRates": {
+            "policy": 1,
+            "unknown": 1,
+            "availability": 1
+          },
+          "minimumPassRate": 0.8,
+          "passRate": 1,
+          "criticalFailures": [],
+          "notes": "Gate set before first evaluation run: all cases completed; >=80% overall and policy/unknown/availability case pass rates; zero critical failures and verified cleanup. Not a universal security guarantee."
+        },
+        "domainUnchanged": true,
+        "cleanup": true,
+        "startedAt": "2026-10-13T09:22:57.240Z",
+        "finishedAt": "2026-10-13T09:25:17.341Z"
+      }
+    ]
+  },
+  "newCases": {
+    "authoredBeforeImplementation": true,
+    "independentlyHumanReviewed": false,
+    "discoveryBaseline": {
+      "passed": 14,
+      "total": 24
+    },
+    "firstConfirmation": {
+      "passed": 14,
+      "total": 16,
+      "gatePassed": false,
+      "file": "docs/ai-evals/robustness-confirmation-first-use.json"
+    },
+    "latestConfirmationIsRegression": true
+  },
+  "verification": {
+    "unitTests": 38,
+    "httpFaultTests": 4,
+    "pgvectorTests": 2,
+    "integrationVersion": "v14 with unchanged transport/DNS settings; v15 unit and actual-model runs verify final date/retrieval changes",
+    "browserChecks": 63,
+    "liveUi": {
+      "startedAt": "2026-10-13T09:27:28.074Z",
+      "mockedTransport": false,
+      "checks": [
+        "Real Greek sign-in and member profile",
+        "Example is an editable draft and sends no request",
+        "Natural Greek query returns real matching slots and prices",
+        "Selected AI slot opens matching confirmation fields without booking",
+        "Ambiguous clock explains the field to clarify",
+        "Unsupported medical policy displays unknown without unrelated citations",
+        "No uncaught browser error or domain mutation"
+      ],
+      "completed": true,
+      "cleanupSucceeded": true,
+      "finishedAt": "2026-10-13T09:27:36.074Z"
+    },
+    "nodeTests": 97,
+    "historicalReportsAndFrozenInputsUnchanged": 70
+  },
+  "limits": [
+    "Curated self-authored regression cases, not independent holdout or production certification",
+    "No real recruiter traffic or public deployment",
+    "Unknown-topic exclusion list is corpus-specific and requires review if policies expand",
+    "Prototype UI label retained; no Greeklish, arbitrary typo tolerance or conversation memory claimed"
+  ],
+  "changes": [
+    "Natural bilingual meridiem times and exact hour durations",
+    "Athens weekdays with explicit date/time/quantity summary",
+    "Recurring searches clarify rather than become one date",
+    "Field-specific safe clarification",
+    "Approved semantic/facet retrieval with numeric cancellation boundary and chat/role separation",
+    "Reject unsupported equipment, health and benefit topics",
+    "Editable examples send nothing until explicit submit"
+  ],
+  "modelApiCharges": 0
+}

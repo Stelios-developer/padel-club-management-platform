@@ -1,0 +1,12 @@
+{
+  "completed": true,
+  "verifiedAt": "2026-10-01T16:46:10.943Z",
+  "targetProject": "padel-final-restore-check",
+  "checks": [
+    "live project rejected",
+    "nonempty target rejected",
+    "wrong encryption key rejected",
+    "tampered final archive rejected before any database write"
+  ],
+  "targetDataUnchanged": true
+}
