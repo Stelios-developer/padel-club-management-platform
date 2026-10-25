@@ -278,10 +278,7 @@ async function authorize(user, withChallenge = true, clientId = "padel-web") {
   );
   if (response.status !== 302) {
     const page = await response.text();
-    const heading = page
-      .match(/<h1[^>]*>([\s\S]*?)<\/h1>/)?.[1]
-      ?.replace(/<[^>]*>/g, "")
-      .trim();
+    const heading = page.match(/<h1[^>]*>([^<>]*)<\/h1>/)?.[1].trim();
     const feedback = [
       ...page.matchAll(/(?:kc-feedback-text|input-error)[^>]*>([^<]*)</g),
     ]
@@ -674,18 +671,31 @@ try {
     assert.equal(courts.status, 200);
     assert.equal(courts.data.length, 3);
     court = courts.data.find((c) => c.enabled);
-    assert.equal(
-      (
-        await api(
+    // Gateway discovery may be ready before booking's own Feign registry cache.
+    // Bootstrap only this known-rejected request, with the same idempotency key;
+    // unexpected domain responses still fail immediately and a persistent 503 fails.
+    const rejected = await until(
+      async () => {
+        const response = await api(
           member,
           "/api/bookings",
           "POST",
           bookingRequest("08:00"),
           "el-GR",
           rollbackKey,
-        )
-      ).status,
-      409,
+        );
+        return response.status === 503 ? false : response;
+      },
+      "Booking-to-subscription discovery is ready",
+      180000,
+    );
+    assert.equal(rejected.status, 409, JSON.stringify(rejected.data));
+    assert.equal(
+      await sql(
+        "padel_bookings",
+        `SELECT count(*) FROM bookings WHERE member_id='${profile.id}';`,
+      ),
+      "0",
     );
     assert.equal(
       await sql(

@@ -72,6 +72,10 @@ if (
 )
   throw new Error("Invalid configuration value");
 await mkdir(join(output, "secrets"), { recursive: true, mode: 0o700 });
+if (process.platform !== "win32") {
+  await chmod(output, 0o700);
+  await chmod(join(output, "secrets"), 0o700);
+}
 if (process.platform === "win32")
   execFileSync(
     "powershell.exe",
@@ -89,8 +93,15 @@ if (process.platform === "win32")
   );
 const save = async (file, body, secret = false) => {
   const path = join(output, file);
-  await writeFile(path, body, { flag: "wx", mode: secret ? 0o600 : 0o644 });
-  if (secret && process.platform !== "win32") await chmod(path, 0o600);
+  // Compose bind-mounted secrets retain host permissions on Linux. Container
+  // UIDs differ from the operator UID; the private 0700 parent protects host
+  // access, and Docker mounts these per-service projections read-only.
+  const mounted =
+    file === "rabbit-definitions.json" ||
+    (file.startsWith("secrets/") && file !== "secrets/backup_key");
+  const mode = secret && !mounted ? 0o600 : 0o644;
+  await writeFile(path, body, { flag: "wx", mode });
+  if (process.platform !== "win32") await chmod(path, mode);
 };
 const secretNames = [
   "postgres_admin",

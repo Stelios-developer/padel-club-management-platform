@@ -5,6 +5,7 @@ import static org.springframework.security.test.web.servlet.request.SecurityMock
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
+import jakarta.servlet.http.Cookie;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -41,6 +42,18 @@ class AssistantSecurityTest {
                 .content("{\"question\":\"Hello\",\"mode\":\"POLICY\"}"))
         .andExpect(status().isUnauthorized());
     mvc.perform(get("/api/assistant/sources/access")).andExpect(status().isUnauthorized());
+    verifyNoInteractions(assistant, knowledge);
+  }
+
+  @Test
+  void cookieOnlyCannotAuthenticateChatAndNonApiKeepsCsrf() throws Exception {
+    mvc.perform(
+            post("/api/assistant/chat")
+                .cookie(new Cookie("JSESSIONID", "untrusted"))
+                .contentType("application/json")
+                .content("{\"question\":\"Hello\",\"mode\":\"POLICY\"}"))
+        .andExpect(status().isUnauthorized());
+    mvc.perform(post("/browser-endpoint")).andExpect(status().isForbidden());
     verifyNoInteractions(assistant, knowledge);
   }
 

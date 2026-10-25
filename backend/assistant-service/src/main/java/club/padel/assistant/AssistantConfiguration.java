@@ -39,7 +39,8 @@ public class AssistantConfiguration {
 
   @Bean
   SecurityFilterChain security(HttpSecurity http) throws Exception {
-    return http.csrf(c -> c.disable())
+    // Stateless bearer APIs do not use ambient browser credentials.
+    return http.csrf(c -> c.ignoringRequestMatchers("/api/**"))
         .sessionManagement(s -> s.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
         .authorizeHttpRequests(
             a ->

@@ -37,7 +37,9 @@ public class SecurityConfiguration {
               .map(a -> (org.springframework.security.core.GrantedAuthority) a)
               .toList();
         });
-    return http.csrf(csrf -> csrf.disable())
+    // These API routes accept explicit bearer credentials, never cookie authentication.
+    // Retain CSRF protection for any future non-API browser/session endpoints.
+    return http.csrf(csrf -> csrf.ignoringRequestMatchers("/api/**"))
         .sessionManagement(s -> s.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
         .authorizeHttpRequests(
             a ->
