@@ -1,0 +1,22 @@
+{
+  "name": "eligibility_expired",
+  "description": "Consumer-facing eligibility_expired contract; synthetic fixtures only.",
+  "request":
+    {
+      "method": "GET",
+      "headers": { "Authorization": "Bearer contract-alice" },
+      "urlPath": "/api/subscriptions/eligibility/aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa",
+      "queryParameters": { "date": "2026-11-01" },
+    },
+  "response":
+    {
+      "status": 200,
+      "headers": { "Content-Type": "application/json" },
+      "body":
+        {
+          "eligible": false,
+          "reason": "NO_ACTIVE_SUBSCRIPTION",
+          "validUntil": null,
+        },
+    },
+}

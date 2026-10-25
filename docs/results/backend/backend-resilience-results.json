@@ -1,0 +1,113 @@
+{
+  "generatedAt": "2026-10-02T17:13:42.971Z",
+  "completed": true,
+  "scenarios": [
+    {
+      "module": "booking-service",
+      "scope": "Real Feign/MockMvc/PostgreSQL and Toxiproxy; synthetic HTTP eligibility/member providers; production timeout/breaker/bulkhead settings.",
+      "circuitStayedClosed": true,
+      "noWritesOnFailure": true,
+      "statuses": [401, 403, 404, 409],
+      "id": "expected-domain-responses"
+    },
+    {
+      "module": "booking-service",
+      "scope": "Real Feign/MockMvc/PostgreSQL and Toxiproxy; synthetic HTTP eligibility/member providers; production timeout/breaker/bulkhead settings.",
+      "failureMs": 2012,
+      "recoveryRequestMs": 192,
+      "callsDuringFailedWrite": 1,
+      "noWritesOnFailure": true,
+      "sameKeyRecoveredOnce": true,
+      "id": "eligibility-latency"
+    },
+    {
+      "module": "booking-service",
+      "scope": "Real Feign/MockMvc/PostgreSQL and Toxiproxy; synthetic HTTP eligibility/member providers; production timeout/breaker/bulkhead settings.",
+      "halfOpenRecovered": true,
+      "recoveryRequestsMs": 46,
+      "recoveryAfterRestoreMs": 15132,
+      "noWritesOnFailure": true,
+      "openRejectedMs": 9,
+      "id": "eligibility-disconnect"
+    },
+    {
+      "module": "booking-service",
+      "scope": "Real Feign/MockMvc/PostgreSQL and Toxiproxy; synthetic HTTP eligibility/member providers; production timeout/breaker/bulkhead settings.",
+      "capacityRecovered": true,
+      "noUpstreamCall": true,
+      "id": "eligibility-bulkhead",
+      "rejectedMs": 19
+    },
+    {
+      "module": "assistant-service",
+      "scope": "Real Spring AI Ollama HTTP adapter through Toxiproxy; synthetic model output and mocked knowledge retrieval, not model quality or embedding performance.",
+      "halfOpenRecovered": true,
+      "noInferenceWhileOpen": true,
+      "recoveryAfterRestoreMs": 15148,
+      "openRejectedMs": 1,
+      "id": "provider-disconnect"
+    },
+    {
+      "module": "assistant-service",
+      "scope": "Real Spring AI Ollama HTTP adapter through Toxiproxy; synthetic model output and mocked knowledge retrieval, not model quality or embedding performance.",
+      "boundedMs": 255,
+      "id": "workflow-deadline",
+      "deadlineCleared": true
+    },
+    {
+      "module": "assistant-service",
+      "scope": "Real Spring AI Ollama HTTP adapter through Toxiproxy; synthetic model output and mocked knowledge retrieval, not model quality or embedding performance.",
+      "id": "assistant-bulkhead",
+      "capacityRecovered": true,
+      "firstCompleted": true,
+      "rejectedMs": 2
+    },
+    {
+      "module": "assistant-service",
+      "scope": "Real Spring AI Ollama HTTP adapter through Toxiproxy; synthetic model output and mocked knowledge retrieval, not model quality or embedding performance.",
+      "recoveryRequestMs": 9,
+      "failureMs": 12003,
+      "permitReleased": true,
+      "providerCallsDuringFailure": 1,
+      "id": "provider-hang"
+    },
+    {
+      "module": "notification-service",
+      "scope": "Real PostgreSQL/RabbitMQ/listener/SQL deduplication with a Toxiproxy AMQP disconnect. SMTP dispatcher disabled; no email exactly-once claim.",
+      "recoveryMs": 862,
+      "committedPayloadPreserved": true,
+      "deduplicatedNotification": true,
+      "failedPublishMs": 11,
+      "backlogReturnedToZero": true,
+      "id": "rabbit-disconnect"
+    }
+  ],
+  "junit": [
+    {
+      "module": "booking-service",
+      "suite": "BookingResilienceIT",
+      "tests": 4,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "module": "assistant-service",
+      "suite": "AssistantResilienceIT",
+      "tests": 4,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "module": "notification-service",
+      "suite": "MessagingPostgresIT",
+      "tests": 5,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    }
+  ],
+  "newFaultScenarios": 9,
+  "notes": "Export after a fresh Maven clean verify. Isolated Testcontainers with real Toxiproxy network faults; synthetic HTTP member/subscription/model responses, real SQL/RabbitMQ consumer. Does not measure model quality, production SLO attainment, real Keycloak cryptography or SMTP exactly-once delivery. Open-state recovery includes the configured 15-second wait. GitHub execution is not claimed."
+}

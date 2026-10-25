@@ -1,0 +1,71 @@
+{
+  "createdAt": "2026-10-02T18:32:52.478Z",
+  "completed": true,
+  "checks": [
+    {
+      "name": "Court 01 · Panorama: 60 minute slots match original semantics",
+      "passed": true
+    },
+    {
+      "name": "Court 01 · Panorama: 90 minute slots match original semantics",
+      "passed": true
+    },
+    {
+      "name": "Court 01 · Panorama: 120 minute slots match original semantics",
+      "passed": true
+    },
+    {
+      "name": "Court 02 · Olive: 60 minute slots match original semantics",
+      "passed": true
+    },
+    {
+      "name": "Court 02 · Olive: 90 minute slots match original semantics",
+      "passed": true
+    },
+    {
+      "name": "Court 02 · Olive: 120 minute slots match original semantics",
+      "passed": true
+    },
+    {
+      "name": "Court 03 · Arena: 60 minute slots match original semantics",
+      "passed": true
+    },
+    {
+      "name": "Court 03 · Arena: 90 minute slots match original semantics",
+      "passed": true
+    },
+    {
+      "name": "Court 03 · Arena: 120 minute slots match original semantics",
+      "passed": true
+    },
+    {
+      "name": "Anonymous availability rejected",
+      "passed": true
+    },
+    {
+      "name": "Unsupported duration rejected",
+      "passed": true
+    },
+    {
+      "name": "Owned cancelled fixture remains visible",
+      "passed": true
+    },
+    {
+      "name": "Foreign fixture booking remains forbidden",
+      "passed": true
+    },
+    {
+      "name": "Original user booking preserved",
+      "passed": true
+    }
+  ],
+  "scope": "Live web/gateway/Keycloak/booking deployment; no model generation or business writes",
+  "originalBookingStatus": "CONFIRMED",
+  "fixturesCleanedAndDomainUnchanged": true,
+  "artifactVerification": {
+    "optimizedControllerVerified": true,
+    "intervalProjectionVerified": true,
+    "imageId": "sha256:afd09d1e6c45219ebbda2326c634c3662b4c526ef9f68765687bf3842b853a85",
+    "deployedJarSha256": "1957ba3e8f489c53542132e7cdf6461f2b9d71e9f65864e48f52c0bbb959cef6"
+  }
+}

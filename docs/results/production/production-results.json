@@ -1,0 +1,44 @@
+{
+  "completed": true,
+  "verifiedAt": "2026-10-01T16:50:38.124Z",
+  "project": "padel-production-check",
+  "results": [
+    {
+      "name": "HTTPS certificate, security headers and private admin endpoint",
+      "passed": true
+    },
+    {
+      "name": "Six database roles: own schema allowed, all 30 cross-database connections rejected",
+      "passed": true
+    },
+    {
+      "name": "RabbitMQ has only its restricted application user",
+      "passed": true
+    },
+    {
+      "name": "Public HTTPS token exchange validates PKCE, JWT signature, issuer and API audience",
+      "passed": true
+    },
+    {
+      "name": "An existing member SSO session cannot bypass MFA after promotion",
+      "passed": true
+    },
+    {
+      "name": "Member sign-in completes without MFA",
+      "passed": true
+    },
+    {
+      "name": "ADMIN requires MFA enrollment and rejects incorrect OTP",
+      "passed": true
+    },
+    {
+      "name": "STAFF requires MFA enrollment and rejects incorrect OTP",
+      "passed": true
+    },
+    {
+      "name": "Operational alert reaches local SMTP mailbox",
+      "passed": true
+    }
+  ],
+  "fixtureCleanup": true
+}

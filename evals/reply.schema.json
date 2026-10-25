@@ -1,0 +1,140 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "kind",
+    "answer",
+    "factIds",
+    "citations",
+    "options",
+    "knowledgeVersion",
+    "promptVersion",
+    "chatModel",
+    "embeddingModel",
+    "durationMs"
+  ],
+  "properties": {
+    "kind": {
+      "enum": ["ANSWER", "OPTIONS", "CLARIFY", "UNKNOWN", "UNAVAILABLE"]
+    },
+    "answer": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 10000
+    },
+    "factIds": {
+      "type": "array",
+      "maxItems": 1,
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "pattern": "^(access|booking-rules|cancellations):[1-9][0-9]*$"
+      }
+    },
+    "citations": {
+      "type": "array",
+      "maxItems": 1,
+      "items": {
+        "$ref": "#/definitions/citation"
+      }
+    },
+    "options": {
+      "type": "array",
+      "maxItems": 6,
+      "items": {
+        "$ref": "#/definitions/option"
+      }
+    },
+    "knowledgeVersion": {
+      "type": "string",
+      "minLength": 1
+    },
+    "promptVersion": {
+      "type": "string",
+      "minLength": 1
+    },
+    "chatModel": {
+      "type": "string",
+      "minLength": 1
+    },
+    "embeddingModel": {
+      "type": "string",
+      "minLength": 1
+    },
+    "durationMs": {
+      "type": "integer",
+      "minimum": 0
+    }
+  },
+  "definitions": {
+    "option": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "courtId",
+        "courtName",
+        "courtType",
+        "startsAt",
+        "endsAt",
+        "priceCents",
+        "players"
+      ],
+      "properties": {
+        "courtId": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "courtName": {
+          "type": "string",
+          "minLength": 1
+        },
+        "courtType": {
+          "enum": ["INDOOR", "OUTDOOR"]
+        },
+        "startsAt": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "endsAt": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "priceCents": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "players": {
+          "type": "integer",
+          "minimum": 2,
+          "maximum": 4
+        }
+      }
+    },
+    "citation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["sourceId", "title", "version", "url"],
+      "properties": {
+        "sourceId": {
+          "enum": ["access", "booking-rules", "cancellations"]
+        },
+        "title": {
+          "type": "string",
+          "minLength": 1
+        },
+        "version": {
+          "type": "string",
+          "minLength": 1
+        },
+        "url": {
+          "enum": [
+            "/api/assistant/sources/access",
+            "/api/assistant/sources/booking-rules",
+            "/api/assistant/sources/cancellations"
+          ]
+        }
+      }
+    }
+  }
+}

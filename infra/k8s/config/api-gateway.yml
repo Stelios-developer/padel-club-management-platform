@@ -1,0 +1,25 @@
+spring:
+  cloud:
+    gateway:
+      server:
+        webflux:
+          routes:
+            - id: assistant
+              uri: lb://assistant-service
+              predicates: [Path=/api/assistant/**]
+            - id: members
+              uri: lb://member-service
+              predicates: ["Path=/api/members/**,/api/players/**"]
+            - id: subscriptions
+              uri: lb://subscription-service
+              predicates: [Path=/api/subscriptions/**]
+            - id: bookings
+              uri: lb://booking-service
+              predicates:
+                - Path=/api/bookings/**,/api/courts/**,/api/padel/**
+            - id: access
+              uri: lb://access-service
+              predicates: [Path=/api/access/**]
+            - id: notifications
+              uri: lb://notification-service
+              predicates: [Path=/api/notifications/**]

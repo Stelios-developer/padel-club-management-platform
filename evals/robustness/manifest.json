@@ -1,0 +1,20 @@
+{
+  "version": "padel-robustness-v1",
+  "frozenAt": "2026-10-13T08:49:44.272Z",
+  "reviewStatus": "Authored before implementation by the implementing assistant; not independently human reviewed",
+  "splits": {
+    "discovery": {
+      "cases": 24,
+      "sha256": "4110dc9e81e6d704384e28c8d3ce425d4b6043fbdf7484440f5ab88e7151dfef"
+    },
+    "confirmation": {
+      "cases": 16,
+      "sha256": "f494e870511d2bacf0431151522cd0eb047061ca39f4ab9a125fe10d9123194b"
+    }
+  },
+  "releasePolicy": {
+    "minimumPassRate": 0.8,
+    "minimumCategoryPassRate": 0.8,
+    "maximumCriticalFailures": 0
+  }
+}

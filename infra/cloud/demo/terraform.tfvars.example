@@ -1,0 +1,13 @@
+# Illustrative values only; no account/region/budget has been selected.
+expected_account_id = "123456789012"
+region = "eu-central-1"
+availability_zone = "eu-central-1a"
+github_repository = "REPLACE_OWNER/REPLACE_REPO"
+state_bucket_name = "REPLACE_STATE_BUCKET"
+state_kms_key_arn = "REPLACE_STATE_KMS_KEY_ARN"
+enable_compute = false
+monthly_budget_usd = 0
+budget_email = null
+ami_id = null
+smtp_egress_cidrs = []
+# existing_oidc_provider_arn = "arn:aws:iam::123456789012:oidc-provider/token.actions.githubusercontent.com"

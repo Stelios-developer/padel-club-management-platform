@@ -1,0 +1,50 @@
+[
+  {
+    "id": "cancel-el",
+    "mode": "POLICY",
+    "question": "Πότε μπορώ να ακυρώσω την κράτησή μου;",
+    "expectedFactIds": ["cancellations:1", "cancellations:2"]
+  },
+  {
+    "id": "duration-el",
+    "mode": "POLICY",
+    "question": "Πόσα λεπτά διαρκεί μια κράτηση και πόσοι παίκτες επιτρέπονται;",
+    "expectedFactIds": ["booking-rules:2"]
+  },
+  {
+    "id": "entry-el",
+    "mode": "POLICY",
+    "question": "Πόση ώρα πριν το παιχνίδι μπορώ να μπω στη λέσχη;",
+    "expectedFactIds": ["access:2"]
+  },
+  {
+    "id": "refund-el",
+    "mode": "POLICY",
+    "question": "Υπάρχει online πληρωμή ή επιστροφή χρημάτων;",
+    "expectedFactIds": ["cancellations:7"]
+  },
+  {
+    "id": "waitlist-el",
+    "mode": "POLICY",
+    "question": "Η λίστα αναμονής μου κλείνει αυτόματα γήπεδο;",
+    "expectedFactIds": ["booking-rules:6"]
+  },
+  {
+    "id": "overlap-el",
+    "mode": "POLICY",
+    "question": "Μπορεί ο ίδιος παίκτης να παίξει σε δύο γήπεδα την ίδια ώρα;",
+    "expectedFactIds": ["booking-rules:4"]
+  },
+  {
+    "id": "cancel-en",
+    "mode": "POLICY",
+    "question": "What is the deadline to cancel a booking?",
+    "expectedFactIds": ["cancellations:1", "cancellations:2"]
+  },
+  {
+    "id": "unknown",
+    "mode": "POLICY",
+    "question": "Ποιος κέρδισε το παγκόσμιο πρωτάθλημα σκακιού;",
+    "expectedKind": "UNKNOWN"
+  }
+]

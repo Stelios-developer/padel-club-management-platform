@@ -1,0 +1,1728 @@
+{
+  "generatedAt": "2026-10-12T21:01:13.069Z",
+  "version": "padel-assistant-v12-bounded-grounding",
+  "development": {
+    "startedAt": "2026-10-12T20:49:36.382Z",
+    "finishedAt": "2026-10-12T20:51:41.665Z",
+    "passed": 40,
+    "total": 40,
+    "releaseGate": {
+      "approved": true,
+      "policyVersion": "padel-release-gate-v2-category-quality",
+      "minimumCategoryPassRate": 0.8,
+      "categoryRates": {
+        "policy": 1,
+        "unknown": 1,
+        "availability": 1
+      },
+      "minimumPassRate": 0.8,
+      "passRate": 1,
+      "criticalFailures": [],
+      "notes": "Gate set before first evaluation run: all cases completed; >=80% overall and policy/unknown/availability case pass rates; zero critical failures and verified cleanup. Not a universal security guarantee."
+    },
+    "categories": {
+      "policy": {
+        "total": 12,
+        "executed": 12,
+        "passed": 12
+      },
+      "unknown": {
+        "total": 4,
+        "executed": 4,
+        "passed": 4
+      },
+      "injection": {
+        "total": 6,
+        "executed": 6,
+        "passed": 6
+      },
+      "availability": {
+        "total": 6,
+        "executed": 6,
+        "passed": 6
+      },
+      "clarification": {
+        "total": 6,
+        "executed": 6,
+        "passed": 6
+      },
+      "authorization": {
+        "total": 5,
+        "executed": 5,
+        "passed": 5
+      },
+      "provider_failure": {
+        "total": 1,
+        "executed": 1,
+        "passed": 1
+      }
+    },
+    "latency": {
+      "samples": 34,
+      "p50Ms": 44,
+      "p95Ms": 5133,
+      "p99Ms": 17653,
+      "notes": "Sequential mixed correctness workload on this CPU; not a load benchmark. Backend duration excludes the independent live-slot verification."
+    },
+    "cleanupSucceeded": true,
+    "domainUnchangedDuringEvaluation": true,
+    "firstUseHoldout": false,
+    "datasetSha256": "b5ac2d8aaa00edb60b6bb7f35b7f20e27d9d47c0fab23b810c91bbe2340f6354",
+    "sourceSha256": {
+      "AssistantApplication.java": "5108e12e7f39f99af3ac90872f16c02205e58c338fe6c8be99ccb554440638cd",
+      "AssistantConfiguration.java": "133952d2cd7f4268b2b1e125ab9dbf790b9dddbc55249af012b4781ab9d009e2",
+      "AssistantController.java": "55171de74ca4c63a835fa2267785c1efd95fae3d1544b5f350438282f8f4112b",
+      "AssistantRequestBudget.java": "5726c0fe025f01011f1fcfcc385ee5e7e12481236d0a617e478ce817589e3ecb",
+      "AssistantResilience.java": "b47e868c085c652a3cf2a895404cf4d998334481679eddfe1938fa4845d367bb",
+      "AssistantService.java": "ccaa5d1a40c6b7dd8d82765a7d1944770741d30f967ad225673d36a292b376e7",
+      "AvailabilityRequest.java": "d030ecc664fe683c5a50b15913bfe9aa7bd9f1bdbe0a1a34dd1748665b176c7a",
+      "AvailabilityService.java": "64d5a6a71de28b4ba15600ecf8465ecb15ca81e9ffefb8e12a66f12bce4759f1",
+      "KnowledgeCatalog.java": "e9ee9e832f35a4fc3aa85ea5066785787483c700820af79da7410b28a3f915f5",
+      "KnowledgeService.java": "d3510d0c0f7507097b848b3d334c77bf9a12a6320fb2645f813e6aa262bdb201",
+      "ModelCatalog.java": "ecae1ae2aa0d98efba8bea7faf5d0a711893f18208a1006fb26231ac8f3d65cd",
+      "PolicyScope.java": "311c8a9b330e3e644c57c9f4ea4d6be067d7f31007da7d9a9c2941dd43e26a2a",
+      "RequestedDate.java": "5f1e735830f7596d3217448d8ba6859832cf0c0da80c4107b68c582e06890278"
+    },
+    "modelDigests": [
+      {
+        "name": "qwen3:1.7b",
+        "digest": "8f68893c685c3ddff2aa3fffce2aa60a30bb2da65ca488b61fff134a4d1730e7"
+      },
+      {
+        "name": "qwen3:0.6b",
+        "digest": "7df6b6e09427a769808717c0a93cadc4ae99ed4eb8bf5ca557c90846becea435"
+      },
+      {
+        "name": "embeddinggemma:300m",
+        "digest": "85462619ee721b466c5927d109d4cb765861907d5417b9109caebc4e614679f1"
+      }
+    ],
+    "environment": {
+      "execution": "local CPU Ollama, one concurrent inference",
+      "api": "localhost:3000",
+      "timezone": "Europe/Athens",
+      "evaluationDate": "2026-10-12",
+      "cloudCalls": 0,
+      "cloudApiCharges": 0,
+      "tokenUsage": null,
+      "totalInfrastructureCost": null,
+      "costNotes": "No paid model API was called. Tokens are not exposed by the assistant API; hardware/electricity cost is unmeasured."
+    },
+    "coldFirstCase": {
+      "id": "dev-cancel",
+      "kind": "ANSWER",
+      "durationMs": 17653
+    }
+  },
+  "evaluation": {
+    "startedAt": "2026-10-12T20:51:43.891Z",
+    "finishedAt": "2026-10-12T20:54:18.335Z",
+    "passed": 60,
+    "total": 60,
+    "releaseGate": {
+      "approved": true,
+      "policyVersion": "padel-release-gate-v2-category-quality",
+      "minimumCategoryPassRate": 0.8,
+      "categoryRates": {
+        "policy": 1,
+        "unknown": 1,
+        "availability": 1
+      },
+      "minimumPassRate": 0.8,
+      "passRate": 1,
+      "criticalFailures": [],
+      "notes": "Gate set before first evaluation run: all cases completed; >=80% overall and policy/unknown/availability case pass rates; zero critical failures and verified cleanup. Not a universal security guarantee."
+    },
+    "categories": {
+      "policy": {
+        "total": 22,
+        "executed": 22,
+        "passed": 22
+      },
+      "unknown": {
+        "total": 8,
+        "executed": 8,
+        "passed": 8
+      },
+      "injection": {
+        "total": 10,
+        "executed": 10,
+        "passed": 10
+      },
+      "availability": {
+        "total": 8,
+        "executed": 8,
+        "passed": 8
+      },
+      "clarification": {
+        "total": 6,
+        "executed": 6,
+        "passed": 6
+      },
+      "authorization": {
+        "total": 6,
+        "executed": 6,
+        "passed": 6
+      }
+    },
+    "latency": {
+      "samples": 54,
+      "p50Ms": 166,
+      "p95Ms": 4463,
+      "p99Ms": 4831,
+      "notes": "Sequential mixed correctness workload on this CPU; not a load benchmark. Backend duration excludes the independent live-slot verification."
+    },
+    "cleanupSucceeded": true,
+    "domainUnchangedDuringEvaluation": true,
+    "firstUseHoldout": false,
+    "datasetSha256": "e60c7c0e6512f0ab24a38b98136c8a949e8f83ce95f2f97ea5ec939e0c7836f0",
+    "sourceSha256": {
+      "AssistantApplication.java": "5108e12e7f39f99af3ac90872f16c02205e58c338fe6c8be99ccb554440638cd",
+      "AssistantConfiguration.java": "133952d2cd7f4268b2b1e125ab9dbf790b9dddbc55249af012b4781ab9d009e2",
+      "AssistantController.java": "55171de74ca4c63a835fa2267785c1efd95fae3d1544b5f350438282f8f4112b",
+      "AssistantRequestBudget.java": "5726c0fe025f01011f1fcfcc385ee5e7e12481236d0a617e478ce817589e3ecb",
+      "AssistantResilience.java": "b47e868c085c652a3cf2a895404cf4d998334481679eddfe1938fa4845d367bb",
+      "AssistantService.java": "ccaa5d1a40c6b7dd8d82765a7d1944770741d30f967ad225673d36a292b376e7",
+      "AvailabilityRequest.java": "d030ecc664fe683c5a50b15913bfe9aa7bd9f1bdbe0a1a34dd1748665b176c7a",
+      "AvailabilityService.java": "64d5a6a71de28b4ba15600ecf8465ecb15ca81e9ffefb8e12a66f12bce4759f1",
+      "KnowledgeCatalog.java": "e9ee9e832f35a4fc3aa85ea5066785787483c700820af79da7410b28a3f915f5",
+      "KnowledgeService.java": "d3510d0c0f7507097b848b3d334c77bf9a12a6320fb2645f813e6aa262bdb201",
+      "ModelCatalog.java": "ecae1ae2aa0d98efba8bea7faf5d0a711893f18208a1006fb26231ac8f3d65cd",
+      "PolicyScope.java": "311c8a9b330e3e644c57c9f4ea4d6be067d7f31007da7d9a9c2941dd43e26a2a",
+      "RequestedDate.java": "5f1e735830f7596d3217448d8ba6859832cf0c0da80c4107b68c582e06890278"
+    },
+    "modelDigests": [
+      {
+        "name": "qwen3:1.7b",
+        "digest": "8f68893c685c3ddff2aa3fffce2aa60a30bb2da65ca488b61fff134a4d1730e7"
+      },
+      {
+        "name": "qwen3:0.6b",
+        "digest": "7df6b6e09427a769808717c0a93cadc4ae99ed4eb8bf5ca557c90846becea435"
+      },
+      {
+        "name": "embeddinggemma:300m",
+        "digest": "85462619ee721b466c5927d109d4cb765861907d5417b9109caebc4e614679f1"
+      }
+    ],
+    "environment": {
+      "execution": "local CPU Ollama, one concurrent inference",
+      "api": "localhost:3000",
+      "timezone": "Europe/Athens",
+      "evaluationDate": "2026-10-12",
+      "cloudCalls": 0,
+      "cloudApiCharges": 0,
+      "tokenUsage": null,
+      "totalInfrastructureCost": null,
+      "costNotes": "No paid model API was called. Tokens are not exposed by the assistant API; hardware/electricity cost is unmeasured."
+    },
+    "coldFirstCase": {
+      "id": "eval-access-conditions",
+      "kind": "ANSWER",
+      "durationMs": 4831
+    }
+  },
+  "historicalJsonAndFrozenInputsPreserved": 21,
+  "unitChecks": {
+    "passed": 26,
+    "failed": 0,
+    "version": "v12"
+  },
+  "faultChecks": {
+    "passed": 6,
+    "failed": 0,
+    "version": "v11; same HTTP budgets, DNS bootstrap and resilience configuration in v12",
+    "evidence": {
+      "cases": [
+        {
+          "recoveryAfterRestoreMs": 15130,
+          "openRejectedMs": 0,
+          "id": "provider-disconnect",
+          "halfOpenRecovered": true,
+          "noInferenceWhileOpen": true
+        },
+        {
+          "boundedMs": 256,
+          "id": "workflow-deadline",
+          "deadlineCleared": true
+        },
+        {
+          "firstCompleted": true,
+          "rejectedMs": 2,
+          "id": "assistant-bulkhead",
+          "capacityRecovered": true
+        },
+        {
+          "permitReleased": true,
+          "providerCallsDuringFailure": 1,
+          "id": "provider-hang",
+          "recoveryRequestMs": 15,
+          "failureMs": 20024
+        }
+      ],
+      "scope": "Real Spring AI Ollama HTTP adapter through Toxiproxy; synthetic model output and mocked knowledge retrieval, not model quality or embedding performance."
+    }
+  },
+  "trials": [
+    {
+      "path": "docs/ai-evals/2026-10-12/baseline/development-results.json",
+      "startedAt": "2026-10-12T17:17:05.594Z",
+      "finishedAt": "2026-10-12T17:20:26.442Z",
+      "passed": 33,
+      "total": 40,
+      "releaseGate": {
+        "approved": false,
+        "policyVersion": "padel-release-gate-v2-category-quality",
+        "minimumCategoryPassRate": 0.8,
+        "categoryRates": {
+          "policy": 0.8333333333333334,
+          "unknown": 0.25,
+          "availability": 0.8333333333333334
+        },
+        "minimumPassRate": 0.8,
+        "passRate": 0.825,
+        "criticalFailures": [],
+        "notes": "Gate set before first evaluation run: all cases completed; >=80% overall and policy/unknown/availability case pass rates; zero critical failures and verified cleanup. Not a universal security guarantee."
+      },
+      "categories": {
+        "policy": {
+          "total": 12,
+          "executed": 12,
+          "passed": 10
+        },
+        "unknown": {
+          "total": 4,
+          "executed": 4,
+          "passed": 1
+        },
+        "injection": {
+          "total": 6,
+          "executed": 6,
+          "passed": 5
+        },
+        "availability": {
+          "total": 6,
+          "executed": 6,
+          "passed": 5
+        },
+        "clarification": {
+          "total": 6,
+          "executed": 6,
+          "passed": 6
+        },
+        "authorization": {
+          "total": 5,
+          "executed": 5,
+          "passed": 5
+        },
+        "provider_failure": {
+          "total": 1,
+          "executed": 1,
+          "passed": 1
+        }
+      },
+      "latency": {
+        "samples": 34,
+        "p50Ms": 4472,
+        "p95Ms": 9462,
+        "p99Ms": 15640,
+        "notes": "Sequential mixed correctness workload on this CPU; not a load benchmark. Backend duration excludes the independent live-slot verification."
+      },
+      "cleanupSucceeded": true,
+      "domainUnchangedDuringEvaluation": true,
+      "firstUseHoldout": false,
+      "datasetSha256": "b5ac2d8aaa00edb60b6bb7f35b7f20e27d9d47c0fab23b810c91bbe2340f6354",
+      "sourceSha256": {
+        "AssistantApplication.java": "b3fc35ad4c6b600abfd35af9dc5a0f9c6e9f0222200526f626ff91f7a1b5c5da",
+        "AssistantConfiguration.java": "f10971cc34df7b49985abc658e4d8ebf3e59ae58881c5921cd9cb928ade4a65c",
+        "AssistantController.java": "55171de74ca4c63a835fa2267785c1efd95fae3d1544b5f350438282f8f4112b",
+        "AssistantRequestBudget.java": "5726c0fe025f01011f1fcfcc385ee5e7e12481236d0a617e478ce817589e3ecb",
+        "AssistantResilience.java": "b47e868c085c652a3cf2a895404cf4d998334481679eddfe1938fa4845d367bb",
+        "AssistantService.java": "f4444f20759786c0265dd6753d664167b0c3e0b4abdaf170ea625852d92baff6",
+        "AvailabilityService.java": "64d5a6a71de28b4ba15600ecf8465ecb15ca81e9ffefb8e12a66f12bce4759f1",
+        "KnowledgeCatalog.java": "e9ee9e832f35a4fc3aa85ea5066785787483c700820af79da7410b28a3f915f5",
+        "KnowledgeService.java": "2989ca7f6b8efb11afe965106e70cfe7215c67a47cf99c74ef335bce7244df04",
+        "ModelCatalog.java": "ecae1ae2aa0d98efba8bea7faf5d0a711893f18208a1006fb26231ac8f3d65cd",
+        "RequestedDate.java": "5f1e735830f7596d3217448d8ba6859832cf0c0da80c4107b68c582e06890278"
+      },
+      "modelDigests": [
+        {
+          "name": "qwen3:1.7b",
+          "digest": "8f68893c685c3ddff2aa3fffce2aa60a30bb2da65ca488b61fff134a4d1730e7"
+        },
+        {
+          "name": "qwen3:0.6b",
+          "digest": "7df6b6e09427a769808717c0a93cadc4ae99ed4eb8bf5ca557c90846becea435"
+        },
+        {
+          "name": "embeddinggemma:300m",
+          "digest": "85462619ee721b466c5927d109d4cb765861907d5417b9109caebc4e614679f1"
+        }
+      ],
+      "environment": {
+        "execution": "local CPU Ollama, one concurrent inference",
+        "api": "localhost:3000",
+        "timezone": "Europe/Athens",
+        "evaluationDate": "2026-10-12",
+        "cloudCalls": 0,
+        "cloudApiCharges": 0,
+        "tokenUsage": null,
+        "totalInfrastructureCost": null,
+        "costNotes": "No paid model API was called. Tokens are not exposed by the assistant API; hardware/electricity cost is unmeasured."
+      },
+      "coldFirstCase": {
+        "id": "dev-cancel",
+        "kind": "UNAVAILABLE",
+        "durationMs": 15640
+      }
+    },
+    {
+      "path": "docs/ai-evals/2026-10-12/v10-development/development-results.json",
+      "startedAt": "2026-10-12T19:57:04.141Z",
+      "finishedAt": "2026-10-12T19:58:53.449Z",
+      "passed": 40,
+      "total": 40,
+      "releaseGate": {
+        "approved": true,
+        "policyVersion": "padel-release-gate-v2-category-quality",
+        "minimumCategoryPassRate": 0.8,
+        "categoryRates": {
+          "policy": 1,
+          "unknown": 1,
+          "availability": 1
+        },
+        "minimumPassRate": 0.8,
+        "passRate": 1,
+        "criticalFailures": [],
+        "notes": "Gate set before first evaluation run: all cases completed; >=80% overall and policy/unknown/availability case pass rates; zero critical failures and verified cleanup. Not a universal security guarantee."
+      },
+      "categories": {
+        "policy": {
+          "total": 12,
+          "executed": 12,
+          "passed": 12
+        },
+        "unknown": {
+          "total": 4,
+          "executed": 4,
+          "passed": 4
+        },
+        "injection": {
+          "total": 6,
+          "executed": 6,
+          "passed": 6
+        },
+        "availability": {
+          "total": 6,
+          "executed": 6,
+          "passed": 6
+        },
+        "clarification": {
+          "total": 6,
+          "executed": 6,
+          "passed": 6
+        },
+        "authorization": {
+          "total": 5,
+          "executed": 5,
+          "passed": 5
+        },
+        "provider_failure": {
+          "total": 1,
+          "executed": 1,
+          "passed": 1
+        }
+      },
+      "latency": {
+        "samples": 34,
+        "p50Ms": 60,
+        "p95Ms": 4579,
+        "p99Ms": 17997,
+        "notes": "Sequential mixed correctness workload on this CPU; not a load benchmark. Backend duration excludes the independent live-slot verification."
+      },
+      "cleanupSucceeded": true,
+      "domainUnchangedDuringEvaluation": true,
+      "firstUseHoldout": false,
+      "datasetSha256": "b5ac2d8aaa00edb60b6bb7f35b7f20e27d9d47c0fab23b810c91bbe2340f6354",
+      "sourceSha256": {
+        "AssistantApplication.java": "b3fc35ad4c6b600abfd35af9dc5a0f9c6e9f0222200526f626ff91f7a1b5c5da",
+        "AssistantConfiguration.java": "133952d2cd7f4268b2b1e125ab9dbf790b9dddbc55249af012b4781ab9d009e2",
+        "AssistantController.java": "55171de74ca4c63a835fa2267785c1efd95fae3d1544b5f350438282f8f4112b",
+        "AssistantRequestBudget.java": "5726c0fe025f01011f1fcfcc385ee5e7e12481236d0a617e478ce817589e3ecb",
+        "AssistantResilience.java": "b47e868c085c652a3cf2a895404cf4d998334481679eddfe1938fa4845d367bb",
+        "AssistantService.java": "c733f45fe295d16411e1e6b325cca833b97097fe84d95ee6d92fdf21797fcfae",
+        "AvailabilityRequest.java": "793622370c5ca2653d68fb57def66e025a2c7473319864bf29897ee621334745",
+        "AvailabilityService.java": "64d5a6a71de28b4ba15600ecf8465ecb15ca81e9ffefb8e12a66f12bce4759f1",
+        "KnowledgeCatalog.java": "e9ee9e832f35a4fc3aa85ea5066785787483c700820af79da7410b28a3f915f5",
+        "KnowledgeService.java": "d3510d0c0f7507097b848b3d334c77bf9a12a6320fb2645f813e6aa262bdb201",
+        "ModelCatalog.java": "ecae1ae2aa0d98efba8bea7faf5d0a711893f18208a1006fb26231ac8f3d65cd",
+        "PolicyScope.java": "311c8a9b330e3e644c57c9f4ea4d6be067d7f31007da7d9a9c2941dd43e26a2a",
+        "RequestedDate.java": "5f1e735830f7596d3217448d8ba6859832cf0c0da80c4107b68c582e06890278"
+      },
+      "modelDigests": [
+        {
+          "name": "qwen3:1.7b",
+          "digest": "8f68893c685c3ddff2aa3fffce2aa60a30bb2da65ca488b61fff134a4d1730e7"
+        },
+        {
+          "name": "qwen3:0.6b",
+          "digest": "7df6b6e09427a769808717c0a93cadc4ae99ed4eb8bf5ca557c90846becea435"
+        },
+        {
+          "name": "embeddinggemma:300m",
+          "digest": "85462619ee721b466c5927d109d4cb765861907d5417b9109caebc4e614679f1"
+        }
+      ],
+      "environment": {
+        "execution": "local CPU Ollama, one concurrent inference",
+        "api": "localhost:3000",
+        "timezone": "Europe/Athens",
+        "evaluationDate": "2026-10-12",
+        "cloudCalls": 0,
+        "cloudApiCharges": 0,
+        "tokenUsage": null,
+        "totalInfrastructureCost": null,
+        "costNotes": "No paid model API was called. Tokens are not exposed by the assistant API; hardware/electricity cost is unmeasured."
+      },
+      "coldFirstCase": {
+        "id": "dev-cancel",
+        "kind": "ANSWER",
+        "durationMs": 17997
+      }
+    },
+    {
+      "path": "docs/ai-evals/2026-10-12/v10-evaluation/evaluation-results.json",
+      "startedAt": "2026-10-12T19:58:55.520Z",
+      "finishedAt": "2026-10-12T20:01:16.957Z",
+      "passed": 59,
+      "total": 60,
+      "releaseGate": {
+        "approved": true,
+        "policyVersion": "padel-release-gate-v2-category-quality",
+        "minimumCategoryPassRate": 0.8,
+        "categoryRates": {
+          "policy": 0.9545454545454546,
+          "unknown": 1,
+          "availability": 1
+        },
+        "minimumPassRate": 0.8,
+        "passRate": 0.9833333333333333,
+        "criticalFailures": [],
+        "notes": "Gate set before first evaluation run: all cases completed; >=80% overall and policy/unknown/availability case pass rates; zero critical failures and verified cleanup. Not a universal security guarantee."
+      },
+      "categories": {
+        "policy": {
+          "total": 22,
+          "executed": 22,
+          "passed": 21
+        },
+        "unknown": {
+          "total": 8,
+          "executed": 8,
+          "passed": 8
+        },
+        "injection": {
+          "total": 10,
+          "executed": 10,
+          "passed": 10
+        },
+        "availability": {
+          "total": 8,
+          "executed": 8,
+          "passed": 8
+        },
+        "clarification": {
+          "total": 6,
+          "executed": 6,
+          "passed": 6
+        },
+        "authorization": {
+          "total": 6,
+          "executed": 6,
+          "passed": 6
+        }
+      },
+      "latency": {
+        "samples": 54,
+        "p50Ms": 94,
+        "p95Ms": 4103,
+        "p99Ms": 4969,
+        "notes": "Sequential mixed correctness workload on this CPU; not a load benchmark. Backend duration excludes the independent live-slot verification."
+      },
+      "cleanupSucceeded": true,
+      "domainUnchangedDuringEvaluation": true,
+      "firstUseHoldout": false,
+      "datasetSha256": "e60c7c0e6512f0ab24a38b98136c8a949e8f83ce95f2f97ea5ec939e0c7836f0",
+      "sourceSha256": {
+        "AssistantApplication.java": "b3fc35ad4c6b600abfd35af9dc5a0f9c6e9f0222200526f626ff91f7a1b5c5da",
+        "AssistantConfiguration.java": "133952d2cd7f4268b2b1e125ab9dbf790b9dddbc55249af012b4781ab9d009e2",
+        "AssistantController.java": "55171de74ca4c63a835fa2267785c1efd95fae3d1544b5f350438282f8f4112b",
+        "AssistantRequestBudget.java": "5726c0fe025f01011f1fcfcc385ee5e7e12481236d0a617e478ce817589e3ecb",
+        "AssistantResilience.java": "b47e868c085c652a3cf2a895404cf4d998334481679eddfe1938fa4845d367bb",
+        "AssistantService.java": "c733f45fe295d16411e1e6b325cca833b97097fe84d95ee6d92fdf21797fcfae",
+        "AvailabilityRequest.java": "793622370c5ca2653d68fb57def66e025a2c7473319864bf29897ee621334745",
+        "AvailabilityService.java": "64d5a6a71de28b4ba15600ecf8465ecb15ca81e9ffefb8e12a66f12bce4759f1",
+        "KnowledgeCatalog.java": "e9ee9e832f35a4fc3aa85ea5066785787483c700820af79da7410b28a3f915f5",
+        "KnowledgeService.java": "d3510d0c0f7507097b848b3d334c77bf9a12a6320fb2645f813e6aa262bdb201",
+        "ModelCatalog.java": "ecae1ae2aa0d98efba8bea7faf5d0a711893f18208a1006fb26231ac8f3d65cd",
+        "PolicyScope.java": "311c8a9b330e3e644c57c9f4ea4d6be067d7f31007da7d9a9c2941dd43e26a2a",
+        "RequestedDate.java": "5f1e735830f7596d3217448d8ba6859832cf0c0da80c4107b68c582e06890278"
+      },
+      "modelDigests": [
+        {
+          "name": "qwen3:1.7b",
+          "digest": "8f68893c685c3ddff2aa3fffce2aa60a30bb2da65ca488b61fff134a4d1730e7"
+        },
+        {
+          "name": "qwen3:0.6b",
+          "digest": "7df6b6e09427a769808717c0a93cadc4ae99ed4eb8bf5ca557c90846becea435"
+        },
+        {
+          "name": "embeddinggemma:300m",
+          "digest": "85462619ee721b466c5927d109d4cb765861907d5417b9109caebc4e614679f1"
+        }
+      ],
+      "environment": {
+        "execution": "local CPU Ollama, one concurrent inference",
+        "api": "localhost:3000",
+        "timezone": "Europe/Athens",
+        "evaluationDate": "2026-10-12",
+        "cloudCalls": 0,
+        "cloudApiCharges": 0,
+        "tokenUsage": null,
+        "totalInfrastructureCost": null,
+        "costNotes": "No paid model API was called. Tokens are not exposed by the assistant API; hardware/electricity cost is unmeasured."
+      },
+      "coldFirstCase": {
+        "id": "eval-access-conditions",
+        "kind": "UNAVAILABLE",
+        "durationMs": 2
+      }
+    },
+    {
+      "path": "docs/ai-evals/2026-10-12/v11-development/development-results.json",
+      "startedAt": "2026-10-12T20:31:37.893Z",
+      "finishedAt": "2026-10-12T20:33:32.848Z",
+      "passed": 40,
+      "total": 40,
+      "releaseGate": {
+        "approved": true,
+        "policyVersion": "padel-release-gate-v2-category-quality",
+        "minimumCategoryPassRate": 0.8,
+        "categoryRates": {
+          "policy": 1,
+          "unknown": 1,
+          "availability": 1
+        },
+        "minimumPassRate": 0.8,
+        "passRate": 1,
+        "criticalFailures": [],
+        "notes": "Gate set before first evaluation run: all cases completed; >=80% overall and policy/unknown/availability case pass rates; zero critical failures and verified cleanup. Not a universal security guarantee."
+      },
+      "categories": {
+        "policy": {
+          "total": 12,
+          "executed": 12,
+          "passed": 12
+        },
+        "unknown": {
+          "total": 4,
+          "executed": 4,
+          "passed": 4
+        },
+        "injection": {
+          "total": 6,
+          "executed": 6,
+          "passed": 6
+        },
+        "availability": {
+          "total": 6,
+          "executed": 6,
+          "passed": 6
+        },
+        "clarification": {
+          "total": 6,
+          "executed": 6,
+          "passed": 6
+        },
+        "authorization": {
+          "total": 5,
+          "executed": 5,
+          "passed": 5
+        },
+        "provider_failure": {
+          "total": 1,
+          "executed": 1,
+          "passed": 1
+        }
+      },
+      "latency": {
+        "samples": 34,
+        "p50Ms": 50,
+        "p95Ms": 5914,
+        "p99Ms": 18829,
+        "notes": "Sequential mixed correctness workload on this CPU; not a load benchmark. Backend duration excludes the independent live-slot verification."
+      },
+      "cleanupSucceeded": true,
+      "domainUnchangedDuringEvaluation": true,
+      "firstUseHoldout": false,
+      "datasetSha256": "b5ac2d8aaa00edb60b6bb7f35b7f20e27d9d47c0fab23b810c91bbe2340f6354",
+      "sourceSha256": {
+        "AssistantApplication.java": "5108e12e7f39f99af3ac90872f16c02205e58c338fe6c8be99ccb554440638cd",
+        "AssistantConfiguration.java": "133952d2cd7f4268b2b1e125ab9dbf790b9dddbc55249af012b4781ab9d009e2",
+        "AssistantController.java": "55171de74ca4c63a835fa2267785c1efd95fae3d1544b5f350438282f8f4112b",
+        "AssistantRequestBudget.java": "5726c0fe025f01011f1fcfcc385ee5e7e12481236d0a617e478ce817589e3ecb",
+        "AssistantResilience.java": "b47e868c085c652a3cf2a895404cf4d998334481679eddfe1938fa4845d367bb",
+        "AssistantService.java": "06b780f82b1ea9d626c17264d643337d77a11af71779a02fef3c7c3a7d63ed41",
+        "AvailabilityRequest.java": "793622370c5ca2653d68fb57def66e025a2c7473319864bf29897ee621334745",
+        "AvailabilityService.java": "64d5a6a71de28b4ba15600ecf8465ecb15ca81e9ffefb8e12a66f12bce4759f1",
+        "KnowledgeCatalog.java": "e9ee9e832f35a4fc3aa85ea5066785787483c700820af79da7410b28a3f915f5",
+        "KnowledgeService.java": "d3510d0c0f7507097b848b3d334c77bf9a12a6320fb2645f813e6aa262bdb201",
+        "ModelCatalog.java": "ecae1ae2aa0d98efba8bea7faf5d0a711893f18208a1006fb26231ac8f3d65cd",
+        "PolicyScope.java": "311c8a9b330e3e644c57c9f4ea4d6be067d7f31007da7d9a9c2941dd43e26a2a",
+        "RequestedDate.java": "5f1e735830f7596d3217448d8ba6859832cf0c0da80c4107b68c582e06890278"
+      },
+      "modelDigests": [
+        {
+          "name": "qwen3:1.7b",
+          "digest": "8f68893c685c3ddff2aa3fffce2aa60a30bb2da65ca488b61fff134a4d1730e7"
+        },
+        {
+          "name": "qwen3:0.6b",
+          "digest": "7df6b6e09427a769808717c0a93cadc4ae99ed4eb8bf5ca557c90846becea435"
+        },
+        {
+          "name": "embeddinggemma:300m",
+          "digest": "85462619ee721b466c5927d109d4cb765861907d5417b9109caebc4e614679f1"
+        }
+      ],
+      "environment": {
+        "execution": "local CPU Ollama, one concurrent inference",
+        "api": "localhost:3000",
+        "timezone": "Europe/Athens",
+        "evaluationDate": "2026-10-12",
+        "cloudCalls": 0,
+        "cloudApiCharges": 0,
+        "tokenUsage": null,
+        "totalInfrastructureCost": null,
+        "costNotes": "No paid model API was called. Tokens are not exposed by the assistant API; hardware/electricity cost is unmeasured."
+      },
+      "coldFirstCase": {
+        "id": "dev-cancel",
+        "kind": "ANSWER",
+        "durationMs": 18829
+      }
+    },
+    {
+      "path": "docs/ai-evals/2026-10-12/v11-evaluation/evaluation-results.json",
+      "startedAt": "2026-10-12T20:33:35.066Z",
+      "finishedAt": "2026-10-12T20:36:12.489Z",
+      "passed": 60,
+      "total": 60,
+      "releaseGate": {
+        "approved": true,
+        "policyVersion": "padel-release-gate-v2-category-quality",
+        "minimumCategoryPassRate": 0.8,
+        "categoryRates": {
+          "policy": 1,
+          "unknown": 1,
+          "availability": 1
+        },
+        "minimumPassRate": 0.8,
+        "passRate": 1,
+        "criticalFailures": [],
+        "notes": "Gate set before first evaluation run: all cases completed; >=80% overall and policy/unknown/availability case pass rates; zero critical failures and verified cleanup. Not a universal security guarantee."
+      },
+      "categories": {
+        "policy": {
+          "total": 22,
+          "executed": 22,
+          "passed": 22
+        },
+        "unknown": {
+          "total": 8,
+          "executed": 8,
+          "passed": 8
+        },
+        "injection": {
+          "total": 10,
+          "executed": 10,
+          "passed": 10
+        },
+        "availability": {
+          "total": 8,
+          "executed": 8,
+          "passed": 8
+        },
+        "clarification": {
+          "total": 6,
+          "executed": 6,
+          "passed": 6
+        },
+        "authorization": {
+          "total": 6,
+          "executed": 6,
+          "passed": 6
+        }
+      },
+      "latency": {
+        "samples": 54,
+        "p50Ms": 75,
+        "p95Ms": 4670,
+        "p99Ms": 5159,
+        "notes": "Sequential mixed correctness workload on this CPU; not a load benchmark. Backend duration excludes the independent live-slot verification."
+      },
+      "cleanupSucceeded": true,
+      "domainUnchangedDuringEvaluation": true,
+      "firstUseHoldout": false,
+      "datasetSha256": "e60c7c0e6512f0ab24a38b98136c8a949e8f83ce95f2f97ea5ec939e0c7836f0",
+      "sourceSha256": {
+        "AssistantApplication.java": "5108e12e7f39f99af3ac90872f16c02205e58c338fe6c8be99ccb554440638cd",
+        "AssistantConfiguration.java": "133952d2cd7f4268b2b1e125ab9dbf790b9dddbc55249af012b4781ab9d009e2",
+        "AssistantController.java": "55171de74ca4c63a835fa2267785c1efd95fae3d1544b5f350438282f8f4112b",
+        "AssistantRequestBudget.java": "5726c0fe025f01011f1fcfcc385ee5e7e12481236d0a617e478ce817589e3ecb",
+        "AssistantResilience.java": "b47e868c085c652a3cf2a895404cf4d998334481679eddfe1938fa4845d367bb",
+        "AssistantService.java": "06b780f82b1ea9d626c17264d643337d77a11af71779a02fef3c7c3a7d63ed41",
+        "AvailabilityRequest.java": "793622370c5ca2653d68fb57def66e025a2c7473319864bf29897ee621334745",
+        "AvailabilityService.java": "64d5a6a71de28b4ba15600ecf8465ecb15ca81e9ffefb8e12a66f12bce4759f1",
+        "KnowledgeCatalog.java": "e9ee9e832f35a4fc3aa85ea5066785787483c700820af79da7410b28a3f915f5",
+        "KnowledgeService.java": "d3510d0c0f7507097b848b3d334c77bf9a12a6320fb2645f813e6aa262bdb201",
+        "ModelCatalog.java": "ecae1ae2aa0d98efba8bea7faf5d0a711893f18208a1006fb26231ac8f3d65cd",
+        "PolicyScope.java": "311c8a9b330e3e644c57c9f4ea4d6be067d7f31007da7d9a9c2941dd43e26a2a",
+        "RequestedDate.java": "5f1e735830f7596d3217448d8ba6859832cf0c0da80c4107b68c582e06890278"
+      },
+      "modelDigests": [
+        {
+          "name": "qwen3:1.7b",
+          "digest": "8f68893c685c3ddff2aa3fffce2aa60a30bb2da65ca488b61fff134a4d1730e7"
+        },
+        {
+          "name": "qwen3:0.6b",
+          "digest": "7df6b6e09427a769808717c0a93cadc4ae99ed4eb8bf5ca557c90846becea435"
+        },
+        {
+          "name": "embeddinggemma:300m",
+          "digest": "85462619ee721b466c5927d109d4cb765861907d5417b9109caebc4e614679f1"
+        }
+      ],
+      "environment": {
+        "execution": "local CPU Ollama, one concurrent inference",
+        "api": "localhost:3000",
+        "timezone": "Europe/Athens",
+        "evaluationDate": "2026-10-12",
+        "cloudCalls": 0,
+        "cloudApiCharges": 0,
+        "tokenUsage": null,
+        "totalInfrastructureCost": null,
+        "costNotes": "No paid model API was called. Tokens are not exposed by the assistant API; hardware/electricity cost is unmeasured."
+      },
+      "coldFirstCase": {
+        "id": "eval-access-conditions",
+        "kind": "ANSWER",
+        "durationMs": 4221
+      }
+    },
+    {
+      "path": "docs/ai-evals/2026-10-12/v12-development/development-results.json",
+      "startedAt": "2026-10-12T20:49:36.382Z",
+      "finishedAt": "2026-10-12T20:51:41.665Z",
+      "passed": 40,
+      "total": 40,
+      "releaseGate": {
+        "approved": true,
+        "policyVersion": "padel-release-gate-v2-category-quality",
+        "minimumCategoryPassRate": 0.8,
+        "categoryRates": {
+          "policy": 1,
+          "unknown": 1,
+          "availability": 1
+        },
+        "minimumPassRate": 0.8,
+        "passRate": 1,
+        "criticalFailures": [],
+        "notes": "Gate set before first evaluation run: all cases completed; >=80% overall and policy/unknown/availability case pass rates; zero critical failures and verified cleanup. Not a universal security guarantee."
+      },
+      "categories": {
+        "policy": {
+          "total": 12,
+          "executed": 12,
+          "passed": 12
+        },
+        "unknown": {
+          "total": 4,
+          "executed": 4,
+          "passed": 4
+        },
+        "injection": {
+          "total": 6,
+          "executed": 6,
+          "passed": 6
+        },
+        "availability": {
+          "total": 6,
+          "executed": 6,
+          "passed": 6
+        },
+        "clarification": {
+          "total": 6,
+          "executed": 6,
+          "passed": 6
+        },
+        "authorization": {
+          "total": 5,
+          "executed": 5,
+          "passed": 5
+        },
+        "provider_failure": {
+          "total": 1,
+          "executed": 1,
+          "passed": 1
+        }
+      },
+      "latency": {
+        "samples": 34,
+        "p50Ms": 44,
+        "p95Ms": 5133,
+        "p99Ms": 17653,
+        "notes": "Sequential mixed correctness workload on this CPU; not a load benchmark. Backend duration excludes the independent live-slot verification."
+      },
+      "cleanupSucceeded": true,
+      "domainUnchangedDuringEvaluation": true,
+      "firstUseHoldout": false,
+      "datasetSha256": "b5ac2d8aaa00edb60b6bb7f35b7f20e27d9d47c0fab23b810c91bbe2340f6354",
+      "sourceSha256": {
+        "AssistantApplication.java": "5108e12e7f39f99af3ac90872f16c02205e58c338fe6c8be99ccb554440638cd",
+        "AssistantConfiguration.java": "133952d2cd7f4268b2b1e125ab9dbf790b9dddbc55249af012b4781ab9d009e2",
+        "AssistantController.java": "55171de74ca4c63a835fa2267785c1efd95fae3d1544b5f350438282f8f4112b",
+        "AssistantRequestBudget.java": "5726c0fe025f01011f1fcfcc385ee5e7e12481236d0a617e478ce817589e3ecb",
+        "AssistantResilience.java": "b47e868c085c652a3cf2a895404cf4d998334481679eddfe1938fa4845d367bb",
+        "AssistantService.java": "ccaa5d1a40c6b7dd8d82765a7d1944770741d30f967ad225673d36a292b376e7",
+        "AvailabilityRequest.java": "d030ecc664fe683c5a50b15913bfe9aa7bd9f1bdbe0a1a34dd1748665b176c7a",
+        "AvailabilityService.java": "64d5a6a71de28b4ba15600ecf8465ecb15ca81e9ffefb8e12a66f12bce4759f1",
+        "KnowledgeCatalog.java": "e9ee9e832f35a4fc3aa85ea5066785787483c700820af79da7410b28a3f915f5",
+        "KnowledgeService.java": "d3510d0c0f7507097b848b3d334c77bf9a12a6320fb2645f813e6aa262bdb201",
+        "ModelCatalog.java": "ecae1ae2aa0d98efba8bea7faf5d0a711893f18208a1006fb26231ac8f3d65cd",
+        "PolicyScope.java": "311c8a9b330e3e644c57c9f4ea4d6be067d7f31007da7d9a9c2941dd43e26a2a",
+        "RequestedDate.java": "5f1e735830f7596d3217448d8ba6859832cf0c0da80c4107b68c582e06890278"
+      },
+      "modelDigests": [
+        {
+          "name": "qwen3:1.7b",
+          "digest": "8f68893c685c3ddff2aa3fffce2aa60a30bb2da65ca488b61fff134a4d1730e7"
+        },
+        {
+          "name": "qwen3:0.6b",
+          "digest": "7df6b6e09427a769808717c0a93cadc4ae99ed4eb8bf5ca557c90846becea435"
+        },
+        {
+          "name": "embeddinggemma:300m",
+          "digest": "85462619ee721b466c5927d109d4cb765861907d5417b9109caebc4e614679f1"
+        }
+      ],
+      "environment": {
+        "execution": "local CPU Ollama, one concurrent inference",
+        "api": "localhost:3000",
+        "timezone": "Europe/Athens",
+        "evaluationDate": "2026-10-12",
+        "cloudCalls": 0,
+        "cloudApiCharges": 0,
+        "tokenUsage": null,
+        "totalInfrastructureCost": null,
+        "costNotes": "No paid model API was called. Tokens are not exposed by the assistant API; hardware/electricity cost is unmeasured."
+      },
+      "coldFirstCase": {
+        "id": "dev-cancel",
+        "kind": "ANSWER",
+        "durationMs": 17653
+      }
+    },
+    {
+      "path": "docs/ai-evals/2026-10-12/v12-evaluation/evaluation-results.json",
+      "startedAt": "2026-10-12T20:51:43.891Z",
+      "finishedAt": "2026-10-12T20:54:18.335Z",
+      "passed": 60,
+      "total": 60,
+      "releaseGate": {
+        "approved": true,
+        "policyVersion": "padel-release-gate-v2-category-quality",
+        "minimumCategoryPassRate": 0.8,
+        "categoryRates": {
+          "policy": 1,
+          "unknown": 1,
+          "availability": 1
+        },
+        "minimumPassRate": 0.8,
+        "passRate": 1,
+        "criticalFailures": [],
+        "notes": "Gate set before first evaluation run: all cases completed; >=80% overall and policy/unknown/availability case pass rates; zero critical failures and verified cleanup. Not a universal security guarantee."
+      },
+      "categories": {
+        "policy": {
+          "total": 22,
+          "executed": 22,
+          "passed": 22
+        },
+        "unknown": {
+          "total": 8,
+          "executed": 8,
+          "passed": 8
+        },
+        "injection": {
+          "total": 10,
+          "executed": 10,
+          "passed": 10
+        },
+        "availability": {
+          "total": 8,
+          "executed": 8,
+          "passed": 8
+        },
+        "clarification": {
+          "total": 6,
+          "executed": 6,
+          "passed": 6
+        },
+        "authorization": {
+          "total": 6,
+          "executed": 6,
+          "passed": 6
+        }
+      },
+      "latency": {
+        "samples": 54,
+        "p50Ms": 166,
+        "p95Ms": 4463,
+        "p99Ms": 4831,
+        "notes": "Sequential mixed correctness workload on this CPU; not a load benchmark. Backend duration excludes the independent live-slot verification."
+      },
+      "cleanupSucceeded": true,
+      "domainUnchangedDuringEvaluation": true,
+      "firstUseHoldout": false,
+      "datasetSha256": "e60c7c0e6512f0ab24a38b98136c8a949e8f83ce95f2f97ea5ec939e0c7836f0",
+      "sourceSha256": {
+        "AssistantApplication.java": "5108e12e7f39f99af3ac90872f16c02205e58c338fe6c8be99ccb554440638cd",
+        "AssistantConfiguration.java": "133952d2cd7f4268b2b1e125ab9dbf790b9dddbc55249af012b4781ab9d009e2",
+        "AssistantController.java": "55171de74ca4c63a835fa2267785c1efd95fae3d1544b5f350438282f8f4112b",
+        "AssistantRequestBudget.java": "5726c0fe025f01011f1fcfcc385ee5e7e12481236d0a617e478ce817589e3ecb",
+        "AssistantResilience.java": "b47e868c085c652a3cf2a895404cf4d998334481679eddfe1938fa4845d367bb",
+        "AssistantService.java": "ccaa5d1a40c6b7dd8d82765a7d1944770741d30f967ad225673d36a292b376e7",
+        "AvailabilityRequest.java": "d030ecc664fe683c5a50b15913bfe9aa7bd9f1bdbe0a1a34dd1748665b176c7a",
+        "AvailabilityService.java": "64d5a6a71de28b4ba15600ecf8465ecb15ca81e9ffefb8e12a66f12bce4759f1",
+        "KnowledgeCatalog.java": "e9ee9e832f35a4fc3aa85ea5066785787483c700820af79da7410b28a3f915f5",
+        "KnowledgeService.java": "d3510d0c0f7507097b848b3d334c77bf9a12a6320fb2645f813e6aa262bdb201",
+        "ModelCatalog.java": "ecae1ae2aa0d98efba8bea7faf5d0a711893f18208a1006fb26231ac8f3d65cd",
+        "PolicyScope.java": "311c8a9b330e3e644c57c9f4ea4d6be067d7f31007da7d9a9c2941dd43e26a2a",
+        "RequestedDate.java": "5f1e735830f7596d3217448d8ba6859832cf0c0da80c4107b68c582e06890278"
+      },
+      "modelDigests": [
+        {
+          "name": "qwen3:1.7b",
+          "digest": "8f68893c685c3ddff2aa3fffce2aa60a30bb2da65ca488b61fff134a4d1730e7"
+        },
+        {
+          "name": "qwen3:0.6b",
+          "digest": "7df6b6e09427a769808717c0a93cadc4ae99ed4eb8bf5ca557c90846becea435"
+        },
+        {
+          "name": "embeddinggemma:300m",
+          "digest": "85462619ee721b466c5927d109d4cb765861907d5417b9109caebc4e614679f1"
+        }
+      ],
+      "environment": {
+        "execution": "local CPU Ollama, one concurrent inference",
+        "api": "localhost:3000",
+        "timezone": "Europe/Athens",
+        "evaluationDate": "2026-10-12",
+        "cloudCalls": 0,
+        "cloudApiCharges": 0,
+        "tokenUsage": null,
+        "totalInfrastructureCost": null,
+        "costNotes": "No paid model API was called. Tokens are not exposed by the assistant API; hardware/electricity cost is unmeasured."
+      },
+      "coldFirstCase": {
+        "id": "eval-access-conditions",
+        "kind": "ANSWER",
+        "durationMs": 4831
+      }
+    },
+    {
+      "path": "docs/ai-evals/2026-10-12/v6-development/development-results.json",
+      "startedAt": "2026-10-12T18:00:02.728Z",
+      "finishedAt": "2026-10-12T18:02:14.804Z",
+      "passed": 28,
+      "total": 40,
+      "releaseGate": {
+        "approved": false,
+        "policyVersion": "padel-release-gate-v2-category-quality",
+        "minimumCategoryPassRate": 0.8,
+        "categoryRates": {
+          "policy": 0,
+          "unknown": 1,
+          "availability": 1
+        },
+        "minimumPassRate": 0.8,
+        "passRate": 0.7,
+        "criticalFailures": [],
+        "notes": "Gate set before first evaluation run: all cases completed; >=80% overall and policy/unknown/availability case pass rates; zero critical failures and verified cleanup. Not a universal security guarantee."
+      },
+      "categories": {
+        "policy": {
+          "total": 12,
+          "executed": 12,
+          "passed": 0
+        },
+        "unknown": {
+          "total": 4,
+          "executed": 4,
+          "passed": 4
+        },
+        "injection": {
+          "total": 6,
+          "executed": 6,
+          "passed": 6
+        },
+        "availability": {
+          "total": 6,
+          "executed": 6,
+          "passed": 6
+        },
+        "clarification": {
+          "total": 6,
+          "executed": 6,
+          "passed": 6
+        },
+        "authorization": {
+          "total": 5,
+          "executed": 5,
+          "passed": 5
+        },
+        "provider_failure": {
+          "total": 1,
+          "executed": 1,
+          "passed": 1
+        }
+      },
+      "latency": {
+        "samples": 34,
+        "p50Ms": 60,
+        "p95Ms": 9015,
+        "p99Ms": 15008,
+        "notes": "Sequential mixed correctness workload on this CPU; not a load benchmark. Backend duration excludes the independent live-slot verification."
+      },
+      "cleanupSucceeded": true,
+      "domainUnchangedDuringEvaluation": true,
+      "firstUseHoldout": false,
+      "datasetSha256": "b5ac2d8aaa00edb60b6bb7f35b7f20e27d9d47c0fab23b810c91bbe2340f6354",
+      "sourceSha256": {
+        "AssistantApplication.java": "b3fc35ad4c6b600abfd35af9dc5a0f9c6e9f0222200526f626ff91f7a1b5c5da",
+        "AssistantConfiguration.java": "f10971cc34df7b49985abc658e4d8ebf3e59ae58881c5921cd9cb928ade4a65c",
+        "AssistantController.java": "55171de74ca4c63a835fa2267785c1efd95fae3d1544b5f350438282f8f4112b",
+        "AssistantRequestBudget.java": "5726c0fe025f01011f1fcfcc385ee5e7e12481236d0a617e478ce817589e3ecb",
+        "AssistantResilience.java": "b47e868c085c652a3cf2a895404cf4d998334481679eddfe1938fa4845d367bb",
+        "AssistantService.java": "c7adbfe26c8cfa6dc70ba1fbc6c48eb716c18ff557436f504e6d765e8ff4ab41",
+        "AvailabilityRequest.java": "893135ee55e7c4ae286338ddae0d03dd43c8319da9d91cede49b7a634c909436",
+        "AvailabilityService.java": "64d5a6a71de28b4ba15600ecf8465ecb15ca81e9ffefb8e12a66f12bce4759f1",
+        "KnowledgeCatalog.java": "e9ee9e832f35a4fc3aa85ea5066785787483c700820af79da7410b28a3f915f5",
+        "KnowledgeService.java": "026af492f1691e82834111c4c148a99b2d964dd71b2045b0130158d6e416448b",
+        "ModelCatalog.java": "ecae1ae2aa0d98efba8bea7faf5d0a711893f18208a1006fb26231ac8f3d65cd",
+        "PolicyScope.java": "225e78fcabef12b374c4ac3f6e7c681397baeaaba8f084ab7411323e3645281b",
+        "RequestedDate.java": "5f1e735830f7596d3217448d8ba6859832cf0c0da80c4107b68c582e06890278"
+      },
+      "modelDigests": [
+        {
+          "name": "qwen3:1.7b",
+          "digest": "8f68893c685c3ddff2aa3fffce2aa60a30bb2da65ca488b61fff134a4d1730e7"
+        },
+        {
+          "name": "qwen3:0.6b",
+          "digest": "7df6b6e09427a769808717c0a93cadc4ae99ed4eb8bf5ca557c90846becea435"
+        },
+        {
+          "name": "embeddinggemma:300m",
+          "digest": "85462619ee721b466c5927d109d4cb765861907d5417b9109caebc4e614679f1"
+        }
+      ],
+      "environment": {
+        "execution": "local CPU Ollama, one concurrent inference",
+        "api": "localhost:3000",
+        "timezone": "Europe/Athens",
+        "evaluationDate": "2026-10-12",
+        "cloudCalls": 0,
+        "cloudApiCharges": 0,
+        "tokenUsage": null,
+        "totalInfrastructureCost": null,
+        "costNotes": "No paid model API was called. Tokens are not exposed by the assistant API; hardware/electricity cost is unmeasured."
+      },
+      "coldFirstCase": {
+        "id": "dev-cancel",
+        "kind": "UNAVAILABLE",
+        "durationMs": 15008
+      }
+    },
+    {
+      "path": "docs/ai-evals/2026-10-12/v7-development/development-results.json",
+      "startedAt": "2026-10-12T18:21:43.492Z",
+      "finishedAt": "2026-10-12T18:23:29.092Z",
+      "passed": 38,
+      "total": 40,
+      "releaseGate": {
+        "approved": true,
+        "policyVersion": "padel-release-gate-v2-category-quality",
+        "minimumCategoryPassRate": 0.8,
+        "categoryRates": {
+          "policy": 0.8333333333333334,
+          "unknown": 1,
+          "availability": 1
+        },
+        "minimumPassRate": 0.8,
+        "passRate": 0.95,
+        "criticalFailures": [],
+        "notes": "Gate set before first evaluation run: all cases completed; >=80% overall and policy/unknown/availability case pass rates; zero critical failures and verified cleanup. Not a universal security guarantee."
+      },
+      "categories": {
+        "policy": {
+          "total": 12,
+          "executed": 12,
+          "passed": 10
+        },
+        "unknown": {
+          "total": 4,
+          "executed": 4,
+          "passed": 4
+        },
+        "injection": {
+          "total": 6,
+          "executed": 6,
+          "passed": 6
+        },
+        "availability": {
+          "total": 6,
+          "executed": 6,
+          "passed": 6
+        },
+        "clarification": {
+          "total": 6,
+          "executed": 6,
+          "passed": 6
+        },
+        "authorization": {
+          "total": 5,
+          "executed": 5,
+          "passed": 5
+        },
+        "provider_failure": {
+          "total": 1,
+          "executed": 1,
+          "passed": 1
+        }
+      },
+      "latency": {
+        "samples": 34,
+        "p50Ms": 45,
+        "p95Ms": 5357,
+        "p99Ms": 15007,
+        "notes": "Sequential mixed correctness workload on this CPU; not a load benchmark. Backend duration excludes the independent live-slot verification."
+      },
+      "cleanupSucceeded": true,
+      "domainUnchangedDuringEvaluation": true,
+      "firstUseHoldout": false,
+      "datasetSha256": "b5ac2d8aaa00edb60b6bb7f35b7f20e27d9d47c0fab23b810c91bbe2340f6354",
+      "sourceSha256": {
+        "AssistantApplication.java": "b3fc35ad4c6b600abfd35af9dc5a0f9c6e9f0222200526f626ff91f7a1b5c5da",
+        "AssistantConfiguration.java": "f10971cc34df7b49985abc658e4d8ebf3e59ae58881c5921cd9cb928ade4a65c",
+        "AssistantController.java": "55171de74ca4c63a835fa2267785c1efd95fae3d1544b5f350438282f8f4112b",
+        "AssistantRequestBudget.java": "5726c0fe025f01011f1fcfcc385ee5e7e12481236d0a617e478ce817589e3ecb",
+        "AssistantResilience.java": "b47e868c085c652a3cf2a895404cf4d998334481679eddfe1938fa4845d367bb",
+        "AssistantService.java": "d77cf212964f18f78b3cdc649b148fd7ec7d0e79a728b21434ce629c598f4d14",
+        "AvailabilityRequest.java": "793622370c5ca2653d68fb57def66e025a2c7473319864bf29897ee621334745",
+        "AvailabilityService.java": "64d5a6a71de28b4ba15600ecf8465ecb15ca81e9ffefb8e12a66f12bce4759f1",
+        "KnowledgeCatalog.java": "e9ee9e832f35a4fc3aa85ea5066785787483c700820af79da7410b28a3f915f5",
+        "KnowledgeService.java": "6e9d30cb51b948ecfbaf19d910683f4a90f394ddf439215bdae3f92d2f241a84",
+        "ModelCatalog.java": "ecae1ae2aa0d98efba8bea7faf5d0a711893f18208a1006fb26231ac8f3d65cd",
+        "PolicyScope.java": "70215135015f6e4baf23d6fd8c9e751c5f9cbaa6f48cf9bf40749112f677a9f3",
+        "RequestedDate.java": "5f1e735830f7596d3217448d8ba6859832cf0c0da80c4107b68c582e06890278"
+      },
+      "modelDigests": [
+        {
+          "name": "qwen3:1.7b",
+          "digest": "8f68893c685c3ddff2aa3fffce2aa60a30bb2da65ca488b61fff134a4d1730e7"
+        },
+        {
+          "name": "qwen3:0.6b",
+          "digest": "7df6b6e09427a769808717c0a93cadc4ae99ed4eb8bf5ca557c90846becea435"
+        },
+        {
+          "name": "embeddinggemma:300m",
+          "digest": "85462619ee721b466c5927d109d4cb765861907d5417b9109caebc4e614679f1"
+        }
+      ],
+      "environment": {
+        "execution": "local CPU Ollama, one concurrent inference",
+        "api": "localhost:3000",
+        "timezone": "Europe/Athens",
+        "evaluationDate": "2026-10-12",
+        "cloudCalls": 0,
+        "cloudApiCharges": 0,
+        "tokenUsage": null,
+        "totalInfrastructureCost": null,
+        "costNotes": "No paid model API was called. Tokens are not exposed by the assistant API; hardware/electricity cost is unmeasured."
+      },
+      "coldFirstCase": {
+        "id": "dev-cancel",
+        "kind": "UNAVAILABLE",
+        "durationMs": 15007
+      }
+    },
+    {
+      "path": "docs/ai-evals/2026-10-12/v7-evaluation/evaluation-results.json",
+      "startedAt": "2026-10-12T18:27:54.253Z",
+      "finishedAt": "2026-10-12T18:30:17.159Z",
+      "passed": 51,
+      "total": 60,
+      "releaseGate": {
+        "approved": false,
+        "policyVersion": "padel-release-gate-v2-category-quality",
+        "minimumCategoryPassRate": 0.8,
+        "categoryRates": {
+          "policy": 0.6363636363636364,
+          "unknown": 0.875,
+          "availability": 1
+        },
+        "minimumPassRate": 0.8,
+        "passRate": 0.85,
+        "criticalFailures": [],
+        "notes": "Gate set before first evaluation run: all cases completed; >=80% overall and policy/unknown/availability case pass rates; zero critical failures and verified cleanup. Not a universal security guarantee."
+      },
+      "categories": {
+        "policy": {
+          "total": 22,
+          "executed": 22,
+          "passed": 14
+        },
+        "unknown": {
+          "total": 8,
+          "executed": 8,
+          "passed": 7
+        },
+        "injection": {
+          "total": 10,
+          "executed": 10,
+          "passed": 10
+        },
+        "availability": {
+          "total": 8,
+          "executed": 8,
+          "passed": 8
+        },
+        "clarification": {
+          "total": 6,
+          "executed": 6,
+          "passed": 6
+        },
+        "authorization": {
+          "total": 6,
+          "executed": 6,
+          "passed": 6
+        }
+      },
+      "latency": {
+        "samples": 54,
+        "p50Ms": 61,
+        "p95Ms": 4692,
+        "p99Ms": 5086,
+        "notes": "Sequential mixed correctness workload on this CPU; not a load benchmark. Backend duration excludes the independent live-slot verification."
+      },
+      "cleanupSucceeded": true,
+      "domainUnchangedDuringEvaluation": true,
+      "firstUseHoldout": false,
+      "datasetSha256": "e60c7c0e6512f0ab24a38b98136c8a949e8f83ce95f2f97ea5ec939e0c7836f0",
+      "sourceSha256": {
+        "AssistantApplication.java": "b3fc35ad4c6b600abfd35af9dc5a0f9c6e9f0222200526f626ff91f7a1b5c5da",
+        "AssistantConfiguration.java": "f10971cc34df7b49985abc658e4d8ebf3e59ae58881c5921cd9cb928ade4a65c",
+        "AssistantController.java": "55171de74ca4c63a835fa2267785c1efd95fae3d1544b5f350438282f8f4112b",
+        "AssistantRequestBudget.java": "5726c0fe025f01011f1fcfcc385ee5e7e12481236d0a617e478ce817589e3ecb",
+        "AssistantResilience.java": "b47e868c085c652a3cf2a895404cf4d998334481679eddfe1938fa4845d367bb",
+        "AssistantService.java": "d77cf212964f18f78b3cdc649b148fd7ec7d0e79a728b21434ce629c598f4d14",
+        "AvailabilityRequest.java": "793622370c5ca2653d68fb57def66e025a2c7473319864bf29897ee621334745",
+        "AvailabilityService.java": "64d5a6a71de28b4ba15600ecf8465ecb15ca81e9ffefb8e12a66f12bce4759f1",
+        "KnowledgeCatalog.java": "e9ee9e832f35a4fc3aa85ea5066785787483c700820af79da7410b28a3f915f5",
+        "KnowledgeService.java": "6e9d30cb51b948ecfbaf19d910683f4a90f394ddf439215bdae3f92d2f241a84",
+        "ModelCatalog.java": "ecae1ae2aa0d98efba8bea7faf5d0a711893f18208a1006fb26231ac8f3d65cd",
+        "PolicyScope.java": "70215135015f6e4baf23d6fd8c9e751c5f9cbaa6f48cf9bf40749112f677a9f3",
+        "RequestedDate.java": "5f1e735830f7596d3217448d8ba6859832cf0c0da80c4107b68c582e06890278"
+      },
+      "modelDigests": [
+        {
+          "name": "qwen3:1.7b",
+          "digest": "8f68893c685c3ddff2aa3fffce2aa60a30bb2da65ca488b61fff134a4d1730e7"
+        },
+        {
+          "name": "qwen3:0.6b",
+          "digest": "7df6b6e09427a769808717c0a93cadc4ae99ed4eb8bf5ca557c90846becea435"
+        },
+        {
+          "name": "embeddinggemma:300m",
+          "digest": "85462619ee721b466c5927d109d4cb765861907d5417b9109caebc4e614679f1"
+        }
+      ],
+      "environment": {
+        "execution": "local CPU Ollama, one concurrent inference",
+        "api": "localhost:3000",
+        "timezone": "Europe/Athens",
+        "evaluationDate": "2026-10-12",
+        "cloudCalls": 0,
+        "cloudApiCharges": 0,
+        "tokenUsage": null,
+        "totalInfrastructureCost": null,
+        "costNotes": "No paid model API was called. Tokens are not exposed by the assistant API; hardware/electricity cost is unmeasured."
+      },
+      "coldFirstCase": {
+        "id": "eval-access-conditions",
+        "kind": "ANSWER",
+        "durationMs": 5086
+      }
+    },
+    {
+      "path": "docs/ai-evals/2026-10-12/v8-development/development-results.json",
+      "startedAt": "2026-10-12T18:54:00.938Z",
+      "finishedAt": "2026-10-12T18:55:58.632Z",
+      "passed": 38,
+      "total": 40,
+      "releaseGate": {
+        "approved": true,
+        "policyVersion": "padel-release-gate-v2-category-quality",
+        "minimumCategoryPassRate": 0.8,
+        "categoryRates": {
+          "policy": 0.8333333333333334,
+          "unknown": 1,
+          "availability": 1
+        },
+        "minimumPassRate": 0.8,
+        "passRate": 0.95,
+        "criticalFailures": [],
+        "notes": "Gate set before first evaluation run: all cases completed; >=80% overall and policy/unknown/availability case pass rates; zero critical failures and verified cleanup. Not a universal security guarantee."
+      },
+      "categories": {
+        "policy": {
+          "total": 12,
+          "executed": 12,
+          "passed": 10
+        },
+        "unknown": {
+          "total": 4,
+          "executed": 4,
+          "passed": 4
+        },
+        "injection": {
+          "total": 6,
+          "executed": 6,
+          "passed": 6
+        },
+        "availability": {
+          "total": 6,
+          "executed": 6,
+          "passed": 6
+        },
+        "clarification": {
+          "total": 6,
+          "executed": 6,
+          "passed": 6
+        },
+        "authorization": {
+          "total": 5,
+          "executed": 5,
+          "passed": 5
+        },
+        "provider_failure": {
+          "total": 1,
+          "executed": 1,
+          "passed": 1
+        }
+      },
+      "latency": {
+        "samples": 34,
+        "p50Ms": 66,
+        "p95Ms": 6080,
+        "p99Ms": 12262,
+        "notes": "Sequential mixed correctness workload on this CPU; not a load benchmark. Backend duration excludes the independent live-slot verification."
+      },
+      "cleanupSucceeded": true,
+      "domainUnchangedDuringEvaluation": true,
+      "firstUseHoldout": false,
+      "datasetSha256": "b5ac2d8aaa00edb60b6bb7f35b7f20e27d9d47c0fab23b810c91bbe2340f6354",
+      "sourceSha256": {
+        "AssistantApplication.java": "b3fc35ad4c6b600abfd35af9dc5a0f9c6e9f0222200526f626ff91f7a1b5c5da",
+        "AssistantConfiguration.java": "e66a91598102d17d8ef9b5c63f818d6c2f30d4f53c333df4d0f6e7f3533371db",
+        "AssistantController.java": "55171de74ca4c63a835fa2267785c1efd95fae3d1544b5f350438282f8f4112b",
+        "AssistantRequestBudget.java": "5726c0fe025f01011f1fcfcc385ee5e7e12481236d0a617e478ce817589e3ecb",
+        "AssistantResilience.java": "b47e868c085c652a3cf2a895404cf4d998334481679eddfe1938fa4845d367bb",
+        "AssistantService.java": "1fe1420ccacbe25485a13604bb99b76459f1d5885ebc9c5b3305d26cd3639d2f",
+        "AvailabilityRequest.java": "793622370c5ca2653d68fb57def66e025a2c7473319864bf29897ee621334745",
+        "AvailabilityService.java": "64d5a6a71de28b4ba15600ecf8465ecb15ca81e9ffefb8e12a66f12bce4759f1",
+        "KnowledgeCatalog.java": "e9ee9e832f35a4fc3aa85ea5066785787483c700820af79da7410b28a3f915f5",
+        "KnowledgeService.java": "6a8c1308702ab6d5e32a6716220ac90d0c581df701895c73364f4858008e2033",
+        "ModelCatalog.java": "ecae1ae2aa0d98efba8bea7faf5d0a711893f18208a1006fb26231ac8f3d65cd",
+        "PolicyScope.java": "311c8a9b330e3e644c57c9f4ea4d6be067d7f31007da7d9a9c2941dd43e26a2a",
+        "RequestedDate.java": "5f1e735830f7596d3217448d8ba6859832cf0c0da80c4107b68c582e06890278"
+      },
+      "modelDigests": [
+        {
+          "name": "qwen3:1.7b",
+          "digest": "8f68893c685c3ddff2aa3fffce2aa60a30bb2da65ca488b61fff134a4d1730e7"
+        },
+        {
+          "name": "qwen3:0.6b",
+          "digest": "7df6b6e09427a769808717c0a93cadc4ae99ed4eb8bf5ca557c90846becea435"
+        },
+        {
+          "name": "embeddinggemma:300m",
+          "digest": "85462619ee721b466c5927d109d4cb765861907d5417b9109caebc4e614679f1"
+        }
+      ],
+      "environment": {
+        "execution": "local CPU Ollama, one concurrent inference",
+        "api": "localhost:3000",
+        "timezone": "Europe/Athens",
+        "evaluationDate": "2026-10-12",
+        "cloudCalls": 0,
+        "cloudApiCharges": 0,
+        "tokenUsage": null,
+        "totalInfrastructureCost": null,
+        "costNotes": "No paid model API was called. Tokens are not exposed by the assistant API; hardware/electricity cost is unmeasured."
+      },
+      "coldFirstCase": {
+        "id": "dev-cancel",
+        "kind": "UNAVAILABLE",
+        "durationMs": 12262
+      }
+    },
+    {
+      "path": "docs/ai-evals/2026-10-12/v8-evaluation/evaluation-results.json",
+      "startedAt": "2026-10-12T19:01:46.740Z",
+      "finishedAt": "2026-10-12T19:04:30.050Z",
+      "passed": 60,
+      "total": 60,
+      "releaseGate": {
+        "approved": true,
+        "policyVersion": "padel-release-gate-v2-category-quality",
+        "minimumCategoryPassRate": 0.8,
+        "categoryRates": {
+          "policy": 1,
+          "unknown": 1,
+          "availability": 1
+        },
+        "minimumPassRate": 0.8,
+        "passRate": 1,
+        "criticalFailures": [],
+        "notes": "Gate set before first evaluation run: all cases completed; >=80% overall and policy/unknown/availability case pass rates; zero critical failures and verified cleanup. Not a universal security guarantee."
+      },
+      "categories": {
+        "policy": {
+          "total": 22,
+          "executed": 22,
+          "passed": 22
+        },
+        "unknown": {
+          "total": 8,
+          "executed": 8,
+          "passed": 8
+        },
+        "injection": {
+          "total": 10,
+          "executed": 10,
+          "passed": 10
+        },
+        "availability": {
+          "total": 8,
+          "executed": 8,
+          "passed": 8
+        },
+        "clarification": {
+          "total": 6,
+          "executed": 6,
+          "passed": 6
+        },
+        "authorization": {
+          "total": 6,
+          "executed": 6,
+          "passed": 6
+        }
+      },
+      "latency": {
+        "samples": 54,
+        "p50Ms": 192,
+        "p95Ms": 4833,
+        "p99Ms": 11170,
+        "notes": "Sequential mixed correctness workload on this CPU; not a load benchmark. Backend duration excludes the independent live-slot verification."
+      },
+      "cleanupSucceeded": true,
+      "domainUnchangedDuringEvaluation": true,
+      "firstUseHoldout": false,
+      "datasetSha256": "e60c7c0e6512f0ab24a38b98136c8a949e8f83ce95f2f97ea5ec939e0c7836f0",
+      "sourceSha256": {
+        "AssistantApplication.java": "b3fc35ad4c6b600abfd35af9dc5a0f9c6e9f0222200526f626ff91f7a1b5c5da",
+        "AssistantConfiguration.java": "e66a91598102d17d8ef9b5c63f818d6c2f30d4f53c333df4d0f6e7f3533371db",
+        "AssistantController.java": "55171de74ca4c63a835fa2267785c1efd95fae3d1544b5f350438282f8f4112b",
+        "AssistantRequestBudget.java": "5726c0fe025f01011f1fcfcc385ee5e7e12481236d0a617e478ce817589e3ecb",
+        "AssistantResilience.java": "b47e868c085c652a3cf2a895404cf4d998334481679eddfe1938fa4845d367bb",
+        "AssistantService.java": "1fe1420ccacbe25485a13604bb99b76459f1d5885ebc9c5b3305d26cd3639d2f",
+        "AvailabilityRequest.java": "793622370c5ca2653d68fb57def66e025a2c7473319864bf29897ee621334745",
+        "AvailabilityService.java": "64d5a6a71de28b4ba15600ecf8465ecb15ca81e9ffefb8e12a66f12bce4759f1",
+        "KnowledgeCatalog.java": "e9ee9e832f35a4fc3aa85ea5066785787483c700820af79da7410b28a3f915f5",
+        "KnowledgeService.java": "6a8c1308702ab6d5e32a6716220ac90d0c581df701895c73364f4858008e2033",
+        "ModelCatalog.java": "ecae1ae2aa0d98efba8bea7faf5d0a711893f18208a1006fb26231ac8f3d65cd",
+        "PolicyScope.java": "311c8a9b330e3e644c57c9f4ea4d6be067d7f31007da7d9a9c2941dd43e26a2a",
+        "RequestedDate.java": "5f1e735830f7596d3217448d8ba6859832cf0c0da80c4107b68c582e06890278"
+      },
+      "modelDigests": [
+        {
+          "name": "qwen3:1.7b",
+          "digest": "8f68893c685c3ddff2aa3fffce2aa60a30bb2da65ca488b61fff134a4d1730e7"
+        },
+        {
+          "name": "qwen3:0.6b",
+          "digest": "7df6b6e09427a769808717c0a93cadc4ae99ed4eb8bf5ca557c90846becea435"
+        },
+        {
+          "name": "embeddinggemma:300m",
+          "digest": "85462619ee721b466c5927d109d4cb765861907d5417b9109caebc4e614679f1"
+        }
+      ],
+      "environment": {
+        "execution": "local CPU Ollama, one concurrent inference",
+        "api": "localhost:3000",
+        "timezone": "Europe/Athens",
+        "evaluationDate": "2026-10-12",
+        "cloudCalls": 0,
+        "cloudApiCharges": 0,
+        "tokenUsage": null,
+        "totalInfrastructureCost": null,
+        "costNotes": "No paid model API was called. Tokens are not exposed by the assistant API; hardware/electricity cost is unmeasured."
+      },
+      "coldFirstCase": {
+        "id": "eval-access-conditions",
+        "kind": "ANSWER",
+        "durationMs": 11170
+      }
+    },
+    {
+      "path": "docs/ai-evals/2026-10-12/v9-development/development-results.json",
+      "startedAt": "2026-10-12T19:27:18.520Z",
+      "finishedAt": "2026-10-12T19:29:02.395Z",
+      "passed": 40,
+      "total": 40,
+      "releaseGate": {
+        "approved": true,
+        "policyVersion": "padel-release-gate-v2-category-quality",
+        "minimumCategoryPassRate": 0.8,
+        "categoryRates": {
+          "policy": 1,
+          "unknown": 1,
+          "availability": 1
+        },
+        "minimumPassRate": 0.8,
+        "passRate": 1,
+        "criticalFailures": [],
+        "notes": "Gate set before first evaluation run: all cases completed; >=80% overall and policy/unknown/availability case pass rates; zero critical failures and verified cleanup. Not a universal security guarantee."
+      },
+      "categories": {
+        "policy": {
+          "total": 12,
+          "executed": 12,
+          "passed": 12
+        },
+        "unknown": {
+          "total": 4,
+          "executed": 4,
+          "passed": 4
+        },
+        "injection": {
+          "total": 6,
+          "executed": 6,
+          "passed": 6
+        },
+        "availability": {
+          "total": 6,
+          "executed": 6,
+          "passed": 6
+        },
+        "clarification": {
+          "total": 6,
+          "executed": 6,
+          "passed": 6
+        },
+        "authorization": {
+          "total": 5,
+          "executed": 5,
+          "passed": 5
+        },
+        "provider_failure": {
+          "total": 1,
+          "executed": 1,
+          "passed": 1
+        }
+      },
+      "latency": {
+        "samples": 34,
+        "p50Ms": 43,
+        "p95Ms": 4633,
+        "p99Ms": 18588,
+        "notes": "Sequential mixed correctness workload on this CPU; not a load benchmark. Backend duration excludes the independent live-slot verification."
+      },
+      "cleanupSucceeded": true,
+      "domainUnchangedDuringEvaluation": true,
+      "firstUseHoldout": false,
+      "datasetSha256": "b5ac2d8aaa00edb60b6bb7f35b7f20e27d9d47c0fab23b810c91bbe2340f6354",
+      "sourceSha256": {
+        "AssistantApplication.java": "b3fc35ad4c6b600abfd35af9dc5a0f9c6e9f0222200526f626ff91f7a1b5c5da",
+        "AssistantConfiguration.java": "133952d2cd7f4268b2b1e125ab9dbf790b9dddbc55249af012b4781ab9d009e2",
+        "AssistantController.java": "55171de74ca4c63a835fa2267785c1efd95fae3d1544b5f350438282f8f4112b",
+        "AssistantRequestBudget.java": "5726c0fe025f01011f1fcfcc385ee5e7e12481236d0a617e478ce817589e3ecb",
+        "AssistantResilience.java": "b47e868c085c652a3cf2a895404cf4d998334481679eddfe1938fa4845d367bb",
+        "AssistantService.java": "e2dbd22f73bf4cc0d32ae81264d4e3894dab304ccffa6848f88f717e5c77b547",
+        "AvailabilityRequest.java": "793622370c5ca2653d68fb57def66e025a2c7473319864bf29897ee621334745",
+        "AvailabilityService.java": "64d5a6a71de28b4ba15600ecf8465ecb15ca81e9ffefb8e12a66f12bce4759f1",
+        "KnowledgeCatalog.java": "e9ee9e832f35a4fc3aa85ea5066785787483c700820af79da7410b28a3f915f5",
+        "KnowledgeService.java": "88b0f67b7ff041f5a5901516996767d163b25f0d249d93ff9a1f8125fe462e5e",
+        "ModelCatalog.java": "ecae1ae2aa0d98efba8bea7faf5d0a711893f18208a1006fb26231ac8f3d65cd",
+        "PolicyScope.java": "311c8a9b330e3e644c57c9f4ea4d6be067d7f31007da7d9a9c2941dd43e26a2a",
+        "RequestedDate.java": "5f1e735830f7596d3217448d8ba6859832cf0c0da80c4107b68c582e06890278"
+      },
+      "modelDigests": [
+        {
+          "name": "qwen3:1.7b",
+          "digest": "8f68893c685c3ddff2aa3fffce2aa60a30bb2da65ca488b61fff134a4d1730e7"
+        },
+        {
+          "name": "qwen3:0.6b",
+          "digest": "7df6b6e09427a769808717c0a93cadc4ae99ed4eb8bf5ca557c90846becea435"
+        },
+        {
+          "name": "embeddinggemma:300m",
+          "digest": "85462619ee721b466c5927d109d4cb765861907d5417b9109caebc4e614679f1"
+        }
+      ],
+      "environment": {
+        "execution": "local CPU Ollama, one concurrent inference",
+        "api": "localhost:3000",
+        "timezone": "Europe/Athens",
+        "evaluationDate": "2026-10-12",
+        "cloudCalls": 0,
+        "cloudApiCharges": 0,
+        "tokenUsage": null,
+        "totalInfrastructureCost": null,
+        "costNotes": "No paid model API was called. Tokens are not exposed by the assistant API; hardware/electricity cost is unmeasured."
+      },
+      "coldFirstCase": {
+        "id": "dev-cancel",
+        "kind": "ANSWER",
+        "durationMs": 18588
+      }
+    }
+  ],
+  "limits": [
+    "Repeated curated development/evaluation datasets; not a new independent holdout",
+    "No human label review or production/load certification",
+    "No paid model API or larger model deployment"
+  ]
+}

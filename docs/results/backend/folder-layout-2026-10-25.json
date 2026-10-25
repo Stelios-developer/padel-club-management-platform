@@ -1,0 +1,360 @@
+{
+  "generatedAt": "2026-10-25T10:20:40.708Z",
+  "note": "JUnit files found in this checkout; run Maven clean verify before exporting to exclude stale reports. A report is not evidence of GitHub execution.",
+  "completed": true,
+  "totals": {
+    "tests": 150,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "categories": {
+    "integrationTests": 30,
+    "producerContracts": 13,
+    "consumerContracts": 5
+  },
+  "missing": [],
+  "suites": [
+    {
+      "module": "common",
+      "runner": "surefire",
+      "name": "club.padel.common.OperationalMetricsTest",
+      "tests": 1,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "seconds": 1.63,
+      "file": "backend\\common\\target\\surefire-reports\\TEST-club.padel.common.OperationalMetricsTest.xml"
+    },
+    {
+      "module": "common",
+      "runner": "surefire",
+      "name": "club.padel.common.TokenValidationTest",
+      "tests": 7,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "seconds": 1.177,
+      "file": "backend\\common\\target\\surefire-reports\\TEST-club.padel.common.TokenValidationTest.xml"
+    },
+    {
+      "module": "api-gateway",
+      "runner": "surefire",
+      "name": "club.padel.api.GatewaySecurityTest",
+      "tests": 3,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "seconds": 5.873,
+      "file": "backend\\api-gateway\\target\\surefire-reports\\TEST-club.padel.api.GatewaySecurityTest.xml"
+    },
+    {
+      "module": "member-service",
+      "runner": "surefire",
+      "name": "club.padel.member.HttpTest",
+      "tests": 5,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "seconds": 15.574,
+      "file": "backend\\member-service\\target\\surefire-reports\\TEST-club.padel.member.HttpTest.xml"
+    },
+    {
+      "module": "member-service",
+      "runner": "surefire",
+      "name": "club.padel.member.MemberApiTest",
+      "tests": 7,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "seconds": 6.257,
+      "file": "backend\\member-service\\target\\surefire-reports\\TEST-club.padel.member.MemberApiTest.xml"
+    },
+    {
+      "module": "subscription-service",
+      "runner": "surefire",
+      "name": "club.padel.subscription.HttpTest",
+      "tests": 4,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "seconds": 17.262,
+      "file": "backend\\subscription-service\\target\\surefire-reports\\TEST-club.padel.subscription.HttpTest.xml"
+    },
+    {
+      "module": "subscription-service",
+      "runner": "surefire",
+      "name": "club.padel.subscription.SubscriptionApiTest",
+      "tests": 5,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "seconds": 7.712,
+      "file": "backend\\subscription-service\\target\\surefire-reports\\TEST-club.padel.subscription.SubscriptionApiTest.xml"
+    },
+    {
+      "module": "subscription-service",
+      "runner": "failsafe",
+      "name": "club.padel.subscription.SubscriptionPostgresIT",
+      "tests": 4,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "seconds": 23.782,
+      "file": "backend\\subscription-service\\target\\failsafe-reports\\TEST-club.padel.subscription.SubscriptionPostgresIT.xml"
+    },
+    {
+      "module": "booking-service",
+      "runner": "surefire",
+      "name": "club.padel.booking.BookingIntegrationTest",
+      "tests": 10,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "seconds": 14.107,
+      "file": "backend\\booking-service\\target\\surefire-reports\\TEST-club.padel.booking.BookingIntegrationTest.xml"
+    },
+    {
+      "module": "booking-service",
+      "runner": "surefire",
+      "name": "club.padel.booking.HttpTest",
+      "tests": 4,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "seconds": 3.369,
+      "file": "backend\\booking-service\\target\\surefire-reports\\TEST-club.padel.booking.HttpTest.xml"
+    },
+    {
+      "module": "booking-service",
+      "runner": "surefire",
+      "name": "club.padel.booking.PadelIntegrationTest",
+      "tests": 10,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "seconds": 3.17,
+      "file": "backend\\booking-service\\target\\surefire-reports\\TEST-club.padel.booking.PadelIntegrationTest.xml"
+    },
+    {
+      "module": "booking-service",
+      "runner": "surefire",
+      "name": "club.padel.booking.ReceptionIntegrationTest",
+      "tests": 10,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "seconds": 3.064,
+      "file": "backend\\booking-service\\target\\surefire-reports\\TEST-club.padel.booking.ReceptionIntegrationTest.xml"
+    },
+    {
+      "module": "booking-service",
+      "runner": "failsafe",
+      "name": "club.padel.booking.BookingPostgresIT",
+      "tests": 11,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "seconds": 22.315,
+      "file": "backend\\booking-service\\target\\failsafe-reports\\TEST-club.padel.booking.BookingPostgresIT.xml"
+    },
+    {
+      "module": "booking-service",
+      "runner": "failsafe",
+      "name": "club.padel.booking.BookingResilienceIT",
+      "tests": 4,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "seconds": 46.803,
+      "file": "backend\\booking-service\\target\\failsafe-reports\\TEST-club.padel.booking.BookingResilienceIT.xml"
+    },
+    {
+      "module": "access-service",
+      "runner": "surefire",
+      "name": "club.padel.access.AccessValidationTest",
+      "tests": 5,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "seconds": 1.238,
+      "file": "backend\\access-service\\target\\surefire-reports\\TEST-club.padel.access.AccessValidationTest.xml"
+    },
+    {
+      "module": "notification-service",
+      "runner": "surefire",
+      "name": "club.padel.notification.DeliveryIntegrationTest",
+      "tests": 3,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "seconds": 13.062,
+      "file": "backend\\notification-service\\target\\surefire-reports\\TEST-club.padel.notification.DeliveryIntegrationTest.xml"
+    },
+    {
+      "module": "notification-service",
+      "runner": "surefire",
+      "name": "club.padel.notification.DeliveryMetricsTest",
+      "tests": 1,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "seconds": 0.155,
+      "file": "backend\\notification-service\\target\\surefire-reports\\TEST-club.padel.notification.DeliveryMetricsTest.xml"
+    },
+    {
+      "module": "notification-service",
+      "runner": "surefire",
+      "name": "club.padel.notification.EmailCopyTest",
+      "tests": 2,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "seconds": 0.017,
+      "file": "backend\\notification-service\\target\\surefire-reports\\TEST-club.padel.notification.EmailCopyTest.xml"
+    },
+    {
+      "module": "notification-service",
+      "runner": "failsafe",
+      "name": "club.padel.notification.MessagingPostgresIT",
+      "tests": 5,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "seconds": 29.673,
+      "file": "backend\\notification-service\\target\\failsafe-reports\\TEST-club.padel.notification.MessagingPostgresIT.xml"
+    },
+    {
+      "module": "assistant-service",
+      "runner": "surefire",
+      "name": "club.padel.assistant.AssistantSecurityTest",
+      "tests": 3,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "seconds": 5.999,
+      "file": "backend\\assistant-service\\target\\surefire-reports\\TEST-club.padel.assistant.AssistantSecurityTest.xml"
+    },
+    {
+      "module": "assistant-service",
+      "runner": "surefire",
+      "name": "club.padel.assistant.AssistantServiceTest",
+      "tests": 12,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "seconds": 0.42,
+      "file": "backend\\assistant-service\\target\\surefire-reports\\TEST-club.padel.assistant.AssistantServiceTest.xml"
+    },
+    {
+      "module": "assistant-service",
+      "runner": "surefire",
+      "name": "club.padel.assistant.AvailabilityRequestTest",
+      "tests": 6,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "seconds": 0.027,
+      "file": "backend\\assistant-service\\target\\surefire-reports\\TEST-club.padel.assistant.AvailabilityRequestTest.xml"
+    },
+    {
+      "module": "assistant-service",
+      "runner": "surefire",
+      "name": "club.padel.assistant.AvailabilityServiceTest",
+      "tests": 2,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "seconds": 0.11,
+      "file": "backend\\assistant-service\\target\\surefire-reports\\TEST-club.padel.assistant.AvailabilityServiceTest.xml"
+    },
+    {
+      "module": "assistant-service",
+      "runner": "surefire",
+      "name": "club.padel.assistant.KnowledgeCatalogTest",
+      "tests": 2,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "seconds": 0.103,
+      "file": "backend\\assistant-service\\target\\surefire-reports\\TEST-club.padel.assistant.KnowledgeCatalogTest.xml"
+    },
+    {
+      "module": "assistant-service",
+      "runner": "surefire",
+      "name": "club.padel.assistant.KnowledgeServiceTest",
+      "tests": 2,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "seconds": 0.604,
+      "file": "backend\\assistant-service\\target\\surefire-reports\\TEST-club.padel.assistant.KnowledgeServiceTest.xml"
+    },
+    {
+      "module": "assistant-service",
+      "runner": "surefire",
+      "name": "club.padel.assistant.RequestedDateTest",
+      "tests": 6,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "seconds": 0.025,
+      "file": "backend\\assistant-service\\target\\surefire-reports\\TEST-club.padel.assistant.RequestedDateTest.xml"
+    },
+    {
+      "module": "assistant-service",
+      "runner": "surefire",
+      "name": "club.padel.assistant.SearchDurationTest",
+      "tests": 2,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "seconds": 0.004,
+      "file": "backend\\assistant-service\\target\\surefire-reports\\TEST-club.padel.assistant.SearchDurationTest.xml"
+    },
+    {
+      "module": "assistant-service",
+      "runner": "surefire",
+      "name": "club.padel.assistant.SearchTimeTest",
+      "tests": 3,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "seconds": 0.008,
+      "file": "backend\\assistant-service\\target\\surefire-reports\\TEST-club.padel.assistant.SearchTimeTest.xml"
+    },
+    {
+      "module": "assistant-service",
+      "runner": "failsafe",
+      "name": "club.padel.assistant.AssistantResilienceIT",
+      "tests": 4,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "seconds": 46.809,
+      "file": "backend\\assistant-service\\target\\failsafe-reports\\TEST-club.padel.assistant.AssistantResilienceIT.xml"
+    },
+    {
+      "module": "assistant-service",
+      "runner": "failsafe",
+      "name": "club.padel.assistant.KnowledgePgvectorIT",
+      "tests": 2,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "seconds": 6.881,
+      "file": "backend\\assistant-service\\target\\failsafe-reports\\TEST-club.padel.assistant.KnowledgePgvectorIT.xml"
+    },
+    {
+      "module": "contract-tests",
+      "runner": "surefire",
+      "name": "club.padel.contracts.FeignConsumerContractTest",
+      "tests": 5,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "seconds": 3.181,
+      "file": "backend\\contract-tests\\target\\surefire-reports\\TEST-club.padel.contracts.FeignConsumerContractTest.xml"
+    }
+  ]
+}

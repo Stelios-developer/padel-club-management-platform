@@ -1,0 +1,199 @@
+{
+  "version": "padel-robustness-v1",
+  "split": "confirmation",
+  "notes": "Reserved until after implementation; authored by implementer, not an independently reviewed holdout.",
+  "cases": [
+    {
+      "id": "rob-c-chat",
+      "question": "Η επιλογή του βοηθού κλείδωσε τη θέση μου ή χρειάζεται επιβεβαίωση κράτησης;",
+      "category": "policy",
+      "language": "el",
+      "mode": "POLICY",
+      "expected": {
+        "kind": "ANSWER",
+        "factIds": [
+          "booking-rules:8"
+        ]
+      }
+    },
+    {
+      "id": "rob-c-invite",
+      "question": "Η πρόσκληση είναι δεσμευτική πριν την αποδεχτώ;",
+      "category": "policy",
+      "language": "el",
+      "mode": "POLICY",
+      "expected": {
+        "kind": "ANSWER",
+        "factIds": [
+          "booking-rules:5"
+        ]
+      }
+    },
+    {
+      "id": "rob-c-end",
+      "question": "May I enter at the exact end time of my match?",
+      "category": "policy",
+      "language": "en",
+      "mode": "POLICY",
+      "expected": {
+        "kind": "ANSWER",
+        "factIds": [
+          "access:3"
+        ]
+      }
+    },
+    {
+      "id": "rob-c-fee",
+      "question": "Is paying the subscription equivalent to paying the court fee?",
+      "category": "policy",
+      "language": "en",
+      "mode": "POLICY",
+      "expected": {
+        "kind": "ANSWER",
+        "factIds": [
+          "cancellations:6"
+        ]
+      }
+    },
+    {
+      "id": "rob-c-balls",
+      "question": "Do paying members get a free pack of padel balls?",
+      "category": "unknown",
+      "language": "en",
+      "mode": "POLICY",
+      "expected": {
+        "kind": "UNKNOWN"
+      }
+    },
+    {
+      "id": "rob-c-medical",
+      "question": "Χρειάζεται ιατρική βεβαίωση για την είσοδο στη λέσχη;",
+      "category": "unknown",
+      "language": "el",
+      "mode": "POLICY",
+      "expected": {
+        "kind": "UNKNOWN"
+      }
+    },
+    {
+      "id": "rob-c-discount",
+      "question": "Is there a pensioner discount on club membership?",
+      "category": "unknown",
+      "language": "en",
+      "mode": "POLICY",
+      "expected": {
+        "kind": "UNKNOWN"
+      }
+    },
+    {
+      "id": "rob-c-refund",
+      "question": "How much of my subscription will be refunded after cancellation?",
+      "category": "unknown",
+      "language": "en",
+      "mode": "POLICY",
+      "expected": {
+        "kind": "UNKNOWN"
+      }
+    },
+    {
+      "id": "rob-c-greek-time",
+      "question": "Σήμερα στις οκτώ μμ, κλειστό γήπεδο για μία ώρα και δύο άτομα",
+      "category": "availability",
+      "language": "el",
+      "mode": "AVAILABILITY",
+      "expected": {
+        "kind": "OPTIONS",
+        "date": "today",
+        "earliestTime": "20:00",
+        "durationMinutes": 60,
+        "players": 2,
+        "courtType": "INDOOR"
+      }
+    },
+    {
+      "id": "rob-c-hour-and-half",
+      "question": "Day after tomorrow at 7:15 pm, outdoor for one and a half hours, two players",
+      "category": "availability",
+      "language": "en",
+      "mode": "AVAILABILITY",
+      "expected": {
+        "kind": "OPTIONS",
+        "date": "dayAfter",
+        "earliestTime": "19:15",
+        "durationMinutes": 90,
+        "players": 2,
+        "courtType": "OUTDOOR"
+      }
+    },
+    {
+      "id": "rob-c-weekend",
+      "question": "This Saturday after 11:00, indoor for 60 minutes, 3 players",
+      "category": "availability",
+      "language": "en",
+      "mode": "AVAILABILITY",
+      "expected": {
+        "kind": "OPTIONS",
+        "date": "saturday",
+        "earliestTime": "11:00",
+        "durationMinutes": 60,
+        "players": 3,
+        "courtType": "INDOOR"
+      }
+    },
+    {
+      "id": "rob-c-control",
+      "question": "Please find a court tomorrow after 19:00 for 120 minutes with four people",
+      "category": "availability",
+      "language": "en",
+      "mode": "AVAILABILITY",
+      "expected": {
+        "kind": "OPTIONS",
+        "date": "tomorrow",
+        "earliestTime": "19:00",
+        "durationMinutes": 120,
+        "players": 4,
+        "courtType": "ANY"
+      }
+    },
+    {
+      "id": "rob-c-bare-hour",
+      "question": "Tomorrow after 8 for 90 minutes, two players",
+      "category": "clarification",
+      "language": "en",
+      "mode": "AVAILABILITY",
+      "expected": {
+        "kind": "CLARIFY"
+      }
+    },
+    {
+      "id": "rob-c-invalid-clock",
+      "question": "Tomorrow at 18:00 pm for 90 minutes, two players",
+      "category": "clarification",
+      "language": "en",
+      "mode": "AVAILABILITY",
+      "expected": {
+        "kind": "CLARIFY"
+      }
+    },
+    {
+      "id": "rob-c-two-weekdays",
+      "question": "Monday or Tuesday at 18:00 for 60 minutes",
+      "category": "clarification",
+      "language": "en",
+      "mode": "AVAILABILITY",
+      "expected": {
+        "kind": "CLARIFY"
+      }
+    },
+    {
+      "id": "rob-c-range",
+      "question": "Tomorrow between 6 pm and 8 pm for one hour",
+      "category": "clarification",
+      "language": "en",
+      "mode": "AVAILABILITY",
+      "expected": {
+        "kind": "CLARIFY"
+      }
+    }
+  ]
+}

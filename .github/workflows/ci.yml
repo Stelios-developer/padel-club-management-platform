@@ -1,0 +1,243 @@
+name: Padel CI
+on: [push, pull_request]
+permissions:
+  contents: read
+concurrency:
+  group: ci-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  repository-quality:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with: { persist-credentials: false }
+      - uses: actions/setup-java@de7274f081f381c8f8158605e0321c36c376e2e6 # v6.0.1
+        with: { distribution: temurin, java-version: "21" }
+      - uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7.0.0
+        with:
+          node-version: "24"
+          cache: npm
+          cache-dependency-path: web/package-lock.json
+      - run: npm --prefix web ci
+      - run: npm run check && npm run format:check
+      - run: node --test scripts/sync-k8s-config.test.mjs scripts/quality/*.test.mjs
+  security:
+    permissions:
+      contents: read
+      security-events: write
+    uses: ./.github/workflows/security.yml
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with: { persist-credentials: false }
+      - uses: actions/setup-java@de7274f081f381c8f8158605e0321c36c376e2e6 # v6.0.1
+        with: { distribution: temurin, java-version: "21", cache: maven }
+      - uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7.0.0
+        with: { node-version: "24" }
+      - run: mvn -B verify
+      - run: npm --prefix web run check && npm --prefix web test
+      - run: node --test scripts/operations/production-config.test.mjs
+      - run: docker compose --env-file .env.example config --quiet
+      - uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
+        if: always()
+        with: { name: test-results, path: "**/target/surefire-reports/*" }
+  backend-quality:
+    needs: verify
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    env:
+      MAVEN_OPTS: -Xmx512m
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with: { persist-credentials: false }
+      - uses: actions/setup-java@de7274f081f381c8f8158605e0321c36c376e2e6 # v6.0.1
+        with: { distribution: temurin, java-version: "21", cache: maven }
+      - uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7.0.0
+        with: { node-version: "24" }
+      - name: Verify Docker is available
+        run: docker info
+      - name: PostgreSQL, RabbitMQ, Toxiproxy and producer/consumer contracts
+        run: mvn -B -Pcontracts,postgres-it clean verify
+      - name: Validate dependency alert timers and recovery
+        run: docker run --rm --entrypoint /bin/promtool -v "$PWD/infra/production:/etc/prometheus:ro" prom/prometheus:v3.5.0 test rules /etc/prometheus/alerts-tests.yml
+      - name: Export verification report
+        if: always()
+        run: |
+          node scripts/backend-quality-report.mjs --output test-results/backend-quality.json
+          node scripts/resilience-report.mjs --output test-results/resilience.json
+      - uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
+        if: always()
+        with:
+          name: backend-quality-results
+          path: |
+            test-results/backend-quality.json
+            test-results/resilience.json
+            **/target/surefire-reports/
+            **/target/failsafe-reports/
+            **/target/*-stubs.jar
+  ai-eval-harness:
+    needs: verify
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    defaults:
+      run:
+        working-directory: evals
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with: { persist-credentials: false }
+      - uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7.0.0
+        with:
+          node-version: "24"
+          cache: npm
+          cache-dependency-path: evals/package-lock.json
+      - run: npm ci
+      - run: npm test && npm run test:harness
+      - uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
+        if: always()
+        with:
+          name: ai-eval-harness
+          path: test-results/ai-eval-harness.json
+  browser:
+    needs: verify
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    defaults:
+      run:
+        working-directory: web
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with: { persist-credentials: false }
+      - uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7.0.0
+        with:
+          {
+            node-version: "24",
+            cache: npm,
+            cache-dependency-path: web/package-lock.json,
+          }
+      - run: npm ci
+      - run: npx playwright install --with-deps chromium firefox webkit
+      - run: npm run format:check && npm run test:browser
+      - uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
+        if: always()
+        with:
+          name: browser-results
+          path: |
+            web/test-results/
+            web/playwright-report/
+  e2e:
+    needs: verify
+    runs-on: ubuntu-latest
+    timeout-minutes: 35
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with: { persist-credentials: false }
+      - uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7.0.0
+        with: { node-version: "24" }
+      - name: Start real stack
+        run: docker compose --env-file .env.example -p padel-e2e up -d --build --wait --wait-timeout 480
+      - name: OIDC, PostgreSQL, RabbitMQ and SMTP integration / recovery tests
+        run: node scripts/e2e.mjs --resilience
+      - name: Encrypted backup and isolated restore rehearsal
+        run: |
+          node scripts/prepare-production.mjs --local-test --output .runtime/production-check
+          node scripts/backup.mjs --project padel-e2e --user padel --key-file .runtime/production-check/secrets/backup_key --output .runtime/backups/ci
+          docker compose --env-file .runtime/production-check/.env -f .runtime/production-check/compose.yml -p padel-restore-check up -d --wait postgres
+          node scripts/restore-check.mjs --project padel-restore-check --compose .runtime/production-check/compose.yml --env-file .runtime/production-check/.env --user padel_admin --key-file .runtime/production-check/secrets/backup_key --backup .runtime/backups/ci --report test-results/backup-restore.json
+          node scripts/backup-guards.mjs --project padel-restore-check --compose .runtime/production-check/compose.yml --env-file .runtime/production-check/.env --user padel_admin --key-file .runtime/production-check/secrets/backup_key --backup .runtime/backups/ci --report test-results/backup-guards.json
+      - name: Save container diagnostics
+        if: always()
+        run: |
+          mkdir -p test-results
+          docker compose --env-file .env.example -p padel-e2e ps -a > test-results/compose-status.txt
+          docker compose --env-file .env.example -p padel-e2e logs --no-color > test-results/compose.log
+      - uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
+        if: always()
+        with: { name: full-stack-results, path: "test-results/" }
+      - name: Stop dedicated test stack
+        if: always()
+        run: |
+          docker compose --env-file .env.example -p padel-e2e down
+          if [ -f .runtime/production-check/compose.yml ]; then
+            docker compose --env-file .runtime/production-check/.env -f .runtime/production-check/compose.yml -p padel-restore-check down
+          fi
+  production:
+    needs: verify
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with: { persist-credentials: false }
+      - uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7.0.0
+        with: { node-version: "24" }
+      - run: docker compose --env-file .env.example build
+      - name: Prepare private deployment rehearsal
+        run: |
+          mkdir -p test-results
+          node scripts/prepare-production.mjs --local-test --output .runtime/production-check
+          node scripts/deploy-production.mjs --bundle .runtime/production-check --local-test --check-only
+          docker compose --env-file .runtime/production-check/.env -f .runtime/production-check/compose.yml -p padel-production-check up -d --wait postgres rabbitmq keycloak web caddy mailpit alertmanager
+      - name: HTTPS, database permissions, real TOTP and SMTP
+        run: node scripts/production-check.mjs --project padel-production-check --compose .runtime/production-check/compose.yml --env-file .runtime/production-check/.env --user padel_admin --report test-results/production.json
+      - name: Alert rule timers, private service accounts and complete alert pipeline
+        run: |
+          docker compose --env-file .runtime/production-check/.env -f .runtime/production-check/compose.yml -p padel-production-check run --rm --no-deps -T -v ./infra/production/alerts-tests.yml:/etc/prometheus/alerts-tests.yml:ro --entrypoint /bin/promtool prometheus test rules /etc/prometheus/alerts-tests.yml
+          docker compose --env-file .runtime/production-check/.env -f .runtime/production-check/compose.yml -p padel-production-check stop keycloak
+          docker compose --env-file .runtime/production-check/.env -f .runtime/production-check/compose.yml -p padel-production-check up -d --wait config-server discovery-server prometheus
+          node scripts/production-services-check.mjs --project padel-production-check --compose .runtime/production-check/compose.yml --env-file .runtime/production-check/.env --user padel_admin --report test-results/production-services.json
+      - uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
+        if: always()
+        with:
+          { name: production-rehearsal-results, path: "test-results/*.json" }
+      - name: Stop rehearsal without deleting volumes
+        if: always()
+        run: |
+          if [ -f .runtime/production-check/compose.yml ]; then
+            docker compose --env-file .runtime/production-check/.env -f .runtime/production-check/compose.yml -p padel-production-check down
+          fi
+  images:
+    needs: [verify, security]
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    strategy:
+      fail-fast: false
+      matrix:
+        service:
+          [
+            config-server,
+            discovery-server,
+            api-gateway,
+            member-service,
+            subscription-service,
+            booking-service,
+            access-service,
+            notification-service,
+            assistant-service,
+            web,
+          ]
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with: { persist-credentials: false }
+      - uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7.0.0
+        with: { node-version: "24" }
+      - run: node scripts/security-install.mjs trivy syft
+      - name: Build current source and enforce image gate
+        env:
+          SERVICE: ${{ matrix.service }}
+        run: |
+          if [ "$SERVICE" = web ]; then
+            docker build -t padel/ci:web web
+          else
+            docker build --build-arg SERVICE="$SERVICE" -t "padel/ci:$SERVICE" .
+          fi
+          node scripts/security-scan.mjs image "padel/ci:$SERVICE" "$SERVICE"
+      - uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
+        if: always()
+        with:
+          name: image-security-${{ matrix.service }}
+          include-hidden-files: true
+          retention-days: 14
+          path: |
+            .runtime/security/*.gate.json
+            .runtime/security/*.cdx.json

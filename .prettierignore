@@ -1,0 +1,16 @@
+.git/
+.tools/
+.runtime/
+**/node_modules/
+**/target/
+**/test-results/
+**/playwright-report/
+**/.terraform/
+**/package-lock.json
+evals/datasets/
+evals/robustness/
+evals/dataset-manifest.json
+docs/**/*.json
+infra/k8s/config/
+# Trivy expects this historical JSON multi-document fixture to retain its format.
+infra/k8s/resources.yml

@@ -1,0 +1,14 @@
+{
+  "generatedAt": "2026-10-02T17:23:52.3714163Z",
+  "completed": true,
+  "tool": "promtool",
+  "image": "prom/prometheus:v3.5.0",
+  "exitCode": 0,
+  "rulesSha256": "44e1944bf1b45efd0e001f5f342be1aa3faa080e543b04237337db4ba3fbb3c5",
+  "testsSha256": "07d05e0b106f532bcc7f67c9511cbe0d0e827d2015b6f09bb6e63e02d09dec77",
+  "newAlerts": [
+    "PadelDependencyCircuitOpen",
+    "PadelDependencyCapacityExhausted"
+  ],
+  "scope": "Actual local promtool rule tests for pending/firing/resolved states; not an external alert delivery or GitHub run"
+}

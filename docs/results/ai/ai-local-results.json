@@ -1,0 +1,11 @@
+{
+  "generatedAt": "2026-10-02T12:10:33.984Z",
+  "completed": true,
+  "extensionVersion": "0.8.7",
+  "localBindings": true,
+  "approvedPolicySources": 3,
+  "vectorStorageAndDistanceVerified": true,
+  "modelInferenceVerified": false,
+  "semanticRetrievalVerified": false,
+  "note": "Synthetic 3D vectors verify storage/distance operations only. No chat or embedding model is downloaded or evaluated by this check."
+}

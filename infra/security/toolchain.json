@@ -1,0 +1,62 @@
+{
+  "checkedAt": "2026-10-04",
+  "trivy": {
+    "version": "0.75.0",
+    "repository": "aquasecurity/trivy",
+    "assets": {
+      "linux-x64": {
+        "name": "trivy_0.75.0_Linux-64bit.tar.gz",
+        "sha256": "c6e65abddb348e25f10549df887045629cf28cc72453cd1c63acb717316b3f3f"
+      },
+      "win32-x64": {
+        "name": "trivy_0.75.0_windows-64bit.zip",
+        "sha256": "4e43bd71a30f51aee39525f60f2b47043af77eb8df8fe082aae4372b69c6660f"
+      }
+    }
+  },
+  "syft": {
+    "version": "1.54.0",
+    "repository": "anchore/syft",
+    "assets": {
+      "linux-x64": {
+        "name": "syft_1.54.0_linux_amd64.tar.gz",
+        "sha256": "54a87372498168b2d033e876fd41fa4e8035b872699e525a57046e1f2f09c860"
+      },
+      "win32-x64": {
+        "name": "syft_1.54.0_windows_amd64.zip",
+        "sha256": "77f4b472779058e819eec9a054753a5071a996aaa40db31a290f8b256748593f"
+      }
+    },
+    "container": "anchore/syft:v1.54.0@sha256:0356562f495d432056237fbea5cbc2d4839c9c75cd500784a66de2e7cc95ca7c"
+  },
+  "terraform": {
+    "version": "1.16.5",
+    "repository": "hashicorp/terraform",
+    "assets": {
+      "linux-x64": {
+        "name": "terraform_1.16.5_linux_amd64.zip",
+        "url": "https://releases.hashicorp.com/terraform/1.16.5/terraform_1.16.5_linux_amd64.zip",
+        "sha256": "2bc2fcfff033265c9e02ca0351f01794eb122f62a9b2a49a3294b9e49eaab5e4"
+      },
+      "win32-x64": {
+        "name": "terraform_1.16.5_windows_amd64.zip",
+        "url": "https://releases.hashicorp.com/terraform/1.16.5/terraform_1.16.5_windows_amd64.zip",
+        "sha256": "01700102b7291f95c0ab61394b55bfd5f57a12ac65632c2c1958691c8cf438ef"
+      }
+    }
+  },
+  "actionlint": {
+    "version": "1.7.12",
+    "repository": "rhysd/actionlint",
+    "assets": {
+      "linux-x64": {
+        "name": "actionlint_1.7.12_linux_amd64.tar.gz",
+        "sha256": "8aca8db96f1b94770f1b0d72b6dddcb1ebb8123cb3712530b08cc387b349a3d8"
+      },
+      "win32-x64": {
+        "name": "actionlint_1.7.12_windows_amd64.zip",
+        "sha256": "6e7241b51e6817ea6a047693d8e6fed13b31819c9a0dd6c5a726e1592d22f6e9"
+      }
+    }
+  }
+}

@@ -1,0 +1,50 @@
+{
+  "completed": true,
+  "verifiedAt": "2026-10-01T16:40:21.145Z",
+  "project": "padel-production-check",
+  "services": [
+    {
+      "service": "notification-service",
+      "healthy": true,
+      "databaseRole": "padel_notifications",
+      "migrationsWithRestrictedOwner": true
+    },
+    {
+      "service": "member-service",
+      "healthy": true,
+      "databaseRole": "padel_members",
+      "migrationsWithRestrictedOwner": true
+    },
+    {
+      "service": "subscription-service",
+      "healthy": true,
+      "databaseRole": "padel_subscriptions",
+      "migrationsWithRestrictedOwner": true
+    },
+    {
+      "service": "booking-service",
+      "healthy": true,
+      "databaseRole": "padel_bookings",
+      "migrationsWithRestrictedOwner": true
+    },
+    {
+      "service": "access-service",
+      "healthy": true,
+      "databaseRole": "padel_access",
+      "migrationsWithRestrictedOwner": true
+    },
+    {
+      "service": "api-gateway",
+      "healthy": true,
+      "databaseRole": null,
+      "migrationsWithRestrictedOwner": false
+    }
+  ],
+  "realMetricsVerified": true,
+  "alertPipelineDelivered": [
+    "PadelEmailFailed",
+    "PadelEventsDelayed"
+  ],
+  "fixtureCleanup": true,
+  "execution": "Services started sequentially to keep the existing development stack available"
+}

@@ -1,0 +1,15 @@
+{
+  "approved": false,
+  "syntheticDataOnly": false,
+  "bootstrapValidated": false,
+  "rollbackAllowed": false,
+  "rollbackFromRevision": null,
+  "rollbackToRevision": null,
+  "repo": "REPLACE_OWNER/REPLACE_REPO",
+  "region": "eu-central-1",
+  "bucket": "replace-artifacts-bucket",
+  "project": "padel-cloud-demo",
+  "bundle": ".runtime/production",
+  "webOrigin": "https://club.example.com",
+  "identityOrigin": "https://identity.example.com"
+}

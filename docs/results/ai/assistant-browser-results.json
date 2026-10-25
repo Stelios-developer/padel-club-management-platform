@@ -1,0 +1,9 @@
+{
+  "durationMs": 26935.108,
+  "generatedAt": "2026-10-02T12:50:05.024Z",
+  "completed": true,
+  "failures": 0,
+  "note": "54 Chromium cases across desktop, 390px and 320px. Assistant cases use mock transport; actual model validation is a separate smoke report.",
+  "skipped": 0,
+  "tests": 54
+}

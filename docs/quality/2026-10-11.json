@@ -1,0 +1,82 @@
+{
+  "schemaVersion": 1,
+  "verifiedAt": "2026-10-11T18:30:21.580Z",
+  "timezone": "Europe/Athens",
+  "scope": "Repository organization, full backend/isolated integration/contracts, deterministic Node/harness and synthetic browser tests; no deployed-image or cloud operation",
+  "backend": {
+    "tests": 135,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "integrationTests": 30,
+    "producerContracts": 13,
+    "consumerContracts": 5
+  },
+  "node": {
+    "tests": 92,
+    "passed": 92,
+    "failed": 0,
+    "skipped": 0
+  },
+  "browser": {
+    "startTime": "2026-10-11T18:15:11.748Z",
+    "duration": 20322.551,
+    "expected": 54,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0,
+    "viewports": [
+      "1280x900",
+      "390x844",
+      "320x740"
+    ]
+  },
+  "sourceSecurity": {
+    "scannedAt": "2026-10-11T21:26:29.9630555+03:00",
+    "gate": "PASSED",
+    "blockingFindings": 0,
+    "acceptedExceptionOccurrences": 6,
+    "exceptionExpiry": "2026-11-04",
+    "newExceptions": 0,
+    "mediumAndLowFindingsRemain": true
+  },
+  "deterministicHarness": {
+    "generatedAt": "2026-10-11T18:24:20.976Z",
+    "completed": true,
+    "promptfooVersion": "0.123.1",
+    "realModel": false,
+    "positivePassed": 1,
+    "intentionallyFailingCasesRejected": 2,
+    "criticalGateRejected": true,
+    "cancellationPreventedFurtherCalls": true,
+    "notes": "Actual promptfoo engine with deterministic fixture output; not AI quality evidence."
+  },
+  "historicalAndFrozenFiles": {
+    "verified": 45,
+    "changed": 0,
+    "method": "SHA-256 against pre-organization inventory, accounting for path moves"
+  },
+  "formatting": {
+    "javaSources": 104,
+    "java": "google-java-format 1.28.0",
+    "prettier": "3.9.9"
+  },
+  "workflowLint": "Passed without local ShellCheck/Pyflakes; no GitHub workflow execution",
+  "renderedCredentialProjectionVerified": true,
+  "externalOperations": {
+    "githubUpload": false,
+    "githubWorkflowExecution": false,
+    "signedReleaseVerified": false,
+    "awsProvisioning": false,
+    "publicDeployment": false,
+    "applicationImageRollout": false,
+    "realModelQualityEvaluation": false
+  },
+  "limitations": [
+    "Six existing temporary exceptions remain until review/removal.",
+    "The source scan does not replace scanning new container images.",
+    "Repository conventions are checked statically, not by full bytecode dependency analysis.",
+    "Real-model AI quality gates remain unresolved.",
+    "Existing historical reports describe their original runs."
+  ]
+}

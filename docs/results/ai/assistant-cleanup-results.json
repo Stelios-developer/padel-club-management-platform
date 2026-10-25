@@ -1,0 +1,7 @@
+{
+  "generatedAt": "2026-10-02T13:47:48.664Z",
+  "completed": true,
+  "removedUsers": 2,
+  "removedClients": 2,
+  "notes": "Only two identities matched the exact recorded run timestamps, invalid-domain test email, test name and audience mapper. No domain records or other users were changed."
+}

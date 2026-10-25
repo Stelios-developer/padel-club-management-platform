@@ -1,0 +1,22 @@
+{
+  "name": "padel-club-workspace",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=24"
+  },
+  "scripts": {
+    "check": "node scripts/repository.mjs check",
+    "test": "node scripts/repository.mjs test",
+    "format": "node scripts/repository.mjs format",
+    "format:check": "node scripts/repository.mjs format:check",
+    "sync:k8s": "node scripts/sync-k8s-config.mjs",
+    "sync:k8s:check": "node scripts/sync-k8s-config.mjs --check",
+    "test:web": "npm --prefix web test",
+    "test:browser": "npm --prefix web run test:browser",
+    "test:evals": "npm --prefix evals test",
+    "test:backend": "mvn -B clean verify",
+    "test:integration": "mvn -B -Pcontracts,postgres-it clean verify"
+  }
+}

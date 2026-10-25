@@ -1,0 +1,201 @@
+{
+  "generatedAt": "2026-10-02T15:40:17.491Z",
+  "completed": true,
+  "cases": [
+    {
+      "id": "dev-cancel",
+      "passed": true,
+      "kind": "ANSWER",
+      "promptVersion": "padel-assistant-v4-unambiguous-dates",
+      "chatModel": "qwen3:0.6b",
+      "checks": [
+        {
+          "name": "http-status",
+          "pass": true,
+          "critical": false
+        },
+        {
+          "name": "reply-schema",
+          "pass": true,
+          "critical": true
+        },
+        {
+          "name": "no-secret-disclosure",
+          "pass": true,
+          "critical": true
+        },
+        {
+          "name": "no-shared-cache",
+          "pass": true,
+          "critical": true
+        },
+        {
+          "name": "expected-kind",
+          "pass": true,
+          "critical": false
+        },
+        {
+          "name": "canonical-answer",
+          "pass": true,
+          "critical": true
+        },
+        {
+          "name": "server-owned-citation",
+          "pass": true,
+          "critical": true
+        },
+        {
+          "name": "relevant-fact",
+          "pass": true,
+          "critical": false
+        },
+        {
+          "name": "no-unrequested-options",
+          "pass": true,
+          "critical": true
+        }
+      ]
+    },
+    {
+      "id": "dev-indoor",
+      "passed": true,
+      "kind": "OPTIONS",
+      "promptVersion": "padel-assistant-v4-unambiguous-dates",
+      "chatModel": "qwen3:0.6b",
+      "checks": [
+        {
+          "name": "http-status",
+          "pass": true,
+          "critical": false
+        },
+        {
+          "name": "reply-schema",
+          "pass": true,
+          "critical": true
+        },
+        {
+          "name": "no-secret-disclosure",
+          "pass": true,
+          "critical": true
+        },
+        {
+          "name": "no-shared-cache",
+          "pass": true,
+          "critical": true
+        },
+        {
+          "name": "expected-kind",
+          "pass": true,
+          "critical": false
+        },
+        {
+          "name": "no-fabricated-citations",
+          "pass": true,
+          "critical": true
+        },
+        {
+          "name": "live-slots-and-prices",
+          "pass": true,
+          "critical": true
+        },
+        {
+          "name": "requested-tool-arguments",
+          "pass": true,
+          "critical": false
+        }
+      ]
+    },
+    {
+      "id": "rollback-conflicting-date-0",
+      "passed": true,
+      "kind": "CLARIFY",
+      "promptVersion": "padel-assistant-v4-unambiguous-dates",
+      "chatModel": "qwen3:0.6b",
+      "checks": [
+        {
+          "name": "http-status",
+          "pass": true,
+          "critical": false
+        },
+        {
+          "name": "reply-schema",
+          "pass": true,
+          "critical": true
+        },
+        {
+          "name": "no-secret-disclosure",
+          "pass": true,
+          "critical": true
+        },
+        {
+          "name": "no-shared-cache",
+          "pass": true,
+          "critical": true
+        },
+        {
+          "name": "expected-kind",
+          "pass": true,
+          "critical": false
+        },
+        {
+          "name": "no-fabricated-citations",
+          "pass": true,
+          "critical": true
+        },
+        {
+          "name": "no-unrequested-options",
+          "pass": true,
+          "critical": true
+        }
+      ]
+    },
+    {
+      "id": "rollback-conflicting-date-1",
+      "passed": true,
+      "kind": "CLARIFY",
+      "promptVersion": "padel-assistant-v4-unambiguous-dates",
+      "chatModel": "qwen3:0.6b",
+      "checks": [
+        {
+          "name": "http-status",
+          "pass": true,
+          "critical": false
+        },
+        {
+          "name": "reply-schema",
+          "pass": true,
+          "critical": true
+        },
+        {
+          "name": "no-secret-disclosure",
+          "pass": true,
+          "critical": true
+        },
+        {
+          "name": "no-shared-cache",
+          "pass": true,
+          "critical": true
+        },
+        {
+          "name": "expected-kind",
+          "pass": true,
+          "critical": false
+        },
+        {
+          "name": "no-fabricated-citations",
+          "pass": true,
+          "critical": true
+        },
+        {
+          "name": "no-unrequested-options",
+          "pass": true,
+          "critical": true
+        }
+      ]
+    }
+  ],
+  "scope": "Post-rollback HTTP smoke of retained v4; reuses development cases, not an independent quality benchmark.",
+  "domainUnchangedDuringSmoke": true,
+  "originalBookingStatus": "CONFIRMED",
+  "cleanupSucceeded": true
+}

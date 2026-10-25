@@ -1,0 +1,532 @@
+{
+  "tool": "@playwright/test",
+  "version": "1.63.0",
+  "command": "npm --prefix web run test:browser",
+  "environment": "Windows, Node.js v22.20.0",
+  "baseURL": "http://127.0.0.1:3177",
+  "scope": "Isolated demo browser contexts and HTTP-served authentication/transport fixtures; no production mutations",
+  "startTime": "2026-10-02T09:00:04.422Z",
+  "finishedAt": "2026-10-02T09:00:24.746Z",
+  "stats": {
+    "startTime": "2026-10-02T09:00:04.422Z",
+    "duration": 20324.75,
+    "expected": 45,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  },
+  "viewports": [
+    {
+      "project": "desktop-chromium",
+      "width": 1280,
+      "height": 900
+    },
+    {
+      "project": "mobile-chromium",
+      "width": 390,
+      "height": 844
+    },
+    {
+      "project": "small-mobile-chromium",
+      "width": 320,
+      "height": 740
+    }
+  ],
+  "cases": [
+    {
+      "scenario": "welcome and every member page fit the viewport",
+      "project": "desktop-chromium",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 1458
+        }
+      ]
+    },
+    {
+      "scenario": "profile is reachable, saves and persists after reload",
+      "project": "desktop-chromium",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 2090
+        }
+      ]
+    },
+    {
+      "scenario": "dialog closes with Escape and can reopen without stale slots",
+      "project": "desktop-chromium",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 1563
+        }
+      ]
+    },
+    {
+      "scenario": "booking, named roster and cancellation work through the UI",
+      "project": "desktop-chromium",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 1484
+        }
+      ]
+    },
+    {
+      "scenario": "weekly booking summary and occupied-slot waitlist remain usable",
+      "project": "desktop-chromium",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 1110
+        }
+      ]
+    },
+    {
+      "scenario": "staff search and role changes clear staff-only screens",
+      "project": "desktop-chromium",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 988
+        }
+      ]
+    },
+    {
+      "scenario": "staff calendar scrolls locally, filters and navigates weeks",
+      "project": "desktop-chromium",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 866
+        }
+      ]
+    },
+    {
+      "scenario": "staff moves a booking and reviews the resulting history",
+      "project": "desktop-chromium",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 1335
+        }
+      ]
+    },
+    {
+      "scenario": "touch targets and text inputs are usable on mobile",
+      "project": "desktop-chromium",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 548
+        }
+      ]
+    },
+    {
+      "scenario": "welcome and every member page fit the viewport",
+      "project": "mobile-chromium",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 1103
+        }
+      ]
+    },
+    {
+      "scenario": "profile is reachable, saves and persists after reload",
+      "project": "mobile-chromium",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 1145
+        }
+      ]
+    },
+    {
+      "scenario": "dialog closes with Escape and can reopen without stale slots",
+      "project": "mobile-chromium",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 785
+        }
+      ]
+    },
+    {
+      "scenario": "booking, named roster and cancellation work through the UI",
+      "project": "mobile-chromium",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 988
+        }
+      ]
+    },
+    {
+      "scenario": "weekly booking summary and occupied-slot waitlist remain usable",
+      "project": "mobile-chromium",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 666
+        }
+      ]
+    },
+    {
+      "scenario": "staff search and role changes clear staff-only screens",
+      "project": "mobile-chromium",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 845
+        }
+      ]
+    },
+    {
+      "scenario": "staff calendar scrolls locally, filters and navigates weeks",
+      "project": "mobile-chromium",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 789
+        }
+      ]
+    },
+    {
+      "scenario": "staff moves a booking and reviews the resulting history",
+      "project": "mobile-chromium",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 1004
+        }
+      ]
+    },
+    {
+      "scenario": "touch targets and text inputs are usable on mobile",
+      "project": "mobile-chromium",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 521
+        }
+      ]
+    },
+    {
+      "scenario": "welcome and every member page fit the viewport",
+      "project": "small-mobile-chromium",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 1265
+        }
+      ]
+    },
+    {
+      "scenario": "profile is reachable, saves and persists after reload",
+      "project": "small-mobile-chromium",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 1648
+        }
+      ]
+    },
+    {
+      "scenario": "dialog closes with Escape and can reopen without stale slots",
+      "project": "small-mobile-chromium",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 1194
+        }
+      ]
+    },
+    {
+      "scenario": "booking, named roster and cancellation work through the UI",
+      "project": "small-mobile-chromium",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 1624
+        }
+      ]
+    },
+    {
+      "scenario": "weekly booking summary and occupied-slot waitlist remain usable",
+      "project": "small-mobile-chromium",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 1050
+        }
+      ]
+    },
+    {
+      "scenario": "staff search and role changes clear staff-only screens",
+      "project": "small-mobile-chromium",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 1167
+        }
+      ]
+    },
+    {
+      "scenario": "staff calendar scrolls locally, filters and navigates weeks",
+      "project": "small-mobile-chromium",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 937
+        }
+      ]
+    },
+    {
+      "scenario": "staff moves a booking and reviews the resulting history",
+      "project": "small-mobile-chromium",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 1182
+        }
+      ]
+    },
+    {
+      "scenario": "touch targets and text inputs are usable on mobile",
+      "project": "small-mobile-chromium",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 611
+        }
+      ]
+    },
+    {
+      "scenario": "a failed service leaves bookings usable and targeted retry recovers",
+      "project": "desktop-chromium",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 781
+        }
+      ]
+    },
+    {
+      "scenario": "expired authentication clears protected content and disables profile actions",
+      "project": "desktop-chromium",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 385
+        }
+      ]
+    },
+    {
+      "scenario": "refresh preserves horizontal navigation and keyboard focus",
+      "project": "desktop-chromium",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 613
+        }
+      ]
+    },
+    {
+      "scenario": "a failed service leaves bookings usable and targeted retry recovers",
+      "project": "mobile-chromium",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 644
+        }
+      ]
+    },
+    {
+      "scenario": "expired authentication clears protected content and disables profile actions",
+      "project": "mobile-chromium",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 351
+        }
+      ]
+    },
+    {
+      "scenario": "refresh preserves horizontal navigation and keyboard focus",
+      "project": "mobile-chromium",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 579
+        }
+      ]
+    },
+    {
+      "scenario": "a failed service leaves bookings usable and targeted retry recovers",
+      "project": "small-mobile-chromium",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 888
+        }
+      ]
+    },
+    {
+      "scenario": "expired authentication clears protected content and disables profile actions",
+      "project": "small-mobile-chromium",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 459
+        }
+      ]
+    },
+    {
+      "scenario": "refresh preserves horizontal navigation and keyboard focus",
+      "project": "small-mobile-chromium",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 741
+        }
+      ]
+    },
+    {
+      "scenario": "member subscriptions can be granted and cancelled from their dialog",
+      "project": "desktop-chromium",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 1281
+        }
+      ]
+    },
+    {
+      "scenario": "court settings update availability and price through the UI",
+      "project": "desktop-chromium",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 884
+        }
+      ]
+    },
+    {
+      "scenario": "attendance corrections and access checks remain separate",
+      "project": "desktop-chromium",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 1183
+        }
+      ]
+    },
+    {
+      "scenario": "member subscriptions can be granted and cancelled from their dialog",
+      "project": "mobile-chromium",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 1055
+        }
+      ]
+    },
+    {
+      "scenario": "court settings update availability and price through the UI",
+      "project": "mobile-chromium",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 929
+        }
+      ]
+    },
+    {
+      "scenario": "attendance corrections and access checks remain separate",
+      "project": "mobile-chromium",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 1172
+        }
+      ]
+    },
+    {
+      "scenario": "member subscriptions can be granted and cancelled from their dialog",
+      "project": "small-mobile-chromium",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 1011
+        }
+      ]
+    },
+    {
+      "scenario": "court settings update availability and price through the UI",
+      "project": "small-mobile-chromium",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 769
+        }
+      ]
+    },
+    {
+      "scenario": "attendance corrections and access checks remain separate",
+      "project": "small-mobile-chromium",
+      "status": "expected",
+      "attempts": [
+        {
+          "status": "passed",
+          "durationMs": 970
+        }
+      ]
+    }
+  ]
+}

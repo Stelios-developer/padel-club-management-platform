@@ -1,0 +1,169 @@
+.table-scroll {
+  position: relative;
+}
+.mobile-profile {
+  display: none;
+}
+.workspace,
+.main-content,
+.sidebar nav {
+  min-width: 0;
+}
+button:focus-visible,
+a:focus-visible,
+input:focus-visible,
+select:focus-visible,
+summary:focus-visible {
+  outline: 3px solid #658532;
+  outline-offset: 3px;
+}
+@media (max-width: 700px) {
+  .mobile-profile {
+    display: inline-flex;
+    margin-left: auto;
+    color: #f7f9e9;
+    border-color: #8fa296;
+    background: transparent;
+  }
+  .mobile-profile:hover {
+    background: #294f44;
+  }
+  .sidebar nav [data-action="profile"] {
+    display: none;
+  }
+  .sidebar nav {
+    scrollbar-width: thin;
+    padding-bottom: 6px;
+  }
+  .sidebar nav::-webkit-scrollbar {
+    height: 4px;
+  }
+  .sidebar nav::-webkit-scrollbar-thumb {
+    background: #8fa296;
+    border-radius: 4px;
+  }
+  .nav-item,
+  .icon-button,
+  .text-button,
+  .button,
+  .slot {
+    min-height: 44px;
+  }
+  .icon-button {
+    min-width: 44px;
+  }
+  input,
+  select {
+    font-size: 16px;
+    min-width: 0;
+  }
+  .topbar {
+    height: auto;
+    min-height: 58px;
+    padding: 10px 20px;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  .topbar-actions {
+    flex-wrap: wrap;
+    min-width: 0;
+    max-width: 100%;
+  }
+  .topbar select {
+    width: auto;
+    max-width: 100%;
+  }
+  .page-heading {
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+  .page-heading > div,
+  .section-title > div {
+    min-width: 0;
+  }
+  .page-heading > .button {
+    min-height: 44px;
+    font-size: 12px;
+  }
+  .section-title {
+    flex-wrap: wrap;
+  }
+  .activity-list article {
+    flex-wrap: wrap;
+  }
+  .activity-list article > div {
+    min-width: 0;
+    flex: 1;
+    overflow-wrap: anywhere;
+  }
+  .activity-list small,
+  .access-outcome,
+  .resource-notice {
+    overflow-wrap: anywhere;
+  }
+  .welcome-actions {
+    flex-wrap: wrap;
+  }
+  .welcome footer {
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+  dialog {
+    max-height: calc(100dvh - 24px);
+    max-width: calc(100vw - 24px);
+    padding: 20px 16px;
+    overflow-y: auto;
+  }
+  .dialog-head {
+    gap: 10px;
+  }
+  .dialog-head h2 {
+    overflow-wrap: anywhere;
+  }
+  .dialog-head .icon-button {
+    flex-shrink: 0;
+  }
+  .form-row {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 0;
+  }
+  .slot-grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+  .table-scroll {
+    overflow-x: auto;
+    overscroll-behavior-x: contain;
+  }
+  .member-search,
+  .reception-toolbar form {
+    flex-wrap: wrap;
+  }
+  .member-search label,
+  .reception-toolbar label {
+    min-width: 0;
+  }
+  #toast {
+    max-width: calc(100vw - 24px);
+    overflow-wrap: anywhere;
+  }
+}
+@media (max-width: 360px) {
+  .sidebar,
+  .topbar {
+    padding-left: 14px;
+    padding-right: 14px;
+  }
+  .main-content {
+    padding-left: 14px;
+    padding-right: 14px;
+  }
+  .welcome {
+    padding: 20px;
+  }
+  .welcome h1 {
+    font-size: 50px;
+  }
+  .stats small {
+    max-width: 100px;
+  }
+}

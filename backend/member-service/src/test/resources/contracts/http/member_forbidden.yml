@@ -1,0 +1,21 @@
+{
+  "name": "member_forbidden",
+  "description": "Consumer-facing member_forbidden contract; synthetic fixtures only.",
+  "request":
+    {
+      "method": "GET",
+      "headers": { "Authorization": "Bearer contract-bob" },
+      "urlPath": "/api/members/aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa",
+    },
+  "response":
+    {
+      "status": 403,
+      "headers": { "Content-Type": "application/problem+json" },
+      "body":
+        {
+          "status": 403,
+          "title": "Forbidden",
+          "detail": "This record belongs to another member.",
+        },
+    },
+}

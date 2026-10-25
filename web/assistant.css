@@ -1,0 +1,96 @@
+.assistant-layout {
+  display: grid;
+  grid-template-columns: minmax(260px, 0.85fr) minmax(300px, 1.4fr);
+  gap: 24px;
+  align-items: start;
+}
+.assistant-compose,
+.assistant-answer {
+  padding: 28px;
+}
+.assistant-compose form {
+  display: grid;
+  gap: 18px;
+}
+.assistant-compose textarea {
+  width: 100%;
+  resize: vertical;
+  font: inherit;
+  line-height: 1.6;
+  border: 1px solid #d9e2e0;
+  border-radius: 12px;
+  padding: 14px;
+  background: #fff;
+  color: #172c35;
+}
+.assistant-compose textarea:focus-visible {
+  outline: 2px solid #447961;
+  outline-offset: 2px;
+}
+.assistant-copy {
+  white-space: pre-line;
+  line-height: 1.8;
+  overflow-wrap: anywhere;
+}
+.assistant-sources {
+  display: grid;
+  gap: 8px;
+  margin: 24px 0;
+  padding-top: 18px;
+  border-top: 1px solid #e7ece8;
+}
+.assistant-sources button {
+  text-align: left;
+  white-space: normal;
+}
+.assistant-option {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 18px 0;
+  border-top: 1px solid #e7ece8;
+}
+.assistant-option p {
+  margin: 8px 0 0;
+}
+.assistant-option > div:last-child {
+  display: grid;
+  gap: 10px;
+  text-align: right;
+}
+.assistant-source-text {
+  margin-top: 24px;
+  padding: 18px;
+  background: #f5f7f3;
+  border-radius: 12px;
+}
+.assistant-source-text pre {
+  font: inherit;
+  line-height: 1.7;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+@media (max-width: 900px) {
+  .assistant-layout {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+@media (max-width: 480px) {
+  .assistant-compose,
+  .assistant-answer {
+    padding: 18px;
+  }
+  .assistant-option {
+    flex-direction: column;
+  }
+  .assistant-option > div:last-child {
+    text-align: left;
+    justify-items: start;
+  }
+}
+.assistant-examples {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 16px 0;
+}

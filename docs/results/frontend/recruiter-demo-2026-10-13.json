@@ -1,0 +1,220 @@
+{
+  "generatedAt": "2026-10-13T12:12:51.558Z",
+  "durationSeconds": 104.056,
+  "sizeBytes": 10892093,
+  "sha256": "761f671506700dce64392dc50ffc6ae4d014baea7248db3d7ba7ebe620c3e006",
+  "videoCodec": "H.264",
+  "audioCodec": "AAC",
+  "resolution": "1920x1080",
+  "framesPerSecond": 30,
+  "narration": "Local Windows Microsoft Zira Desktop synthetic voice; English",
+  "captions": "Burned-in English; separate English and Greek SRT; phrase timing approximated to synthetic speech",
+  "capture": {
+    "capturedAt": "2026-10-13T11:57:47.268Z",
+    "realTransport": true,
+    "syntheticIdentity": true,
+    "scenes": [
+      {
+        "id": "welcome",
+        "start": 0.59,
+        "end": 7.853,
+        "video": "desktop.webm"
+      },
+      {
+        "id": "member",
+        "start": 9.656,
+        "end": 15.857,
+        "video": "desktop.webm"
+      },
+      {
+        "id": "ai",
+        "start": 16.49,
+        "end": 28.545,
+        "video": "desktop.webm"
+      },
+      {
+        "id": "booking",
+        "start": 1.697,
+        "end": 13.705,
+        "video": "booking.webm",
+        "verifiedPriceReview": true
+      },
+      {
+        "id": "policy",
+        "start": 41.303,
+        "end": 51.896,
+        "video": "desktop.webm"
+      },
+      {
+        "id": "notifications",
+        "start": 52.36,
+        "end": 58.499,
+        "video": "desktop.webm"
+      },
+      {
+        "id": "mobile",
+        "start": 1.809,
+        "end": 9.852,
+        "video": "mobile.webm"
+      },
+      {
+        "id": "reception",
+        "start": 0.992,
+        "end": 8.234,
+        "video": "reception.webm"
+      }
+    ],
+    "checks": [
+      "AI options verified against the live court API",
+      "Human-confirmed booking persisted in the real backend",
+      "Real model policy answer with an authenticated approved source",
+      "Real asynchronous booking notification visible to the member",
+      "The same live booking fits the 390-pixel mobile viewport",
+      "No uncaught browser errors",
+      "Supplemental real booking take shows a readable price review; its synthetic fixtures were cleaned"
+    ],
+    "completed": true,
+    "cleanupSucceeded": true
+  },
+  "chapters": [
+    {
+      "id": "intro",
+      "start": 0,
+      "end": 6.833,
+      "title": "PADEL.CLUB",
+      "captureMode": "editorial title/technical evidence"
+    },
+    {
+      "id": "welcome",
+      "start": 6.833,
+      "end": 13.833,
+      "title": "A product people can use",
+      "captureMode": "real local application with synthetic member"
+    },
+    {
+      "id": "member",
+      "start": 13.833,
+      "end": 19.867,
+      "title": "Secure access. Clear choices.",
+      "captureMode": "real local application with synthetic member"
+    },
+    {
+      "id": "ai",
+      "start": 19.867,
+      "end": 31.867,
+      "title": "Ask naturally. Get live options.",
+      "captureMode": "real local application with synthetic member"
+    },
+    {
+      "id": "booking",
+      "start": 31.867,
+      "end": 43.867,
+      "title": "The user confirms.",
+      "captureMode": "real local application with synthetic member"
+    },
+    {
+      "id": "mobile",
+      "start": 43.867,
+      "end": 51.867,
+      "title": "One booking. Every screen.",
+      "captureMode": "real local application with synthetic member"
+    },
+    {
+      "id": "policy",
+      "start": 51.867,
+      "end": 61.867,
+      "title": "Answers with a source.",
+      "captureMode": "real local application with synthetic member"
+    },
+    {
+      "id": "notifications",
+      "start": 61.867,
+      "end": 67.9,
+      "title": "Events become useful updates.",
+      "captureMode": "real local application with synthetic member"
+    },
+    {
+      "id": "reception",
+      "start": 67.9,
+      "end": 75.233,
+      "title": "Built for club operations.",
+      "captureMode": "isolated demo data"
+    },
+    {
+      "id": "architecture",
+      "start": 75.233,
+      "end": 86.733,
+      "title": "Engineering beyond the UI.",
+      "captureMode": "editorial title/technical evidence"
+    },
+    {
+      "id": "quality",
+      "start": 86.733,
+      "end": 96.467,
+      "title": "Show the evidence.",
+      "captureMode": "editorial title/technical evidence"
+    },
+    {
+      "id": "closing",
+      "start": 96.467,
+      "end": 104,
+      "title": "A working product. Evidence you can inspect.",
+      "captureMode": "editorial title/technical evidence"
+    }
+  ],
+  "limitations": [
+    "Local demo only; no public/cloud deployment claimed",
+    "Reception footage uses isolated product demonstration data",
+    "AI is a prototype; regression results are inspected datasets, not independent holdout",
+    "Windows WebKit checks do not establish actual Safari/iPhone support",
+    "Automated accessibility scans do not constitute WCAG certification",
+    "GitHub workflow definitions exist; no real GitHub CI/CD run claimed",
+    "Editorial timing excludes sign-in, setup and waiting; not a latency benchmark"
+  ],
+  "verification": {
+    "completeDecodeWithoutErrors": true,
+    "sampledFrames": 37,
+    "chapterStartsMiddlesEnds": true,
+    "visualReview": "Contact sheet and full-size representative frames inspected; live options, explicit price review, persisted booking, mobile card, approved source, notifications, reception details, architecture, evidence and ending readable. No sign-in credentials selected into the edit.",
+    "originalDomainRowsRestored": true,
+    "artifactSha256": "761f671506700dce64392dc50ffc6ae4d014baea7248db3d7ba7ebe620c3e006",
+    "audio": {
+      "integratedLoudnessLUFS": -15.8,
+      "truePeakDbFS": -1.5,
+      "method": "FFmpeg ebur128 on the final edited file; complete audio/video decode passed"
+    }
+  },
+  "claimSources": [
+    {
+      "file": "docs/results/ai/ai-natural-search-2026-10-13.json",
+      "sha256": "460b654eb2502f6779b517c3ab226eb32376c133a4c7b5649094137385ec56bc",
+      "aiRegression": {
+        "passed": 140,
+        "total": 140
+      },
+      "latestScopedBrowserChecks": 63,
+      "independentHoldout": false
+    },
+    {
+      "file": "docs/results/frontend/browser-accessibility-2026-10-13.json",
+      "sha256": "139c03bce95d5df28339a583e0a3c5b0a03021f3cfc47361bba76b283cab6f50",
+      "lastFullBrowserRun": {
+        "passed": 243,
+        "total": 243,
+        "engines": [
+          "Chromium",
+          "Firefox",
+          "Windows WebKit"
+        ]
+      }
+    },
+    {
+      "privateRawReport": ".runtime/ai-upgrade-2026-10-13/browser-results.json",
+      "sha256": "837acec413a6266e16a0fa807c2402305f25ec4772dd5c667f601ca15d4cabb5",
+      "latestScopedChecks": 63,
+      "accessibilityScans": 117,
+      "violations": 0,
+      "manualReviewFindingsRetained": true
+    }
+  ]
+}

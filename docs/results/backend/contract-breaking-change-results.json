@@ -1,0 +1,12 @@
+{
+  "generatedAt": "2026-10-02T12:06:39.2755903Z",
+  "incompatibleContractRejected": true,
+  "rejectedTest": "validate_member_get",
+  "runnerClassification": "error",
+  "cause": "Producer response did not match the deliberately incompatible expected fullName",
+  "originalContractRestored": true,
+  "restoredSuitePassed": true,
+  "finalFullBuildPassed": true,
+  "finalBuildCompletedAt": "2026-10-02T15:12:59+03:00",
+  "finalFullBuildTests": 97
+}

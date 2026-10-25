@@ -1,0 +1,1831 @@
+{
+  "date": "2026-10-13",
+  "timezone": "Europe/Athens",
+  "platform": "win32",
+  "scope": "Local browser compatibility, accessibility and Greek interface verification",
+  "browserSuite": {
+    "startedAt": "2026-10-13T08:29:20.926Z",
+    "durationMs": 241102.195,
+    "total": 243,
+    "passed": 243,
+    "failed": 0,
+    "skipped": 0,
+    "flaky": 0,
+    "retries": 0,
+    "projects": {
+      "desktop-chromium": {
+        "total": 27,
+        "passed": 27
+      },
+      "mobile-chromium": {
+        "total": 27,
+        "passed": 27
+      },
+      "small-mobile-chromium": {
+        "total": 27,
+        "passed": 27
+      },
+      "desktop-firefox": {
+        "total": 27,
+        "passed": 27
+      },
+      "mobile-firefox": {
+        "total": 27,
+        "passed": 27
+      },
+      "small-mobile-firefox": {
+        "total": 27,
+        "passed": 27
+      },
+      "desktop-webkit": {
+        "total": 27,
+        "passed": 27
+      },
+      "mobile-webkit": {
+        "total": 27,
+        "passed": 27
+      },
+      "small-mobile-webkit": {
+        "total": 27,
+        "passed": 27
+      }
+    },
+    "data": "Isolated demo data and controlled transport fixtures; no live domain writes"
+  },
+  "accessibility": {
+    "tool": "@axe-core/playwright 4.13.0",
+    "tags": [
+      "wcag2a",
+      "wcag2aa",
+      "wcag21a",
+      "wcag21aa",
+      "wcag22aa"
+    ],
+    "excludedElements": [],
+    "disabledRules": [],
+    "staticScans": [
+      {
+        "project": "desktop-chromium",
+        "name": "welcome",
+        "violations": 0,
+        "incomplete": [
+          {
+            "id": "color-contrast",
+            "count": 16
+          }
+        ]
+      },
+      {
+        "project": "desktop-chromium",
+        "name": "member / Επισκόπηση",
+        "violations": 0,
+        "incomplete": [
+          {
+            "id": "color-contrast",
+            "count": 12
+          }
+        ]
+      },
+      {
+        "project": "desktop-chromium",
+        "name": "member / Γήπεδα",
+        "violations": 0,
+        "incomplete": [
+          {
+            "id": "color-contrast",
+            "count": 11
+          }
+        ]
+      },
+      {
+        "project": "desktop-chromium",
+        "name": "member / Κρατήσεις",
+        "violations": 0,
+        "incomplete": [
+          {
+            "id": "color-contrast",
+            "count": 5
+          }
+        ]
+      },
+      {
+        "project": "desktop-chromium",
+        "name": "member / Παιχνίδια",
+        "violations": 0,
+        "incomplete": [
+          {
+            "id": "color-contrast",
+            "count": 5
+          }
+        ]
+      },
+      {
+        "project": "desktop-chromium",
+        "name": "member / Συνδρομές",
+        "violations": 0,
+        "incomplete": [
+          {
+            "id": "color-contrast",
+            "count": 5
+          }
+        ]
+      },
+      {
+        "project": "desktop-chromium",
+        "name": "member / Ειδοποιήσεις",
+        "violations": 0,
+        "incomplete": [
+          {
+            "id": "color-contrast",
+            "count": 5
+          }
+        ]
+      },
+      {
+        "project": "desktop-chromium",
+        "name": "member / Βοηθός λέσχης",
+        "violations": 0,
+        "incomplete": [
+          {
+            "id": "color-contrast",
+            "count": 6
+          }
+        ]
+      },
+      {
+        "project": "desktop-chromium",
+        "name": "profile form",
+        "violations": 0,
+        "incomplete": []
+      },
+      {
+        "project": "desktop-chromium",
+        "name": "booking form",
+        "violations": 0,
+        "incomplete": []
+      },
+      {
+        "project": "desktop-chromium",
+        "name": "staff / Υποδοχή",
+        "violations": 0,
+        "incomplete": [
+          {
+            "id": "color-contrast",
+            "count": 7
+          }
+        ]
+      },
+      {
+        "project": "desktop-chromium",
+        "name": "staff / Μέλη",
+        "violations": 0,
+        "incomplete": [
+          {
+            "id": "color-contrast",
+            "count": 5
+          }
+        ]
+      },
+      {
+        "project": "desktop-chromium",
+        "name": "staff / Έλεγχος εισόδου",
+        "violations": 0,
+        "incomplete": [
+          {
+            "id": "color-contrast",
+            "count": 5
+          }
+        ]
+      },
+      {
+        "project": "mobile-chromium",
+        "name": "welcome",
+        "violations": 0,
+        "incomplete": [
+          {
+            "id": "color-contrast",
+            "count": 14
+          }
+        ]
+      },
+      {
+        "project": "mobile-chromium",
+        "name": "member / Επισκόπηση",
+        "violations": 0,
+        "incomplete": [
+          {
+            "id": "color-contrast",
+            "count": 16
+          }
+        ]
+      },
+      {
+        "project": "mobile-chromium",
+        "name": "member / Γήπεδα",
+        "violations": 0,
+        "incomplete": [
+          {
+            "id": "color-contrast",
+            "count": 15
+          }
+        ]
+      },
+      {
+        "project": "mobile-chromium",
+        "name": "member / Κρατήσεις",
+        "violations": 0,
+        "incomplete": [
+          {
+            "id": "color-contrast",
+            "count": 9
+          }
+        ]
+      },
+      {
+        "project": "mobile-chromium",
+        "name": "member / Παιχνίδια",
+        "violations": 0,
+        "incomplete": [
+          {
+            "id": "color-contrast",
+            "count": 9
+          }
+        ]
+      },
+      {
+        "project": "mobile-chromium",
+        "name": "member / Συνδρομές",
+        "violations": 0,
+        "incomplete": [
+          {
+            "id": "color-contrast",
+            "count": 8
+          }
+        ]
+      },
+      {
+        "project": "mobile-chromium",
+        "name": "member / Ειδοποιήσεις",
+        "violations": 0,
+        "incomplete": [
+          {
+            "id": "color-contrast",
+            "count": 7
+          }
+        ]
+      },
+      {
+        "project": "mobile-chromium",
+        "name": "member / Βοηθός λέσχης",
+        "violations": 0,
+        "incomplete": [
+          {
+            "id": "color-contrast",
+            "count": 8
+          }
+        ]
+      },
+      {
+        "project": "mobile-chromium",
+        "name": "profile form",
+        "violations": 0,
+        "incomplete": [
+          {
+            "id": "color-contrast",
+            "count": 1
+          }
+        ]
+      },
+      {
+        "project": "mobile-chromium",
+        "name": "booking form",
+        "violations": 0,
+        "incomplete": []
+      },
+      {
+        "project": "mobile-chromium",
+        "name": "staff / Υποδοχή",
+        "violations": 0,
+        "incomplete": [
+          {
+            "id": "color-contrast",
+            "count": 11
+          }
+        ]
+      },
+      {
+        "project": "mobile-chromium",
+        "name": "staff / Μέλη",
+        "violations": 0,
+        "incomplete": [
+          {
+            "id": "color-contrast",
+            "count": 13
+          }
+        ]
+      },
+      {
+        "project": "mobile-chromium",
+        "name": "staff / Έλεγχος εισόδου",
+        "violations": 0,
+        "incomplete": [
+          {
+            "id": "color-contrast",
+            "count": 8
+          }
+        ]
+      },
+      {
+        "project": "small-mobile-chromium",
+        "name": "welcome",
+        "violations": 0,
+        "incomplete": [
+          {
+            "id": "color-contrast",
+            "count": 14
+          }
+        ]
+      },
+      {
+        "project": "small-mobile-chromium",
+        "name": "member / Επισκόπηση",
+        "violations": 0,
+        "incomplete": [
+          {
+            "id": "color-contrast",
+            "count": 17
+          }
+        ]
+      },
+      {
+        "project": "small-mobile-chromium",
+        "name": "member / Γήπεδα",
+        "violations": 0,
+        "incomplete": [
+          {
+            "id": "color-contrast",
+            "count": 16
+          }
+        ]
+      },
+      {
+        "project": "small-mobile-chromium",
+        "name": "member / Κρατήσεις",
+        "violations": 0,
+        "incomplete": [
+          {
+            "id": "color-contrast",
+            "count": 10
+          }
+        ]
+      },
+      {
+        "project": "small-mobile-chromium",
+        "name": "member / Παιχνίδια",
+        "violations": 0,
+        "incomplete": [
+          {
+            "id": "color-contrast",
+            "count": 10
+          }
+        ]
+      },
+      {
+        "project": "small-mobile-chromium",
+        "name": "member / Συνδρομές",
+        "violations": 0,
+        "incomplete": [
+          {
+            "id": "color-contrast",
+            "count": 9
+          }
+        ]
+      },
+      {
+        "project": "small-mobile-chromium",
+        "name": "member / Ειδοποιήσεις",
+        "violations": 0,
+        "incomplete": [
+          {
+            "id": "color-contrast",
+            "count": 7
+          }
+        ]
+      },
+      {
+        "project": "small-mobile-chromium",
+        "name": "member / Βοηθός λέσχης",
+        "violations": 0,
+        "incomplete": [
+          {
+            "id": "color-contrast",
+            "count": 8
+          }
+        ]
+      },
+      {
+        "project": "small-mobile-chromium",
+        "name": "profile form",
+        "violations": 0,
+        "incomplete": []
+      },
+      {
+        "project": "small-mobile-chromium",
+        "name": "booking form",
+        "violations": 0,
+        "incomplete": []
+      },
+      {
+        "project": "small-mobile-chromium",
+        "name": "staff / Υποδοχή",
+        "violations": 0,
+        "incomplete": [
+          {
+            "id": "color-contrast",
+            "count": 10
+          }
+        ]
+      },
+      {
+        "project": "small-mobile-chromium",
+        "name": "staff / Μέλη",
+        "violations": 0,
+        "incomplete": [
+          {
+            "id": "color-contrast",
+            "count": 14
+          }
+        ]
+      },
+      {
+        "project": "small-mobile-chromium",
+        "name": "staff / Έλεγχος εισόδου",
+        "violations": 0,
+        "incomplete": [
+          {
+            "id": "color-contrast",
+            "count": 8
+          }
+        ]
+      },
+      {
+        "project": "desktop-firefox",
+        "name": "welcome",
+        "violations": 0,
+        "incomplete": [
+          {
+            "id": "color-contrast",
+            "count": 16
+          }
+        ]
+      },
+      {
+        "project": "desktop-firefox",
+        "name": "member / Επισκόπηση",
+        "violations": 0,
+        "incomplete": [
+          {
+            "id": "color-contrast",
+            "count": 12
+          }
+        ]
+      },
+      {
+        "project": "desktop-firefox",
+        "name": "member / Γήπεδα",
+        "violations": 0,
+        "incomplete": [
+          {
+            "id": "color-contrast",
+            "count": 11
+          }
+        ]
+      },
+      {
+        "project": "desktop-firefox",
+        "name": "member / Κρατήσεις",
+        "violations": 0,
+        "incomplete": [
+          {
+            "id": "color-contrast",
+            "count": 5
+          }
+        ]
+      },
+      {
+        "project": "desktop-firefox",
+        "name": "member / Παιχνίδια",
+        "violations": 0,
+        "incomplete": [
+          {
+            "id": "color-contrast",
+            "count": 5
+          }
+        ]
+      },
+      {
+        "project": "desktop-firefox",
+        "name": "member / Συνδρομές",
+        "violations": 0,
+        "incomplete": [
+          {
+            "id": "color-contrast",
+            "count": 5
+          }
+        ]
+      },
+      {
+        "project": "desktop-firefox",
+        "name": "member / Ειδοποιήσεις",
+        "violations": 0,
+        "incomplete": [
+          {
+            "id": "color-contrast",
+            "count": 5
+          }
+        ]
+      },
+      {
+        "project": "desktop-firefox",
+        "name": "member / Βοηθός λέσχης",
+        "violations": 0,
+        "incomplete": [
+          {
+            "id": "color-contrast",
+            "count": 6
+          }
+        ]
+      },
+      {
+        "project": "desktop-firefox",
+        "name": "profile form",
+        "violations": 0,
+        "incomplete": []
+      },
+      {
+        "project": "desktop-firefox",
+        "name": "booking form",
+        "violations": 0,
+        "incomplete": []
+      },
+      {
+        "project": "desktop-firefox",
+        "name": "staff / Υποδοχή",
+        "violations": 0,
+        "incomplete": [
+          {
+            "id": "color-contrast",
+            "count": 7
+          }
+        ]
+      },
+      {
+        "project": "desktop-firefox",
+        "name": "staff / Μέλη",
+        "violations": 0,
+        "incomplete": [
+          {
+            "id": "color-contrast",
+            "count": 6
+          }
+        ]
+      },
+      {
+        "project": "desktop-firefox",
+        "name": "staff / Έλεγχος εισόδου",
+        "violations": 0,
+        "incomplete": [
+          {
+            "id": "color-contrast",
+            "count": 5
+          }
+        ]
+      },
+      {
+        "project": "mobile-firefox",
+        "name": "welcome",
+        "violations": 0,
+        "incomplete": [
+          {
+            "id": "color-contrast",
+            "count": 14
+          }
+        ]
+      },
+      {
+        "project": "mobile-firefox",
+        "name": "member / Επισκόπηση",
+        "violations": 0,
+        "incomplete": [
+          {
+            "id": "color-contrast",
+            "count": 16
+          }
+        ]
+      },
+      {
+        "project": "mobile-firefox",
+        "name": "member / Γήπεδα",
+        "violations": 0,
+        "incomplete": [
+          {
+            "id": "color-contrast",
+            "count": 15
+          }
+        ]
+      },
+      {
+        "project": "mobile-firefox",
+        "name": "member / Κρατήσεις",
+        "violations": 0,
+        "incomplete": [
+          {
+            "id": "color-contrast",
+            "count": 9
+          }
+        ]
+      },
+      {
+        "project": "mobile-firefox",
+        "name": "member / Παιχνίδια",
+        "violations": 0,
+        "incomplete": [
+          {
+            "id": "color-contrast",
+            "count": 9
+          }
+        ]
+      },
+      {
+        "project": "mobile-firefox",
+        "name": "member / Συνδρομές",
+        "violations": 0,
+        "incomplete": [
+          {
+            "id": "color-contrast",
+            "count": 10
+          }
+        ]
+      },
+      {
+        "project": "mobile-firefox",
+        "name": "member / Ειδοποιήσεις",
+        "violations": 0,
+        "incomplete": [
+          {
+            "id": "color-contrast",
+            "count": 6
+          }
+        ]
+      },
+      {
+        "project": "mobile-firefox",
+        "name": "member / Βοηθός λέσχης",
+        "violations": 0,
+        "incomplete": [
+          {
+            "id": "color-contrast",
+            "count": 7
+          }
+        ]
+      },
+      {
+        "project": "mobile-firefox",
+        "name": "profile form",
+        "violations": 0,
+        "incomplete": [
+          {
+            "id": "color-contrast",
+            "count": 1
+          }
+        ]
+      },
+      {
+        "project": "mobile-firefox",
+        "name": "booking form",
+        "violations": 0,
+        "incomplete": []
+      },
+      {
+        "project": "mobile-firefox",
+        "name": "staff / Υποδοχή",
+        "violations": 0,
+        "incomplete": [
+          {
+            "id": "color-contrast",
+            "count": 11
+          }
+        ]
+      },
+      {
+        "project": "mobile-firefox",
+        "name": "staff / Μέλη",
+        "violations": 0,
+        "incomplete": [
+          {
+            "id": "color-contrast",
+            "count": 13
+          }
+        ]
+      },
+      {
+        "project": "mobile-firefox",
+        "name": "staff / Έλεγχος εισόδου",
+        "violations": 0,
+        "incomplete": [
+          {
+            "id": "color-contrast",
+            "count": 7
+          }
+        ]
+      },
+      {
+        "project": "small-mobile-firefox",
+        "name": "welcome",
+        "violations": 0,
+        "incomplete": [
+          {
+            "id": "color-contrast",
+            "count": 14
+          }
+        ]
+      },
+      {
+        "project": "small-mobile-firefox",
+        "name": "member / Επισκόπηση",
+        "violations": 0,
+        "incomplete": [
+          {
+            "id": "color-contrast",
+            "count": 17
+          }
+        ]
+      },
+      {
+        "project": "small-mobile-firefox",
+        "name": "member / Γήπεδα",
+        "violations": 0,
+        "incomplete": [
+          {
+            "id": "color-contrast",
+            "count": 16
+          }
+        ]
+      },
+      {
+        "project": "small-mobile-firefox",
+        "name": "member / Κρατήσεις",
+        "violations": 0,
+        "incomplete": [
+          {
+            "id": "color-contrast",
+            "count": 10
+          }
+        ]
+      },
+      {
+        "project": "small-mobile-firefox",
+        "name": "member / Παιχνίδια",
+        "violations": 0,
+        "incomplete": [
+          {
+            "id": "color-contrast",
+            "count": 9
+          }
+        ]
+      },
+      {
+        "project": "small-mobile-firefox",
+        "name": "member / Συνδρομές",
+        "violations": 0,
+        "incomplete": [
+          {
+            "id": "color-contrast",
+            "count": 11
+          }
+        ]
+      },
+      {
+        "project": "small-mobile-firefox",
+        "name": "member / Ειδοποιήσεις",
+        "violations": 0,
+        "incomplete": [
+          {
+            "id": "color-contrast",
+            "count": 7
+          }
+        ]
+      },
+      {
+        "project": "small-mobile-firefox",
+        "name": "member / Βοηθός λέσχης",
+        "violations": 0,
+        "incomplete": [
+          {
+            "id": "color-contrast",
+            "count": 7
+          }
+        ]
+      },
+      {
+        "project": "small-mobile-firefox",
+        "name": "profile form",
+        "violations": 0,
+        "incomplete": []
+      },
+      {
+        "project": "small-mobile-firefox",
+        "name": "booking form",
+        "violations": 0,
+        "incomplete": []
+      },
+      {
+        "project": "small-mobile-firefox",
+        "name": "staff / Υποδοχή",
+        "violations": 0,
+        "incomplete": [
+          {
+            "id": "color-contrast",
+            "count": 10
+          }
+        ]
+      },
+      {
+        "project": "small-mobile-firefox",
+        "name": "staff / Μέλη",
+        "violations": 0,
+        "incomplete": [
+          {
+            "id": "color-contrast",
+            "count": 14
+          }
+        ]
+      },
+      {
+        "project": "small-mobile-firefox",
+        "name": "staff / Έλεγχος εισόδου",
+        "violations": 0,
+        "incomplete": [
+          {
+            "id": "color-contrast",
+            "count": 8
+          }
+        ]
+      },
+      {
+        "project": "desktop-webkit",
+        "name": "welcome",
+        "violations": 0,
+        "incomplete": [
+          {
+            "id": "color-contrast",
+            "count": 16
+          }
+        ]
+      },
+      {
+        "project": "desktop-webkit",
+        "name": "member / Επισκόπηση",
+        "violations": 0,
+        "incomplete": [
+          {
+            "id": "color-contrast",
+            "count": 12
+          }
+        ]
+      },
+      {
+        "project": "desktop-webkit",
+        "name": "member / Γήπεδα",
+        "violations": 0,
+        "incomplete": [
+          {
+            "id": "color-contrast",
+            "count": 11
+          }
+        ]
+      },
+      {
+        "project": "desktop-webkit",
+        "name": "member / Κρατήσεις",
+        "violations": 0,
+        "incomplete": [
+          {
+            "id": "color-contrast",
+            "count": 5
+          }
+        ]
+      },
+      {
+        "project": "desktop-webkit",
+        "name": "member / Παιχνίδια",
+        "violations": 0,
+        "incomplete": [
+          {
+            "id": "color-contrast",
+            "count": 5
+          }
+        ]
+      },
+      {
+        "project": "desktop-webkit",
+        "name": "member / Συνδρομές",
+        "violations": 0,
+        "incomplete": [
+          {
+            "id": "color-contrast",
+            "count": 5
+          }
+        ]
+      },
+      {
+        "project": "desktop-webkit",
+        "name": "member / Ειδοποιήσεις",
+        "violations": 0,
+        "incomplete": [
+          {
+            "id": "color-contrast",
+            "count": 5
+          }
+        ]
+      },
+      {
+        "project": "desktop-webkit",
+        "name": "member / Βοηθός λέσχης",
+        "violations": 0,
+        "incomplete": [
+          {
+            "id": "color-contrast",
+            "count": 6
+          }
+        ]
+      },
+      {
+        "project": "desktop-webkit",
+        "name": "profile form",
+        "violations": 0,
+        "incomplete": []
+      },
+      {
+        "project": "desktop-webkit",
+        "name": "booking form",
+        "violations": 0,
+        "incomplete": []
+      },
+      {
+        "project": "desktop-webkit",
+        "name": "staff / Υποδοχή",
+        "violations": 0,
+        "incomplete": [
+          {
+            "id": "color-contrast",
+            "count": 7
+          }
+        ]
+      },
+      {
+        "project": "desktop-webkit",
+        "name": "staff / Μέλη",
+        "violations": 0,
+        "incomplete": [
+          {
+            "id": "color-contrast",
+            "count": 5
+          }
+        ]
+      },
+      {
+        "project": "desktop-webkit",
+        "name": "staff / Έλεγχος εισόδου",
+        "violations": 0,
+        "incomplete": [
+          {
+            "id": "color-contrast",
+            "count": 5
+          }
+        ]
+      },
+      {
+        "project": "mobile-webkit",
+        "name": "welcome",
+        "violations": 0,
+        "incomplete": [
+          {
+            "id": "color-contrast",
+            "count": 14
+          }
+        ]
+      },
+      {
+        "project": "mobile-webkit",
+        "name": "member / Επισκόπηση",
+        "violations": 0,
+        "incomplete": [
+          {
+            "id": "color-contrast",
+            "count": 16
+          }
+        ]
+      },
+      {
+        "project": "mobile-webkit",
+        "name": "member / Γήπεδα",
+        "violations": 0,
+        "incomplete": [
+          {
+            "id": "color-contrast",
+            "count": 15
+          }
+        ]
+      },
+      {
+        "project": "mobile-webkit",
+        "name": "member / Κρατήσεις",
+        "violations": 0,
+        "incomplete": [
+          {
+            "id": "color-contrast",
+            "count": 9
+          }
+        ]
+      },
+      {
+        "project": "mobile-webkit",
+        "name": "member / Παιχνίδια",
+        "violations": 0,
+        "incomplete": [
+          {
+            "id": "color-contrast",
+            "count": 9
+          }
+        ]
+      },
+      {
+        "project": "mobile-webkit",
+        "name": "member / Συνδρομές",
+        "violations": 0,
+        "incomplete": [
+          {
+            "id": "color-contrast",
+            "count": 8
+          }
+        ]
+      },
+      {
+        "project": "mobile-webkit",
+        "name": "member / Ειδοποιήσεις",
+        "violations": 0,
+        "incomplete": [
+          {
+            "id": "color-contrast",
+            "count": 7
+          }
+        ]
+      },
+      {
+        "project": "mobile-webkit",
+        "name": "member / Βοηθός λέσχης",
+        "violations": 0,
+        "incomplete": [
+          {
+            "id": "color-contrast",
+            "count": 8
+          }
+        ]
+      },
+      {
+        "project": "mobile-webkit",
+        "name": "profile form",
+        "violations": 0,
+        "incomplete": [
+          {
+            "id": "color-contrast",
+            "count": 1
+          }
+        ]
+      },
+      {
+        "project": "mobile-webkit",
+        "name": "booking form",
+        "violations": 0,
+        "incomplete": []
+      },
+      {
+        "project": "mobile-webkit",
+        "name": "staff / Υποδοχή",
+        "violations": 0,
+        "incomplete": [
+          {
+            "id": "color-contrast",
+            "count": 11
+          }
+        ]
+      },
+      {
+        "project": "mobile-webkit",
+        "name": "staff / Μέλη",
+        "violations": 0,
+        "incomplete": [
+          {
+            "id": "color-contrast",
+            "count": 13
+          }
+        ]
+      },
+      {
+        "project": "mobile-webkit",
+        "name": "staff / Έλεγχος εισόδου",
+        "violations": 0,
+        "incomplete": [
+          {
+            "id": "color-contrast",
+            "count": 8
+          }
+        ]
+      },
+      {
+        "project": "small-mobile-webkit",
+        "name": "welcome",
+        "violations": 0,
+        "incomplete": [
+          {
+            "id": "color-contrast",
+            "count": 14
+          }
+        ]
+      },
+      {
+        "project": "small-mobile-webkit",
+        "name": "member / Επισκόπηση",
+        "violations": 0,
+        "incomplete": [
+          {
+            "id": "color-contrast",
+            "count": 17
+          }
+        ]
+      },
+      {
+        "project": "small-mobile-webkit",
+        "name": "member / Γήπεδα",
+        "violations": 0,
+        "incomplete": [
+          {
+            "id": "color-contrast",
+            "count": 16
+          }
+        ]
+      },
+      {
+        "project": "small-mobile-webkit",
+        "name": "member / Κρατήσεις",
+        "violations": 0,
+        "incomplete": [
+          {
+            "id": "color-contrast",
+            "count": 10
+          }
+        ]
+      },
+      {
+        "project": "small-mobile-webkit",
+        "name": "member / Παιχνίδια",
+        "violations": 0,
+        "incomplete": [
+          {
+            "id": "color-contrast",
+            "count": 10
+          }
+        ]
+      },
+      {
+        "project": "small-mobile-webkit",
+        "name": "member / Συνδρομές",
+        "violations": 0,
+        "incomplete": [
+          {
+            "id": "color-contrast",
+            "count": 9
+          }
+        ]
+      },
+      {
+        "project": "small-mobile-webkit",
+        "name": "member / Ειδοποιήσεις",
+        "violations": 0,
+        "incomplete": [
+          {
+            "id": "color-contrast",
+            "count": 7
+          }
+        ]
+      },
+      {
+        "project": "small-mobile-webkit",
+        "name": "member / Βοηθός λέσχης",
+        "violations": 0,
+        "incomplete": [
+          {
+            "id": "color-contrast",
+            "count": 8
+          }
+        ]
+      },
+      {
+        "project": "small-mobile-webkit",
+        "name": "profile form",
+        "violations": 0,
+        "incomplete": []
+      },
+      {
+        "project": "small-mobile-webkit",
+        "name": "booking form",
+        "violations": 0,
+        "incomplete": []
+      },
+      {
+        "project": "small-mobile-webkit",
+        "name": "staff / Υποδοχή",
+        "violations": 0,
+        "incomplete": [
+          {
+            "id": "color-contrast",
+            "count": 10
+          }
+        ]
+      },
+      {
+        "project": "small-mobile-webkit",
+        "name": "staff / Μέλη",
+        "violations": 0,
+        "incomplete": [
+          {
+            "id": "color-contrast",
+            "count": 14
+          }
+        ]
+      },
+      {
+        "project": "small-mobile-webkit",
+        "name": "staff / Έλεγχος εισόδου",
+        "violations": 0,
+        "incomplete": [
+          {
+            "id": "color-contrast",
+            "count": 8
+          }
+        ]
+      }
+    ],
+    "liveIdentityScans": 12,
+    "violations": 0,
+    "manualChecks": [
+      "Keyboard navigation and dialog containment/restoration",
+      "Keyboard scroll of subscription history",
+      "Visual mobile booking cards in WebKit and Firefox"
+    ],
+    "incompleteFindingsRetained": true
+  },
+  "liveJourneys": [
+    {
+      "engine": "chromium",
+      "startedAt": "2026-10-13T08:35:10.520Z",
+      "finishedAt": "2026-10-13T08:35:52.120Z",
+      "steps": [
+        {
+          "name": "Public welcome links and real server load",
+          "passed": true,
+          "durationMs": 2723
+        },
+        {
+          "name": "Public registration rejects invalid fields and signs the new member in",
+          "passed": true,
+          "durationMs": 3907
+        },
+        {
+          "name": "Member onboarding persists the profile through the real API",
+          "passed": true,
+          "durationMs": 436
+        },
+        {
+          "name": "Second member signs in and completes onboarding",
+          "passed": true,
+          "durationMs": 1333
+        },
+        {
+          "name": "New member sees reception activation and separate court pricing before booking",
+          "passed": true,
+          "durationMs": 180
+        },
+        {
+          "name": "Member navigation and API deny staff-only functions",
+          "passed": true,
+          "durationMs": 40
+        },
+        {
+          "name": "Booking without a subscription fails and leaves the confirmation form usable",
+          "passed": true,
+          "durationMs": 821
+        },
+        {
+          "name": "Reception sign-in and UI-recorded paid subscriptions activate both members",
+          "passed": true,
+          "durationMs": 1262
+        },
+        {
+          "name": "Member refresh displays the real active subscription",
+          "passed": true,
+          "durationMs": 231
+        },
+        {
+          "name": "Member books a free slot in the real UI and sees the persisted booking",
+          "passed": true,
+          "durationMs": 665
+        },
+        {
+          "name": "Occupied slot offers waitlist without automatically making a booking",
+          "passed": true,
+          "durationMs": 715
+        },
+        {
+          "name": "Organizer opens the game and a second member joins through the real UI",
+          "passed": true,
+          "durationMs": 1266
+        },
+        {
+          "name": "Cancellation releases the booked slot and is persisted",
+          "passed": true,
+          "durationMs": 765
+        },
+        {
+          "name": "Member notification page receives the real booking and cancellation events",
+          "passed": true,
+          "durationMs": 2344
+        },
+        {
+          "name": "Real authenticated member pages and profile fit 390px and 320px",
+          "passed": true,
+          "durationMs": 851
+        },
+        {
+          "name": "Real logout returns to the welcome page and re-login restores the saved profile",
+          "passed": true,
+          "durationMs": 1633
+        },
+        {
+          "name": "Local AI returns a sourced cancellation answer without changing bookings",
+          "passed": true,
+          "durationMs": 17286
+        }
+      ],
+      "cleanupChecks": 10,
+      "cleanupPassed": true,
+      "existingRowsUnchanged": true,
+      "registration": {
+        "missingEmailRejected": true,
+        "passwordMismatchRejected": true,
+        "invalidSubmissionCreatesNoIdentity": true,
+        "authenticatedAfterRegistration": true,
+        "primaryMemberViewport": {
+          "width": 390,
+          "height": 844
+        },
+        "language": "Greek identity form and application; optional English locale",
+        "initialWarnings": [],
+        "noMisleadingServiceWarnings": true
+      },
+      "accessibility": [
+        {
+          "name": "Greek login",
+          "violations": 0,
+          "incomplete": [
+            {
+              "id": "aria-valid-attr-value",
+              "count": 2
+            },
+            {
+              "id": "color-contrast",
+              "count": 1
+            }
+          ]
+        },
+        {
+          "name": "Greek registration",
+          "violations": 0,
+          "incomplete": [
+            {
+              "id": "aria-valid-attr-value",
+              "count": 5
+            },
+            {
+              "id": "color-contrast",
+              "count": 1
+            }
+          ]
+        },
+        {
+          "name": "Greek registration errors",
+          "violations": 0,
+          "incomplete": [
+            {
+              "id": "aria-valid-attr-value",
+              "count": 1
+            },
+            {
+              "id": "color-contrast",
+              "count": 1
+            }
+          ]
+        },
+        {
+          "name": "Greek registration at 390px",
+          "violations": 0,
+          "incomplete": [
+            {
+              "id": "aria-valid-attr-value",
+              "count": 4
+            },
+            {
+              "id": "color-contrast",
+              "count": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "engine": "firefox",
+      "startedAt": "2026-10-13T08:32:45.642Z",
+      "finishedAt": "2026-10-13T08:34:06.427Z",
+      "steps": [
+        {
+          "name": "Public welcome links and real server load",
+          "passed": true,
+          "durationMs": 8133
+        },
+        {
+          "name": "Public registration rejects invalid fields and signs the new member in",
+          "passed": true,
+          "durationMs": 9996
+        },
+        {
+          "name": "Member onboarding persists the profile through the real API",
+          "passed": true,
+          "durationMs": 634
+        },
+        {
+          "name": "Second member signs in and completes onboarding",
+          "passed": true,
+          "durationMs": 2014
+        },
+        {
+          "name": "New member sees reception activation and separate court pricing before booking",
+          "passed": true,
+          "durationMs": 290
+        },
+        {
+          "name": "Member navigation and API deny staff-only functions",
+          "passed": true,
+          "durationMs": 40
+        },
+        {
+          "name": "Booking without a subscription fails and leaves the confirmation form usable",
+          "passed": true,
+          "durationMs": 794
+        },
+        {
+          "name": "Reception sign-in and UI-recorded paid subscriptions activate both members",
+          "passed": true,
+          "durationMs": 1760
+        },
+        {
+          "name": "Member refresh displays the real active subscription",
+          "passed": true,
+          "durationMs": 606
+        },
+        {
+          "name": "Member books a free slot in the real UI and sees the persisted booking",
+          "passed": true,
+          "durationMs": 1024
+        },
+        {
+          "name": "Occupied slot offers waitlist without automatically making a booking",
+          "passed": true,
+          "durationMs": 888
+        },
+        {
+          "name": "Organizer opens the game and a second member joins through the real UI",
+          "passed": true,
+          "durationMs": 1547
+        },
+        {
+          "name": "Cancellation releases the booked slot and is persisted",
+          "passed": true,
+          "durationMs": 930
+        },
+        {
+          "name": "Member notification page receives the real booking and cancellation events",
+          "passed": true,
+          "durationMs": 343
+        },
+        {
+          "name": "Real authenticated member pages and profile fit 390px and 320px",
+          "passed": true,
+          "durationMs": 868
+        },
+        {
+          "name": "Real logout returns to the welcome page and re-login restores the saved profile",
+          "passed": true,
+          "durationMs": 2226
+        },
+        {
+          "name": "Local AI returns a sourced cancellation answer without changing bookings",
+          "passed": true,
+          "durationMs": 26212
+        }
+      ],
+      "cleanupChecks": 10,
+      "cleanupPassed": true,
+      "existingRowsUnchanged": true,
+      "registration": {
+        "missingEmailRejected": true,
+        "passwordMismatchRejected": true,
+        "invalidSubmissionCreatesNoIdentity": true,
+        "authenticatedAfterRegistration": true,
+        "primaryMemberViewport": {
+          "width": 390,
+          "height": 844
+        },
+        "language": "Greek identity form and application; optional English locale",
+        "initialWarnings": [],
+        "noMisleadingServiceWarnings": true
+      },
+      "accessibility": [
+        {
+          "name": "Greek login",
+          "violations": 0,
+          "incomplete": [
+            {
+              "id": "aria-valid-attr-value",
+              "count": 2
+            },
+            {
+              "id": "color-contrast",
+              "count": 1
+            }
+          ]
+        },
+        {
+          "name": "Greek registration",
+          "violations": 0,
+          "incomplete": [
+            {
+              "id": "aria-valid-attr-value",
+              "count": 5
+            },
+            {
+              "id": "color-contrast",
+              "count": 1
+            }
+          ]
+        },
+        {
+          "name": "Greek registration errors",
+          "violations": 0,
+          "incomplete": [
+            {
+              "id": "aria-valid-attr-value",
+              "count": 1
+            },
+            {
+              "id": "color-contrast",
+              "count": 1
+            }
+          ]
+        },
+        {
+          "name": "Greek registration at 390px",
+          "violations": 0,
+          "incomplete": [
+            {
+              "id": "aria-valid-attr-value",
+              "count": 4
+            },
+            {
+              "id": "color-contrast",
+              "count": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "engine": "webkit",
+      "startedAt": "2026-10-13T08:34:06.930Z",
+      "finishedAt": "2026-10-13T08:35:09.999Z",
+      "steps": [
+        {
+          "name": "Public welcome links and real server load",
+          "passed": true,
+          "durationMs": 2549
+        },
+        {
+          "name": "Public registration rejects invalid fields and signs the new member in",
+          "passed": true,
+          "durationMs": 10711
+        },
+        {
+          "name": "Member onboarding persists the profile through the real API",
+          "passed": true,
+          "durationMs": 790
+        },
+        {
+          "name": "Second member signs in and completes onboarding",
+          "passed": true,
+          "durationMs": 3040
+        },
+        {
+          "name": "New member sees reception activation and separate court pricing before booking",
+          "passed": true,
+          "durationMs": 569
+        },
+        {
+          "name": "Member navigation and API deny staff-only functions",
+          "passed": true,
+          "durationMs": 37
+        },
+        {
+          "name": "Booking without a subscription fails and leaves the confirmation form usable",
+          "passed": true,
+          "durationMs": 1280
+        },
+        {
+          "name": "Reception sign-in and UI-recorded paid subscriptions activate both members",
+          "passed": true,
+          "durationMs": 3317
+        },
+        {
+          "name": "Member refresh displays the real active subscription",
+          "passed": true,
+          "durationMs": 804
+        },
+        {
+          "name": "Member books a free slot in the real UI and sees the persisted booking",
+          "passed": true,
+          "durationMs": 1924
+        },
+        {
+          "name": "Occupied slot offers waitlist without automatically making a booking",
+          "passed": true,
+          "durationMs": 1649
+        },
+        {
+          "name": "Organizer opens the game and a second member joins through the real UI",
+          "passed": true,
+          "durationMs": 5068
+        },
+        {
+          "name": "Cancellation releases the booked slot and is persisted",
+          "passed": true,
+          "durationMs": 2404
+        },
+        {
+          "name": "Member notification page receives the real booking and cancellation events",
+          "passed": true,
+          "durationMs": 853
+        },
+        {
+          "name": "Real authenticated member pages and profile fit 390px and 320px",
+          "passed": true,
+          "durationMs": 2877
+        },
+        {
+          "name": "Real logout returns to the welcome page and re-login restores the saved profile",
+          "passed": true,
+          "durationMs": 5103
+        },
+        {
+          "name": "Local AI returns a sourced cancellation answer without changing bookings",
+          "passed": true,
+          "durationMs": 11610
+        }
+      ],
+      "cleanupChecks": 10,
+      "cleanupPassed": true,
+      "existingRowsUnchanged": true,
+      "registration": {
+        "missingEmailRejected": true,
+        "passwordMismatchRejected": true,
+        "invalidSubmissionCreatesNoIdentity": true,
+        "authenticatedAfterRegistration": true,
+        "primaryMemberViewport": {
+          "width": 390,
+          "height": 844
+        },
+        "language": "Greek identity form and application; optional English locale",
+        "initialWarnings": [],
+        "noMisleadingServiceWarnings": true
+      },
+      "accessibility": [
+        {
+          "name": "Greek login",
+          "violations": 0,
+          "incomplete": [
+            {
+              "id": "aria-valid-attr-value",
+              "count": 2
+            },
+            {
+              "id": "color-contrast",
+              "count": 1
+            }
+          ]
+        },
+        {
+          "name": "Greek registration",
+          "violations": 0,
+          "incomplete": [
+            {
+              "id": "aria-valid-attr-value",
+              "count": 5
+            },
+            {
+              "id": "color-contrast",
+              "count": 1
+            }
+          ]
+        },
+        {
+          "name": "Greek registration errors",
+          "violations": 0,
+          "incomplete": [
+            {
+              "id": "aria-valid-attr-value",
+              "count": 1
+            },
+            {
+              "id": "color-contrast",
+              "count": 1
+            }
+          ]
+        },
+        {
+          "name": "Greek registration at 390px",
+          "violations": 0,
+          "incomplete": [
+            {
+              "id": "aria-valid-attr-value",
+              "count": 4
+            },
+            {
+              "id": "color-contrast",
+              "count": 1
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "nodeTests": {
+    "passed": 97,
+    "failed": 0,
+    "scope": "Repository Node suites"
+  },
+  "corrections": [
+    "Overview statistics denominator contrast",
+    "Focusable labeled subscription history with visible focus outline",
+    "Explicit mobile select appearance for readable WebKit role text",
+    "Refresh focus test activates with keyboard rather than assuming pointer focus in every engine"
+  ],
+  "limitations": [
+    "Windows Playwright WebKit, not branded Safari or a physical Apple device",
+    "Firefox narrow viewports are not isMobile device emulation",
+    "Automated axe and keyboard checks do not establish complete WCAG conformance or NVDA/VoiceOver behavior",
+    "Incomplete contrast and inherited Keycloak empty aria-invalid checks require human review",
+    "No new full backend, security, load, GitHub or cloud execution"
+  ],
+  "priorAttempt": {
+    "browserSuite": {
+      "passed": 240,
+      "failed": 3,
+      "reason": "Refresh focus test used pointer click; WebKit does not focus buttons that way. Corrected test to exercise keyboard activation; no scenario skipped."
+    },
+    "startupJourney": "Initial attempt began before identity service was ready after Docker Desktop startup; no profiles or bookings created. Final runs began after health checks."
+  },
+  "sourceSha256": {
+    "web/playwright.config.js": "d91443834579ed8e1617b0d0e44d8e8eaf4ff130f3c978efec7906d045713810",
+    "web/browser-tests/accessibility.spec.js": "24a56b01b46719f57a1b8c7c11a8b7848c93d0bfe7e66bb01842a69aeb93401c",
+    "web/browser-tests/resilience.spec.js": "45c27da01175641029c62db39904909db86fe70c23ca9d29d196ec23549b90cf",
+    "web/browser-tests/club.spec.js": "53a0ea4a9bb8ad50e9ab718228c16ee363cf75867639f8d63caa819ad7952ac6",
+    "web/browser-tests/polish.spec.js": "68e3b9993dfa618a9304ed9386cb93358a2c6ef38f6f2d4eb07411e24fbed328",
+    "web/clean.css": "be9b440eeaee539b26b8a15263cc404927bf71e873618cfef6279638600457e3",
+    "web/index.html": "0659f0d7148f7d25cacc049a3f7af2bb24d24866d9a5b3a63e65c433f2c67841",
+    "web/ui/pages.js": "c6de3d784aa1621c2feda7a8381d09cc6c27711d8a357cb1d30d391c38060efe",
+    "scripts/user-journey.mjs": "f343025411845dda8e74451367d5dd4956d1f229558f4ff245513fbc4104e656",
+    "web/package.json": "cb4b609bcc4956ade132e0bb9debe8cb10a5ee034624adb941ab877cd38645f4",
+    "web/package-lock.json": "52c8a18d468e95c2d4137f95c076b8a7d751601bcccfadc1db8372cf0251089e",
+    ".github/workflows/ci.yml": "c8e20f45a90f17289f6cec34819c9cdeb90e2a323c2a8630461fd04ef2438355",
+    "infra/keycloak/themes/padel/login/messages/messages_el.properties": "4d62229147dd47f36a6f319716ffc995eca4c5ee601f48f0d89db40bbeb3f93d",
+    "web/ui/notifications.js": "2310c3638eb21da037af2be64e86ae031f63ec68206ddb0b7bb61e3eae4248a3"
+  }
+}

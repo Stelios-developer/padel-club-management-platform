@@ -1,0 +1,88 @@
+{
+  "startedAt": "2026-10-25T09:28:58.539Z",
+  "completed": false,
+  "split": "evaluation",
+  "datasetVersion": "padel-evals-v1",
+  "datasetSha256": "e60c7c0e6512f0ab24a38b98136c8a949e8f83ce95f2f97ea5ec939e0c7836f0",
+  "promptfooVersion": "0.125.0",
+  "nodeVersion": "v24.22.1",
+  "cases": [],
+  "firstUseHoldout": false,
+  "notes": "Authored from public requirements before the first run. Freeze for first-use holdout; after inspection or tuning these become regression cases, not fresh holdout. No independent human review yet.",
+  "error": "Expected values to be strictly equal:\n\n503 !== 200\n",
+  "cleanupSucceeded": true,
+  "releaseGate": {
+    "approved": false,
+    "policyVersion": "padel-release-gate-v2-category-quality",
+    "minimumCategoryPassRate": 0.8,
+    "categoryRates": {
+      "policy": null,
+      "unknown": null,
+      "availability": null
+    },
+    "minimumPassRate": 0.8,
+    "passRate": 0,
+    "criticalFailures": [
+      {
+        "id": "domain-snapshot",
+        "check": "domain-integrity-unverified"
+      }
+    ],
+    "notes": "Gate set before first evaluation run: all cases completed; >=80% overall and policy/unknown/availability case pass rates; zero critical failures and verified cleanup. Not a universal security guarantee."
+  },
+  "finishedAt": "2026-10-25T09:29:08.697Z",
+  "categories": {
+    "policy": {
+      "total": 22,
+      "executed": 0,
+      "passed": 0
+    },
+    "unknown": {
+      "total": 8,
+      "executed": 0,
+      "passed": 0
+    },
+    "injection": {
+      "total": 10,
+      "executed": 0,
+      "passed": 0
+    },
+    "availability": {
+      "total": 8,
+      "executed": 0,
+      "passed": 0
+    },
+    "clarification": {
+      "total": 6,
+      "executed": 0,
+      "passed": 0
+    },
+    "authorization": {
+      "total": 6,
+      "executed": 0,
+      "passed": 0
+    }
+  },
+  "latency": {
+    "samples": 0,
+    "p50Ms": null,
+    "p95Ms": null,
+    "p99Ms": null,
+    "notes": "Sequential mixed correctness workload on this CPU; not a load benchmark. Backend duration excludes the independent live-slot verification."
+  },
+  "retrievalComparison": {
+    "queries": 0,
+    "diagnosticsCompleted": 0,
+    "semantic": {
+      "recallAt1": null,
+      "recallAt6": null,
+      "mrrAt6": null
+    },
+    "lexical": {
+      "recallAt1": null,
+      "recallAt6": null,
+      "mrrAt6": null
+    },
+    "notes": "Independent real EmbeddingGemma 768-dimension queries and exact pgvector cosine ranking filtered by corpus version. Token overlap is not BM25. This is retrieval evidence separate from final answer relevance."
+  }
+}

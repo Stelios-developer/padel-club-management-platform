@@ -1,0 +1,24 @@
+discovery.docker "padel" {
+  host = "unix:///var/run/docker.sock"
+  filter {
+    name = "label"
+    values = ["com.docker.compose.project=padel-club"]
+  }
+}
+discovery.relabel "padel" {
+  targets = discovery.docker.padel.targets
+  rule {
+    source_labels = ["__meta_docker_container_label_com_docker_compose_service"]
+    target_label = "service"
+  }
+}
+loki.source.docker "padel" {
+  host = "unix:///var/run/docker.sock"
+  targets = discovery.relabel.padel.output
+  forward_to = [loki.write.padel.receiver]
+}
+loki.write "padel" {
+  endpoint {
+    url = "http://loki:3100/loki/api/v1/push"
+  }
+}

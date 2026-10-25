@@ -1,0 +1,112 @@
+{
+  "realm": "padel",
+  "enabled": true,
+  "displayName": "Padel Club",
+  "loginTheme": "padel",
+  "registrationAllowed": true,
+  "registrationEmailAsUsername": true,
+  "resetPasswordAllowed": true,
+  "rememberMe": false,
+  "sslRequired": "external",
+  "defaultRole": {
+    "name": "default-roles-padel",
+    "composite": true
+  },
+  "accessTokenLifespan": 300,
+  "roles": {
+    "realm": [
+      {
+        "name": "ADMIN"
+      },
+      {
+        "name": "STAFF"
+      },
+      {
+        "name": "MEMBER"
+      },
+      {
+        "name": "default-roles-padel",
+        "composite": true,
+        "composites": {
+          "realm": ["MEMBER"]
+        }
+      }
+    ]
+  },
+  "clients": [
+    {
+      "clientId": "padel-web",
+      "name": "Padel Club Web",
+      "enabled": true,
+      "publicClient": true,
+      "protocol": "openid-connect",
+      "standardFlowEnabled": true,
+      "directAccessGrantsEnabled": false,
+      "defaultClientScopes": [
+        "basic",
+        "profile",
+        "email",
+        "roles",
+        "web-origins"
+      ],
+      "redirectUris": ["http://localhost:3000/*"],
+      "webOrigins": ["http://localhost:3000"],
+      "attributes": {
+        "pkce.code.challenge.method": "S256",
+        "post.logout.redirect.uris": "http://localhost:3000/*"
+      },
+      "protocolMappers": [
+        {
+          "name": "padel-api-audience",
+          "protocol": "openid-connect",
+          "protocolMapper": "oidc-audience-mapper",
+          "consentRequired": false,
+          "config": {
+            "included.custom.audience": "padel-api",
+            "id.token.claim": "false",
+            "access.token.claim": "true"
+          }
+        }
+      ]
+    }
+  ],
+  "users": [
+    {
+      "id": "aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa",
+      "username": "member",
+      "email": "member@padel.local",
+      "firstName": "Alex",
+      "lastName": "Player",
+      "enabled": true,
+      "emailVerified": true,
+      "realmRoles": ["MEMBER"],
+      "credentials": [
+        {
+          "type": "password",
+          "value": "PadelMember123!",
+          "temporary": false
+        }
+      ]
+    },
+    {
+      "id": "bbbbbbbb-bbbb-bbbb-bbbb-bbbbbbbbbbbb",
+      "username": "clubadmin",
+      "email": "clubadmin@padel.local",
+      "firstName": "Club",
+      "lastName": "Admin",
+      "enabled": true,
+      "emailVerified": true,
+      "realmRoles": ["ADMIN", "MEMBER"],
+      "credentials": [
+        {
+          "type": "password",
+          "value": "PadelAdmin123!",
+          "temporary": false
+        }
+      ]
+    }
+  ],
+  "internationalizationEnabled": true,
+  "supportedLocales": ["el", "en"],
+  "defaultLocale": "el"
+}

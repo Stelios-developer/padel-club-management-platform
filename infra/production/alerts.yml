@@ -1,0 +1,45 @@
+groups:
+  - name: padel-delivery
+    rules:
+      - alert: PadelEmailFailed
+        expr: padel_mail_failed > 0
+        for: 2m
+        labels: { severity: critical }
+        annotations:
+          summary: "Email delivery exhausted its retry budget"
+          description: "Investigate notification-service and SMTP. Do not delete notifications to silence this alert."
+      - alert: PadelEmailDelayed
+        expr: padel_mail_pending > 0 and padel_mail_oldest_age_seconds > 900
+        for: 5m
+        labels: { severity: warning }
+        annotations:
+          summary: "Pending emails are more than 15 minutes old"
+      - alert: PadelEventsDelayed
+        expr: padel_outbox_pending > 0 and padel_outbox_oldest_age_seconds > 300
+        for: 2m
+        labels: { severity: critical }
+        annotations:
+          summary: "Events are pending for more than 5 minutes"
+          description: "Check RabbitMQ routing and publisher confirms before replaying events."
+      - alert: PadelServiceUnavailable
+        expr: up{job="padel-services"} == 0
+        for: 2m
+        labels: { severity: critical }
+        annotations:
+          summary: "A Padel service cannot be scraped"
+  - name: padel-dependencies
+    rules:
+      - alert: PadelDependencyCircuitOpen
+        expr: resilience4j_circuitbreaker_state{state="open"} == 1
+        for: 1m
+        labels: { severity: warning }
+        annotations:
+          summary: "A dependency circuit remains open"
+          description: "Check the named dependency and timeouts. Restore it and observe half-open probes; do not bypass eligibility checks."
+      - alert: PadelDependencyCapacityExhausted
+        expr: resilience4j_bulkhead_available_concurrent_calls == 0
+        for: 2m
+        labels: { severity: warning }
+        annotations:
+          summary: "A dependency bulkhead remains saturated"
+          description: "Check request latency and dependency health before increasing concurrency."

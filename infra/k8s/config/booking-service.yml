@@ -1,0 +1,5 @@
+spring:
+  flyway:
+    locations: classpath:db/migration,classpath:db/postgresql
+  datasource:
+    url: jdbc:postgresql://${DB_HOST:localhost}:5432/padel_bookings

@@ -1,0 +1,765 @@
+{
+  "startedAt": "2026-10-25T14:40:29.711Z",
+  "runId": "4cd06acb8323",
+  "completed": true,
+  "mockedTransport": false,
+  "publicRegistration": true,
+  "browserEngine": "chromium",
+  "project": "padel-e2e",
+  "steps": [
+    {
+      "name": "Public welcome links and real server load",
+      "passed": true,
+      "durationMs": 1321
+    },
+    {
+      "name": "Public registration rejects invalid fields and signs the new member in",
+      "passed": true,
+      "durationMs": 3783
+    },
+    {
+      "name": "Member onboarding persists the profile through the real API",
+      "passed": true,
+      "durationMs": 327
+    },
+    {
+      "name": "Second member signs in and completes onboarding",
+      "passed": true,
+      "durationMs": 1280
+    },
+    {
+      "name": "New member sees reception activation and separate court pricing before booking",
+      "passed": true,
+      "durationMs": 243
+    },
+    {
+      "name": "Member navigation and API deny staff-only functions",
+      "passed": true,
+      "durationMs": 16
+    },
+    {
+      "name": "Booking without a subscription fails and leaves the confirmation form usable",
+      "passed": true,
+      "durationMs": 562
+    },
+    {
+      "name": "Reception sign-in and UI-recorded paid subscriptions activate both members",
+      "passed": true,
+      "durationMs": 962
+    },
+    {
+      "name": "Member refresh displays the real active subscription",
+      "passed": true,
+      "durationMs": 292
+    },
+    {
+      "name": "Member books a free slot in the real UI and sees the persisted booking",
+      "passed": true,
+      "durationMs": 582
+    },
+    {
+      "name": "Occupied slot offers waitlist without automatically making a booking",
+      "passed": true,
+      "durationMs": 637
+    },
+    {
+      "name": "Organizer opens the game and a second member joins through the real UI",
+      "passed": true,
+      "durationMs": 880
+    },
+    {
+      "name": "Cancellation releases the booked slot and is persisted",
+      "passed": true,
+      "durationMs": 651
+    },
+    {
+      "name": "Member notification page receives the real booking and cancellation events",
+      "passed": true,
+      "durationMs": 1086
+    },
+    {
+      "name": "Real authenticated member pages and profile fit 390px and 320px",
+      "passed": true,
+      "durationMs": 857
+    },
+    {
+      "name": "Real logout returns to the welcome page and re-login restores the saved profile",
+      "passed": true,
+      "durationMs": 1614
+    },
+    {
+      "name": "Local AI returns a sourced cancellation answer without changing bookings",
+      "passed": true,
+      "durationMs": 6269
+    }
+  ],
+  "cleanup": [
+    {
+      "name": "Cancel isolated booking 49d65e14-8d2b-4820-bb5c-1be3ab95438f",
+      "passed": true
+    },
+    {
+      "name": "Cancel isolated subscription 50c5cebe-2693-41bf-9740-4edfa9a48cbf",
+      "passed": true
+    },
+    {
+      "name": "Cancel isolated subscription 97522fbb-c159-45a6-b93f-d1205fd2f752",
+      "passed": true
+    },
+    {
+      "name": "Disable isolated profile 998fae88-8461-42cb-aa42-92cad905f8b0",
+      "passed": true
+    },
+    {
+      "name": "Disable isolated profile 1e368b49-b737-4bd0-b78a-ac67d5e83815",
+      "passed": true
+    },
+    {
+      "name": "Cancel isolated waitlist 08a38159-5622-466b-b63d-d658c717dfee",
+      "passed": true
+    },
+    {
+      "name": "Remove isolated identity b433242a-c344-4b6c-b25c-3b7f2b120ec6",
+      "passed": true
+    },
+    {
+      "name": "Remove isolated identity 97ffdd53-6c13-445a-befb-ed06ce0bdf57",
+      "passed": true
+    },
+    {
+      "name": "Remove isolated identity c7dab1c1-b0a3-40ff-82cf-753e03c319d7",
+      "passed": true
+    },
+    {
+      "name": "Existing member, booking and subscription rows unchanged",
+      "passed": true
+    }
+  ],
+  "observations": {
+    "accessibility": [
+      {
+        "name": "Greek login",
+        "violations": [],
+        "incomplete": [
+          {
+            "id": "aria-valid-attr-value",
+            "impact": "critical",
+            "tags": [
+              "cat.aria",
+              "wcag2a",
+              "wcag412",
+              "EN-301-549",
+              "EN-9.4.1.2",
+              "RGAAv4",
+              "RGAA-7.1.1"
+            ],
+            "description": "Ensure all ARIA attributes have valid values",
+            "help": "ARIA attributes must conform to valid values",
+            "helpUrl": "https://dequeuniversity.com/rules/axe/4.13/aria-valid-attr-value?application=playwright",
+            "nodes": [
+              {
+                "any": [],
+                "all": [
+                  {
+                    "id": "aria-valid-attr-value",
+                    "data": {
+                      "messageKey": "empty",
+                      "needsReview": "aria-invalid"
+                    },
+                    "relatedNodes": [],
+                    "impact": "critical",
+                    "message": "ARIA attribute value is ignored while empty: aria-invalid"
+                  }
+                ],
+                "none": [],
+                "impact": "critical",
+                "html": "<input id=\"username\" name=\"username\" value=\"\" type=\"text\" autocomplete=\"username\" autofocus=\"\" aria-invalid=\"\">",
+                "target": [
+                  "#username"
+                ],
+                "failureSummary": "Fix all of the following:\n  ARIA attribute value is ignored while empty: aria-invalid"
+              },
+              {
+                "any": [],
+                "all": [
+                  {
+                    "id": "aria-valid-attr-value",
+                    "data": {
+                      "messageKey": "empty",
+                      "needsReview": "aria-invalid"
+                    },
+                    "relatedNodes": [],
+                    "impact": "critical",
+                    "message": "ARIA attribute value is ignored while empty: aria-invalid"
+                  }
+                ],
+                "none": [],
+                "impact": "critical",
+                "html": "<input id=\"password\" name=\"password\" value=\"\" type=\"password\" autocomplete=\"current-password\" aria-invalid=\"\">",
+                "target": [
+                  "#password"
+                ],
+                "failureSummary": "Fix all of the following:\n  ARIA attribute value is ignored while empty: aria-invalid"
+              }
+            ]
+          },
+          {
+            "id": "color-contrast",
+            "impact": "serious",
+            "tags": [
+              "cat.color",
+              "wcag2aa",
+              "wcag143",
+              "TTv5",
+              "TT13.c",
+              "EN-301-549",
+              "EN-9.1.4.3",
+              "ACT",
+              "RGAAv4",
+              "RGAA-3.2.1"
+            ],
+            "description": "Ensure the contrast between foreground and background colors meets WCAG 2 AA minimum contrast ratio thresholds",
+            "help": "Elements must meet minimum color contrast ratio thresholds",
+            "helpUrl": "https://dequeuniversity.com/rules/axe/4.13/color-contrast?application=playwright",
+            "nodes": [
+              {
+                "any": [
+                  {
+                    "id": "color-contrast",
+                    "data": {
+                      "contrastRatio": 0,
+                      "fontSize": "18.0pt (24px)",
+                      "fontWeight": "bold",
+                      "messageKey": "bgGradient",
+                      "expectedContrastRatio": "3:1"
+                    },
+                    "relatedNodes": [
+                      {
+                        "html": "<body id=\"keycloak-bg\" class=\"\" data-page-id=\"login-login\">",
+                        "target": [
+                          "#keycloak-bg"
+                        ]
+                      }
+                    ],
+                    "impact": "serious",
+                    "message": "Element's background color could not be determined due to a background gradient"
+                  }
+                ],
+                "all": [],
+                "none": [],
+                "impact": "serious",
+                "html": "<div id=\"kc-header-wrapper\" class=\"pf-v5-c-brand\">Padel Club</div>",
+                "target": [
+                  "#kc-header-wrapper"
+                ],
+                "failureSummary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "Greek registration",
+        "violations": [],
+        "incomplete": [
+          {
+            "id": "aria-valid-attr-value",
+            "impact": "critical",
+            "tags": [
+              "cat.aria",
+              "wcag2a",
+              "wcag412",
+              "EN-301-549",
+              "EN-9.4.1.2",
+              "RGAAv4",
+              "RGAA-7.1.1"
+            ],
+            "description": "Ensure all ARIA attributes have valid values",
+            "help": "ARIA attributes must conform to valid values",
+            "helpUrl": "https://dequeuniversity.com/rules/axe/4.13/aria-valid-attr-value?application=playwright",
+            "nodes": [
+              {
+                "any": [],
+                "all": [
+                  {
+                    "id": "aria-valid-attr-value",
+                    "data": {
+                      "messageKey": "empty",
+                      "needsReview": "aria-invalid"
+                    },
+                    "relatedNodes": [],
+                    "impact": "critical",
+                    "message": "ARIA attribute value is ignored while empty: aria-invalid"
+                  }
+                ],
+                "none": [],
+                "impact": "critical",
+                "html": "<input type=\"text\" id=\"email\" name=\"email\" value=\"\" class=\"pf-v5-c-form-control\" aria-invalid=\"\" autocomplete=\"email\">",
+                "target": [
+                  "#email"
+                ],
+                "failureSummary": "Fix all of the following:\n  ARIA attribute value is ignored while empty: aria-invalid"
+              },
+              {
+                "any": [],
+                "all": [
+                  {
+                    "id": "aria-valid-attr-value",
+                    "data": {
+                      "messageKey": "empty",
+                      "needsReview": "aria-invalid"
+                    },
+                    "relatedNodes": [],
+                    "impact": "critical",
+                    "message": "ARIA attribute value is ignored while empty: aria-invalid"
+                  }
+                ],
+                "none": [],
+                "impact": "critical",
+                "html": "<input id=\"password\" name=\"password\" value=\"\" type=\"password\" autocomplete=\"new-password\" aria-invalid=\"\">",
+                "target": [
+                  "#password"
+                ],
+                "failureSummary": "Fix all of the following:\n  ARIA attribute value is ignored while empty: aria-invalid"
+              },
+              {
+                "any": [],
+                "all": [
+                  {
+                    "id": "aria-valid-attr-value",
+                    "data": {
+                      "messageKey": "empty",
+                      "needsReview": "aria-invalid"
+                    },
+                    "relatedNodes": [],
+                    "impact": "critical",
+                    "message": "ARIA attribute value is ignored while empty: aria-invalid"
+                  }
+                ],
+                "none": [],
+                "impact": "critical",
+                "html": "<input id=\"password-confirm\" name=\"password-confirm\" value=\"\" type=\"password\" autocomplete=\"new-password\" aria-invalid=\"\">",
+                "target": [
+                  "#password-confirm"
+                ],
+                "failureSummary": "Fix all of the following:\n  ARIA attribute value is ignored while empty: aria-invalid"
+              },
+              {
+                "any": [],
+                "all": [
+                  {
+                    "id": "aria-valid-attr-value",
+                    "data": {
+                      "messageKey": "empty",
+                      "needsReview": "aria-invalid"
+                    },
+                    "relatedNodes": [],
+                    "impact": "critical",
+                    "message": "ARIA attribute value is ignored while empty: aria-invalid"
+                  }
+                ],
+                "none": [],
+                "impact": "critical",
+                "html": "<input type=\"text\" id=\"firstName\" name=\"firstName\" value=\"\" class=\"pf-v5-c-form-control\" aria-invalid=\"\">",
+                "target": [
+                  "#firstName"
+                ],
+                "failureSummary": "Fix all of the following:\n  ARIA attribute value is ignored while empty: aria-invalid"
+              },
+              {
+                "any": [],
+                "all": [
+                  {
+                    "id": "aria-valid-attr-value",
+                    "data": {
+                      "messageKey": "empty",
+                      "needsReview": "aria-invalid"
+                    },
+                    "relatedNodes": [],
+                    "impact": "critical",
+                    "message": "ARIA attribute value is ignored while empty: aria-invalid"
+                  }
+                ],
+                "none": [],
+                "impact": "critical",
+                "html": "<input type=\"text\" id=\"lastName\" name=\"lastName\" value=\"\" class=\"pf-v5-c-form-control\" aria-invalid=\"\">",
+                "target": [
+                  "#lastName"
+                ],
+                "failureSummary": "Fix all of the following:\n  ARIA attribute value is ignored while empty: aria-invalid"
+              }
+            ]
+          },
+          {
+            "id": "color-contrast",
+            "impact": "serious",
+            "tags": [
+              "cat.color",
+              "wcag2aa",
+              "wcag143",
+              "TTv5",
+              "TT13.c",
+              "EN-301-549",
+              "EN-9.1.4.3",
+              "ACT",
+              "RGAAv4",
+              "RGAA-3.2.1"
+            ],
+            "description": "Ensure the contrast between foreground and background colors meets WCAG 2 AA minimum contrast ratio thresholds",
+            "help": "Elements must meet minimum color contrast ratio thresholds",
+            "helpUrl": "https://dequeuniversity.com/rules/axe/4.13/color-contrast?application=playwright",
+            "nodes": [
+              {
+                "any": [
+                  {
+                    "id": "color-contrast",
+                    "data": {
+                      "contrastRatio": 0,
+                      "fontSize": "18.0pt (24px)",
+                      "fontWeight": "bold",
+                      "messageKey": "bgGradient",
+                      "expectedContrastRatio": "3:1"
+                    },
+                    "relatedNodes": [
+                      {
+                        "html": "<body id=\"keycloak-bg\" class=\"\" data-page-id=\"login-register\">",
+                        "target": [
+                          "#keycloak-bg"
+                        ]
+                      }
+                    ],
+                    "impact": "serious",
+                    "message": "Element's background color could not be determined due to a background gradient"
+                  }
+                ],
+                "all": [],
+                "none": [],
+                "impact": "serious",
+                "html": "<div id=\"kc-header-wrapper\" class=\"pf-v5-c-brand\">Padel Club</div>",
+                "target": [
+                  "#kc-header-wrapper"
+                ],
+                "failureSummary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "Greek registration errors",
+        "violations": [],
+        "incomplete": [
+          {
+            "id": "aria-valid-attr-value",
+            "impact": "critical",
+            "tags": [
+              "cat.aria",
+              "wcag2a",
+              "wcag412",
+              "EN-301-549",
+              "EN-9.4.1.2",
+              "RGAAv4",
+              "RGAA-7.1.1"
+            ],
+            "description": "Ensure all ARIA attributes have valid values",
+            "help": "ARIA attributes must conform to valid values",
+            "helpUrl": "https://dequeuniversity.com/rules/axe/4.13/aria-valid-attr-value?application=playwright",
+            "nodes": [
+              {
+                "any": [],
+                "all": [
+                  {
+                    "id": "aria-valid-attr-value",
+                    "data": {
+                      "messageKey": "empty",
+                      "needsReview": "aria-invalid"
+                    },
+                    "relatedNodes": [],
+                    "impact": "critical",
+                    "message": "ARIA attribute value is ignored while empty: aria-invalid"
+                  }
+                ],
+                "none": [],
+                "impact": "critical",
+                "html": "<input id=\"password-confirm\" name=\"password-confirm\" value=\"\" type=\"password\" autocomplete=\"new-password\" aria-invalid=\"\">",
+                "target": [
+                  "#password-confirm"
+                ],
+                "failureSummary": "Fix all of the following:\n  ARIA attribute value is ignored while empty: aria-invalid"
+              }
+            ]
+          },
+          {
+            "id": "color-contrast",
+            "impact": "serious",
+            "tags": [
+              "cat.color",
+              "wcag2aa",
+              "wcag143",
+              "TTv5",
+              "TT13.c",
+              "EN-301-549",
+              "EN-9.1.4.3",
+              "ACT",
+              "RGAAv4",
+              "RGAA-3.2.1"
+            ],
+            "description": "Ensure the contrast between foreground and background colors meets WCAG 2 AA minimum contrast ratio thresholds",
+            "help": "Elements must meet minimum color contrast ratio thresholds",
+            "helpUrl": "https://dequeuniversity.com/rules/axe/4.13/color-contrast?application=playwright",
+            "nodes": [
+              {
+                "any": [
+                  {
+                    "id": "color-contrast",
+                    "data": {
+                      "contrastRatio": 0,
+                      "fontSize": "18.0pt (24px)",
+                      "fontWeight": "bold",
+                      "messageKey": "bgGradient",
+                      "expectedContrastRatio": "3:1"
+                    },
+                    "relatedNodes": [
+                      {
+                        "html": "<body id=\"keycloak-bg\" class=\"\" data-page-id=\"login-register\">",
+                        "target": [
+                          "#keycloak-bg"
+                        ]
+                      }
+                    ],
+                    "impact": "serious",
+                    "message": "Element's background color could not be determined due to a background gradient"
+                  }
+                ],
+                "all": [],
+                "none": [],
+                "impact": "serious",
+                "html": "<div id=\"kc-header-wrapper\" class=\"pf-v5-c-brand\">Padel Club</div>",
+                "target": [
+                  "#kc-header-wrapper"
+                ],
+                "failureSummary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "Greek registration at 390px",
+        "violations": [],
+        "incomplete": [
+          {
+            "id": "aria-valid-attr-value",
+            "impact": "critical",
+            "tags": [
+              "cat.aria",
+              "wcag2a",
+              "wcag412",
+              "EN-301-549",
+              "EN-9.4.1.2",
+              "RGAAv4",
+              "RGAA-7.1.1"
+            ],
+            "description": "Ensure all ARIA attributes have valid values",
+            "help": "ARIA attributes must conform to valid values",
+            "helpUrl": "https://dequeuniversity.com/rules/axe/4.13/aria-valid-attr-value?application=playwright",
+            "nodes": [
+              {
+                "any": [],
+                "all": [
+                  {
+                    "id": "aria-valid-attr-value",
+                    "data": {
+                      "messageKey": "empty",
+                      "needsReview": "aria-invalid"
+                    },
+                    "relatedNodes": [],
+                    "impact": "critical",
+                    "message": "ARIA attribute value is ignored while empty: aria-invalid"
+                  }
+                ],
+                "none": [],
+                "impact": "critical",
+                "html": "<input type=\"text\" id=\"email\" name=\"email\" value=\"journey-4cd06acb8323-member@example.invalid\" class=\"pf-v5-c-form-control\" aria-invalid=\"\" autocomplete=\"email\" style=\"\">",
+                "target": [
+                  "#email"
+                ],
+                "failureSummary": "Fix all of the following:\n  ARIA attribute value is ignored while empty: aria-invalid"
+              },
+              {
+                "any": [],
+                "all": [
+                  {
+                    "id": "aria-valid-attr-value",
+                    "data": {
+                      "messageKey": "empty",
+                      "needsReview": "aria-invalid"
+                    },
+                    "relatedNodes": [],
+                    "impact": "critical",
+                    "message": "ARIA attribute value is ignored while empty: aria-invalid"
+                  }
+                ],
+                "none": [],
+                "impact": "critical",
+                "html": "<input id=\"password\" name=\"password\" value=\"\" type=\"password\" autocomplete=\"new-password\" aria-invalid=\"\" style=\"\">",
+                "target": [
+                  "#password"
+                ],
+                "failureSummary": "Fix all of the following:\n  ARIA attribute value is ignored while empty: aria-invalid"
+              },
+              {
+                "any": [],
+                "all": [
+                  {
+                    "id": "aria-valid-attr-value",
+                    "data": {
+                      "messageKey": "empty",
+                      "needsReview": "aria-invalid"
+                    },
+                    "relatedNodes": [],
+                    "impact": "critical",
+                    "message": "ARIA attribute value is ignored while empty: aria-invalid"
+                  }
+                ],
+                "none": [],
+                "impact": "critical",
+                "html": "<input type=\"text\" id=\"firstName\" name=\"firstName\" value=\"Νέο\" class=\"pf-v5-c-form-control\" aria-invalid=\"\" style=\"\">",
+                "target": [
+                  "#firstName"
+                ],
+                "failureSummary": "Fix all of the following:\n  ARIA attribute value is ignored while empty: aria-invalid"
+              },
+              {
+                "any": [],
+                "all": [
+                  {
+                    "id": "aria-valid-attr-value",
+                    "data": {
+                      "messageKey": "empty",
+                      "needsReview": "aria-invalid"
+                    },
+                    "relatedNodes": [],
+                    "impact": "critical",
+                    "message": "ARIA attribute value is ignored while empty: aria-invalid"
+                  }
+                ],
+                "none": [],
+                "impact": "critical",
+                "html": "<input type=\"text\" id=\"lastName\" name=\"lastName\" value=\"Μέλος 4cd06acb8323\" class=\"pf-v5-c-form-control\" aria-invalid=\"\" style=\"\">",
+                "target": [
+                  "#lastName"
+                ],
+                "failureSummary": "Fix all of the following:\n  ARIA attribute value is ignored while empty: aria-invalid"
+              }
+            ]
+          },
+          {
+            "id": "color-contrast",
+            "impact": "serious",
+            "tags": [
+              "cat.color",
+              "wcag2aa",
+              "wcag143",
+              "TTv5",
+              "TT13.c",
+              "EN-301-549",
+              "EN-9.1.4.3",
+              "ACT",
+              "RGAAv4",
+              "RGAA-3.2.1"
+            ],
+            "description": "Ensure the contrast between foreground and background colors meets WCAG 2 AA minimum contrast ratio thresholds",
+            "help": "Elements must meet minimum color contrast ratio thresholds",
+            "helpUrl": "https://dequeuniversity.com/rules/axe/4.13/color-contrast?application=playwright",
+            "nodes": [
+              {
+                "any": [
+                  {
+                    "id": "color-contrast",
+                    "data": {
+                      "contrastRatio": 0,
+                      "fontSize": "18.0pt (24px)",
+                      "fontWeight": "bold",
+                      "messageKey": "bgGradient",
+                      "expectedContrastRatio": "3:1"
+                    },
+                    "relatedNodes": [
+                      {
+                        "html": "<body id=\"keycloak-bg\" class=\"\" data-page-id=\"login-register\">",
+                        "target": [
+                          "#keycloak-bg"
+                        ]
+                      }
+                    ],
+                    "impact": "serious",
+                    "message": "Element's background color could not be determined due to a background gradient"
+                  }
+                ],
+                "all": [],
+                "none": [],
+                "impact": "serious",
+                "html": "<div id=\"kc-header-wrapper\" class=\"pf-v5-c-brand\">Padel Club</div>",
+                "target": [
+                  "#kc-header-wrapper"
+                ],
+                "failureSummary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "registration": {
+      "missingEmailRejected": true,
+      "passwordMismatchRejected": true,
+      "invalidSubmissionCreatesNoIdentity": true,
+      "authenticatedAfterRegistration": true,
+      "primaryMemberViewport": {
+        "width": 390,
+        "height": 844
+      },
+      "language": "Greek identity form and application; optional English locale",
+      "initialWarnings": [],
+      "noMisleadingServiceWarnings": true
+    },
+    "onboarding": {
+      "namePrefilled": true,
+      "identityEmailReadOnly": true,
+      "requiredPhoneBlocksSave": true
+    },
+    "brandReturnsToOverview": true,
+    "noSubscriptionMessage": "Χρειάζεται ενεργή συνδρομή την ημέρα του παιχνιδιού. Δες τα προγράμματα στις Συνδρομές και ενεργοποίησέ τη στην υποδοχή.",
+    "bookingErrorVisibleInsideDialog": true,
+    "ai": {
+      "kind": "ANSWER",
+      "citations": 1,
+      "scope": "One known policy question; not a model quality evaluation"
+    }
+  },
+  "screenshots": [
+    "01-welcome.png",
+    "02-registration-validation.png",
+    "02-registration-mobile.png",
+    "03-onboarding.png",
+    "04-membership-before-activation.png",
+    "05-booking-price-before-confirmation.png",
+    "06-inactive-membership-message.png",
+    "07-active-membership.png",
+    "08-confirmed-booking.png",
+    "09-cancelled-booking.png",
+    "10-mobile-390.png",
+    "10-mobile-320.png",
+    "11-logged-out.png"
+  ],
+  "finishedAt": "2026-10-25T14:40:55.058Z",
+  "passed": 17,
+  "failed": 0,
+  "browserErrors": [],
+  "notes": [
+    "Synthetic profile/audit/cancelled records remain as test evidence; identities are removed and fixtures are inactive",
+    "No external email or payment processing",
+    "No service restart or interruption",
+    "One AI policy smoke is not a model quality evaluation"
+  ]
+}

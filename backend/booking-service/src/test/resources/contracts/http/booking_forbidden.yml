@@ -1,0 +1,21 @@
+{
+  "name": "booking_forbidden",
+  "description": "Consumer-facing booking_forbidden contract; synthetic fixtures only.",
+  "request":
+    {
+      "method": "GET",
+      "headers": { "Authorization": "Bearer contract-bob" },
+      "urlPath": "/api/bookings/dddddddd-dddd-dddd-dddd-dddddddddddd",
+    },
+  "response":
+    {
+      "status": 403,
+      "headers": { "Content-Type": "application/problem+json" },
+      "body":
+        {
+          "status": 403,
+          "title": "Forbidden",
+          "detail": "This booking belongs to other players.",
+        },
+    },
+}

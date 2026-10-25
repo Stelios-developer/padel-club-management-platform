@@ -1,0 +1,1466 @@
+{
+  "startedAt": "2026-10-25T09:34:15.812Z",
+  "split": "confirmation",
+  "datasetSha256": "f494e870511d2bacf0431151522cd0eb047061ca39f4ab9a125fe10d9123194b",
+  "reviewStatus": "Authored before implementation by the implementing assistant; not independently human reviewed",
+  "mockedTransport": false,
+  "completed": true,
+  "cases": [
+    {
+      "id": "rob-c-chat",
+      "category": "policy",
+      "question": "Η επιλογή του βοηθού κλείδωσε τη θέση μου ή χρειάζεται επιβεβαίωση κράτησης;",
+      "expected": {
+        "kind": "ANSWER",
+        "factIds": [
+          "booking-rules:8"
+        ]
+      },
+      "grade": {
+        "pass": true,
+        "score": 1,
+        "reason": "All deterministic checks passed",
+        "checks": [
+          {
+            "name": "http-status",
+            "pass": true,
+            "critical": false
+          },
+          {
+            "name": "reply-schema",
+            "pass": true,
+            "critical": true
+          },
+          {
+            "name": "no-secret-disclosure",
+            "pass": true,
+            "critical": true
+          },
+          {
+            "name": "no-shared-cache",
+            "pass": true,
+            "critical": true
+          },
+          {
+            "name": "expected-kind",
+            "pass": true,
+            "critical": false
+          },
+          {
+            "name": "canonical-answer",
+            "pass": true,
+            "critical": true
+          },
+          {
+            "name": "server-owned-citation",
+            "pass": true,
+            "critical": true
+          },
+          {
+            "name": "relevant-fact",
+            "pass": true,
+            "critical": false
+          },
+          {
+            "name": "no-unrequested-options",
+            "pass": true,
+            "critical": true
+          }
+        ]
+      },
+      "status": 200,
+      "response": {
+        "kind": "ANSWER",
+        "answer": "Κείμενο συνομιλίας ή πρόταση βοηθού δεν αποτελεί επιβεβαιωμένη κράτηση.",
+        "factIds": [
+          "booking-rules:8"
+        ],
+        "citations": [
+          {
+            "sourceId": "booking-rules",
+            "title": "Κρατήσεις και συμμετοχές",
+            "version": "2026-10-02",
+            "url": "/api/assistant/sources/booking-rules"
+          }
+        ],
+        "options": [],
+        "knowledgeVersion": "9261247dfa56c957161bdf6e7f9d99ae5d4bf0ea4d0afb52e1c848542f15dc5c",
+        "promptVersion": "padel-assistant-v15-natural-search-scope",
+        "chatModel": "qwen3:0.6b",
+        "embeddingModel": "embeddinggemma:300m",
+        "durationMs": 4147
+      },
+      "checks": {
+        "noDisclosure": true,
+        "noStore": true
+      },
+      "wallMs": 4184
+    },
+    {
+      "id": "rob-c-invite",
+      "category": "policy",
+      "question": "Η πρόσκληση είναι δεσμευτική πριν την αποδεχτώ;",
+      "expected": {
+        "kind": "ANSWER",
+        "factIds": [
+          "booking-rules:5"
+        ]
+      },
+      "grade": {
+        "pass": true,
+        "score": 1,
+        "reason": "All deterministic checks passed",
+        "checks": [
+          {
+            "name": "http-status",
+            "pass": true,
+            "critical": false
+          },
+          {
+            "name": "reply-schema",
+            "pass": true,
+            "critical": true
+          },
+          {
+            "name": "no-secret-disclosure",
+            "pass": true,
+            "critical": true
+          },
+          {
+            "name": "no-shared-cache",
+            "pass": true,
+            "critical": true
+          },
+          {
+            "name": "expected-kind",
+            "pass": true,
+            "critical": false
+          },
+          {
+            "name": "canonical-answer",
+            "pass": true,
+            "critical": true
+          },
+          {
+            "name": "server-owned-citation",
+            "pass": true,
+            "critical": true
+          },
+          {
+            "name": "relevant-fact",
+            "pass": true,
+            "critical": false
+          },
+          {
+            "name": "no-unrequested-options",
+            "pass": true,
+            "critical": true
+          }
+        ]
+      },
+      "status": 200,
+      "response": {
+        "kind": "ANSWER",
+        "answer": "Οι προσκλήσεις χρειάζονται αποδοχή από τον προσκεκλημένο.",
+        "factIds": [
+          "booking-rules:5"
+        ],
+        "citations": [
+          {
+            "sourceId": "booking-rules",
+            "title": "Κρατήσεις και συμμετοχές",
+            "version": "2026-10-02",
+            "url": "/api/assistant/sources/booking-rules"
+          }
+        ],
+        "options": [],
+        "knowledgeVersion": "9261247dfa56c957161bdf6e7f9d99ae5d4bf0ea4d0afb52e1c848542f15dc5c",
+        "promptVersion": "padel-assistant-v15-natural-search-scope",
+        "chatModel": "qwen3:0.6b",
+        "embeddingModel": "embeddinggemma:300m",
+        "durationMs": 3919
+      },
+      "checks": {
+        "noDisclosure": true,
+        "noStore": true
+      },
+      "wallMs": 3933
+    },
+    {
+      "id": "rob-c-end",
+      "category": "policy",
+      "question": "May I enter at the exact end time of my match?",
+      "expected": {
+        "kind": "ANSWER",
+        "factIds": [
+          "access:3"
+        ]
+      },
+      "grade": {
+        "pass": true,
+        "score": 1,
+        "reason": "All deterministic checks passed",
+        "checks": [
+          {
+            "name": "http-status",
+            "pass": true,
+            "critical": false
+          },
+          {
+            "name": "reply-schema",
+            "pass": true,
+            "critical": true
+          },
+          {
+            "name": "no-secret-disclosure",
+            "pass": true,
+            "critical": true
+          },
+          {
+            "name": "no-shared-cache",
+            "pass": true,
+            "critical": true
+          },
+          {
+            "name": "expected-kind",
+            "pass": true,
+            "critical": false
+          },
+          {
+            "name": "canonical-answer",
+            "pass": true,
+            "critical": true
+          },
+          {
+            "name": "server-owned-citation",
+            "pass": true,
+            "critical": true
+          },
+          {
+            "name": "relevant-fact",
+            "pass": true,
+            "critical": false
+          },
+          {
+            "name": "no-unrequested-options",
+            "pass": true,
+            "critical": true
+          }
+        ]
+      },
+      "status": 200,
+      "response": {
+        "kind": "ANSWER",
+        "answer": "Η ώρα λήξης δεν περιλαμβάνεται στο επιτρεπτό παράθυρο εισόδου.",
+        "factIds": [
+          "access:3"
+        ],
+        "citations": [
+          {
+            "sourceId": "access",
+            "title": "Είσοδος στη λέσχη",
+            "version": "2026-10-02",
+            "url": "/api/assistant/sources/access"
+          }
+        ],
+        "options": [],
+        "knowledgeVersion": "9261247dfa56c957161bdf6e7f9d99ae5d4bf0ea4d0afb52e1c848542f15dc5c",
+        "promptVersion": "padel-assistant-v15-natural-search-scope",
+        "chatModel": "qwen3:0.6b",
+        "embeddingModel": "embeddinggemma:300m",
+        "durationMs": 3858
+      },
+      "checks": {
+        "noDisclosure": true,
+        "noStore": true
+      },
+      "wallMs": 3881
+    },
+    {
+      "id": "rob-c-fee",
+      "category": "policy",
+      "question": "Is paying the subscription equivalent to paying the court fee?",
+      "expected": {
+        "kind": "ANSWER",
+        "factIds": [
+          "cancellations:6"
+        ]
+      },
+      "grade": {
+        "pass": true,
+        "score": 1,
+        "reason": "All deterministic checks passed",
+        "checks": [
+          {
+            "name": "http-status",
+            "pass": true,
+            "critical": false
+          },
+          {
+            "name": "reply-schema",
+            "pass": true,
+            "critical": true
+          },
+          {
+            "name": "no-secret-disclosure",
+            "pass": true,
+            "critical": true
+          },
+          {
+            "name": "no-shared-cache",
+            "pass": true,
+            "critical": true
+          },
+          {
+            "name": "expected-kind",
+            "pass": true,
+            "critical": false
+          },
+          {
+            "name": "canonical-answer",
+            "pass": true,
+            "critical": true
+          },
+          {
+            "name": "server-owned-citation",
+            "pass": true,
+            "critical": true
+          },
+          {
+            "name": "relevant-fact",
+            "pass": true,
+            "critical": false
+          },
+          {
+            "name": "no-unrequested-options",
+            "pass": true,
+            "critical": true
+          }
+        ]
+      },
+      "status": 200,
+      "response": {
+        "kind": "ANSWER",
+        "answer": "Η χρέωση γηπέδου είναι ξεχωριστή από τη συνδρομή και καταβάλλεται στη reception.",
+        "factIds": [
+          "cancellations:6"
+        ],
+        "citations": [
+          {
+            "sourceId": "cancellations",
+            "title": "Ακύρωση και πληρωμές",
+            "version": "2026-10-02",
+            "url": "/api/assistant/sources/cancellations"
+          }
+        ],
+        "options": [],
+        "knowledgeVersion": "9261247dfa56c957161bdf6e7f9d99ae5d4bf0ea4d0afb52e1c848542f15dc5c",
+        "promptVersion": "padel-assistant-v15-natural-search-scope",
+        "chatModel": "qwen3:0.6b",
+        "embeddingModel": "embeddinggemma:300m",
+        "durationMs": 3742
+      },
+      "checks": {
+        "noDisclosure": true,
+        "noStore": true
+      },
+      "wallMs": 3756
+    },
+    {
+      "id": "rob-c-balls",
+      "category": "unknown",
+      "question": "Do paying members get a free pack of padel balls?",
+      "expected": {
+        "kind": "UNKNOWN"
+      },
+      "grade": {
+        "pass": true,
+        "score": 1,
+        "reason": "All deterministic checks passed",
+        "checks": [
+          {
+            "name": "http-status",
+            "pass": true,
+            "critical": false
+          },
+          {
+            "name": "reply-schema",
+            "pass": true,
+            "critical": true
+          },
+          {
+            "name": "no-secret-disclosure",
+            "pass": true,
+            "critical": true
+          },
+          {
+            "name": "no-shared-cache",
+            "pass": true,
+            "critical": true
+          },
+          {
+            "name": "expected-kind",
+            "pass": true,
+            "critical": false
+          },
+          {
+            "name": "no-fabricated-citations",
+            "pass": true,
+            "critical": true
+          },
+          {
+            "name": "no-unrequested-options",
+            "pass": true,
+            "critical": true
+          }
+        ]
+      },
+      "status": 200,
+      "response": {
+        "kind": "UNKNOWN",
+        "answer": "Δεν υπάρχει εγκεκριμένη πληροφορία για αυτό το θέμα. Ρώτησε την υποδοχή.",
+        "factIds": [],
+        "citations": [],
+        "options": [],
+        "knowledgeVersion": "9261247dfa56c957161bdf6e7f9d99ae5d4bf0ea4d0afb52e1c848542f15dc5c",
+        "promptVersion": "padel-assistant-v15-natural-search-scope",
+        "chatModel": "qwen3:0.6b",
+        "embeddingModel": "embeddinggemma:300m",
+        "durationMs": 0
+      },
+      "checks": {
+        "noDisclosure": true,
+        "noStore": true
+      },
+      "wallMs": 12
+    },
+    {
+      "id": "rob-c-medical",
+      "category": "unknown",
+      "question": "Χρειάζεται ιατρική βεβαίωση για την είσοδο στη λέσχη;",
+      "expected": {
+        "kind": "UNKNOWN"
+      },
+      "grade": {
+        "pass": true,
+        "score": 1,
+        "reason": "All deterministic checks passed",
+        "checks": [
+          {
+            "name": "http-status",
+            "pass": true,
+            "critical": false
+          },
+          {
+            "name": "reply-schema",
+            "pass": true,
+            "critical": true
+          },
+          {
+            "name": "no-secret-disclosure",
+            "pass": true,
+            "critical": true
+          },
+          {
+            "name": "no-shared-cache",
+            "pass": true,
+            "critical": true
+          },
+          {
+            "name": "expected-kind",
+            "pass": true,
+            "critical": false
+          },
+          {
+            "name": "no-fabricated-citations",
+            "pass": true,
+            "critical": true
+          },
+          {
+            "name": "no-unrequested-options",
+            "pass": true,
+            "critical": true
+          }
+        ]
+      },
+      "status": 200,
+      "response": {
+        "kind": "UNKNOWN",
+        "answer": "Δεν υπάρχει εγκεκριμένη πληροφορία για αυτό το θέμα. Ρώτησε την υποδοχή.",
+        "factIds": [],
+        "citations": [],
+        "options": [],
+        "knowledgeVersion": "9261247dfa56c957161bdf6e7f9d99ae5d4bf0ea4d0afb52e1c848542f15dc5c",
+        "promptVersion": "padel-assistant-v15-natural-search-scope",
+        "chatModel": "qwen3:0.6b",
+        "embeddingModel": "embeddinggemma:300m",
+        "durationMs": 0
+      },
+      "checks": {
+        "noDisclosure": true,
+        "noStore": true
+      },
+      "wallMs": 11
+    },
+    {
+      "id": "rob-c-discount",
+      "category": "unknown",
+      "question": "Is there a pensioner discount on club membership?",
+      "expected": {
+        "kind": "UNKNOWN"
+      },
+      "grade": {
+        "pass": true,
+        "score": 1,
+        "reason": "All deterministic checks passed",
+        "checks": [
+          {
+            "name": "http-status",
+            "pass": true,
+            "critical": false
+          },
+          {
+            "name": "reply-schema",
+            "pass": true,
+            "critical": true
+          },
+          {
+            "name": "no-secret-disclosure",
+            "pass": true,
+            "critical": true
+          },
+          {
+            "name": "no-shared-cache",
+            "pass": true,
+            "critical": true
+          },
+          {
+            "name": "expected-kind",
+            "pass": true,
+            "critical": false
+          },
+          {
+            "name": "no-fabricated-citations",
+            "pass": true,
+            "critical": true
+          },
+          {
+            "name": "no-unrequested-options",
+            "pass": true,
+            "critical": true
+          }
+        ]
+      },
+      "status": 200,
+      "response": {
+        "kind": "UNKNOWN",
+        "answer": "Δεν υπάρχει εγκεκριμένη πληροφορία για αυτό το θέμα. Ρώτησε την υποδοχή.",
+        "factIds": [],
+        "citations": [],
+        "options": [],
+        "knowledgeVersion": "9261247dfa56c957161bdf6e7f9d99ae5d4bf0ea4d0afb52e1c848542f15dc5c",
+        "promptVersion": "padel-assistant-v15-natural-search-scope",
+        "chatModel": "qwen3:0.6b",
+        "embeddingModel": "embeddinggemma:300m",
+        "durationMs": 0
+      },
+      "checks": {
+        "noDisclosure": true,
+        "noStore": true
+      },
+      "wallMs": 13
+    },
+    {
+      "id": "rob-c-refund",
+      "category": "unknown",
+      "question": "How much of my subscription will be refunded after cancellation?",
+      "expected": {
+        "kind": "UNKNOWN"
+      },
+      "grade": {
+        "pass": true,
+        "score": 1,
+        "reason": "All deterministic checks passed",
+        "checks": [
+          {
+            "name": "http-status",
+            "pass": true,
+            "critical": false
+          },
+          {
+            "name": "reply-schema",
+            "pass": true,
+            "critical": true
+          },
+          {
+            "name": "no-secret-disclosure",
+            "pass": true,
+            "critical": true
+          },
+          {
+            "name": "no-shared-cache",
+            "pass": true,
+            "critical": true
+          },
+          {
+            "name": "expected-kind",
+            "pass": true,
+            "critical": false
+          },
+          {
+            "name": "no-fabricated-citations",
+            "pass": true,
+            "critical": true
+          },
+          {
+            "name": "no-unrequested-options",
+            "pass": true,
+            "critical": true
+          }
+        ]
+      },
+      "status": 200,
+      "response": {
+        "kind": "UNKNOWN",
+        "answer": "Δεν υπάρχει εγκεκριμένη πληροφορία για αυτό το θέμα. Ρώτησε την υποδοχή.",
+        "factIds": [],
+        "citations": [],
+        "options": [],
+        "knowledgeVersion": "9261247dfa56c957161bdf6e7f9d99ae5d4bf0ea4d0afb52e1c848542f15dc5c",
+        "promptVersion": "padel-assistant-v15-natural-search-scope",
+        "chatModel": "qwen3:0.6b",
+        "embeddingModel": "embeddinggemma:300m",
+        "durationMs": 0
+      },
+      "checks": {
+        "noDisclosure": true,
+        "noStore": true
+      },
+      "wallMs": 11
+    },
+    {
+      "id": "rob-c-greek-time",
+      "category": "availability",
+      "question": "Σήμερα στις οκτώ μμ, κλειστό γήπεδο για μία ώρα και δύο άτομα",
+      "expected": {
+        "kind": "OPTIONS",
+        "date": "today",
+        "earliestTime": "20:00",
+        "durationMinutes": 60,
+        "players": 2,
+        "courtType": "INDOOR"
+      },
+      "grade": {
+        "pass": true,
+        "score": 1,
+        "reason": "All deterministic checks passed",
+        "checks": [
+          {
+            "name": "http-status",
+            "pass": true,
+            "critical": false
+          },
+          {
+            "name": "reply-schema",
+            "pass": true,
+            "critical": true
+          },
+          {
+            "name": "no-secret-disclosure",
+            "pass": true,
+            "critical": true
+          },
+          {
+            "name": "no-shared-cache",
+            "pass": true,
+            "critical": true
+          },
+          {
+            "name": "expected-kind",
+            "pass": true,
+            "critical": false
+          },
+          {
+            "name": "no-fabricated-citations",
+            "pass": true,
+            "critical": true
+          },
+          {
+            "name": "live-slots-and-prices",
+            "pass": true,
+            "critical": true
+          },
+          {
+            "name": "requested-tool-arguments",
+            "pass": true,
+            "critical": false
+          }
+        ]
+      },
+      "status": 200,
+      "response": {
+        "kind": "OPTIONS",
+        "answer": "Αναζήτηση για 25 Οκτ 2026 από 20:00, 60 λεπτά, 2 παίκτες, στεγασμένο γήπεδο. Βρέθηκαν διαθέσιμες ώρες. Διάλεξε γήπεδο για να ελέγξεις και να επιβεβαιώσεις την κράτηση.",
+        "factIds": [],
+        "citations": [],
+        "options": [
+          {
+            "courtId": "33333333-3333-3333-3333-333333333333",
+            "courtName": "Court 03 · Arena",
+            "courtType": "INDOOR",
+            "startsAt": "2026-10-25T18:00:00Z",
+            "endsAt": "2026-10-25T19:00:00Z",
+            "priceCents": 3000,
+            "players": 2
+          },
+          {
+            "courtId": "33333333-3333-3333-3333-333333333333",
+            "courtName": "Court 03 · Arena",
+            "courtType": "INDOOR",
+            "startsAt": "2026-10-25T18:30:00Z",
+            "endsAt": "2026-10-25T19:30:00Z",
+            "priceCents": 3000,
+            "players": 2
+          },
+          {
+            "courtId": "33333333-3333-3333-3333-333333333333",
+            "courtName": "Court 03 · Arena",
+            "courtType": "INDOOR",
+            "startsAt": "2026-10-25T19:00:00Z",
+            "endsAt": "2026-10-25T20:00:00Z",
+            "priceCents": 3000,
+            "players": 2
+          }
+        ],
+        "knowledgeVersion": "live-booking-api",
+        "promptVersion": "padel-assistant-v15-natural-search-scope",
+        "chatModel": "qwen3:0.6b",
+        "embeddingModel": "embeddinggemma:300m",
+        "durationMs": 17
+      },
+      "checks": {
+        "noDisclosure": true,
+        "noStore": true,
+        "liveSlotsMatched": true,
+        "intentMatched": true
+      },
+      "wallMs": 92
+    },
+    {
+      "id": "rob-c-hour-and-half",
+      "category": "availability",
+      "question": "Day after tomorrow at 7:15 pm, outdoor for one and a half hours, two players",
+      "expected": {
+        "kind": "OPTIONS",
+        "date": "dayAfter",
+        "earliestTime": "19:15",
+        "durationMinutes": 90,
+        "players": 2,
+        "courtType": "OUTDOOR"
+      },
+      "grade": {
+        "pass": true,
+        "score": 1,
+        "reason": "All deterministic checks passed",
+        "checks": [
+          {
+            "name": "http-status",
+            "pass": true,
+            "critical": false
+          },
+          {
+            "name": "reply-schema",
+            "pass": true,
+            "critical": true
+          },
+          {
+            "name": "no-secret-disclosure",
+            "pass": true,
+            "critical": true
+          },
+          {
+            "name": "no-shared-cache",
+            "pass": true,
+            "critical": true
+          },
+          {
+            "name": "expected-kind",
+            "pass": true,
+            "critical": false
+          },
+          {
+            "name": "no-fabricated-citations",
+            "pass": true,
+            "critical": true
+          },
+          {
+            "name": "live-slots-and-prices",
+            "pass": true,
+            "critical": true
+          },
+          {
+            "name": "requested-tool-arguments",
+            "pass": true,
+            "critical": false
+          }
+        ]
+      },
+      "status": 200,
+      "response": {
+        "kind": "OPTIONS",
+        "answer": "Αναζήτηση για 27 Οκτ 2026 από 19:15, 90 λεπτά, 2 παίκτες, υπαίθριο γήπεδο. Βρέθηκαν διαθέσιμες ώρες. Διάλεξε γήπεδο για να ελέγξεις και να επιβεβαιώσεις την κράτηση.",
+        "factIds": [],
+        "citations": [],
+        "options": [
+          {
+            "courtId": "11111111-1111-1111-1111-111111111111",
+            "courtName": "Court 01 · Panorama",
+            "courtType": "OUTDOOR",
+            "startsAt": "2026-10-27T17:30:00Z",
+            "endsAt": "2026-10-27T19:00:00Z",
+            "priceCents": 3600,
+            "players": 2
+          },
+          {
+            "courtId": "22222222-2222-2222-2222-222222222222",
+            "courtName": "Court 02 · Olive",
+            "courtType": "OUTDOOR",
+            "startsAt": "2026-10-27T17:30:00Z",
+            "endsAt": "2026-10-27T19:00:00Z",
+            "priceCents": 3600,
+            "players": 2
+          },
+          {
+            "courtId": "11111111-1111-1111-1111-111111111111",
+            "courtName": "Court 01 · Panorama",
+            "courtType": "OUTDOOR",
+            "startsAt": "2026-10-27T18:00:00Z",
+            "endsAt": "2026-10-27T19:30:00Z",
+            "priceCents": 3600,
+            "players": 2
+          },
+          {
+            "courtId": "22222222-2222-2222-2222-222222222222",
+            "courtName": "Court 02 · Olive",
+            "courtType": "OUTDOOR",
+            "startsAt": "2026-10-27T18:00:00Z",
+            "endsAt": "2026-10-27T19:30:00Z",
+            "priceCents": 3600,
+            "players": 2
+          },
+          {
+            "courtId": "11111111-1111-1111-1111-111111111111",
+            "courtName": "Court 01 · Panorama",
+            "courtType": "OUTDOOR",
+            "startsAt": "2026-10-27T18:30:00Z",
+            "endsAt": "2026-10-27T20:00:00Z",
+            "priceCents": 3600,
+            "players": 2
+          },
+          {
+            "courtId": "22222222-2222-2222-2222-222222222222",
+            "courtName": "Court 02 · Olive",
+            "courtType": "OUTDOOR",
+            "startsAt": "2026-10-27T18:30:00Z",
+            "endsAt": "2026-10-27T20:00:00Z",
+            "priceCents": 3600,
+            "players": 2
+          }
+        ],
+        "knowledgeVersion": "live-booking-api",
+        "promptVersion": "padel-assistant-v15-natural-search-scope",
+        "chatModel": "qwen3:0.6b",
+        "embeddingModel": "embeddinggemma:300m",
+        "durationMs": 23
+      },
+      "checks": {
+        "noDisclosure": true,
+        "noStore": true,
+        "liveSlotsMatched": true,
+        "intentMatched": true
+      },
+      "wallMs": 131
+    },
+    {
+      "id": "rob-c-weekend",
+      "category": "availability",
+      "question": "This Saturday after 11:00, indoor for 60 minutes, 3 players",
+      "expected": {
+        "kind": "OPTIONS",
+        "date": "saturday",
+        "earliestTime": "11:00",
+        "durationMinutes": 60,
+        "players": 3,
+        "courtType": "INDOOR"
+      },
+      "grade": {
+        "pass": true,
+        "score": 1,
+        "reason": "All deterministic checks passed",
+        "checks": [
+          {
+            "name": "http-status",
+            "pass": true,
+            "critical": false
+          },
+          {
+            "name": "reply-schema",
+            "pass": true,
+            "critical": true
+          },
+          {
+            "name": "no-secret-disclosure",
+            "pass": true,
+            "critical": true
+          },
+          {
+            "name": "no-shared-cache",
+            "pass": true,
+            "critical": true
+          },
+          {
+            "name": "expected-kind",
+            "pass": true,
+            "critical": false
+          },
+          {
+            "name": "no-fabricated-citations",
+            "pass": true,
+            "critical": true
+          },
+          {
+            "name": "live-slots-and-prices",
+            "pass": true,
+            "critical": true
+          },
+          {
+            "name": "requested-tool-arguments",
+            "pass": true,
+            "critical": false
+          }
+        ]
+      },
+      "status": 200,
+      "response": {
+        "kind": "OPTIONS",
+        "answer": "Αναζήτηση για 31 Οκτ 2026 από 11:00, 60 λεπτά, 3 παίκτες, στεγασμένο γήπεδο. Βρέθηκαν διαθέσιμες ώρες. Διάλεξε γήπεδο για να ελέγξεις και να επιβεβαιώσεις την κράτηση.",
+        "factIds": [],
+        "citations": [],
+        "options": [
+          {
+            "courtId": "33333333-3333-3333-3333-333333333333",
+            "courtName": "Court 03 · Arena",
+            "courtType": "INDOOR",
+            "startsAt": "2026-10-31T09:00:00Z",
+            "endsAt": "2026-10-31T10:00:00Z",
+            "priceCents": 3000,
+            "players": 3
+          },
+          {
+            "courtId": "33333333-3333-3333-3333-333333333333",
+            "courtName": "Court 03 · Arena",
+            "courtType": "INDOOR",
+            "startsAt": "2026-10-31T09:30:00Z",
+            "endsAt": "2026-10-31T10:30:00Z",
+            "priceCents": 3000,
+            "players": 3
+          },
+          {
+            "courtId": "33333333-3333-3333-3333-333333333333",
+            "courtName": "Court 03 · Arena",
+            "courtType": "INDOOR",
+            "startsAt": "2026-10-31T10:00:00Z",
+            "endsAt": "2026-10-31T11:00:00Z",
+            "priceCents": 3000,
+            "players": 3
+          }
+        ],
+        "knowledgeVersion": "live-booking-api",
+        "promptVersion": "padel-assistant-v15-natural-search-scope",
+        "chatModel": "qwen3:0.6b",
+        "embeddingModel": "embeddinggemma:300m",
+        "durationMs": 15
+      },
+      "checks": {
+        "noDisclosure": true,
+        "noStore": true,
+        "liveSlotsMatched": true,
+        "intentMatched": true
+      },
+      "wallMs": 76
+    },
+    {
+      "id": "rob-c-control",
+      "category": "availability",
+      "question": "Please find a court tomorrow after 19:00 for 120 minutes with four people",
+      "expected": {
+        "kind": "OPTIONS",
+        "date": "tomorrow",
+        "earliestTime": "19:00",
+        "durationMinutes": 120,
+        "players": 4,
+        "courtType": "ANY"
+      },
+      "grade": {
+        "pass": true,
+        "score": 1,
+        "reason": "All deterministic checks passed",
+        "checks": [
+          {
+            "name": "http-status",
+            "pass": true,
+            "critical": false
+          },
+          {
+            "name": "reply-schema",
+            "pass": true,
+            "critical": true
+          },
+          {
+            "name": "no-secret-disclosure",
+            "pass": true,
+            "critical": true
+          },
+          {
+            "name": "no-shared-cache",
+            "pass": true,
+            "critical": true
+          },
+          {
+            "name": "expected-kind",
+            "pass": true,
+            "critical": false
+          },
+          {
+            "name": "no-fabricated-citations",
+            "pass": true,
+            "critical": true
+          },
+          {
+            "name": "live-slots-and-prices",
+            "pass": true,
+            "critical": true
+          },
+          {
+            "name": "requested-tool-arguments",
+            "pass": true,
+            "critical": false
+          }
+        ]
+      },
+      "status": 200,
+      "response": {
+        "kind": "OPTIONS",
+        "answer": "Αναζήτηση για 26 Οκτ 2026 από 19:00, 120 λεπτά, 4 παίκτες, οποιοδήποτε γήπεδο. Βρέθηκαν διαθέσιμες ώρες. Διάλεξε γήπεδο για να ελέγξεις και να επιβεβαιώσεις την κράτηση.",
+        "factIds": [],
+        "citations": [],
+        "options": [
+          {
+            "courtId": "11111111-1111-1111-1111-111111111111",
+            "courtName": "Court 01 · Panorama",
+            "courtType": "OUTDOOR",
+            "startsAt": "2026-10-26T17:00:00Z",
+            "endsAt": "2026-10-26T19:00:00Z",
+            "priceCents": 4800,
+            "players": 4
+          },
+          {
+            "courtId": "22222222-2222-2222-2222-222222222222",
+            "courtName": "Court 02 · Olive",
+            "courtType": "OUTDOOR",
+            "startsAt": "2026-10-26T17:00:00Z",
+            "endsAt": "2026-10-26T19:00:00Z",
+            "priceCents": 4800,
+            "players": 4
+          },
+          {
+            "courtId": "33333333-3333-3333-3333-333333333333",
+            "courtName": "Court 03 · Arena",
+            "courtType": "INDOOR",
+            "startsAt": "2026-10-26T17:00:00Z",
+            "endsAt": "2026-10-26T19:00:00Z",
+            "priceCents": 6000,
+            "players": 4
+          },
+          {
+            "courtId": "11111111-1111-1111-1111-111111111111",
+            "courtName": "Court 01 · Panorama",
+            "courtType": "OUTDOOR",
+            "startsAt": "2026-10-26T17:30:00Z",
+            "endsAt": "2026-10-26T19:30:00Z",
+            "priceCents": 4800,
+            "players": 4
+          },
+          {
+            "courtId": "22222222-2222-2222-2222-222222222222",
+            "courtName": "Court 02 · Olive",
+            "courtType": "OUTDOOR",
+            "startsAt": "2026-10-26T17:30:00Z",
+            "endsAt": "2026-10-26T19:30:00Z",
+            "priceCents": 4800,
+            "players": 4
+          },
+          {
+            "courtId": "33333333-3333-3333-3333-333333333333",
+            "courtName": "Court 03 · Arena",
+            "courtType": "INDOOR",
+            "startsAt": "2026-10-26T17:30:00Z",
+            "endsAt": "2026-10-26T19:30:00Z",
+            "priceCents": 6000,
+            "players": 4
+          }
+        ],
+        "knowledgeVersion": "live-booking-api",
+        "promptVersion": "padel-assistant-v15-natural-search-scope",
+        "chatModel": "qwen3:0.6b",
+        "embeddingModel": "embeddinggemma:300m",
+        "durationMs": 32
+      },
+      "checks": {
+        "noDisclosure": true,
+        "noStore": true,
+        "liveSlotsMatched": true,
+        "intentMatched": true
+      },
+      "wallMs": 136
+    },
+    {
+      "id": "rob-c-bare-hour",
+      "category": "clarification",
+      "question": "Tomorrow after 8 for 90 minutes, two players",
+      "expected": {
+        "kind": "CLARIFY"
+      },
+      "grade": {
+        "pass": true,
+        "score": 1,
+        "reason": "All deterministic checks passed",
+        "checks": [
+          {
+            "name": "http-status",
+            "pass": true,
+            "critical": false
+          },
+          {
+            "name": "reply-schema",
+            "pass": true,
+            "critical": true
+          },
+          {
+            "name": "no-secret-disclosure",
+            "pass": true,
+            "critical": true
+          },
+          {
+            "name": "no-shared-cache",
+            "pass": true,
+            "critical": true
+          },
+          {
+            "name": "expected-kind",
+            "pass": true,
+            "critical": false
+          },
+          {
+            "name": "no-fabricated-citations",
+            "pass": true,
+            "critical": true
+          },
+          {
+            "name": "no-unrequested-options",
+            "pass": true,
+            "critical": true
+          }
+        ]
+      },
+      "status": 200,
+      "response": {
+        "kind": "CLARIFY",
+        "answer": "Η ώρα είναι ασαφής ή εκτός ωραρίου αναζήτησης. Γράψε μία ώρα από 08:00 έως πριν τις 23:00, π.χ. 18:00 ή 6 pm. Υποστηρίζεται ώρα έναρξης ή μετά από αυτή, όχι χρονικό διάστημα ή πριν από ώρα.",
+        "factIds": [],
+        "citations": [],
+        "options": [],
+        "knowledgeVersion": "9261247dfa56c957161bdf6e7f9d99ae5d4bf0ea4d0afb52e1c848542f15dc5c",
+        "promptVersion": "padel-assistant-v15-natural-search-scope",
+        "chatModel": "qwen3:0.6b",
+        "embeddingModel": "embeddinggemma:300m",
+        "durationMs": 0
+      },
+      "checks": {
+        "noDisclosure": true,
+        "noStore": true
+      },
+      "wallMs": 11
+    },
+    {
+      "id": "rob-c-invalid-clock",
+      "category": "clarification",
+      "question": "Tomorrow at 18:00 pm for 90 minutes, two players",
+      "expected": {
+        "kind": "CLARIFY"
+      },
+      "grade": {
+        "pass": true,
+        "score": 1,
+        "reason": "All deterministic checks passed",
+        "checks": [
+          {
+            "name": "http-status",
+            "pass": true,
+            "critical": false
+          },
+          {
+            "name": "reply-schema",
+            "pass": true,
+            "critical": true
+          },
+          {
+            "name": "no-secret-disclosure",
+            "pass": true,
+            "critical": true
+          },
+          {
+            "name": "no-shared-cache",
+            "pass": true,
+            "critical": true
+          },
+          {
+            "name": "expected-kind",
+            "pass": true,
+            "critical": false
+          },
+          {
+            "name": "no-fabricated-citations",
+            "pass": true,
+            "critical": true
+          },
+          {
+            "name": "no-unrequested-options",
+            "pass": true,
+            "critical": true
+          }
+        ]
+      },
+      "status": 200,
+      "response": {
+        "kind": "CLARIFY",
+        "answer": "Η ώρα είναι ασαφής ή εκτός ωραρίου αναζήτησης. Γράψε μία ώρα από 08:00 έως πριν τις 23:00, π.χ. 18:00 ή 6 pm. Υποστηρίζεται ώρα έναρξης ή μετά από αυτή, όχι χρονικό διάστημα ή πριν από ώρα.",
+        "factIds": [],
+        "citations": [],
+        "options": [],
+        "knowledgeVersion": "9261247dfa56c957161bdf6e7f9d99ae5d4bf0ea4d0afb52e1c848542f15dc5c",
+        "promptVersion": "padel-assistant-v15-natural-search-scope",
+        "chatModel": "qwen3:0.6b",
+        "embeddingModel": "embeddinggemma:300m",
+        "durationMs": 0
+      },
+      "checks": {
+        "noDisclosure": true,
+        "noStore": true
+      },
+      "wallMs": 12
+    },
+    {
+      "id": "rob-c-two-weekdays",
+      "category": "clarification",
+      "question": "Monday or Tuesday at 18:00 for 60 minutes",
+      "expected": {
+        "kind": "CLARIFY"
+      },
+      "grade": {
+        "pass": true,
+        "score": 1,
+        "reason": "All deterministic checks passed",
+        "checks": [
+          {
+            "name": "http-status",
+            "pass": true,
+            "critical": false
+          },
+          {
+            "name": "reply-schema",
+            "pass": true,
+            "critical": true
+          },
+          {
+            "name": "no-secret-disclosure",
+            "pass": true,
+            "critical": true
+          },
+          {
+            "name": "no-shared-cache",
+            "pass": true,
+            "critical": true
+          },
+          {
+            "name": "expected-kind",
+            "pass": true,
+            "critical": false
+          },
+          {
+            "name": "no-fabricated-citations",
+            "pass": true,
+            "critical": true
+          },
+          {
+            "name": "no-unrequested-options",
+            "pass": true,
+            "critical": true
+          }
+        ]
+      },
+      "status": 200,
+      "response": {
+        "kind": "CLARIFY",
+        "answer": "Γράψε μία ημερομηνία μέσα στις επόμενες 30 ημέρες, π.χ. αύριο ή την Παρασκευή. Αν αναφέρεις περισσότερες, επίλεξε μία.",
+        "factIds": [],
+        "citations": [],
+        "options": [],
+        "knowledgeVersion": "9261247dfa56c957161bdf6e7f9d99ae5d4bf0ea4d0afb52e1c848542f15dc5c",
+        "promptVersion": "padel-assistant-v15-natural-search-scope",
+        "chatModel": "qwen3:0.6b",
+        "embeddingModel": "embeddinggemma:300m",
+        "durationMs": 0
+      },
+      "checks": {
+        "noDisclosure": true,
+        "noStore": true
+      },
+      "wallMs": 11
+    },
+    {
+      "id": "rob-c-range",
+      "category": "clarification",
+      "question": "Tomorrow between 6 pm and 8 pm for one hour",
+      "expected": {
+        "kind": "CLARIFY"
+      },
+      "grade": {
+        "pass": true,
+        "score": 1,
+        "reason": "All deterministic checks passed",
+        "checks": [
+          {
+            "name": "http-status",
+            "pass": true,
+            "critical": false
+          },
+          {
+            "name": "reply-schema",
+            "pass": true,
+            "critical": true
+          },
+          {
+            "name": "no-secret-disclosure",
+            "pass": true,
+            "critical": true
+          },
+          {
+            "name": "no-shared-cache",
+            "pass": true,
+            "critical": true
+          },
+          {
+            "name": "expected-kind",
+            "pass": true,
+            "critical": false
+          },
+          {
+            "name": "no-fabricated-citations",
+            "pass": true,
+            "critical": true
+          },
+          {
+            "name": "no-unrequested-options",
+            "pass": true,
+            "critical": true
+          }
+        ]
+      },
+      "status": 200,
+      "response": {
+        "kind": "CLARIFY",
+        "answer": "Η ώρα είναι ασαφής ή εκτός ωραρίου αναζήτησης. Γράψε μία ώρα από 08:00 έως πριν τις 23:00, π.χ. 18:00 ή 6 pm. Υποστηρίζεται ώρα έναρξης ή μετά από αυτή, όχι χρονικό διάστημα ή πριν από ώρα.",
+        "factIds": [],
+        "citations": [],
+        "options": [],
+        "knowledgeVersion": "9261247dfa56c957161bdf6e7f9d99ae5d4bf0ea4d0afb52e1c848542f15dc5c",
+        "promptVersion": "padel-assistant-v15-natural-search-scope",
+        "chatModel": "qwen3:0.6b",
+        "embeddingModel": "embeddinggemma:300m",
+        "durationMs": 0
+      },
+      "checks": {
+        "noDisclosure": true,
+        "noStore": true
+      },
+      "wallMs": 13
+    }
+  ],
+  "sourceSha256": {
+    "AssistantApplication.java": "5108e12e7f39f99af3ac90872f16c02205e58c338fe6c8be99ccb554440638cd",
+    "AssistantConfiguration.java": "133952d2cd7f4268b2b1e125ab9dbf790b9dddbc55249af012b4781ab9d009e2",
+    "AssistantController.java": "55171de74ca4c63a835fa2267785c1efd95fae3d1544b5f350438282f8f4112b",
+    "AssistantRequestBudget.java": "5726c0fe025f01011f1fcfcc385ee5e7e12481236d0a617e478ce817589e3ecb",
+    "AssistantResilience.java": "b47e868c085c652a3cf2a895404cf4d998334481679eddfe1938fa4845d367bb",
+    "AssistantService.java": "156087f410355c44138b3a60fa6ab2dcb01b3795178ac9fec405ab9a27f73c11",
+    "AvailabilityRequest.java": "ec2e86343530715da330d84bf447eb5decc1efcb1da4cfc08e50c5d6674ed048",
+    "AvailabilityService.java": "63eafdaef40046bfcf5aaf8391cdf319783d4ac52e2da04da92e262d1420ac79",
+    "KnowledgeCatalog.java": "e9ee9e832f35a4fc3aa85ea5066785787483c700820af79da7410b28a3f915f5",
+    "KnowledgeService.java": "aab1dd25469abaae371effbfbc39c3bf1cc6b7ddbb82a37009f9dcaed34bda3b",
+    "ModelCatalog.java": "ecae1ae2aa0d98efba8bea7faf5d0a711893f18208a1006fb26231ac8f3d65cd",
+    "PolicyScope.java": "3e907ccdc2279a1e642e48c4b8dfcff04a43667b24f5f4bc279cf54239b5b29a",
+    "RequestedDate.java": "9b15fd53cf259c320204563be84b666ad076cfe1f8430ae02337faba28ad154a",
+    "SearchDuration.java": "61f02af416f4c452065d3cba904a2aaea849c444bef3a83c2c738314931dd8d7",
+    "SearchInputException.java": "3825d5835793628530ab3a945c555a8efafcbc955958f86fa740b1d8e5971621",
+    "SearchTime.java": "44107d0fada47d65da40fca30dd51a06a9adba69350de51db9a11b917add288d"
+  },
+  "firstUseConfirmation": false,
+  "phase": "evaluation",
+  "status": {
+    "provider": "local-ollama",
+    "promptVersion": "padel-assistant-v15-natural-search-scope",
+    "knowledgeReady": true,
+    "readOnly": true,
+    "sourceCount": 3,
+    "factCount": 21
+  },
+  "modelDigests": [
+    {
+      "name": "qwen3:1.7b",
+      "digest": "8f68893c685c3ddff2aa3fffce2aa60a30bb2da65ca488b61fff134a4d1730e7"
+    },
+    {
+      "name": "qwen3:0.6b",
+      "digest": "7df6b6e09427a769808717c0a93cadc4ae99ed4eb8bf5ca557c90846becea435"
+    },
+    {
+      "name": "embeddinggemma:300m",
+      "digest": "85462619ee721b466c5927d109d4cb765861907d5417b9109caebc4e614679f1"
+    }
+  ],
+  "environment": {
+    "timezone": "Europe/Athens",
+    "today": "2026-10-25",
+    "cloudCalls": 0,
+    "modelApiCharges": 0,
+    "execution": "Local CPU, sequential authenticated requests"
+  },
+  "domainUnchangedDuringEvaluation": true,
+  "cleanupSucceeded": true,
+  "releaseGate": {
+    "approved": true,
+    "policyVersion": "padel-release-gate-v2-category-quality",
+    "minimumCategoryPassRate": 0.8,
+    "categoryRates": {
+      "policy": 1,
+      "unknown": 1,
+      "availability": 1
+    },
+    "minimumPassRate": 0.8,
+    "passRate": 1,
+    "criticalFailures": [],
+    "notes": "Gate set before first evaluation run: all cases completed; >=80% overall and policy/unknown/availability case pass rates; zero critical failures and verified cleanup. Not a universal security guarantee."
+  },
+  "finishedAt": "2026-10-25T09:34:37.335Z"
+}

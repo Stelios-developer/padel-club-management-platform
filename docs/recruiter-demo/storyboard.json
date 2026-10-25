@@ -1,0 +1,69 @@
+{
+  "title": "Padel Club — Engineering in action",
+  "language": "en",
+  "targetDurationSeconds": 109,
+  "resolution": "1920x1080",
+  "recordingDate": "2026-10-13",
+  "scenes": [
+    {
+      "id": "intro", "duration": 6, "title": "PADEL.CLUB", "subtitle": "Engineering in action", "detail": "A working sports management platform", "badge": "SOFTWARE ENGINEERING PORTFOLIO",
+      "narration": "Padel Club. A full-stack sports management platform, built around a real booking workflow.",
+      "greek": "Padel Club. Μια ολοκληρωμένη πλατφόρμα διαχείρισης αθλητικής λέσχης, με πραγματική ροή κρατήσεων."
+    },
+    {
+      "id": "welcome", "duration": 7, "title": "A product\npeople can use", "subtitle": "01 / THE EXPERIENCE", "detail": "A clean sports identity.\nA complete member journey.", "badge": "REAL LOCAL APPLICATION",
+      "narration": "Members explore the club and manage their games from a clean, Greek-language interface.",
+      "greek": "Τα μέλη γνωρίζουν τη λέσχη και διαχειρίζονται τα παιχνίδια τους μέσα από ένα καθαρό, ελληνικό περιβάλλον."
+    },
+    {
+      "id": "member", "duration": 6, "title": "Secure access.\nClear choices.", "subtitle": "02 / MEMBER WORKSPACE", "detail": "Keycloak / OIDC + PKCE\nMembership eligibility\nCourt types and pricing", "badge": "AUTHENTICATED SYNTHETIC MEMBER",
+      "narration": "Secure sign-in leads to membership eligibility, court types and clear pricing before booking.",
+      "greek": "Η ασφαλής σύνδεση οδηγεί στη συνδρομή, στους τύπους γηπέδων και σε σαφείς τιμές πριν από την κράτηση."
+    },
+    {
+      "id": "ai", "duration": 12, "title": "Ask naturally.\nGet live options.", "subtitle": "03 / LOCAL AI ASSISTANT", "detail": "Tomorrow · after 18:00\nIndoor · 90 minutes\n2 players", "badge": "REAL MODEL + LIVE AVAILABILITY",
+      "narration": "The local AI assistant turns a natural Greek request into live court availability. Here: tomorrow after six, indoors, for ninety minutes and two players.",
+      "greek": "Ο τοπικός AI βοηθός μετατρέπει ένα φυσικό ελληνικό αίτημα σε πραγματική διαθεσιμότητα: αύριο μετά τις έξι, σε στεγασμένο γήπεδο, για 90 λεπτά και δύο παίκτες."
+    },
+    {
+      "id": "booking", "duration": 12, "title": "The user\nconfirms.", "subtitle": "04 / REAL RESERVATION", "detail": "Review the time and price.\nConfirm the reservation.\nSee the saved result.", "badge": "PERSISTED IN THE REAL BACKEND",
+      "narration": "The suggestion opens a confirmation form with the matching date, duration and price. The member confirms, and the backend saves the reservation.",
+      "greek": "Η πρόταση ανοίγει φόρμα με τη σωστή ημερομηνία, διάρκεια και τιμή. Το μέλος επιβεβαιώνει και το backend αποθηκεύει την κράτηση."
+    },
+    {
+      "id": "mobile", "duration": 8, "title": "One booking.\nEvery screen.", "subtitle": "05 / MOBILE EXPERIENCE", "detail": "390 px viewport\nReadable booking cards\nClear member actions", "badge": "SAME LIVE RESERVATION",
+      "narration": "The same reservation is available on mobile, with readable cards and clear actions.",
+      "greek": "Η ίδια κράτηση εμφανίζεται και στο κινητό, με ευανάγνωστες κάρτες και ξεκάθαρες ενέργειες."
+    },
+    {
+      "id": "policy", "duration": 10, "title": "Answers with\na source.", "subtitle": "06 / GROUNDED AI", "detail": "Approved club policies\nAuthenticated sources\nHuman confirmation", "badge": "LOCAL AI PROTOTYPE",
+      "narration": "Policy answers link to approved club sources. The assistant remains a prototype, with clarification and unknown responses for requests it cannot support.",
+      "greek": "Οι απαντήσεις συνδέονται με εγκεκριμένες πηγές της λέσχης. Ο βοηθός παραμένει prototype και ζητά διευκρινίσεις ή δηλώνει ότι δεν γνωρίζει, όταν δεν μπορεί να υποστηρίξει ένα αίτημα."
+    },
+    {
+      "id": "notifications", "duration": 6, "title": "Events become\nuseful updates.", "subtitle": "07 / ASYNCHRONOUS DELIVERY", "detail": "Transactional outbox\nRabbitMQ events\nMember notifications", "badge": "REAL BOOKING EVENT",
+      "narration": "Booking events deliver notifications asynchronously through Rabbit M Q and a transactional outbox.",
+      "greek": "Τα συμβάντα κράτησης παράγουν ασύγχρονες ειδοποιήσεις μέσω RabbitMQ και transactional outbox."
+    },
+    {
+      "id": "reception", "duration": 7, "title": "Built for\nclub operations.", "subtitle": "08 / RECEPTION WORKSPACE", "detail": "Weekly court schedule\nAttendance and changes\nStaff workflow", "badge": "ISOLATED PRODUCT DEMO DATA",
+      "narration": "A separate reception workspace supports the club's schedule and operations. This view uses isolated demo data.",
+      "greek": "Το περιβάλλον υποδοχής υποστηρίζει το πρόγραμμα και τις λειτουργίες της λέσχης. Η συγκεκριμένη προβολή χρησιμοποιεί απομονωμένα δεδομένα επίδειξης."
+    },
+    {
+      "id": "architecture", "duration": 10, "title": "Engineering\nbeyond the UI.", "subtitle": "09 / SYSTEM DESIGN", "detail": "Explicit service boundaries\nDatabase concurrency guards\nRead-only AI tools", "badge": "IMPLEMENTED LOCAL ARCHITECTURE",
+      "narration": "Behind the interface: Spring Boot services, a Spring Cloud gateway, Keycloak authentication, and service-owned PostgreSQL databases. The AI uses Ollama and pgvector.",
+      "greek": "Πίσω από το περιβάλλον: υπηρεσίες Spring Boot, Spring Cloud gateway, έλεγχος ταυτότητας Keycloak και βάσεις PostgreSQL ανά υπηρεσία. Ο AI χρησιμοποιεί Ollama και pgvector."
+    },
+    {
+      "id": "quality", "duration": 9, "title": "Show the\nevidence.", "subtitle": "10 / LOCAL VERIFICATION", "detail": "Reproducible checks\nDated public reports\nExplicit limitations", "badge": "MEASURED RESULTS · 13 OCT 2026",
+      "narration": "Local verification includes one hundred forty AI regression cases and a full two hundred forty-three browser-check run. Results and limitations are documented.",
+      "greek": "Οι τοπικοί έλεγχοι περιλαμβάνουν 140 περιπτώσεις AI regression και πλήρη εκτέλεση 243 browser checks. Τα αποτελέσματα και οι περιορισμοί είναι τεκμηριωμένα."
+    },
+    {
+      "id": "closing", "duration": 6, "title": "A working product.\nEvidence you can inspect.", "subtitle": "PADEL.CLUB", "detail": "Java Backend · Full-stack\nSystem design · Reliability", "badge": "READY FOR A TECHNICAL DISCUSSION",
+      "narration": "A working product, backed by reproducible engineering evidence. Ready for a code review and technical discussion.",
+      "greek": "Ένα λειτουργικό προϊόν, με αναπαραγώγιμα τεχνικά τεκμήρια. Έτοιμο για έλεγχο κώδικα και τεχνική συζήτηση."
+    }
+  ]
+}

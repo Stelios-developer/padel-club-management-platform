@@ -1,0 +1,44 @@
+{
+  "completed": true,
+  "verifiedAt": "2026-10-01T16:46:06.161Z",
+  "targetProject": "padel-final-restore-check",
+  "sourceProject": "padel-e2e",
+  "databases": [
+    {
+      "database": "padel_members",
+      "tables": 4,
+      "rows": 46,
+      "verified": true
+    },
+    {
+      "database": "padel_subscriptions",
+      "tables": 4,
+      "rows": 58,
+      "verified": true
+    },
+    {
+      "database": "padel_bookings",
+      "tables": 9,
+      "rows": 787,
+      "verified": true
+    },
+    {
+      "database": "padel_access",
+      "tables": 4,
+      "rows": 69,
+      "verified": true
+    },
+    {
+      "database": "padel_notifications",
+      "tables": 4,
+      "rows": 556,
+      "verified": true
+    },
+    {
+      "database": "padel_identity",
+      "tables": 100,
+      "rows": 1587,
+      "verified": true
+    }
+  ]
+}

@@ -1,0 +1,252 @@
+{
+  "generatedAt": "2026-10-12T11:29:23.430Z",
+  "scope": "Actual public registration and member experience in the dedicated local padel-e2e stack; Chromium with simulated viewports",
+  "sourceSha256": {
+    "scripts/user-journey.mjs": "e607798fa862a2d39402ad1685e0ad3436565dfb0bd8bb51d9be733f3b998e85",
+    "web/ui/application.js": "0b3fb1dd5ab0b0b2da4f3456a7b02242ea296a7bbda1756ac6418db89990d0cb",
+    "web/ui/components.js": "a1444da7cf58403302c9432e11e8e9508fe89030a5fa9d10b1cfc48c26b08ea8",
+    "web/ui/pages.js": "0a3cd4cdc89177700e0e0bca3e9a4aec085e8f17bdde7536ab66b4ce194158e9",
+    "web/ui/events.js": "104f6dca274dda173c845c65416893409594d01a2765ad366cba2e194ecd59ae",
+    "web/api.js": "a50be26d2e1d7b39c88cab49832d1c9cfc4a7c8915202ab7680c84b4fe9c5b33",
+    "web/index.html": "2dca4190567974ed737a22b9024b1fa08e9404ca0a53e56fd1e507f70ed60b17",
+    "web/clean.css": "1c2365c02bf32b6a6828f34f18224f365194a250743a0a22faf68678b8719f30",
+    "web/browser-tests/club.spec.js": "08dc08c7d94e3563f25b3038f66c65d26b238c4f827e98bb598cf95d8196ddfa",
+    "web/browser-tests/resilience.spec.js": "a09ed4a43d033f7a424848593e69494b5ab5746ff97bf6513e48fc523689b5bf",
+    "web/browser-tests/staff.spec.js": "bc2cd0d82b5987a2cba43a5a7a25c7ad2d199fb689ddd93f5b89f5f8c2edd1db",
+    "web/tests/api.test.cjs": "f058738e2e14b505665ad5b503826d5bb3e7328016bae82328b19bffb7588a80"
+  },
+  "journey": {
+    "startedAt": "2026-10-12T11:20:39.549Z",
+    "completed": true,
+    "mockedTransport": false,
+    "publicRegistration": true,
+    "project": "padel-e2e",
+    "steps": [
+      {
+        "name": "Public welcome links and real server load",
+        "passed": true,
+        "durationMs": 2421
+      },
+      {
+        "name": "Public registration rejects invalid fields and signs the new member in",
+        "passed": true,
+        "durationMs": 2004
+      },
+      {
+        "name": "Member onboarding persists the profile through the real API",
+        "passed": true,
+        "durationMs": 492
+      },
+      {
+        "name": "Second member signs in and completes onboarding",
+        "passed": true,
+        "durationMs": 1122
+      },
+      {
+        "name": "New member sees reception activation and separate court pricing before booking",
+        "passed": true,
+        "durationMs": 213
+      },
+      {
+        "name": "Member navigation and API deny staff-only functions",
+        "passed": true,
+        "durationMs": 35
+      },
+      {
+        "name": "Booking without a subscription fails and leaves the confirmation form usable",
+        "passed": true,
+        "durationMs": 694
+      },
+      {
+        "name": "Reception sign-in and UI-recorded paid subscriptions activate both members",
+        "passed": true,
+        "durationMs": 1231
+      },
+      {
+        "name": "Member refresh displays the real active subscription",
+        "passed": true,
+        "durationMs": 250
+      },
+      {
+        "name": "Member books a free slot in the real UI and sees the persisted booking",
+        "passed": true,
+        "durationMs": 441
+      },
+      {
+        "name": "Occupied slot offers waitlist without automatically making a booking",
+        "passed": true,
+        "durationMs": 653
+      },
+      {
+        "name": "Organizer opens the game and a second member joins through the real UI",
+        "passed": true,
+        "durationMs": 865
+      },
+      {
+        "name": "Cancellation releases the booked slot and is persisted",
+        "passed": true,
+        "durationMs": 551
+      },
+      {
+        "name": "Member notification page receives the real booking and cancellation events",
+        "passed": true,
+        "durationMs": 2205
+      },
+      {
+        "name": "Real authenticated member pages and profile fit 390px and 320px",
+        "passed": true,
+        "durationMs": 756
+      },
+      {
+        "name": "Real logout returns to the welcome page and re-login restores the saved profile",
+        "passed": true,
+        "durationMs": 1465
+      },
+      {
+        "name": "Local AI returns a sourced cancellation answer without changing bookings",
+        "passed": true,
+        "durationMs": 8676
+      }
+    ],
+    "cleanup": [
+      {
+        "name": "Cancel isolated booking [fixture]",
+        "passed": true
+      },
+      {
+        "name": "Cancel isolated subscription [fixture]",
+        "passed": true
+      },
+      {
+        "name": "Cancel isolated subscription [fixture]",
+        "passed": true
+      },
+      {
+        "name": "Disable isolated profile [fixture]",
+        "passed": true
+      },
+      {
+        "name": "Disable isolated profile [fixture]",
+        "passed": true
+      },
+      {
+        "name": "Cancel isolated waitlist [fixture]",
+        "passed": true
+      },
+      {
+        "name": "Remove isolated identity [fixture]",
+        "passed": true
+      },
+      {
+        "name": "Remove isolated identity [fixture]",
+        "passed": true
+      },
+      {
+        "name": "Remove isolated identity [fixture]",
+        "passed": true
+      },
+      {
+        "name": "Existing member, booking and subscription rows unchanged",
+        "passed": true
+      }
+    ],
+    "observations": {
+      "registration": {
+        "missingEmailRejected": true,
+        "passwordMismatchRejected": true,
+        "invalidSubmissionCreatesNoIdentity": true,
+        "authenticatedAfterRegistration": true,
+        "primaryMemberViewport": {
+          "width": 390,
+          "height": 844
+        },
+        "language": "English identity form / Greek application",
+        "initialWarnings": [],
+        "noMisleadingServiceWarnings": true
+      },
+      "onboarding": {
+        "namePrefilled": true,
+        "identityEmailReadOnly": true,
+        "requiredPhoneBlocksSave": true
+      },
+      "brandReturnsToOverview": true,
+      "noSubscriptionMessage": "Χρειάζεται ενεργή συνδρομή την ημέρα του παιχνιδιού. Δες τα προγράμματα στις Συνδρομές και ενεργοποίησέ τη στην υποδοχή.",
+      "bookingErrorVisibleInsideDialog": true,
+      "ai": {
+        "kind": "ANSWER",
+        "citations": 1,
+        "scope": "One known policy question; not a model quality evaluation"
+      }
+    },
+    "screenshots": [
+      "01-welcome.png",
+      "02-registration-validation.png",
+      "02-registration-mobile.png",
+      "03-onboarding.png",
+      "04-membership-before-activation.png",
+      "05-booking-price-before-confirmation.png",
+      "06-inactive-membership-message.png",
+      "07-active-membership.png",
+      "08-confirmed-booking.png",
+      "09-cancelled-booking.png",
+      "10-mobile-390.png",
+      "10-mobile-320.png",
+      "11-logged-out.png"
+    ],
+    "finishedAt": "2026-10-12T11:21:07.369Z",
+    "passed": 17,
+    "failed": 0,
+    "browserErrors": [],
+    "notes": [
+      "Synthetic profile/audit/cancelled records remain as test evidence; identities are removed and fixtures are inactive",
+      "No external email or payment processing",
+      "No service restart or interruption",
+      "AI smoke does not replace failed historical model-quality gates"
+    ]
+  },
+  "chromiumRegression": {
+    "startTime": "2026-10-12T11:24:28.624Z",
+    "duration": 26785.462,
+    "expected": 69,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0,
+    "scenarios": 23,
+    "viewports": [
+      "1280x900",
+      "390x844",
+      "320x740"
+    ],
+    "transport": "Demo or controlled fixtures; separate from the actual journey"
+  },
+  "node": {
+    "passed": 95,
+    "failed": 0,
+    "skipped": 0,
+    "evidence": "Actual repository.mjs test output, private .runtime/user-verification/ux-node.log"
+  },
+  "initialFindings": {
+    "brandReturnsToOverview": false,
+    "bookingRejection": "An active subscription is required on the booking date.",
+    "feedbackBehindNativeDialogBackdrop": true,
+    "personalResourcesRequestedBeforeProfile": true
+  },
+  "intermediateFailure": {
+    "finishedAt": "2026-10-12T11:16:55.754Z",
+    "failedSteps": [
+      "Public registration rejects invalid fields and signs the new member in"
+    ],
+    "warnings": [
+      "Μερικά στοιχεία δεν ενημερώθηκαν:Ειδοποιήσεις ↗"
+    ],
+    "cleanupPassed": true,
+    "resolution": "Personal notifications also require the member profile and are deferred in the final implementation"
+  },
+  "limits": [
+    "No human usability participants or physical devices",
+    "Keycloak forms and some notification content remain English",
+    "No new backend/load/security/AI-quality suite, cloud deployment or GitHub execution",
+    "Prior intermittent AI availability and failed model-quality gates remain unresolved",
+    "Inactive synthetic evidence records remain; existing member/booking/subscription row fingerprints match"
+  ]
+}

@@ -1,0 +1,23 @@
+{
+  "name": "padel-club-web",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "start": "node server.cjs",
+    "test": "node --test tests/*.test.cjs",
+    "check": "node tools/check.mjs",
+    "test:browser": "playwright test",
+    "test:browser:report": "playwright show-report",
+    "format:check": "prettier --check .",
+    "format": "prettier --write ."
+  },
+  "devDependencies": {
+    "@axe-core/playwright": "4.13.0",
+    "@playwright/test": "1.64.1",
+    "prettier": "3.9.9"
+  },
+  "engines": {
+    "node": ">=24"
+  }
+}

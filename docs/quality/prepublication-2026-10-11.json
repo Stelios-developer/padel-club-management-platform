@@ -1,0 +1,108 @@
+{
+  "schemaVersion": 1,
+  "verifiedAt": "2026-10-11T19:01:01.273Z",
+  "timezone": "Europe/Athens",
+  "status": "SOURCE_READY_WITH_DOCUMENTED_LIMITATIONS",
+  "publication": {
+    "files": 467,
+    "commits": 0,
+    "remotes": 0,
+    "upload": false
+  },
+  "fixes": [
+    "Explicit preview asset allowlist with HTTP regression coverage",
+    "Git metadata/editor/log exclusions for backend Docker context",
+    "Allowlist for web Docker context",
+    "Maven prerequisites and first Chromium installation instructions"
+  ],
+  "sourceOnlySnapshot": {
+    "functionalTestFiles": 465,
+    "freshNpmCi": [
+      "web",
+      "evals"
+    ],
+    "backendBuild": "PASSED: default reactor clean package -DskipTests, existing Maven cache",
+    "node": {
+      "tests": 94,
+      "passed": 94,
+      "failures": 0,
+      "skipped": 0
+    },
+    "browser": {
+      "startTime": "2026-10-11T18:49:01.759Z",
+      "duration": 23635.465,
+      "expected": 54,
+      "skipped": 0,
+      "unexpected": 0,
+      "flaky": 0
+    },
+    "harness": {
+      "generatedAt": "2026-10-11T18:50:56.713Z",
+      "completed": true,
+      "promptfooVersion": "0.123.1",
+      "realModel": false,
+      "positivePassed": 1,
+      "intentionallyFailingCasesRejected": 2,
+      "criticalGateRejected": true,
+      "cancellationPreventedFurtherCalls": true,
+      "notes": "Actual promptfoo engine with deterministic fixture output; not AI quality evidence."
+    },
+    "formatting": {
+      "javaSources": 104,
+      "passed": true
+    },
+    "repositoryCheck": "PASSED",
+    "composeConfig": "PASSED: public development fixtures"
+  },
+  "latestFullBackendTests": {
+    "report": "docs/quality/2026-10-11.json",
+    "tests": 135,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "repeatedDuringThisAudit": false,
+    "javaSourcesChangedDuringThisAudit": false
+  },
+  "sourceSecurity": {
+    "scannedAt": "2026-10-11T21:47:56.7506275+03:00",
+    "gate": "PASSED",
+    "blocking": 0,
+    "detectedSecrets": 0,
+    "exceptionOccurrences": 6,
+    "exceptionExpiry": "2026-11-04",
+    "newExceptions": 0,
+    "mediumAndLowFindingsRemain": true
+  },
+  "workflowLint": {
+    "passed": true,
+    "shellcheck": false,
+    "pyflakes": false,
+    "githubExecution": false
+  },
+  "contentReview": {
+    "privateTokenKeyAndMachinePathPatternsFound": 0,
+    "symlinks": 0,
+    "filesAtOrAbove100MiB": 0,
+    "screenshotsVisuallyReviewed": 31,
+    "screenshotExifRecords": 0,
+    "note": "Demo/test contacts; public dependency maintainer metadata retained in SBOMs. Pattern scans and visual review are not a guarantee of detecting every secret."
+  },
+  "preservedHistoricalAndFrozenFiles": {
+    "verified": 45,
+    "changed": 0
+  },
+  "webImage": {
+    "build": "PASSED",
+    "transferredContext": "215.44 kB",
+    "deployed": false,
+    "newImageSecurityScan": false
+  },
+  "limits": [
+    "Six existing security exceptions require review by 2026-11-04.",
+    "No GitHub execution, signed release, AWS operation or public deployment.",
+    "Functional snapshot checks preceded final ignore/documentation changes; final repository checks repeated after refresh.",
+    "Full new ten-image scan/release rehearsal not performed.",
+    "Real AI category gates remain unresolved.",
+    "Distribution license not selected."
+  ]
+}

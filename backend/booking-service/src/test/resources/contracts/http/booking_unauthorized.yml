@@ -1,0 +1,11 @@
+{
+  "name": "booking_unauthorized",
+  "description": "Consumer-facing booking_unauthorized contract; synthetic fixtures only.",
+  "request":
+    {
+      "method": "GET",
+      "urlPath": "/api/bookings/dddddddd-dddd-dddd-dddd-dddddddddddd",
+    },
+  "response": { "status": 401 },
+  "priority": 100,
+}

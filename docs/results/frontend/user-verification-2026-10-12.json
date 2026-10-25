@@ -1,0 +1,475 @@
+{
+  "recordedAt": "2026-10-12T10:07:39.343Z",
+  "scope": "Local user workflow verification and staff missing-profile correction",
+  "sourceSha256": {
+    "web/ui/application.js": "e7e44a4202528deaf723869afaf616e29ee9dacbf6bd812644bbc1cf1cd9dcd6",
+    "web/browser-tests/staff.spec.js": "42c1a9f1c6dfcfa947e08bfdc9cb078f7c4adeb129e68dfa83ef871bbcd87027",
+    "scripts/user-journey.mjs": "f3fbbd4f84ff9d04e3321b93f639df899e7888c4a0961207fa52a8747c45482b"
+  },
+  "node": {
+    "passed": 94,
+    "failed": 0,
+    "skipped": 0
+  },
+  "browser": {
+    "stats": {
+      "startTime": "2026-10-12T09:15:09.745Z",
+      "duration": 30260.249,
+      "expected": 60,
+      "skipped": 0,
+      "unexpected": 0,
+      "flaky": 0
+    },
+    "viewports": [
+      {
+        "width": 1280,
+        "height": 900
+      },
+      {
+        "width": 390,
+        "height": 844
+      },
+      {
+        "width": 320,
+        "height": 740
+      }
+    ],
+    "newRegression": "Staff without a member profile avoids personal requests and can subsequently create a profile"
+  },
+  "functionalStack": {
+    "finishedAt": "2026-10-12T08:34:59.990Z",
+    "completed": true,
+    "project": "padel-e2e",
+    "resilience": false,
+    "passed": 54,
+    "failed": 0,
+    "results": [
+      {
+        "name": "Real stack readiness and web proxy",
+        "passed": true,
+        "durationMs": 1163
+      },
+      {
+        "name": "Keycloak authorization code + S256 PKCE, issuer, audience and roles",
+        "passed": true,
+        "durationMs": 17948
+      },
+      {
+        "name": "PKCE required, wrong verifier rejected and authorization code single-use",
+        "passed": true,
+        "durationMs": 775
+      },
+      {
+        "name": "Anonymous and tampered JWT rejected; member password grant disabled",
+        "passed": true,
+        "durationMs": 242
+      },
+      {
+        "name": "Real refresh token produces a usable API token",
+        "passed": true,
+        "durationMs": 337
+      },
+      {
+        "name": "Real tokens with wrong issuer or missing padel-api audience rejected",
+        "passed": true,
+        "durationMs": 1166
+      },
+      {
+        "name": "Real Keycloak token without subject rejected before profile creation",
+        "passed": true,
+        "durationMs": 427
+      },
+      {
+        "name": "Member onboarding, PostgreSQL persistence and identity email",
+        "passed": true,
+        "durationMs": 9960
+      },
+      {
+        "name": "Member ownership and staff-only APIs enforced across services",
+        "passed": true,
+        "durationMs": 5990
+      },
+      {
+        "name": "Inactive subscription blocks a booking; staff activation enables it",
+        "passed": true,
+        "durationMs": 7144
+      },
+      {
+        "name": "Missing or malformed idempotency headers reject both mutations without writing",
+        "passed": true,
+        "durationMs": 551
+      },
+      {
+        "name": "Eight subscription retries return the original purchase and send one event",
+        "passed": true,
+        "durationMs": 3936
+      },
+      {
+        "name": "Changed subscription payload conflicts; a member cannot replay a staff purchase",
+        "passed": true,
+        "durationMs": 51
+      },
+      {
+        "name": "A rejected booking rolls its key back and can succeed after subscription activation",
+        "passed": true,
+        "durationMs": 1166
+      },
+      {
+        "name": "Eight concurrent retries create one booking, one outbox event and one notification",
+        "passed": true,
+        "durationMs": 4036
+      },
+      {
+        "name": "Booking key rejects changed payload and never replays across users",
+        "passed": true,
+        "durationMs": 452
+      },
+      {
+        "name": "Cancelled booking replay returns the original response without recreating it",
+        "passed": true,
+        "durationMs": 157
+      },
+      {
+        "name": "Eight concurrent PostgreSQL booking requests allow exactly one winner",
+        "passed": true,
+        "durationMs": 527
+      },
+      {
+        "name": "Greek and British browser locales keep ISO dates and 90-minute bookings correct",
+        "passed": true,
+        "durationMs": 203
+      },
+      {
+        "name": "Availability reflects occupied slots; adjacent slots remain bookable",
+        "passed": true,
+        "durationMs": 284
+      },
+      {
+        "name": "Access denial persisted in PostgreSQL and visible to reception",
+        "passed": true,
+        "durationMs": 2295
+      },
+      {
+        "name": "Disabled member and disabled court block new bookings",
+        "passed": true,
+        "durationMs": 319
+      },
+      {
+        "name": "Transactional outbox -> real RabbitMQ -> notification DB -> SMTP/Mailpit",
+        "passed": true,
+        "durationMs": 616
+      },
+      {
+        "name": "Repeated RabbitMQ event is stored once and sends one email",
+        "passed": true,
+        "durationMs": 8993
+      },
+      {
+        "name": "Cancellation releases the court and emits an email",
+        "passed": true,
+        "durationMs": 176
+      },
+      {
+        "name": "Valid entry allowed; late member cancellation blocked and staff override allowed",
+        "passed": true,
+        "durationMs": 1078
+      },
+      {
+        "name": "PostgreSQL Flyway migration installs a validated immediate exclusion constraint",
+        "passed": true,
+        "durationMs": 1174
+      },
+      {
+        "name": "Direct SQL rejects equal, partial and contained overlaps, including equivalent timezone offsets",
+        "passed": true,
+        "durationMs": 3580
+      },
+      {
+        "name": "Direct SQL permits adjacent bookings and another player on a different court",
+        "passed": true,
+        "durationMs": 1569
+      },
+      {
+        "name": "Direct SQL cannot introduce overlap by moving, extending or changing a court",
+        "passed": true,
+        "durationMs": 1075
+      },
+      {
+        "name": "SQL cancellation releases a slot; reactivation conflicting with its replacement is rejected",
+        "passed": true,
+        "durationMs": 1791
+      },
+      {
+        "name": "Eight concurrent direct SQL transactions bypass application locks but commit exactly one reservation",
+        "passed": true,
+        "durationMs": 1973
+      },
+      {
+        "name": "Padel migrations validate player exclusion and install owner schedule trigger",
+        "passed": true,
+        "durationMs": 1168
+      },
+      {
+        "name": "Player directory requires login, returns enabled names and never returns contact or identity details",
+        "passed": true,
+        "durationMs": 215
+      },
+      {
+        "name": "Organizer roster is created; private games reject outsiders and staff can inspect without a member profile",
+        "passed": true,
+        "durationMs": 192
+      },
+      {
+        "name": "Invitation reserves a seat, repeat sends are stable and only the invitee can answer",
+        "passed": true,
+        "durationMs": 667
+      },
+      {
+        "name": "Concurrent repeat acceptance confirms once and adds the game to the participant calendar",
+        "passed": true,
+        "durationMs": 2940
+      },
+      {
+        "name": "Accepted participant cannot book an overlapping court through HTTP or direct SQL",
+        "passed": true,
+        "durationMs": 279
+      },
+      {
+        "name": "Two simultaneous joins compete for one open seat; level filters and owner permissions hold",
+        "passed": true,
+        "durationMs": 643
+      },
+      {
+        "name": "Withdrawing a participant reopens the match and releases their schedule",
+        "passed": true,
+        "durationMs": 155
+      },
+      {
+        "name": "Waitlist joins deduplicate, stay private and notify once when a cancellation opens the slot",
+        "passed": true,
+        "durationMs": 3021
+      },
+      {
+        "name": "Four weekly bookings retain Athens local time and concurrent replays return the same series",
+        "passed": true,
+        "durationMs": 705
+      },
+      {
+        "name": "Conflict in week two rolls back the whole series, its outbox writes and idempotency claim",
+        "passed": true,
+        "durationMs": 1280
+      },
+      {
+        "name": "Three concurrent direct SQL reservations on different courts enforce one player schedule",
+        "passed": true,
+        "durationMs": 1419
+      },
+      {
+        "name": "Reception endpoints require staff and migration preserves previous bookings without fabricated history",
+        "passed": true,
+        "durationMs": 2853
+      },
+      {
+        "name": "Reception member search matches literal name email phone and denies members",
+        "passed": true,
+        "durationMs": 119
+      },
+      {
+        "name": "Weekly reception calendar groups the real booking by Athens dates and named participants",
+        "passed": true,
+        "durationMs": 165
+      },
+      {
+        "name": "A court conflict rolls back the move including roster, audit, outbox and idempotency claim",
+        "passed": true,
+        "durationMs": 1308
+      },
+      {
+        "name": "A confirmed participant conflict or disabled profile blocks a move and preserves the original",
+        "passed": true,
+        "durationMs": 258
+      },
+      {
+        "name": "Eight concurrent move replays keep one booking, one change and notify the released slot once",
+        "passed": true,
+        "durationMs": 3703
+      },
+      {
+        "name": "Two competing moves with different keys reject the stale edit and retain actor and before/after history",
+        "passed": true,
+        "durationMs": 103
+      },
+      {
+        "name": "Concurrent attendance records once, corrections retain history and outsiders cannot be marked",
+        "passed": true,
+        "durationMs": 1016
+      },
+      {
+        "name": "Future and expired attendance windows reject marks; cancellation preserves attendance and history",
+        "passed": true,
+        "durationMs": 1013
+      },
+      {
+        "name": "Cancelled subscription blocks further bookings",
+        "passed": true,
+        "durationMs": 367
+      }
+    ]
+  },
+  "liveBrowser": {
+    "startedAt": "2026-10-12T10:00:26.829Z",
+    "finishedAt": "2026-10-12T10:00:49.026Z",
+    "completed": true,
+    "mockedTransport": false,
+    "passed": 16,
+    "failed": 0,
+    "steps": [
+      {
+        "name": "Public welcome links and real server load",
+        "passed": true,
+        "durationMs": 2352
+      },
+      {
+        "name": "Incorrect password rejected, then real browser PKCE sign-in succeeds",
+        "passed": true,
+        "durationMs": 1182
+      },
+      {
+        "name": "Member onboarding persists the profile through the real API",
+        "passed": true,
+        "durationMs": 138
+      },
+      {
+        "name": "Second member signs in and completes onboarding",
+        "passed": true,
+        "durationMs": 1228
+      },
+      {
+        "name": "Member navigation and API deny staff-only functions",
+        "passed": true,
+        "durationMs": 25
+      },
+      {
+        "name": "Booking without a subscription fails and leaves the confirmation form usable",
+        "passed": true,
+        "durationMs": 441
+      },
+      {
+        "name": "Reception sign-in and UI-recorded paid subscriptions activate both members",
+        "passed": true,
+        "durationMs": 1009
+      },
+      {
+        "name": "Member refresh displays the real active subscription",
+        "passed": true,
+        "durationMs": 242
+      },
+      {
+        "name": "Member books a free slot in the real UI and sees the persisted booking",
+        "passed": true,
+        "durationMs": 425
+      },
+      {
+        "name": "Occupied slot offers waitlist without automatically making a booking",
+        "passed": true,
+        "durationMs": 322
+      },
+      {
+        "name": "Organizer opens the game and a second member joins through the real UI",
+        "passed": true,
+        "durationMs": 918
+      },
+      {
+        "name": "Cancellation releases the booked slot and is persisted",
+        "passed": true,
+        "durationMs": 619
+      },
+      {
+        "name": "Member notification page receives the real booking and cancellation events",
+        "passed": true,
+        "durationMs": 1168
+      },
+      {
+        "name": "Real authenticated member pages and profile fit 390px and 320px",
+        "passed": true,
+        "durationMs": 653
+      },
+      {
+        "name": "Real logout returns to the welcome page and re-login restores the saved profile",
+        "passed": true,
+        "durationMs": 1250
+      },
+      {
+        "name": "Local AI returns a sourced cancellation answer without changing bookings",
+        "passed": true,
+        "durationMs": 6319
+      }
+    ],
+    "cleanupPassed": true,
+    "cleanupChecks": 10,
+    "existingDomainRowsUnchanged": true,
+    "browserErrors": [],
+    "observations": {
+      "ai": {
+        "kind": "ANSWER",
+        "citations": 1,
+        "scope": "One known policy question; not a model quality evaluation"
+      }
+    }
+  },
+  "earlierAiFailure": {
+    "finishedAt": "2026-10-12T09:27:15.583Z",
+    "kind": "UNAVAILABLE",
+    "citations": 0,
+    "passedBeforeFailure": 13,
+    "failed": 1,
+    "cleanupPassed": true,
+    "note": "The strict sourced-answer assertion failed. This result was not discarded or relabelled as a pass."
+  },
+  "aiDiagnostic": {
+    "startedAt": "2026-10-12T09:48:46.525Z",
+    "attempts": [
+      {
+        "httpStatus": 200,
+        "elapsedMs": 10078,
+        "kind": "ANSWER",
+        "durationMs": 9942,
+        "citations": 1,
+        "knowledgeVersion": "9261247dfa56c957161bdf6e7f9d99ae5d4bf0ea4d0afb52e1c848542f15dc5c",
+        "chatModel": "qwen3:0.6b"
+      },
+      {
+        "httpStatus": 200,
+        "elapsedMs": 5096,
+        "kind": "ANSWER",
+        "durationMs": 5112,
+        "citations": 1,
+        "knowledgeVersion": "9261247dfa56c957161bdf6e7f9d99ae5d4bf0ea4d0afb52e1c848542f15dc5c",
+        "chatModel": "qwen3:0.6b"
+      }
+    ],
+    "status": {
+      "factCount": 21,
+      "provider": "local-ollama",
+      "promptVersion": "padel-assistant-v4-unambiguous-dates",
+      "knowledgeReady": true,
+      "readOnly": true,
+      "sourceCount": 3
+    },
+    "identityRemoved": true,
+    "finishedAt": "2026-10-12T09:49:02.866Z"
+  },
+  "correction": "Load the member profile before profile-dependent resources and offer completion when absent; retain staff management access and real failure handling",
+  "notes": [
+    "Synthetic profile/audit/cancelled records remain as test evidence; identities are removed and fixtures are inactive",
+    "No external email or payment processing",
+    "No service restart or interruption",
+    "AI smoke does not replace failed historical model-quality gates"
+  ],
+  "limitations": [
+    "Chromium simulated viewports only; no physical devices or full accessibility certification",
+    "No service outages/restarts exercised; no new Java unit/integration or load/security/release suites",
+    "Successful AI smoke repeats do not resolve intermittent availability or historical failed quality gates",
+    "No GitHub execution or public deployment"
+  ]
+}

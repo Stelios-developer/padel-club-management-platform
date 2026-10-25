@@ -1,0 +1,27 @@
+{
+  "name": "padel-assistant-evals",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "engines": {
+    "node": ">=24"
+  },
+  "scripts": {
+    "test": "node --test tests/*.test.mjs",
+    "test:harness": "node harness-check.mjs",
+    "eval:dev": "node ../scripts/evaluate-assistant.mjs --split development",
+    "eval:holdout": "node ../scripts/evaluate-assistant.mjs --split evaluation"
+  },
+  "overrides": {
+    "basic-ftp": "6.2.1",
+    "simple-git": "4.0.2",
+    "@azure/msal-node": "7.1.1",
+    "body-parser@2": "2.4.0",
+    "undici@6": "6.29.1"
+  },
+  "dependencies": {
+    "promptfoo": "0.125.0",
+    "ajv": "8.20.0",
+    "ajv-formats": "3.0.1"
+  }
+}

@@ -1,0 +1,176 @@
+/* Extend the Keycloak forms without replacing their authentication templates. */
+:root {
+  --pf-v5-global--FontFamily--text: "Segoe UI", Arial, sans-serif;
+  --pf-v5-global--FontFamily--heading: "Segoe UI", Arial, sans-serif;
+  --pf-v5-global--primary-color--100: #174bae;
+  --pf-v5-global--primary-color--200: #103b8d;
+  --pf-v5-global--link--Color: #174bae;
+}
+html,
+body {
+  background: #071a42;
+  color: #101b30;
+  font-family: "Segoe UI", Arial, sans-serif;
+}
+#keycloak-bg {
+  background:
+    radial-gradient(ellipse at 85% 15%, #286bd9 0, transparent 55%),
+    linear-gradient(135deg, #071a42, #103b8d 65%, #071a42);
+  min-height: 100dvh;
+}
+.pf-v5-c-login {
+  --pf-v5-c-login--BackgroundColor: transparent;
+  background: transparent;
+}
+.pf-v5-c-login__container {
+  max-width: 480px;
+  width: min(100%, 480px);
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+}
+.pf-v5-c-login__header {
+  text-align: center;
+  margin-bottom: 24px;
+}
+.pf-v5-c-login__header-brand {
+  margin: auto;
+}
+#keycloak-bg #kc-header-wrapper {
+  /* Parent Keycloak theme declares this color as important. */
+  color: #ffffff !important;
+  font-size: 24px;
+  font-weight: 750;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+}
+#kc-header-wrapper::before {
+  content: "";
+  display: block;
+  width: 44px;
+  height: 44px;
+  margin: 0 auto 14px;
+  border-radius: 12px;
+  background: #d7f542 url("../img/court.svg") center / 26px no-repeat;
+}
+.pf-v5-c-login__main {
+  width: 100%;
+  align-self: stretch;
+  background: #fff;
+  border: 5px solid #080f20;
+  border-radius: 26px;
+  box-shadow: 0 24px 64px #00000030;
+  overflow: hidden;
+}
+.pf-v5-c-login__main-header,
+.pf-v5-c-login__main-body,
+.pf-v5-c-login__main-footer {
+  padding-left: 32px;
+  padding-right: 32px;
+}
+.pf-v5-c-login__main-header {
+  padding-top: 30px;
+  border-top: 0;
+}
+#kc-page-title {
+  color: #101b30;
+  font-size: 26px;
+  font-weight: 400;
+  letter-spacing: -0.7px;
+}
+.pf-v5-c-form__label-text {
+  color: #3d4f6c;
+  font-size: 13px;
+  font-weight: 600;
+}
+.pf-v5-c-form-control {
+  border: 1px solid #dce1e7;
+  border-radius: 12px;
+  min-height: 46px;
+  background: #fff;
+}
+.pf-v5-c-form-control::before,
+.pf-v5-c-form-control::after {
+  display: none;
+}
+.pf-v5-c-form-control:focus-within {
+  border-color: #174bae;
+  box-shadow: 0 0 0 2px #174bae20;
+}
+.pf-v5-c-form-control input {
+  font:
+    16px "Segoe UI",
+    Arial,
+    sans-serif;
+  color: #101b30;
+}
+.pf-v5-c-input-group {
+  gap: 6px;
+}
+.pf-v5-c-button {
+  border-radius: 999px;
+  min-height: 44px;
+  font-size: 13px;
+}
+.pf-v5-c-button::after {
+  border-radius: 999px;
+}
+.pf-v5-c-button.pf-m-primary {
+  background: #174bae;
+  font-weight: 600;
+}
+.pf-v5-c-button.pf-m-primary:hover {
+  background: #103b8d;
+}
+.pf-v5-c-button.pf-m-control {
+  color: #526974;
+  background: #f5f8f9;
+}
+a,
+.pf-v5-c-button.pf-m-link {
+  color: #174bae;
+  font-size: 13px;
+}
+.pf-v5-c-login__main-footer-band {
+  background: #f4f5f2;
+  border-top: 1px solid #dce1e7;
+}
+.pf-v5-c-alert {
+  border-radius: 8px;
+}
+.pf-v5-c-login__footer {
+  color: #ffffff;
+}
+.pf-v5-c-login__footer a {
+  color: #d7f542;
+}
+button:focus-visible,
+a:focus-visible {
+  outline: 3px solid #174bae;
+  outline-offset: 3px;
+}
+@media (max-width: 600px) {
+  .pf-v5-c-login {
+    padding: 28px 16px;
+  }
+  .pf-v5-c-login__container {
+    width: 100%;
+  }
+  .pf-v5-c-login__main-header,
+  .pf-v5-c-login__main-body,
+  .pf-v5-c-login__main-footer {
+    padding-left: 22px;
+    padding-right: 22px;
+  }
+  #kc-page-title {
+    font-size: 24px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation: none !important;
+    transition: none !important;
+  }
+}
