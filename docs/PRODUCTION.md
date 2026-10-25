@@ -48,7 +48,10 @@ node scripts/production-services-check.mjs --project padel-production-check --co
 
 Το κλειδί `secrets/backup_key` φυλάσσεται χωριστά από τα encrypted archives, σε ελεγχόμενο αντίγραφο εκτός του server. Κράτησε επίσης ασφαλές αντίγραφο του deployment bundle/secrets. Backup χωρίς το αρχικό κλειδί δεν ανακτάται. Τα database dumps περιλαμβάνουν και την identity βάση· δεν περιλαμβάνουν PostgreSQL global roles, το RabbitMQ volume ή το CA/ACME volume.
 
+Η παρακάτω πρόβα σταματά πρώτα τους writers του αποκλειστικού test stack, μαζί με το Keycloak και τους background publishers/consumers. Η PostgreSQL παραμένει διαθέσιμη. Μετά την πρόβα, επανεκκίνησε το development stack με `docker compose --env-file .env.example -p padel-e2e up -d --wait`.
+
 ```powershell
+docker compose --env-file .env.example -p padel-e2e stop web api-gateway member-service subscription-service booking-service access-service notification-service assistant-service keycloak
 node scripts/backup.mjs --project padel-e2e --compose compose.yml --env-file .env.example --user padel --key-file .runtime/production-check/secrets/backup_key --output .runtime/backups/rehearsal-01
 docker compose --env-file .runtime/production-check/.env -f .runtime/production-check/compose.yml -p padel-restore-check up -d postgres
 node scripts/restore-check.mjs --project padel-restore-check --compose .runtime/production-check/compose.yml --env-file .runtime/production-check/.env --user padel_admin --key-file .runtime/production-check/secrets/backup_key --backup .runtime/backups/rehearsal-01
