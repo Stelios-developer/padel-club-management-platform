@@ -2,6 +2,8 @@
 
 Start with the [English overview](../README.md), [Greek setup and product guide](README.el.md) or [developer guide](../CONTRIBUTING.md). The application UI is Greek; the repository overview and maintenance entry points are English.
 
+[Public GitHub repository, demo release and publication scope](GITHUB-PUBLICATION.md).
+
 The [code map](CODE-MAP.md) locates implementation owners and extension points. Start with the directory guides for [backend](../backend/README.md), [web](../web/README.md), [infrastructure](../infra/README.md) and [operator tools](../scripts/README.md). The [folder organization](FOLDER-LAYOUT-2026-10-25.md) records path mappings and verification; the [earlier code refactoring](CODE-ORGANIZATION-2026-10-25.md) covers UI and operator composition.
 
 [Recruiter demo — 1:44](recruiter-demo/README.md) includes the narrated walkthrough, storyboard, English/Greek captions, cover and recording/verification scope.

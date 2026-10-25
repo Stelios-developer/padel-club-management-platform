@@ -8,7 +8,7 @@
 </p>
 
 <p align="center">
-  <a href="docs/recruiter-demo/README.md">104-second demo</a> ·
+  <a href="https://github.com/Stelios-developer/padel-club-management-platform/releases/tag/demo-v1">104-second demo</a> ·
   <a href="#architecture">Architecture</a> ·
   <a href="#technology-in-context">Technology</a> ·
   <a href="#quick-start">Run locally</a> ·
@@ -33,6 +33,10 @@
 </p>
 
 ---
+
+[![Padel CI](https://github.com/Stelios-developer/padel-club-management-platform/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/Stelios-developer/padel-club-management-platform/actions/workflows/ci.yml)
+[![Infrastructure checks](https://github.com/Stelios-developer/padel-club-management-platform/actions/workflows/cloud.yml/badge.svg?branch=main)](https://github.com/Stelios-developer/padel-club-management-platform/actions/workflows/cloud.yml)
+[![Demo — 1 minute 44 seconds](https://img.shields.io/badge/Demo-1m_44s-D9F846?style=flat-square&labelColor=14253F)](https://github.com/Stelios-developer/padel-club-management-platform/releases/tag/demo-v1)
 
 ## The product
 
@@ -206,9 +210,9 @@ The [CI workflow](.github/workflows/ci.yml) defines quality, backend, browser, s
 
 ## Demo and technical walkthrough
 
-[![104-second Padel Club engineering demo](docs/recruiter-demo/cover.jpg)](docs/recruiter-demo/README.md)
+[![104-second Padel Club engineering demo](docs/recruiter-demo/cover.jpg)](https://github.com/Stelios-developer/padel-club-management-platform/releases/tag/demo-v1)
 
-The **1:44 narrated demo** follows real local AI availability through a human-confirmed booking, mobile cards, sourced policies and notifications, then explains the architecture. English narration/captions and Greek subtitles are included. Recording scope and historical verification dates accompany the demo.
+The **1:44 narrated demo** follows real local AI availability through a human-confirmed booking, mobile cards, sourced policies and notifications, then explains the architecture. English narration/captions and Greek subtitles are included. [Download the video — MP4, 10.9 MB](https://github.com/Stelios-developer/padel-club-management-platform/releases/download/demo-v1/padel-club-recruiter-demo-en.mp4) · [Subtitles and checksums](https://github.com/Stelios-developer/padel-club-management-platform/releases/tag/demo-v1) · [Recording scope and dates](docs/recruiter-demo/README.md).
 
 For a review, start with [booking constraints](docs/BOOKING-CONSTRAINT.md), [transactional delivery](backend/common/src/main/java/club/padel/common/events/), or [typed AI availability](backend/assistant-service/src/main/java/club/padel/assistant/AvailabilityService.java), then follow the tests and reports.
 
