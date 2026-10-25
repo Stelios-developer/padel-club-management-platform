@@ -9,6 +9,7 @@ import { promisify } from "node:util";
 import { today, addDays, athensInstant } from "../web/utils.js";
 import { verifyPadel } from "./e2e/padel.mjs";
 import { verifyReception } from "./e2e/reception.mjs";
+import { assertConcurrentExclusion } from "./e2e/sql-conflicts.mjs";
 
 const exec = promisify(execFile);
 const root = new URL("../", import.meta.url);
@@ -636,6 +637,25 @@ try {
     });
     assert.equal(other.status, 200);
     otherProfile = other.data;
+    // Liveness and a gateway route alone do not establish each service's
+    // downstream discovery. Warm authenticated read paths before ownership tests.
+    for (const [actor, path] of [
+      [member, `/api/subscriptions?memberId=${profile.id}`],
+      [member, `/api/subscriptions/eligibility/${profile.id}?date=${today()}`],
+      [member, "/api/bookings"],
+      [member, "/api/notifications"],
+      [admin, "/api/access/audit"],
+    ]) {
+      const ready = await until(
+        async () => {
+          const response = await api(actor, path);
+          return response.status === 503 ? false : response;
+        },
+        "Authenticated service read path ready: " + path,
+        180000,
+      );
+      assert.equal(ready.status, 200, path + ": " + JSON.stringify(ready.data));
+    }
   });
   await test("Member ownership and staff-only APIs enforced across services", async () => {
     for (const path of [
@@ -1549,8 +1569,22 @@ try {
       ),
     );
     assert.equal(responses.filter((r) => r.status === "fulfilled").length, 1);
-    for (const response of responses)
-      if (response.status === "rejected") assertExcluded(response.reason);
+    for (const [index, response] of responses.entries())
+      if (response.status === "rejected") {
+        assert.equal(
+          await sql(
+            "padel_bookings",
+            `SELECT count(*) FROM bookings WHERE id='${attempts[index].id}';`,
+          ),
+          "0",
+        );
+        await assertConcurrentExclusion(
+          response.reason,
+          attempts[index].query,
+          sql,
+          /bookings_no_confirmed_overlap/,
+        );
+      }
     assert.equal(
       await sql(
         "padel_bookings",

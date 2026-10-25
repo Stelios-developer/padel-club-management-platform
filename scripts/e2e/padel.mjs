@@ -1,6 +1,7 @@
 import assert from "node:assert/strict";
 import { randomUUID } from "node:crypto";
 import { today, addDays, athensInstant, time } from "../../web/utils.js";
+import { assertConcurrentExclusion } from "./sql-conflicts.mjs";
 export async function verifyPadel({
   test,
   api,
@@ -471,10 +472,28 @@ export async function verifyPadel({
       ),
     );
     assert.equal(responses.filter((r) => r.status === "fulfilled").length, 1);
-    for (const r of responses)
+    for (const [index, r] of responses.entries())
       if (r.status === "rejected") {
-        assert.match(r.reason.stderr, /23P01/);
-        assert.match(r.reason.stderr, /players_no_confirmed_overlap/);
+        assert.equal(
+          await sql(
+            "padel_bookings",
+            `SELECT count(*) FROM bookings WHERE id='${attempts[index].id}';`,
+          ),
+          "0",
+        );
+        await assertConcurrentExclusion(
+          r.reason,
+          attempts[index].query,
+          sql,
+          /players_no_confirmed_overlap/,
+        );
       }
+    assert.equal(
+      await sql(
+        "padel_bookings",
+        `SELECT count(*) FROM booking_players WHERE booking_id IN (${attempts.map((row) => `'${row.id}'`).join(",")}) AND status='ACCEPTED';`,
+      ),
+      "1",
+    );
   });
 }
