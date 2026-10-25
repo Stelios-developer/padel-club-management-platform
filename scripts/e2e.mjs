@@ -1644,14 +1644,11 @@ try {
         .status,
       409,
     );
-    assert.equal(
-      (
-        await api(admin, "/api/access/validate", "POST", {
-          bookingId: liveBooking.id,
-        })
-      ).data.reason,
-      "NO_ACTIVE_SUBSCRIPTION",
-    );
+    const denied = await api(admin, "/api/access/validate", "POST", {
+      bookingId: liveBooking.id,
+    });
+    assert.equal(denied.status, 200, JSON.stringify(denied.data));
+    assert.equal(denied.data.reason, "NO_ACTIVE_SUBSCRIPTION");
     const replay = await api(
       admin,
       "/api/subscriptions",
