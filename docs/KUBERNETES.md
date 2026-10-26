@@ -52,6 +52,8 @@ The shared HTTP suite uses actual OIDC/PKCE, JWT/ownership rules, PostgreSQL con
 
 Kubernetes runs **61 cases**: the shared 60 scenarios plus PostgreSQL pod replacement. The extra case requires a new pod UID, unchanged bound PVC/volume, unchanged booking fingerprints and recovery of booking HTTP access and Keycloak database access. Gateway/service replacements, broker/SMTP outages and persisted idempotency are also exercised.
 
+Reception first-write concurrency runs before its deliberate service outage. The separate recovery scenario requires persisted attendance, a recovered authenticated ownership path/circuit, actual attendance corrections and exact audit counts after restart. Only unavailable gateway/service replies may retry the same idempotent correction intent within a deadline; authorization/domain failures remain immediate failures. This avoids treating a successful history read or stored replay as proof that downstream write dependencies have recovered.
+
 Fixture cleanup retries transient server failures, handles idempotent DELETE replay and separately proves GET `404`. Surviving identities, persistent errors and unauthorized replies fail the run even if functional cases pass. Failed attempts remain separate from later evidence.
 
 `test-results/kubernetes-*.json` records exact running image identities, ready workloads, PVCs and results. Reports omit environment credentials, kubeconfig material and private addresses; negative controls test this redaction. `node scripts/kubernetes.mjs diagnostics` saves additional private diagnostics in `.runtime/`.

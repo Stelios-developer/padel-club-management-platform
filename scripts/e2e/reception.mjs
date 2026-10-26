@@ -1,5 +1,6 @@
 import assert from "node:assert/strict";
 import { randomUUID } from "node:crypto";
+import { recoveredRead } from "./readiness.mjs";
 import { today, addDays, athensInstant, localDate } from "../../web/utils.js";
 export async function verifyReception({
   test,
@@ -385,44 +386,6 @@ export async function verifyReception({
       assert(c.after.startsAt);
     }
   });
-  if (resilience)
-    await test("Reception audit, original move response and dependent access recover after booking restart", async () => {
-      await compose("restart", "booking-service");
-      await until(
-        async () => (await history(b.id)).status === 200,
-        "Reception after service restart",
-        180000,
-      );
-      const replay = await api(
-        admin,
-        "/api/bookings/" + b.id + "/move",
-        "POST",
-        body,
-        "el-GR",
-        key,
-      );
-      assert.equal(replay.status, 200);
-      assert.deepEqual(replay.data, moved);
-      assert.equal(
-        (await history(b.id)).data.filter((h) => h.action === "BOOKING_MOVED")
-          .length,
-        2,
-      );
-      // Gateway recovery does not imply the access-service Feign cache has
-      // observed booking's re-registration. Prove that dependent path too.
-      const access = await until(
-        async () => {
-          const response = await api(admin, "/api/access/validate", "POST", {
-            bookingId: liveBooking.id,
-          });
-          return response.status === 503 ? false : response;
-        },
-        "Access-service observes restarted booking-service",
-        180000,
-      );
-      assert.equal(access.status, 200, JSON.stringify(access.data));
-      assert.equal(access.data.allowed, true);
-    });
   await test("Concurrent attendance records once, corrections retain history and outsiders cannot be marked", async () => {
     const path =
         "/api/bookings/" + liveBooking.id + "/attendance/" + profile.id,
@@ -435,7 +398,10 @@ export async function verifyReception({
     const rs = await Promise.all(
       Array.from({ length: 8 }, () => api(admin, path, "PUT", body)),
     );
-    assert(rs.every((r) => r.status === 200));
+    assert(
+      rs.every((r) => r.status === 200),
+      JSON.stringify(rs.map(({ status, data }) => ({ status, data }))),
+    );
     assert.equal(
       await sql(
         "padel_bookings",
@@ -568,4 +534,140 @@ export async function verifyReception({
       ),
     );
   });
+  if (resilience)
+    await test("Reception audit, original move response and dependent access recover after booking restart", async () => {
+      const available = (request, label) =>
+        until(
+          async () => {
+            const response = await request();
+            return [502, 503].includes(response.status) ? false : response;
+          },
+          label,
+          180000,
+        );
+      await compose("restart", "booking-service");
+      const restoredHistory = await available(
+        () => history(b.id),
+        "Reception after service restart",
+      );
+      assert.equal(
+        restoredHistory.status,
+        200,
+        JSON.stringify(restoredHistory.data),
+      );
+      assert.equal(
+        restoredHistory.data.filter((h) => h.action === "BOOKING_MOVED").length,
+        2,
+      );
+      const replay = await available(
+        () =>
+          api(
+            admin,
+            "/api/bookings/" + b.id + "/move",
+            "POST",
+            body,
+            "el-GR",
+            key,
+          ),
+        "Persisted move response after service restart",
+      );
+      assert.equal(replay.status, 200);
+      assert.deepEqual(replay.data, moved);
+      // Gateway recovery does not imply the access-service Feign cache has
+      // observed booking's re-registration. Prove that dependent path too.
+      const access = await until(
+        () =>
+          recoveredRead(
+            () =>
+              api(admin, "/api/access/validate", "POST", {
+                bookingId: liveBooking.id,
+              }),
+            () =>
+              compose(
+                "exec",
+                "-T",
+                "access-service",
+                "wget",
+                "-qO-",
+                "http://localhost:8080/actuator/prometheus",
+              ),
+            "BookingClientget",
+          ),
+        "Access-service observes restarted booking-service",
+        180000,
+      );
+      assert.equal(access.status, 200, JSON.stringify(access.data));
+      assert.equal(access.data.allowed, true);
+      // Functional first-write concurrency is verified before this deliberate
+      // outage. Now separately prove persisted attendance and real write recovery;
+      // a history read or idempotency replay alone never exercises Feign clients.
+      const metrics = () =>
+        compose(
+          "exec",
+          "-T",
+          "booking-service",
+          "wget",
+          "-qO-",
+          "http://localhost:8080/actuator/prometheus",
+        );
+      const owned = await until(
+        () =>
+          recoveredRead(
+            () => api(member, "/api/bookings/" + liveBooking.id),
+            metrics,
+            "MemberClientme",
+          ),
+        "Booking ownership path and downstream circuit recover after restart",
+        180000,
+      );
+      assert.equal(owned.status, 200, JSON.stringify(owned.data));
+      assert.equal(owned.data.id, liveBooking.id);
+      const attendancePath = "/api/bookings/" + liveBooking.id + "/attendance";
+      const persisted = await until(
+        async () => {
+          const response = await api(admin, attendancePath);
+          return [502, 503].includes(response.status) ? false : response;
+        },
+        "Persisted attendance route after restart",
+        180000,
+      );
+      assert.equal(persisted.status, 200, JSON.stringify(persisted.data));
+      assert.equal(persisted.data.players[0].status, "PRESENT");
+      assert.equal(persisted.data.players[0].recordedBy, admin.id);
+      const auditCount = async () => {
+        const response = await available(
+          () => history(liveBooking.id),
+          "Attendance audit route after restart",
+        );
+        assert.equal(response.status, 200, JSON.stringify(response.data));
+        return response.data.filter((c) => c.action.startsWith("ATTENDANCE_"))
+          .length;
+      };
+      assert.equal(await auditCount(), 3);
+      for (const status of ["ABSENT", "PRESENT"]) {
+        // Same intent is idempotent in ReceptionService.mark: replaying a lost
+        // success must not create another audit entry. Never retry auth/domain errors.
+        const corrected = await until(
+          async () => {
+            const response = await api(
+              admin,
+              attendancePath + "/" + profile.id,
+              "PUT",
+              { status, reason: "Post-restart attendance recovery E2E" },
+            );
+            return [502, 503].includes(response.status) ? false : response;
+          },
+          "Attendance write and eligibility recover: " + status,
+          180000,
+        );
+        assert.equal(corrected.status, 200, JSON.stringify(corrected.data));
+      }
+      assert.equal(await auditCount(), 5);
+      const restored = await available(
+        () => api(admin, attendancePath),
+        "Restored attendance after correction",
+      );
+      assert.equal(restored.status, 200, JSON.stringify(restored.data));
+      assert.equal(restored.data.players[0].status, "PRESENT");
+    });
 }
