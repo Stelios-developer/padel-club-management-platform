@@ -135,7 +135,7 @@ jobs:
         with: { persist-credentials: false }
       - uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7.0.0
         with: { node-version: "24" }
-      - name: Verify raw SQL concurrency assertion controls
+      - name: Verify E2E readiness and SQL concurrency controls
         run: node --test scripts/e2e/*.test.mjs
       - name: Start real stack
         run: docker compose --env-file .env.example -p padel-e2e up -d --build --wait --wait-timeout 480

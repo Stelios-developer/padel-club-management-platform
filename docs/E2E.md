@@ -2,6 +2,8 @@
 
 Το `scripts/e2e.mjs` χρησιμοποιεί πραγματικό HTTP μέσω Nginx/API Gateway, authorization code + S256 PKCE στο Keycloak, τις PostgreSQL βάσεις των υπηρεσιών, RabbitMQ και SMTP στο Mailpit. Δεν χρησιμοποιεί H2, mocked downstream υπηρεσίες ή τη λειτουργία επίδειξης.
 
+Πριν από τα ownership assertions, τα επιτυχή authenticated GET probes απαιτούν και το αντίστοιχο Feign circuit σε `CLOSED`, με μηδενικές αποθηκευμένες αποτυχίες στο πραγματικό `/actuator/prometheus` της υπηρεσίας. Ένα πρώτο `200` δεν αρκεί: προηγούμενα discovery failures μπορούν να συμπληρώσουν το minimum call count και να ανοίξουν το circuit ακόμη και μετά από επιτυχή κλήση. Ο έλεγχος περιμένει πραγματική ανάκαμψη, χωρίς αλλαγή των runtime thresholds ή επανάληψη των security assertions. Απρόσμενες HTTP αποκρίσεις αποτυγχάνουν αμέσως· επίμονο `503` ή ελλιπή metrics αποτυγχάνουν με timeout. Τα αρνητικά controls εκτελούνται με `node --test scripts/e2e/*.test.mjs`.
+
 Για πραγματικές ενέργειες μέσα από το web περιβάλλον, το `node scripts/user-journey.mjs` καλύπτει τη διαδρομή νέου μέλους και υποδοχής με Playwright, πραγματικό OIDC και προσωρινούς λογαριασμούς. [Οδηγίες, αποτελέσματα και όρια του ελέγχου χρήστη](USER-VERIFICATION.md).
 
 ## Εκτέλεση
