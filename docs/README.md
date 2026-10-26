@@ -47,7 +47,8 @@ The [code map](CODE-MAP.md) locates implementation owners and extension points. 
 ## Operations and security
 
 - [Production preparation, TLS/MFA, backups and restore](PRODUCTION.md)
-- [Supply chain, vulnerability exceptions and signed-release preparation](SUPPLY-CHAIN.md)
+- [Verified v1.0.0 container release, digests and signed provenance/SBOM](RELEASE-v1.0.0.md)
+- [Supply chain, vulnerability exceptions and release verification](SUPPLY-CHAIN.md)
 - [AWS architecture decision and activation runbook](CLOUD.md)
 - [Operations command catalogue](../scripts/README.md)
 

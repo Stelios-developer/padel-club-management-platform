@@ -1,0 +1,352 @@
+{
+  "schemaVersion": 1,
+  "verifiedAt": "2026-10-26T09:28:13.159Z",
+  "releaseLabel": "v1.0.0",
+  "repo": "Stelios-developer/padel-club-management-platform",
+  "sourceCommit": "201617b4886311982ccb7dfde9a8b6179c774ae8",
+  "publisherRunId": 40295990074,
+  "publisherRunURL": "https://github.com/Stelios-developer/padel-club-management-platform/actions/runs/40295990074",
+  "platform": "linux/amd64",
+  "images": [
+    {
+      "service": "config-server",
+      "image": "ghcr.io/stelios-developer/padel-club-management-platform/config-server@sha256:f8156ea2fc5a0eb896b4814fbe97a7b3ecfc6db8ed0293bae5b5b8da2daaa51f",
+      "imageId": "sha256:ce38068992b130f6a6f2113f63fca0fce076c21f781b436937f244cbc12f0095",
+      "scanGate": "PASSED",
+      "publicManifestDigestVerified": true,
+      "publishedConfigMatchesScannedImage": true,
+      "sourceCommit": "201617b4886311982ccb7dfde9a8b6179c774ae8",
+      "signerWorkflow": "Stelios-developer/padel-club-management-platform/.github/workflows/publish-images.yml",
+      "publisherRunInvocationVerified": true,
+      "signedSBOMMatchesArtifact": true,
+      "verified": [
+        {
+          "source": "github",
+          "predicateType": "https://slsa.dev/provenance/v1",
+          "attestations": 1
+        },
+        {
+          "source": "github",
+          "predicateType": "https://cyclonedx.org/bom",
+          "attestations": 1
+        },
+        {
+          "source": "registry",
+          "predicateType": "https://slsa.dev/provenance/v1",
+          "attestations": 1
+        },
+        {
+          "source": "registry",
+          "predicateType": "https://cyclonedx.org/bom",
+          "attestations": 1
+        }
+      ]
+    },
+    {
+      "service": "discovery-server",
+      "image": "ghcr.io/stelios-developer/padel-club-management-platform/discovery-server@sha256:eacb413b34a749d78d745b045c18c1fab4a46d804765288a6479228535dd37dd",
+      "imageId": "sha256:c04779fd54b4d7a8e9519580e2b5259ab712106f35aa1a0daabce20dc59a53ed",
+      "scanGate": "PASSED",
+      "publicManifestDigestVerified": true,
+      "publishedConfigMatchesScannedImage": true,
+      "sourceCommit": "201617b4886311982ccb7dfde9a8b6179c774ae8",
+      "signerWorkflow": "Stelios-developer/padel-club-management-platform/.github/workflows/publish-images.yml",
+      "publisherRunInvocationVerified": true,
+      "signedSBOMMatchesArtifact": true,
+      "verified": [
+        {
+          "source": "github",
+          "predicateType": "https://slsa.dev/provenance/v1",
+          "attestations": 1
+        },
+        {
+          "source": "github",
+          "predicateType": "https://cyclonedx.org/bom",
+          "attestations": 1
+        },
+        {
+          "source": "registry",
+          "predicateType": "https://slsa.dev/provenance/v1",
+          "attestations": 1
+        },
+        {
+          "source": "registry",
+          "predicateType": "https://cyclonedx.org/bom",
+          "attestations": 1
+        }
+      ]
+    },
+    {
+      "service": "api-gateway",
+      "image": "ghcr.io/stelios-developer/padel-club-management-platform/api-gateway@sha256:36accf8f3fbd1cad0ce68c53db09be82a76f1f81bab931a133cd9d396560a994",
+      "imageId": "sha256:1113852bd9962140150b74f458cb061be540021cc5805ca7fced3ecc9d5c28c3",
+      "scanGate": "PASSED",
+      "publicManifestDigestVerified": true,
+      "publishedConfigMatchesScannedImage": true,
+      "sourceCommit": "201617b4886311982ccb7dfde9a8b6179c774ae8",
+      "signerWorkflow": "Stelios-developer/padel-club-management-platform/.github/workflows/publish-images.yml",
+      "publisherRunInvocationVerified": true,
+      "signedSBOMMatchesArtifact": true,
+      "verified": [
+        {
+          "source": "github",
+          "predicateType": "https://slsa.dev/provenance/v1",
+          "attestations": 1
+        },
+        {
+          "source": "github",
+          "predicateType": "https://cyclonedx.org/bom",
+          "attestations": 1
+        },
+        {
+          "source": "registry",
+          "predicateType": "https://slsa.dev/provenance/v1",
+          "attestations": 1
+        },
+        {
+          "source": "registry",
+          "predicateType": "https://cyclonedx.org/bom",
+          "attestations": 1
+        }
+      ]
+    },
+    {
+      "service": "member-service",
+      "image": "ghcr.io/stelios-developer/padel-club-management-platform/member-service@sha256:c49efa2fd12e4b88f4817bdbdee271a44e6947dbe1b9123135558dccb93a236c",
+      "imageId": "sha256:648271ccb99822d12f0623e5c26ef5548d0b1084e286bfa6b7800797fc2a4a3f",
+      "scanGate": "PASSED",
+      "publicManifestDigestVerified": true,
+      "publishedConfigMatchesScannedImage": true,
+      "sourceCommit": "201617b4886311982ccb7dfde9a8b6179c774ae8",
+      "signerWorkflow": "Stelios-developer/padel-club-management-platform/.github/workflows/publish-images.yml",
+      "publisherRunInvocationVerified": true,
+      "signedSBOMMatchesArtifact": true,
+      "verified": [
+        {
+          "source": "github",
+          "predicateType": "https://slsa.dev/provenance/v1",
+          "attestations": 1
+        },
+        {
+          "source": "github",
+          "predicateType": "https://cyclonedx.org/bom",
+          "attestations": 1
+        },
+        {
+          "source": "registry",
+          "predicateType": "https://slsa.dev/provenance/v1",
+          "attestations": 1
+        },
+        {
+          "source": "registry",
+          "predicateType": "https://cyclonedx.org/bom",
+          "attestations": 1
+        }
+      ]
+    },
+    {
+      "service": "subscription-service",
+      "image": "ghcr.io/stelios-developer/padel-club-management-platform/subscription-service@sha256:eeabd4ea06b61645aade44dce4b08821685d54a153570e062ce2373b960d2b2d",
+      "imageId": "sha256:f474573d8b32af2ac9e28d8e37a2dc510b84626a309cee4ccdd55f5b4a31fe2b",
+      "scanGate": "PASSED",
+      "publicManifestDigestVerified": true,
+      "publishedConfigMatchesScannedImage": true,
+      "sourceCommit": "201617b4886311982ccb7dfde9a8b6179c774ae8",
+      "signerWorkflow": "Stelios-developer/padel-club-management-platform/.github/workflows/publish-images.yml",
+      "publisherRunInvocationVerified": true,
+      "signedSBOMMatchesArtifact": true,
+      "verified": [
+        {
+          "source": "github",
+          "predicateType": "https://slsa.dev/provenance/v1",
+          "attestations": 1
+        },
+        {
+          "source": "github",
+          "predicateType": "https://cyclonedx.org/bom",
+          "attestations": 1
+        },
+        {
+          "source": "registry",
+          "predicateType": "https://slsa.dev/provenance/v1",
+          "attestations": 1
+        },
+        {
+          "source": "registry",
+          "predicateType": "https://cyclonedx.org/bom",
+          "attestations": 1
+        }
+      ]
+    },
+    {
+      "service": "booking-service",
+      "image": "ghcr.io/stelios-developer/padel-club-management-platform/booking-service@sha256:322d14586c73f4c32a3ae59a848600dfc9c3b96853e035bb1ba7ece180f362f4",
+      "imageId": "sha256:75d41530a12d9f9b60d8f38a4350801b4f233f4f9a9f1ec3e7fab4f32a924a0b",
+      "scanGate": "PASSED",
+      "publicManifestDigestVerified": true,
+      "publishedConfigMatchesScannedImage": true,
+      "sourceCommit": "201617b4886311982ccb7dfde9a8b6179c774ae8",
+      "signerWorkflow": "Stelios-developer/padel-club-management-platform/.github/workflows/publish-images.yml",
+      "publisherRunInvocationVerified": true,
+      "signedSBOMMatchesArtifact": true,
+      "verified": [
+        {
+          "source": "github",
+          "predicateType": "https://slsa.dev/provenance/v1",
+          "attestations": 1
+        },
+        {
+          "source": "github",
+          "predicateType": "https://cyclonedx.org/bom",
+          "attestations": 1
+        },
+        {
+          "source": "registry",
+          "predicateType": "https://slsa.dev/provenance/v1",
+          "attestations": 1
+        },
+        {
+          "source": "registry",
+          "predicateType": "https://cyclonedx.org/bom",
+          "attestations": 1
+        }
+      ]
+    },
+    {
+      "service": "access-service",
+      "image": "ghcr.io/stelios-developer/padel-club-management-platform/access-service@sha256:c1dadc6e76d2b332a8c8507af84ea30009dec3c7d1f4361dfbcce1a7738fdf75",
+      "imageId": "sha256:b4cba3e87cf26bc9502d9027d8b757fb91459a83a6437d4e3aac3887b3ed7ea7",
+      "scanGate": "PASSED",
+      "publicManifestDigestVerified": true,
+      "publishedConfigMatchesScannedImage": true,
+      "sourceCommit": "201617b4886311982ccb7dfde9a8b6179c774ae8",
+      "signerWorkflow": "Stelios-developer/padel-club-management-platform/.github/workflows/publish-images.yml",
+      "publisherRunInvocationVerified": true,
+      "signedSBOMMatchesArtifact": true,
+      "verified": [
+        {
+          "source": "github",
+          "predicateType": "https://slsa.dev/provenance/v1",
+          "attestations": 1
+        },
+        {
+          "source": "github",
+          "predicateType": "https://cyclonedx.org/bom",
+          "attestations": 1
+        },
+        {
+          "source": "registry",
+          "predicateType": "https://slsa.dev/provenance/v1",
+          "attestations": 1
+        },
+        {
+          "source": "registry",
+          "predicateType": "https://cyclonedx.org/bom",
+          "attestations": 1
+        }
+      ]
+    },
+    {
+      "service": "notification-service",
+      "image": "ghcr.io/stelios-developer/padel-club-management-platform/notification-service@sha256:2dce40b493160183ebb5d36a8d6718ebd82d49fa5293d7ce02ae847c8ede66c4",
+      "imageId": "sha256:4483ff06f3e2541b158286c9832846114814888be057eddc9e43f96808b5df4c",
+      "scanGate": "PASSED",
+      "publicManifestDigestVerified": true,
+      "publishedConfigMatchesScannedImage": true,
+      "sourceCommit": "201617b4886311982ccb7dfde9a8b6179c774ae8",
+      "signerWorkflow": "Stelios-developer/padel-club-management-platform/.github/workflows/publish-images.yml",
+      "publisherRunInvocationVerified": true,
+      "signedSBOMMatchesArtifact": true,
+      "verified": [
+        {
+          "source": "github",
+          "predicateType": "https://slsa.dev/provenance/v1",
+          "attestations": 1
+        },
+        {
+          "source": "github",
+          "predicateType": "https://cyclonedx.org/bom",
+          "attestations": 1
+        },
+        {
+          "source": "registry",
+          "predicateType": "https://slsa.dev/provenance/v1",
+          "attestations": 1
+        },
+        {
+          "source": "registry",
+          "predicateType": "https://cyclonedx.org/bom",
+          "attestations": 1
+        }
+      ]
+    },
+    {
+      "service": "assistant-service",
+      "image": "ghcr.io/stelios-developer/padel-club-management-platform/assistant-service@sha256:a89ed266eacb01a4c6eeae891c5942f0610964c0f60d357917dcef5b100aec4b",
+      "imageId": "sha256:dfac58b33382f18b25b927bfc02feefe06a8a1c29e76324c87d6037602d5886a",
+      "scanGate": "PASSED",
+      "publicManifestDigestVerified": true,
+      "publishedConfigMatchesScannedImage": true,
+      "sourceCommit": "201617b4886311982ccb7dfde9a8b6179c774ae8",
+      "signerWorkflow": "Stelios-developer/padel-club-management-platform/.github/workflows/publish-images.yml",
+      "publisherRunInvocationVerified": true,
+      "signedSBOMMatchesArtifact": true,
+      "verified": [
+        {
+          "source": "github",
+          "predicateType": "https://slsa.dev/provenance/v1",
+          "attestations": 1
+        },
+        {
+          "source": "github",
+          "predicateType": "https://cyclonedx.org/bom",
+          "attestations": 1
+        },
+        {
+          "source": "registry",
+          "predicateType": "https://slsa.dev/provenance/v1",
+          "attestations": 1
+        },
+        {
+          "source": "registry",
+          "predicateType": "https://cyclonedx.org/bom",
+          "attestations": 1
+        }
+      ]
+    },
+    {
+      "service": "web",
+      "image": "ghcr.io/stelios-developer/padel-club-management-platform/web@sha256:e058b810ff8fde1bf03241dfcd9d6adc3e7aee1bcc100d0c725a3072e596d4c3",
+      "imageId": "sha256:7eb2bad103f5692f2b074f61401d7a3f56dc0be3bb9336eaccaf0ee4104cdeeb",
+      "scanGate": "PASSED",
+      "publicManifestDigestVerified": true,
+      "publishedConfigMatchesScannedImage": true,
+      "sourceCommit": "201617b4886311982ccb7dfde9a8b6179c774ae8",
+      "signerWorkflow": "Stelios-developer/padel-club-management-platform/.github/workflows/publish-images.yml",
+      "publisherRunInvocationVerified": true,
+      "signedSBOMMatchesArtifact": true,
+      "verified": [
+        {
+          "source": "github",
+          "predicateType": "https://slsa.dev/provenance/v1",
+          "attestations": 1
+        },
+        {
+          "source": "github",
+          "predicateType": "https://cyclonedx.org/bom",
+          "attestations": 1
+        },
+        {
+          "source": "registry",
+          "predicateType": "https://slsa.dev/provenance/v1",
+          "attestations": 1
+        },
+        {
+          "source": "registry",
+          "predicateType": "https://cyclonedx.org/bom",
+          "attestations": 1
+        }
+      ]
+    }
+  ]
+}

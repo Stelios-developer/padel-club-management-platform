@@ -1,0 +1,17 @@
+{
+  "schemaVersion": 1,
+  "repo": "Stelios-developer/padel-club-management-platform",
+  "revision": "201617b4886311982ccb7dfde9a8b6179c774ae8",
+  "images": {
+    "config-server": "ghcr.io/stelios-developer/padel-club-management-platform/config-server@sha256:f8156ea2fc5a0eb896b4814fbe97a7b3ecfc6db8ed0293bae5b5b8da2daaa51f",
+    "discovery-server": "ghcr.io/stelios-developer/padel-club-management-platform/discovery-server@sha256:eacb413b34a749d78d745b045c18c1fab4a46d804765288a6479228535dd37dd",
+    "api-gateway": "ghcr.io/stelios-developer/padel-club-management-platform/api-gateway@sha256:36accf8f3fbd1cad0ce68c53db09be82a76f1f81bab931a133cd9d396560a994",
+    "member-service": "ghcr.io/stelios-developer/padel-club-management-platform/member-service@sha256:c49efa2fd12e4b88f4817bdbdee271a44e6947dbe1b9123135558dccb93a236c",
+    "subscription-service": "ghcr.io/stelios-developer/padel-club-management-platform/subscription-service@sha256:eeabd4ea06b61645aade44dce4b08821685d54a153570e062ce2373b960d2b2d",
+    "booking-service": "ghcr.io/stelios-developer/padel-club-management-platform/booking-service@sha256:322d14586c73f4c32a3ae59a848600dfc9c3b96853e035bb1ba7ece180f362f4",
+    "access-service": "ghcr.io/stelios-developer/padel-club-management-platform/access-service@sha256:c1dadc6e76d2b332a8c8507af84ea30009dec3c7d1f4361dfbcce1a7738fdf75",
+    "notification-service": "ghcr.io/stelios-developer/padel-club-management-platform/notification-service@sha256:2dce40b493160183ebb5d36a8d6718ebd82d49fa5293d7ce02ae847c8ede66c4",
+    "assistant-service": "ghcr.io/stelios-developer/padel-club-management-platform/assistant-service@sha256:a89ed266eacb01a4c6eeae891c5942f0610964c0f60d357917dcef5b100aec4b",
+    "web": "ghcr.io/stelios-developer/padel-club-management-platform/web@sha256:e058b810ff8fde1bf03241dfcd9d6adc3e7aee1bcc100d0c725a3072e596d4c3"
+  }
+}
