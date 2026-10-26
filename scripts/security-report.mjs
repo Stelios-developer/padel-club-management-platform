@@ -117,7 +117,9 @@ const summary = {
   installed: sanitize(installed),
   images,
   limits: [
-    `${source.findings.filter((finding) => finding.exception).length} temporary exception occurrences expire 2026-11-04; accepted risk remains visible.`,
+    source.findings.some((finding) => finding.exception)
+      ? `${source.findings.filter((finding) => finding.exception).length} temporary exception occurrences; expiry dates: ${[...new Set(source.findings.filter((finding) => finding.exception).map((finding) => finding.exception.expires))].join(", ")}.`
+      : "No accepted exception occurrences in this source scan; all blocking findings remain enforced.",
     "Medium/low findings do not block under this policy.",
     "No GitHub repository, CodeQL run, signed public release, Kubernetes deployment, penetration test or SLSA level verified.",
     "Infrastructure images, build-stage images and scanner binaries are outside the ten-image vulnerability result.",

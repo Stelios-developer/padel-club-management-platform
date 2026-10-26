@@ -24,11 +24,11 @@
 
 ## Ασφάλεια και supply chain
 
-Το τοπικό μέρος του [σταδίου 6 — ασφάλεια και supply chain](SUPPLY-CHAIN.md) περιλαμβάνει Trivy gates, Syft/CycloneDX SBOM για 10 application images, pinned Actions/Docker bases και επαλήθευση ότι εγκαταστάθηκε το image που σαρώθηκε. Διορθώθηκαν runtime εξαρτήσεις και το νέο πλήρες backend verify πέρασε **135 tests**. Υπάρχουν **πέντε προσωρινές source/configuration εξαιρέσεις έως 04/11/2026**. [Πραγματικά αποτελέσματα και όρια](security/results.json).
+Το τοπικό μέρος του [σταδίου 6 — ασφάλεια και supply chain](SUPPLY-CHAIN.md) περιλαμβάνει Trivy gates, Syft/CycloneDX SBOM για 10 application images, pinned Actions/Docker bases και επαλήθευση ότι εγκαταστάθηκε το image που σαρώθηκε. Διορθώθηκαν runtime εξαρτήσεις και το νέο πλήρες backend verify πέρασε **135 tests**. Η αρχική καταγραφή περιλάμβανε πέντε εξαιρέσεις· διατηρείται ως ιστορικό snapshot. Η [τρέχουσα πολιτική](SECURITY-HARDENING.md) δεν περιλαμβάνει εξαιρέσεις. [Πραγματικά αποτελέσματα και όρια](security/results.json).
 
 Τα GitHub Actions και CodeQL έχουν εκτελεστεί στο δημόσιο repository. Το [v1.0.0 release](RELEASE-v1.0.0.md) δημοσίευσε 10 images με επαληθευμένα provenance/SBOM attestations. Το πραγματικό release και η τοπική λειτουργία δεν αποτελούν πιστοποίηση production readiness.
 
-Προστέθηκε η [τοπική προετοιμασία AWS/Terraform](CLOUD.md): encrypted state/data, retained EBS, περιορισμένοι GitHub OIDC ρόλοι, deployment με signed image digests και έλεγχοι rollback. Η προετοιμασία ελέγχεται με mock AWS provider· δεν δημιουργήθηκαν AWS πόροι ή χρεώσεις. Η τρέχουσα [πολιτική εξαιρέσεων](../infra/security/exceptions.json) καταγράφει τέσσερις προσωρινές εξαιρέσεις, με λήξη 04/11/2026. [Πραγματικά αποτελέσματα και εκκρεμότητες](cloud/results.json).
+Προστέθηκε η [τοπική προετοιμασία AWS/Terraform](CLOUD.md): encrypted state/data, retained EBS, περιορισμένοι GitHub OIDC ρόλοι, deployment με signed image digests και έλεγχοι rollback. Η προετοιμασία ελέγχεται με mock AWS provider· δεν δημιουργήθηκαν AWS πόροι ή χρεώσεις. Η τρέχουσα [πολιτική εξαιρέσεων](../infra/security/exceptions.json) δεν περιλαμβάνει πλέον εξαιρέσεις: διορθώθηκαν τα read-only filesystems των τριών Kubernetes υπηρεσιών και η unrestricted HTTPS έξοδος του AWS template. [Αποδείξεις και όρια](SECURITY-HARDENING.md). [Πραγματικά αποτελέσματα και εκκρεμότητες](cloud/results.json).
 
 ## Γρήγορη προβολή χωρίς Docker
 

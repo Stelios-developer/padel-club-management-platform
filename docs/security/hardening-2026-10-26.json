@@ -1,0 +1,143 @@
+{
+  "schemaVersion": 1,
+  "verifiedAt": "2026-10-26T18:43:19.419Z",
+  "scope": "Local working tree: real existing kind deployment, source/config scans and credential-free Terraform mock tests. Hosted CI is recorded separately in GitHub Actions.",
+  "retiredExceptions": [
+    {
+      "id": "AWS-0104",
+      "resource": "aws_vpc_security_group_egress_rule.https"
+    },
+    {
+      "id": "KSV-0014",
+      "resource": "StatefulSet/postgres"
+    },
+    {
+      "id": "KSV-0014",
+      "resource": "StatefulSet/rabbitmq"
+    },
+    {
+      "id": "KSV-0014",
+      "resource": "Deployment/keycloak"
+    }
+  ],
+  "remainingExceptions": 0,
+  "severityPolicyUnchanged": true,
+  "scans": {
+    "source": {
+      "gate": "PASSED",
+      "scannedAt": "2026-10-26T20:38:18.6275647+02:00",
+      "blocking": 0,
+      "exceptions": 0,
+      "findingsBySeverity": {
+        "CRITICAL": 0,
+        "HIGH": 0,
+        "MEDIUM": 57,
+        "LOW": 48,
+        "UNKNOWN": 0
+      }
+    },
+    "terraform": {
+      "gate": "PASSED",
+      "scannedAt": "2026-10-26T20:38:48.121826+02:00",
+      "blocking": 0,
+      "exceptions": 0,
+      "findingsBySeverity": {
+        "CRITICAL": 0,
+        "HIGH": 0,
+        "MEDIUM": 0,
+        "LOW": 2,
+        "UNKNOWN": 0
+      }
+    },
+    "liveKind": {
+      "gate": "PASSED",
+      "scannedAt": "2026-10-26T20:39:54.1683955+02:00",
+      "blocking": 0,
+      "exceptions": 0,
+      "findingsBySeverity": {
+        "CRITICAL": 0,
+        "HIGH": 0,
+        "MEDIUM": 14,
+        "LOW": 35,
+        "UNKNOWN": 0
+      }
+    }
+  },
+  "tests": {
+    "node": {
+      "passed": 121,
+      "failed": 0,
+      "skipped": 0
+    },
+    "terraform": {
+      "modules": [
+        {
+          "module": "bootstrap",
+          "valid": true,
+          "status": "pass",
+          "passed": 1,
+          "failed": 0,
+          "errored": 0,
+          "skipped": 0
+        },
+        {
+          "module": "demo",
+          "valid": true,
+          "status": "pass",
+          "passed": 14,
+          "failed": 0,
+          "errored": 0,
+          "skipped": 0
+        }
+      ],
+      "awsResourcesCreated": false
+    },
+    "kubernetes": {
+      "passed": 61,
+      "failed": 0,
+      "completed": true,
+      "readyWorkloads": 13,
+      "matchingApplicationDigests": 9
+    }
+  },
+  "runtimeHardening": [
+    {
+      "service": "postgres",
+      "podUid": "ff2c5209-3b60-4e85-afcb-8505a88a3362",
+      "runtimeUid": 70,
+      "kernelRootReadOnly": true,
+      "temporaryVolumeWritable": true,
+      "declaredReadOnlyRoots": 1
+    },
+    {
+      "service": "rabbitmq",
+      "podUid": "b8887ef5-bccd-4415-ac75-267006200943",
+      "runtimeUid": 100,
+      "kernelRootReadOnly": true,
+      "temporaryVolumeWritable": true,
+      "declaredReadOnlyRoots": 1
+    },
+    {
+      "service": "keycloak",
+      "podUid": "7240d36e-b2ba-48f6-9a0f-9f69ba54e5b1",
+      "runtimeUid": 1000,
+      "kernelRootReadOnly": true,
+      "temporaryVolumeWritable": true,
+      "declaredReadOnlyRoots": 3,
+      "optimizedCodeReadOnly": true,
+      "successfulInitBuilds": 2
+    }
+  ],
+  "dataPreservation": {
+    "encryptedBackupAuthenticated": true,
+    "retainedOriginalPVCs": 2,
+    "unchangedDomainTables": 17,
+    "domainDatabases": 3,
+    "scope": "Fingerprints compared before and after security rollout, before the isolated E2E fixtures were created"
+  },
+  "limitations": [
+    "No production/HA or cloud connectivity claim",
+    "MEDIUM/LOW findings retained",
+    "Keycloak optimization occurs per pod in restricted init containers"
+  ]
+}

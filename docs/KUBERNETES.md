@@ -33,18 +33,19 @@ Canonical `infra/k8s/config/` copies remain synchronized with their source files
 - Eureka registers clients with stable Kubernetes Service hostnames, avoiding stale replacement-pod IP destinations.
 - Keycloak issuer, browser origins and redirects match the dedicated localhost ports. Enabled health/metrics provide database readiness checks.
 - PostgreSQL and RabbitMQ have separate PVCs. Startup/readiness probes and staged rollout bring dependencies up before clients. Java heap/processor settings bound workstation resource use.
-- Application containers retain non-root identities, read-only roots, dropped capabilities and disabled service-account token mounts.
+- Application and infrastructure containers use non-root identities, read-only roots, dropped capabilities and disabled service-account token mounts. Data and bounded runtime paths remain writable volumes.
 
 Repeated preparation preserves private passwords. Windows applies and verifies an owner/SYSTEM/Administrators-only DACL. Linux private directories use `0700` and secret files `0600`.
 
 Every operation names the workspace kubeconfig and exact context. Guards require the loopback API server, expected kind Docker label/node name and owned `padel` namespace. Arbitrary remote clusters and an existing unowned namespace are rejected.
 
-The three existing writable-root exceptions for PostgreSQL/RabbitMQ/Keycloak remain development limitations, expiring **4 November 2026**. This profile does not claim production hardening or network-policy enforcement. PVC persistence across pod replacement does not make a kind node a backup: deleting the cluster removes this local infrastructure.
+The three writable-root exceptions for PostgreSQL/RabbitMQ/Keycloak have been removed after actual kernel-mount and recovery verification. Keycloak is optimized in restricted init containers; its main server mounts the generated code read-only. [Implementation, evidence and limits](SECURITY-HARDENING.md). This profile does not claim production readiness or network-policy enforcement. PVC persistence across pod replacement does not make a kind node a backup: deleting the cluster removes this local infrastructure.
 
 ## Integration and recovery tests
 
 ```sh
 node scripts/kubernetes.mjs test
+node scripts/kubernetes.mjs security
 node scripts/kubernetes.mjs report
 ```
 
@@ -56,10 +57,10 @@ Reception first-write concurrency runs before its deliberate service outage. The
 
 Fixture cleanup retries transient server failures, handles idempotent DELETE replay and separately proves GET `404`. Surviving identities, persistent errors and unauthorized replies fail the run even if functional cases pass. Failed attempts remain separate from later evidence.
 
-`test-results/kubernetes-*.json` records exact running image identities, ready workloads, PVCs and results. Reports omit environment credentials, kubeconfig material and private addresses; negative controls test this redaction. `node scripts/kubernetes.mjs diagnostics` saves additional private diagnostics in `.runtime/`.
+`test-results/kubernetes-*.json` records exact running image identities, ready workloads, PVCs, integration results and actual read-only filesystem/process-user checks. A complete report requires security proof matching the current pod UIDs. Reports omit environment credentials, kubeconfig material and private addresses; negative controls test this redaction. `node scripts/kubernetes.mjs diagnostics` saves additional private diagnostics in `.runtime/`.
 
 ## GitHub Actions
 
-The `kubernetes` job in [CI](../.github/workflows/ci.yml) checks target guards, independently reverifies provenance/SBOM attestations for the nine deployed images, creates disposable `padel-ci` and runs the real suite. Only the two redacted reports are uploaded. Cleanup removes only this GitHub runner's disposable cluster. Local commands do not delete cluster volumes.
+The `kubernetes` job in [CI](../.github/workflows/ci.yml) checks target guards, independently reverifies provenance/SBOM attestations for the nine deployed images, creates disposable `padel-ci`, runs the real suite and verifies actual kernel mounts/non-root users after recovery. Only the three redacted reports are uploaded. Cleanup removes only this GitHub runner's disposable cluster. Local commands do not delete cluster volumes.
 
 Application release source is `201617b4886311982ccb7dfde9a8b6179c774ae8`; Kubernetes tooling/configuration is versioned separately by the current checkout. A hosted report records its GitHub source revision; a local report explicitly identifies a local working tree.

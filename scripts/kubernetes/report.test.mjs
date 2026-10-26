@@ -14,6 +14,20 @@ function fixture() {
     ),
   };
   return {
+    security: {
+      cluster: "padel-ci",
+      completed: true,
+      checks: ["postgres", "rabbitmq", "keycloak"].map((service) => ({
+        service,
+        podUid: service + "-uid",
+        runtimeUid: 1000,
+        kernelRootReadOnly: true,
+        temporaryVolumeWritable: true,
+        ...(service === "keycloak"
+          ? { optimizedCodeReadOnly: true, successfulInitBuilds: 2 }
+          : {}),
+      })),
+    },
     deployment: {
       cluster: "padel-ci",
       nodeImage: "kindest/node@sha256:" + "c".repeat(64),
@@ -88,6 +102,12 @@ test("public Kubernetes evidence excludes environment credentials and addresses 
   assert(!text.includes("PRIVATE-TEST-CREDENTIAL"));
   assert(!text.includes("PRIVATE-ADDRESS"));
   for (const change of [
+    (x) => (x.security.completed = false),
+    (x) => (x.security.cluster = "another-cluster"),
+    (x) => (x.security.checks[0].podUid = "old-replaced-pod"),
+    (x) => (x.security.checks[0].kernelRootReadOnly = false),
+    (x) => (x.security.checks[0].runtimeUid = 0),
+    (x) => (x.security.checks[2].optimizedCodeReadOnly = false),
     (x) => (x.e2e.completed = false),
     (x) => (x.e2e.passed = 60),
     (x) => (x.e2e.target = "compose"),

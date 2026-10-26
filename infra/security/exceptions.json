@@ -1,41 +1,4 @@
 {
   "schemaVersion": 1,
-  "exceptions": [
-    {
-      "kind": "misconfiguration",
-      "id": "AWS-0104",
-      "target": "infra/cloud/demo/main.tf",
-      "resource": "aws_vpc_security_group_egress_rule.https",
-      "owner": "Padel maintainers",
-      "reason": "Undeployed single-host demo scaffold. TCP 443 egress reaches dynamic AWS/GitHub/registry/package/ACME endpoints with normal TLS validation; static CDN CIDRs are not a reliable allowlist. All other generic internet ports are denied and SMTP requires explicit destination CIDRs. Review destination-aware egress proxy/VPC endpoints and associated cost before a real cloud rollout. This accepts a destination restriction gap, not unrestricted protocols or inbound management access. See docs/CLOUD.md.",
-      "expires": "2026-11-04"
-    },
-    {
-      "kind": "misconfiguration",
-      "id": "KSV-0014",
-      "target": "infra/k8s (Kustomize rendered with fixture secrets)",
-      "resource": "StatefulSet/postgres",
-      "owner": "Padel maintainers",
-      "reason": "Undeployed Kubernetes scaffold. Upstream database entrypoint initializes/chowns the data volume and creates runtime directories. Do not enable a read-only root until writable paths and volume ownership are validated in a real cluster. Application containers are read-only. No Kubernetes production claim.",
-      "expires": "2026-11-04"
-    },
-    {
-      "kind": "misconfiguration",
-      "id": "KSV-0014",
-      "target": "infra/k8s (Kustomize rendered with fixture secrets)",
-      "resource": "StatefulSet/rabbitmq",
-      "owner": "Padel maintainers",
-      "reason": "Undeployed Kubernetes scaffold. Broker entrypoint and runtime filesystem layout require a tested writable-volume design before read-only root can be enforced. No Kubernetes production claim; review before any cluster deployment.",
-      "expires": "2026-11-04"
-    },
-    {
-      "kind": "misconfiguration",
-      "id": "KSV-0014",
-      "target": "infra/k8s (Kustomize rendered with fixture secrets)",
-      "resource": "Deployment/keycloak",
-      "owner": "Padel maintainers",
-      "reason": "Undeployed development Kubernetes scaffold uses start-dev, which performs image augmentation and writes runtime data. A prebuilt optimized Keycloak image plus writable data paths must be validated before read-only root and cluster deployment. No production cluster claim.",
-      "expires": "2026-11-04"
-    }
-  ]
+  "exceptions": []
 }

@@ -132,9 +132,10 @@ resource "aws_vpc_security_group_ingress_rule" "acme" {
   to_port           = 80
 }
 resource "aws_vpc_security_group_egress_rule" "https" {
+  for_each          = var.https_egress_cidrs
   security_group_id = aws_security_group.host.id
-  description       = "AWS APIs, package and image registries, certificates"
-  cidr_ipv4         = "0.0.0.0/0"
+  description       = "Reviewed HTTPS destination; no default internet egress"
+  cidr_ipv4         = each.value
   ip_protocol       = "tcp"
   from_port         = 443
   to_port           = 443
@@ -244,6 +245,10 @@ resource "aws_instance" "host" {
     volume_size = 20
   }
   lifecycle {
+    precondition {
+      condition     = length(var.https_egress_cidrs) > 0
+      error_message = "Compute requires reviewed HTTPS destination CIDRs for bootstrap, SSM, registries and certificate services. No unrestricted egress fallback is provided."
+    }
     precondition {
       condition     = var.monthly_budget_usd > 0 && var.budget_email != null && can(regex("^ami-[a-f0-9]{17}$", var.ami_id))
       error_message = "Compute requires an approved budget, alert email and reviewed pinned AL2023 AMI."

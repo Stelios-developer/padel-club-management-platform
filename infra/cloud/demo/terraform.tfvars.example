@@ -9,5 +9,7 @@ enable_compute = false
 monthly_budget_usd = 0
 budget_email = null
 ami_id = null
+https_egress_cidrs = []
+# Set reviewed /24-or-narrower destinations before enabling compute. No default allow-all.
 smtp_egress_cidrs = []
 # existing_oidc_provider_arn = "arn:aws:iam::123456789012:oidc-provider/token.actions.githubusercontent.com"

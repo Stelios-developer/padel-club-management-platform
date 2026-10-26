@@ -8,6 +8,7 @@ export function deploymentReport({
   nodes,
   e2e,
   sourceRevision,
+  security,
 }) {
   const live = pods.items.filter((p) => !p.metadata.deletionTimestamp);
   const workloads = live.map((p) => ({
@@ -66,6 +67,39 @@ export function deploymentReport({
         ),
       }
     : null;
+  const infrastructureSecurity = {
+    completed:
+      security?.completed === true && security.cluster === deployment.cluster,
+    checks: (security?.checks || []).map((c) => ({
+      service: c.service,
+      podUid: c.podUid,
+      runtimeUid: c.runtimeUid,
+      kernelRootReadOnly: c.kernelRootReadOnly,
+      temporaryVolumeWritable: c.temporaryVolumeWritable,
+      ...(c.service === "keycloak"
+        ? {
+            optimizedCodeReadOnly: c.optimizedCodeReadOnly,
+            successfulInitBuilds: c.successfulInitBuilds,
+          }
+        : {}),
+    })),
+  };
+  const hardened =
+    infrastructureSecurity.completed &&
+    infrastructureSecurity.checks.length === 3 &&
+    new Set(infrastructureSecurity.checks.map((c) => c.service)).size === 3 &&
+    ["postgres", "rabbitmq", "keycloak"].every((name) =>
+      infrastructureSecurity.checks.some(
+        (c) =>
+          c.service === name &&
+          workloads.some((p) => p.service === name && p.uid === c.podUid) &&
+          c.runtimeUid > 0 &&
+          c.kernelRootReadOnly &&
+          c.temporaryVolumeWritable &&
+          (name !== "keycloak" ||
+            (c.optimizedCodeReadOnly && c.successfulInitBuilds === 2)),
+      ),
+    );
   return {
     schemaVersion: 1,
     verifiedAt: new Date().toISOString(),
@@ -86,7 +120,9 @@ export function deploymentReport({
     applications,
     storage,
     e2e: tests,
+    infrastructureSecurity,
     completed:
+      hardened &&
       nodeReady &&
       workloads.length === 13 &&
       workloads.every((p) => p.ready) &&

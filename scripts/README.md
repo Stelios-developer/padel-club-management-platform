@@ -22,7 +22,7 @@ Use `--browser chromium|firefox|webkit` to select the walkthrough engine and kee
 
 ## Local Kubernetes
 
-`kubernetes-install.mjs` installs checksum-pinned tools in `.tools/kubernetes/`. `kubernetes.mjs up|status|test|report|diagnostics` manages the guarded local `padel-local` kind profile. Support modules and negative controls live in `kubernetes/`. Commands use an explicit workspace kubeconfig and leave global contexts untouched. [Deployment and recovery tests](../docs/KUBERNETES.md).
+`kubernetes-install.mjs` installs checksum-pinned tools in `.tools/kubernetes/`. `kubernetes.mjs up|status|test|security|report|diagnostics` manages the guarded local `padel-local` kind profile. `security` verifies actual infrastructure kernel mounts, non-root users and optimized Keycloak initialization; complete reports require proof for the current pods. Support modules and negative controls live in `kubernetes/`. Commands use an explicit workspace kubeconfig and leave global contexts untouched. [Deployment and recovery tests](../docs/KUBERNETES.md).
 
 ## Applied AI
 

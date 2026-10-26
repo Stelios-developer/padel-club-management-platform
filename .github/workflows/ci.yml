@@ -222,6 +222,8 @@ jobs:
         run: node scripts/kubernetes.mjs up --cluster padel-ci
       - name: Real Kubernetes OIDC, domain, messaging and pod/PVC recovery
         run: node scripts/kubernetes.mjs test --cluster padel-ci
+      - name: Verify actual read-only infrastructure mounts and optimized identity startup
+        run: node scripts/kubernetes.mjs security --cluster padel-ci
       - name: Export redacted deployment evidence
         if: always()
         run: node scripts/kubernetes.mjs report --cluster padel-ci
