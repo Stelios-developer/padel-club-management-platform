@@ -2,7 +2,9 @@
 
 Original stage-6 implementation: **5 October 2026**, with **135 local tests**, zero failures/errors/skips. Historical reports below preserve that implementation snapshot.
 
-**Current hosted evidence, 26 October 2026:** [v1.0.0](RELEASE-v1.0.0.md) published all **ten public application images**, with signed provenance and CycloneDX SBOMs. All 14 publisher jobs passed. Independent verification checked all ten manifest digests and both attestation types through the GitHub API and OCI registry (**40 successful signature checks**). The exact source commit also passed hosted CI, including **154 backend tests**.
+**Latest release:** [v1.1.0](RELEASE-v1.1.0.md) includes Kubernetes runtime hardening and dependency maintenance, ten newly signed images and fresh independent verification. [Scan changes and remaining findings](SECURITY-MAINTENANCE.md).
+
+**First verified release, 26 October 2026:** [v1.0.0](RELEASE-v1.0.0.md) published all **ten public application images**, with signed provenance and CycloneDX SBOMs. All 14 publisher jobs passed. Independent verification checked all ten manifest digests and both attestation types through the GitHub API and OCI registry (**40 successful signature checks**). The exact source commit also passed hosted CI, including **154 backend tests**.
 
 Subsequent [stage-7 cloud preparation](CLOUD.md) added one resource-specific temporary HTTPS egress exception and a Terraform resource identity regression test, bringing that historical policy to six exceptions. The 25 October 2026 review removed two npm exceptions: GitHub withdrew the `braces` advisory, and the upgraded evaluator no longer includes `node-forge`. The four remaining infrastructure exceptions were closed on 26 October after actual read-only Kubernetes verification and deny-by-default HTTPS destination controls. The current executable policy has **zero exceptions**. [Changes and evidence](SECURITY-HARDENING.md). The stage-6 reports below retain their original five-exception snapshot and test counts.
 

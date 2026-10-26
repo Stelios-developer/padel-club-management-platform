@@ -1,0 +1,486 @@
+{
+  "schemaVersion": 1,
+  "verifiedAt": "2026-10-26T20:19:28.285Z",
+  "releaseLabel": "v1.1.0",
+  "repo": "Stelios-developer/padel-club-management-platform",
+  "sourceCommit": "42632642774092717e7147d4eea35dd5696789c9",
+  "publisherRunId": 40390184189,
+  "publisherRunURL": "https://github.com/Stelios-developer/padel-club-management-platform/actions/runs/40390184189",
+  "platform": "linux/amd64",
+  "images": [
+    {
+      "service": "config-server",
+      "image": "ghcr.io/stelios-developer/padel-club-management-platform/config-server@sha256:451720994795806e32e7537d30d2b16294c93c76bcc952d31ec2555d7bbadae0",
+      "imageId": "sha256:10a391660ff53262297057d3e4b7bf006e33b14d24629d1814ff54d9e836c1f1",
+      "scanGate": "PASSED",
+      "updatedPackages": [
+        {
+          "name": "httpclient5",
+          "version": "5.6.5",
+          "purl": "pkg:maven/org.apache.httpcomponents.client5/httpclient5@5.6.5"
+        },
+        {
+          "name": "httpclient",
+          "version": "4.5.14",
+          "purl": "pkg:maven/org.apache.httpcomponents/httpclient@4.5.14"
+        }
+      ],
+      "publicManifestDigestVerified": true,
+      "publishedConfigMatchesScannedImage": true,
+      "sourceCommit": "42632642774092717e7147d4eea35dd5696789c9",
+      "signerWorkflow": "Stelios-developer/padel-club-management-platform/.github/workflows/publish-images.yml",
+      "publisherRunInvocationVerified": true,
+      "signedSBOMMatchesArtifact": true,
+      "verified": [
+        {
+          "source": "github",
+          "predicateType": "https://slsa.dev/provenance/v1",
+          "attestations": 1
+        },
+        {
+          "source": "github",
+          "predicateType": "https://cyclonedx.org/bom",
+          "attestations": 1
+        },
+        {
+          "source": "registry",
+          "predicateType": "https://slsa.dev/provenance/v1",
+          "attestations": 1
+        },
+        {
+          "source": "registry",
+          "predicateType": "https://cyclonedx.org/bom",
+          "attestations": 1
+        }
+      ]
+    },
+    {
+      "service": "discovery-server",
+      "image": "ghcr.io/stelios-developer/padel-club-management-platform/discovery-server@sha256:7d8633f652cba43b22a8bd8533a67b4d68305045619276466be7d09b95c4430e",
+      "imageId": "sha256:26e8f8988f2146f0284bfd1a7a3ae45fe4393265950f8e7b9376567df1fe9a85",
+      "scanGate": "PASSED",
+      "updatedPackages": [
+        {
+          "name": "httpclient5",
+          "version": "5.6.5",
+          "purl": "pkg:maven/org.apache.httpcomponents.client5/httpclient5@5.6.5"
+        },
+        {
+          "name": "httpclient",
+          "version": "4.5.14",
+          "purl": "pkg:maven/org.apache.httpcomponents/httpclient@4.5.14"
+        }
+      ],
+      "publicManifestDigestVerified": true,
+      "publishedConfigMatchesScannedImage": true,
+      "sourceCommit": "42632642774092717e7147d4eea35dd5696789c9",
+      "signerWorkflow": "Stelios-developer/padel-club-management-platform/.github/workflows/publish-images.yml",
+      "publisherRunInvocationVerified": true,
+      "signedSBOMMatchesArtifact": true,
+      "verified": [
+        {
+          "source": "github",
+          "predicateType": "https://slsa.dev/provenance/v1",
+          "attestations": 1
+        },
+        {
+          "source": "github",
+          "predicateType": "https://cyclonedx.org/bom",
+          "attestations": 1
+        },
+        {
+          "source": "registry",
+          "predicateType": "https://slsa.dev/provenance/v1",
+          "attestations": 1
+        },
+        {
+          "source": "registry",
+          "predicateType": "https://cyclonedx.org/bom",
+          "attestations": 1
+        }
+      ]
+    },
+    {
+      "service": "api-gateway",
+      "image": "ghcr.io/stelios-developer/padel-club-management-platform/api-gateway@sha256:88793207f3c1c6a21a8efb68d18059066042375f00a2be7413fac5c44a4f2bc1",
+      "imageId": "sha256:bd4a895eed1dbf54a1f40d272bdc26a653eea4798db109e541b3137f2d4b2bbd",
+      "scanGate": "PASSED",
+      "updatedPackages": [
+        {
+          "name": "httpclient5",
+          "version": "5.6.5",
+          "purl": "pkg:maven/org.apache.httpcomponents.client5/httpclient5@5.6.5"
+        },
+        {
+          "name": "httpclient",
+          "version": "4.5.14",
+          "purl": "pkg:maven/org.apache.httpcomponents/httpclient@4.5.14"
+        }
+      ],
+      "publicManifestDigestVerified": true,
+      "publishedConfigMatchesScannedImage": true,
+      "sourceCommit": "42632642774092717e7147d4eea35dd5696789c9",
+      "signerWorkflow": "Stelios-developer/padel-club-management-platform/.github/workflows/publish-images.yml",
+      "publisherRunInvocationVerified": true,
+      "signedSBOMMatchesArtifact": true,
+      "verified": [
+        {
+          "source": "github",
+          "predicateType": "https://slsa.dev/provenance/v1",
+          "attestations": 1
+        },
+        {
+          "source": "github",
+          "predicateType": "https://cyclonedx.org/bom",
+          "attestations": 1
+        },
+        {
+          "source": "registry",
+          "predicateType": "https://slsa.dev/provenance/v1",
+          "attestations": 1
+        },
+        {
+          "source": "registry",
+          "predicateType": "https://cyclonedx.org/bom",
+          "attestations": 1
+        }
+      ]
+    },
+    {
+      "service": "member-service",
+      "image": "ghcr.io/stelios-developer/padel-club-management-platform/member-service@sha256:0648eb17e60be82397dce09a8b4a4a8abd40eeef68968ca668369b374a95b180",
+      "imageId": "sha256:1a0c0cf2028f1da2778514ae5a61d8692740ec7a2b206da7d00a3a3b9e86eb06",
+      "scanGate": "PASSED",
+      "updatedPackages": [
+        {
+          "name": "httpclient5",
+          "version": "5.6.5",
+          "purl": "pkg:maven/org.apache.httpcomponents.client5/httpclient5@5.6.5"
+        },
+        {
+          "name": "httpclient",
+          "version": "4.5.14",
+          "purl": "pkg:maven/org.apache.httpcomponents/httpclient@4.5.14"
+        },
+        {
+          "name": "amqp-client",
+          "version": "5.37.0",
+          "purl": "pkg:maven/com.rabbitmq/amqp-client@5.37.0"
+        }
+      ],
+      "publicManifestDigestVerified": true,
+      "publishedConfigMatchesScannedImage": true,
+      "sourceCommit": "42632642774092717e7147d4eea35dd5696789c9",
+      "signerWorkflow": "Stelios-developer/padel-club-management-platform/.github/workflows/publish-images.yml",
+      "publisherRunInvocationVerified": true,
+      "signedSBOMMatchesArtifact": true,
+      "verified": [
+        {
+          "source": "github",
+          "predicateType": "https://slsa.dev/provenance/v1",
+          "attestations": 1
+        },
+        {
+          "source": "github",
+          "predicateType": "https://cyclonedx.org/bom",
+          "attestations": 1
+        },
+        {
+          "source": "registry",
+          "predicateType": "https://slsa.dev/provenance/v1",
+          "attestations": 1
+        },
+        {
+          "source": "registry",
+          "predicateType": "https://cyclonedx.org/bom",
+          "attestations": 1
+        }
+      ]
+    },
+    {
+      "service": "subscription-service",
+      "image": "ghcr.io/stelios-developer/padel-club-management-platform/subscription-service@sha256:54678ec7c87ca8f1ebf18b3c5f69f60572572c54ce971c108d41c45ecd606bf6",
+      "imageId": "sha256:e60468b6d7bab4999771b5bcca7d6e1bfeef421a15ec3b115389abc98eb06759",
+      "scanGate": "PASSED",
+      "updatedPackages": [
+        {
+          "name": "httpclient5",
+          "version": "5.6.5",
+          "purl": "pkg:maven/org.apache.httpcomponents.client5/httpclient5@5.6.5"
+        },
+        {
+          "name": "httpclient",
+          "version": "4.5.14",
+          "purl": "pkg:maven/org.apache.httpcomponents/httpclient@4.5.14"
+        },
+        {
+          "name": "amqp-client",
+          "version": "5.37.0",
+          "purl": "pkg:maven/com.rabbitmq/amqp-client@5.37.0"
+        }
+      ],
+      "publicManifestDigestVerified": true,
+      "publishedConfigMatchesScannedImage": true,
+      "sourceCommit": "42632642774092717e7147d4eea35dd5696789c9",
+      "signerWorkflow": "Stelios-developer/padel-club-management-platform/.github/workflows/publish-images.yml",
+      "publisherRunInvocationVerified": true,
+      "signedSBOMMatchesArtifact": true,
+      "verified": [
+        {
+          "source": "github",
+          "predicateType": "https://slsa.dev/provenance/v1",
+          "attestations": 1
+        },
+        {
+          "source": "github",
+          "predicateType": "https://cyclonedx.org/bom",
+          "attestations": 1
+        },
+        {
+          "source": "registry",
+          "predicateType": "https://slsa.dev/provenance/v1",
+          "attestations": 1
+        },
+        {
+          "source": "registry",
+          "predicateType": "https://cyclonedx.org/bom",
+          "attestations": 1
+        }
+      ]
+    },
+    {
+      "service": "booking-service",
+      "image": "ghcr.io/stelios-developer/padel-club-management-platform/booking-service@sha256:c0288c3695c496adc3754d00713aa705d20b9171881cec9bbeb60b96ebc96256",
+      "imageId": "sha256:933472b1218685fdb1051bde0fab67c3c22e7259b2f859dbce675f1a88995b85",
+      "scanGate": "PASSED",
+      "updatedPackages": [
+        {
+          "name": "httpclient5",
+          "version": "5.6.5",
+          "purl": "pkg:maven/org.apache.httpcomponents.client5/httpclient5@5.6.5"
+        },
+        {
+          "name": "httpclient",
+          "version": "4.5.14",
+          "purl": "pkg:maven/org.apache.httpcomponents/httpclient@4.5.14"
+        },
+        {
+          "name": "amqp-client",
+          "version": "5.37.0",
+          "purl": "pkg:maven/com.rabbitmq/amqp-client@5.37.0"
+        }
+      ],
+      "publicManifestDigestVerified": true,
+      "publishedConfigMatchesScannedImage": true,
+      "sourceCommit": "42632642774092717e7147d4eea35dd5696789c9",
+      "signerWorkflow": "Stelios-developer/padel-club-management-platform/.github/workflows/publish-images.yml",
+      "publisherRunInvocationVerified": true,
+      "signedSBOMMatchesArtifact": true,
+      "verified": [
+        {
+          "source": "github",
+          "predicateType": "https://slsa.dev/provenance/v1",
+          "attestations": 1
+        },
+        {
+          "source": "github",
+          "predicateType": "https://cyclonedx.org/bom",
+          "attestations": 1
+        },
+        {
+          "source": "registry",
+          "predicateType": "https://slsa.dev/provenance/v1",
+          "attestations": 1
+        },
+        {
+          "source": "registry",
+          "predicateType": "https://cyclonedx.org/bom",
+          "attestations": 1
+        }
+      ]
+    },
+    {
+      "service": "access-service",
+      "image": "ghcr.io/stelios-developer/padel-club-management-platform/access-service@sha256:fd26fdc1eeaa2edfeea34399191129b3587ff2d56dd8de5ddc74b01283b6335a",
+      "imageId": "sha256:6390ab9314d31efb7384e5982281d24347612b9915a4b8f26e69bf715cd7a532",
+      "scanGate": "PASSED",
+      "updatedPackages": [
+        {
+          "name": "httpclient5",
+          "version": "5.6.5",
+          "purl": "pkg:maven/org.apache.httpcomponents.client5/httpclient5@5.6.5"
+        },
+        {
+          "name": "httpclient",
+          "version": "4.5.14",
+          "purl": "pkg:maven/org.apache.httpcomponents/httpclient@4.5.14"
+        },
+        {
+          "name": "amqp-client",
+          "version": "5.37.0",
+          "purl": "pkg:maven/com.rabbitmq/amqp-client@5.37.0"
+        }
+      ],
+      "publicManifestDigestVerified": true,
+      "publishedConfigMatchesScannedImage": true,
+      "sourceCommit": "42632642774092717e7147d4eea35dd5696789c9",
+      "signerWorkflow": "Stelios-developer/padel-club-management-platform/.github/workflows/publish-images.yml",
+      "publisherRunInvocationVerified": true,
+      "signedSBOMMatchesArtifact": true,
+      "verified": [
+        {
+          "source": "github",
+          "predicateType": "https://slsa.dev/provenance/v1",
+          "attestations": 1
+        },
+        {
+          "source": "github",
+          "predicateType": "https://cyclonedx.org/bom",
+          "attestations": 1
+        },
+        {
+          "source": "registry",
+          "predicateType": "https://slsa.dev/provenance/v1",
+          "attestations": 1
+        },
+        {
+          "source": "registry",
+          "predicateType": "https://cyclonedx.org/bom",
+          "attestations": 1
+        }
+      ]
+    },
+    {
+      "service": "notification-service",
+      "image": "ghcr.io/stelios-developer/padel-club-management-platform/notification-service@sha256:bebc327665e72a33c91f994869d50653edda01f129872a51085ac4db0e300022",
+      "imageId": "sha256:c2adf9bfe31b2eee8f00d039997672a50e753cd51b16cb361b8eea8162f141a6",
+      "scanGate": "PASSED",
+      "updatedPackages": [
+        {
+          "name": "httpclient5",
+          "version": "5.6.5",
+          "purl": "pkg:maven/org.apache.httpcomponents.client5/httpclient5@5.6.5"
+        },
+        {
+          "name": "httpclient",
+          "version": "4.5.14",
+          "purl": "pkg:maven/org.apache.httpcomponents/httpclient@4.5.14"
+        },
+        {
+          "name": "amqp-client",
+          "version": "5.37.0",
+          "purl": "pkg:maven/com.rabbitmq/amqp-client@5.37.0"
+        }
+      ],
+      "publicManifestDigestVerified": true,
+      "publishedConfigMatchesScannedImage": true,
+      "sourceCommit": "42632642774092717e7147d4eea35dd5696789c9",
+      "signerWorkflow": "Stelios-developer/padel-club-management-platform/.github/workflows/publish-images.yml",
+      "publisherRunInvocationVerified": true,
+      "signedSBOMMatchesArtifact": true,
+      "verified": [
+        {
+          "source": "github",
+          "predicateType": "https://slsa.dev/provenance/v1",
+          "attestations": 1
+        },
+        {
+          "source": "github",
+          "predicateType": "https://cyclonedx.org/bom",
+          "attestations": 1
+        },
+        {
+          "source": "registry",
+          "predicateType": "https://slsa.dev/provenance/v1",
+          "attestations": 1
+        },
+        {
+          "source": "registry",
+          "predicateType": "https://cyclonedx.org/bom",
+          "attestations": 1
+        }
+      ]
+    },
+    {
+      "service": "assistant-service",
+      "image": "ghcr.io/stelios-developer/padel-club-management-platform/assistant-service@sha256:e85240976e531bc105988d611f2149f4ff3600de2b035742fc6df3f90a98bbcd",
+      "imageId": "sha256:fd3a9686a201656eb59b3995e6aee8be6f6c441da1b726170b11a3f82fe212db",
+      "scanGate": "PASSED",
+      "updatedPackages": [
+        {
+          "name": "httpclient5",
+          "version": "5.6.5",
+          "purl": "pkg:maven/org.apache.httpcomponents.client5/httpclient5@5.6.5"
+        },
+        {
+          "name": "httpclient",
+          "version": "4.5.14",
+          "purl": "pkg:maven/org.apache.httpcomponents/httpclient@4.5.14"
+        }
+      ],
+      "publicManifestDigestVerified": true,
+      "publishedConfigMatchesScannedImage": true,
+      "sourceCommit": "42632642774092717e7147d4eea35dd5696789c9",
+      "signerWorkflow": "Stelios-developer/padel-club-management-platform/.github/workflows/publish-images.yml",
+      "publisherRunInvocationVerified": true,
+      "signedSBOMMatchesArtifact": true,
+      "verified": [
+        {
+          "source": "github",
+          "predicateType": "https://slsa.dev/provenance/v1",
+          "attestations": 1
+        },
+        {
+          "source": "github",
+          "predicateType": "https://cyclonedx.org/bom",
+          "attestations": 1
+        },
+        {
+          "source": "registry",
+          "predicateType": "https://slsa.dev/provenance/v1",
+          "attestations": 1
+        },
+        {
+          "source": "registry",
+          "predicateType": "https://cyclonedx.org/bom",
+          "attestations": 1
+        }
+      ]
+    },
+    {
+      "service": "web",
+      "image": "ghcr.io/stelios-developer/padel-club-management-platform/web@sha256:e058b810ff8fde1bf03241dfcd9d6adc3e7aee1bcc100d0c725a3072e596d4c3",
+      "imageId": "sha256:7eb2bad103f5692f2b074f61401d7a3f56dc0be3bb9336eaccaf0ee4104cdeeb",
+      "scanGate": "PASSED",
+      "updatedPackages": [],
+      "publicManifestDigestVerified": true,
+      "publishedConfigMatchesScannedImage": true,
+      "sourceCommit": "42632642774092717e7147d4eea35dd5696789c9",
+      "signerWorkflow": "Stelios-developer/padel-club-management-platform/.github/workflows/publish-images.yml",
+      "publisherRunInvocationVerified": true,
+      "signedSBOMMatchesArtifact": true,
+      "verified": [
+        {
+          "source": "github",
+          "predicateType": "https://slsa.dev/provenance/v1",
+          "attestations": 1
+        },
+        {
+          "source": "github",
+          "predicateType": "https://cyclonedx.org/bom",
+          "attestations": 1
+        },
+        {
+          "source": "registry",
+          "predicateType": "https://slsa.dev/provenance/v1",
+          "attestations": 1
+        },
+        {
+          "source": "registry",
+          "predicateType": "https://cyclonedx.org/bom",
+          "attestations": 1
+        }
+      ]
+    }
+  ]
+}

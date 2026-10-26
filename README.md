@@ -9,7 +9,7 @@
 
 <p align="center">
   <a href="https://github.com/Stelios-developer/padel-club-management-platform/releases/tag/demo-v1">104-second demo</a> ·
-  <a href="https://github.com/Stelios-developer/padel-club-management-platform/releases/tag/v1.0.0">Signed container release</a> ·
+  <a href="https://github.com/Stelios-developer/padel-club-management-platform/releases/tag/v1.1.0">Signed container release</a> ·
   <a href="#architecture">Architecture</a> ·
   <a href="#technology-in-context">Technology</a> ·
   <a href="#quick-start">Run locally</a> ·

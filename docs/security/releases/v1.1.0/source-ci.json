@@ -1,0 +1,192 @@
+{
+  "kubernetes": {
+    "completed": true,
+    "workloads": 13,
+    "matchingAppDigests": 9,
+    "boundPVCs": 2,
+    "passed": 61,
+    "applicationReleaseSource": "201617b4886311982ccb7dfde9a8b6179c774ae8"
+  },
+  "verifiedAt": "2026-10-26T19:49:27.718Z",
+  "revision": "42632642774092717e7147d4eea35dd5696789c9",
+  "runs": [
+    {
+      "name": "Padel CI",
+      "url": "https://github.com/Stelios-developer/padel-club-management-platform/actions/runs/40387977736",
+      "conclusion": "success",
+      "successfulJobs": 21,
+      "attempt": 1
+    },
+    {
+      "name": "Cloud infrastructure checks",
+      "url": "https://github.com/Stelios-developer/padel-club-management-platform/actions/runs/40387977397",
+      "conclusion": "success",
+      "successfulJobs": 1,
+      "attempt": 1
+    }
+  ],
+  "backend": {
+    "tests": 154,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "browser": {
+    "startTime": "2026-10-26T19:38:24.667Z",
+    "duration": 315477.818,
+    "expected": 252,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  },
+  "e2e": {
+    "passed": 60,
+    "failed": 0,
+    "resilience": true
+  },
+  "restore": {
+    "verifiedDatabases": 6,
+    "guards": [
+      "live project rejected",
+      "nonempty target rejected",
+      "wrong encryption key rejected",
+      "tampered final archive rejected before any database write"
+    ],
+    "targetDataUnchanged": true
+  },
+  "production": {
+    "completed": true
+  },
+  "cloudScope": "Local Terraform validation and mock provider tests; no AWS deployment",
+  "security": {
+    "remainingExceptions": 0,
+    "gates": {
+      "source": {
+        "gate": "PASSED",
+        "blocking": 0,
+        "exceptions": 0,
+        "findings": 30
+      },
+      "terraform": {
+        "gate": "PASSED",
+        "blocking": 0,
+        "exceptions": 0,
+        "findings": 2
+      },
+      "codeqlJava": {
+        "gate": "PASSED",
+        "blocking": 0,
+        "exceptions": 0,
+        "findings": 0
+      },
+      "codeqlJavaScript": {
+        "gate": "PASSED",
+        "blocking": 0,
+        "exceptions": 0,
+        "findings": 18
+      }
+    },
+    "imageGates": [
+      {
+        "service": "config-server",
+        "gate": "PASSED",
+        "blocking": 0,
+        "exceptions": 0,
+        "findings": 0
+      },
+      {
+        "service": "discovery-server",
+        "gate": "PASSED",
+        "blocking": 0,
+        "exceptions": 0,
+        "findings": 0
+      },
+      {
+        "service": "api-gateway",
+        "gate": "PASSED",
+        "blocking": 0,
+        "exceptions": 0,
+        "findings": 0
+      },
+      {
+        "service": "member-service",
+        "gate": "PASSED",
+        "blocking": 0,
+        "exceptions": 0,
+        "findings": 0
+      },
+      {
+        "service": "subscription-service",
+        "gate": "PASSED",
+        "blocking": 0,
+        "exceptions": 0,
+        "findings": 0
+      },
+      {
+        "service": "booking-service",
+        "gate": "PASSED",
+        "blocking": 0,
+        "exceptions": 0,
+        "findings": 0
+      },
+      {
+        "service": "access-service",
+        "gate": "PASSED",
+        "blocking": 0,
+        "exceptions": 0,
+        "findings": 0
+      },
+      {
+        "service": "notification-service",
+        "gate": "PASSED",
+        "blocking": 0,
+        "exceptions": 0,
+        "findings": 0
+      },
+      {
+        "service": "assistant-service",
+        "gate": "PASSED",
+        "blocking": 0,
+        "exceptions": 0,
+        "findings": 0
+      },
+      {
+        "service": "web",
+        "gate": "PASSED",
+        "blocking": 0,
+        "exceptions": 0,
+        "findings": 0
+      }
+    ],
+    "runtimeChecks": [
+      {
+        "service": "postgres",
+        "podUid": "0a47c457-743a-429d-9e85-a1aff665d7d8",
+        "runtimeUid": 70,
+        "kernelRootReadOnly": true,
+        "temporaryVolumeWritable": true,
+        "declaredReadOnlyRoots": 1
+      },
+      {
+        "service": "rabbitmq",
+        "podUid": "a4b807d6-6ab6-4cba-b2ad-43dc7c17c24c",
+        "runtimeUid": 100,
+        "kernelRootReadOnly": true,
+        "temporaryVolumeWritable": true,
+        "declaredReadOnlyRoots": 1
+      },
+      {
+        "service": "keycloak",
+        "podUid": "7df69571-eff5-47dd-9ed9-d7bbff366824",
+        "runtimeUid": 1000,
+        "kernelRootReadOnly": true,
+        "temporaryVolumeWritable": true,
+        "declaredReadOnlyRoots": 3,
+        "optimizedCodeReadOnly": true,
+        "successfulInitBuilds": 2
+      }
+    ],
+    "podIdentitiesMatched": true,
+    "terraformMockTests": 15
+  }
+}
