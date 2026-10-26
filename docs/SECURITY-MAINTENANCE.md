@@ -24,6 +24,7 @@ Official release information: [RabbitMQ 5.37.0](https://github.com/rabbitmq/rabb
 - Java application containers explicitly set GID 10001 as well as UID 10001.
 - The Keycloak realm is generated as a Secret and mounted read-only, rather than stored in a ConfigMap. This is correct Kubernetes classification; base64 encoding is not encryption. Local demonstration identities remain public fixtures, and real deployments must generate private credentials and use appropriate API access/encryption controls.
 - Java runtime Dockerfiles now expose a health check against their actual service ports, with a startup grace period. Kubernetes probes and Compose overrides remain authoritative for their environments.
+- Browser CI uses the official Ubuntu archive over HTTPS and bounded APT timeouts/retries after a runner mirror stalled before test execution. Package signature verification and the complete Chromium/Firefox/WebKit suite remain enabled.
 
 ## Remaining findings and follow-up
 
