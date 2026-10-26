@@ -10,6 +10,7 @@ import { today, addDays, athensInstant } from "../web/utils.js";
 import { verifyPadel } from "./e2e/padel.mjs";
 import { verifyReception } from "./e2e/reception.mjs";
 import { assertConcurrentExclusion } from "./e2e/sql-conflicts.mjs";
+import { recoveredRead } from "./e2e/readiness.mjs";
 
 const exec = promisify(execFile);
 const root = new URL("../", import.meta.url);
@@ -638,16 +639,41 @@ try {
     assert.equal(other.status, 200);
     otherProfile = other.data;
     // Liveness and a gateway route alone do not establish each service's
-    // downstream discovery. Warm authenticated read paths before ownership tests.
-    for (const [actor, path] of [
-      [member, `/api/subscriptions?memberId=${profile.id}`],
-      [member, `/api/subscriptions/eligibility/${profile.id}?date=${today()}`],
-      [member, "/api/bookings"],
-      [member, "/api/notifications"],
+    // downstream discovery or a recovered circuit. Initial successful reads
+    // can still trip the failure-rate threshold from earlier bootstrap errors.
+    for (const [actor, path, service, circuit] of [
+      [
+        member,
+        `/api/subscriptions?memberId=${profile.id}`,
+        "subscription-service",
+        "MemberClientget",
+      ],
+      [
+        member,
+        `/api/subscriptions/eligibility/${profile.id}?date=${today()}`,
+        "subscription-service",
+        "MemberClientget",
+      ],
+      [member, "/api/bookings", "booking-service", "MemberClientme"],
+      [member, "/api/notifications", "notification-service", "MemberClientme"],
       [admin, "/api/access/audit"],
     ]) {
       const ready = await until(
         async () => {
+          if (circuit)
+            return recoveredRead(
+              () => api(actor, path),
+              () =>
+                compose(
+                  "exec",
+                  "-T",
+                  service,
+                  "wget",
+                  "-qO-",
+                  "http://localhost:8080/actuator/prometheus",
+                ),
+              circuit,
+            );
           const response = await api(actor, path);
           return response.status === 503 ? false : response;
         },
