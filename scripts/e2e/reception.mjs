@@ -546,9 +546,16 @@ export async function verifyReception({
           180000,
         );
       await compose("restart", "booking-service");
-      const restoredHistory = await available(
-        () => history(b.id),
+      // The signed gateway maps a refused connection during endpoint handover
+      // to 500. Permit that only in this initial positive bootstrap read;
+      // business reads/writes below still reject 500 immediately.
+      const restoredHistory = await until(
+        async () => {
+          const response = await history(b.id);
+          return [500, 502, 503].includes(response.status) ? false : response;
+        },
         "Reception after service restart",
+        180000,
       );
       assert.equal(
         restoredHistory.status,
