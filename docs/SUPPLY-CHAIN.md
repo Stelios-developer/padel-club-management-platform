@@ -1,6 +1,8 @@
 # Security and supply-chain verification
 
-Stage 6 implementation, **5 October 2026**. Java dependency fixes were verified locally with **135 tests, zero failures/errors/skips**, including PostgreSQL, RabbitMQ, Toxiproxy and producer/consumer contracts. New security controls are executable locally and configured in GitHub Actions. **No GitHub repository is connected yet: CodeQL analysis, registry publication, signed attestations and verification of a signed release have not run.**
+Original stage-6 implementation: **5 October 2026**, with **135 local tests**, zero failures/errors/skips. Historical reports below preserve that implementation snapshot.
+
+**Current hosted evidence, 26 October 2026:** [v1.0.0](RELEASE-v1.0.0.md) published all **ten public application images**, with signed provenance and CycloneDX SBOMs. All 14 publisher jobs passed. Independent verification checked all ten manifest digests and both attestation types through the GitHub API and OCI registry (**40 successful signature checks**). The exact source commit also passed hosted CI, including **154 backend tests**.
 
 Subsequent [stage-7 cloud preparation](CLOUD.md) added one resource-specific temporary HTTPS egress exception and a Terraform resource identity regression test, bringing that historical policy to six exceptions. The 25 October 2026 review removed two npm exceptions: GitHub withdrew the `braces` advisory, and the upgraded evaluator no longer includes `node-forge`. The current policy has **four infrastructure exceptions**, with their original **4 November 2026** expiry. The stage-6 reports below retain their original five-exception snapshot and test counts.
 
@@ -38,7 +40,7 @@ Java images run as UID/GID **10001**. Nginx runs as **101**, listens internally 
 
 The JWT scanner finding was an intentionally unsigned security-test fixture, not an authentication credential. It is now constructed from JSON in the test, preserving the negative test. Kubernetes password keys were removed from ConfigMaps and bound through `SPRING_DATASOURCE_PASSWORD` / `SPRING_RABBITMQ_PASSWORD` environment variables sourced from Secrets. For an authenticated external SMTP server, provide `SPRING_MAIL_PASSWORD` through a Secret; the scaffold uses unauthenticated local Mailpit.
 
-## Five temporary exceptions, expiring 4 November 2026
+## Historical stage-6 exceptions — current policy has four
 
 [`infra/security/exceptions.json`](../infra/security/exceptions.json) is the executable policy. The findings remain visible and are **accepted risk, not fixed vulnerabilities**.
 
@@ -82,11 +84,11 @@ Windows uses a digest-pinned Syft Linux container because its native Docker arch
 
 Actual scan JSON, image archives, native inventory and all ten CycloneDX SBOMs are under ignored `.runtime/security/`. Public summary and selected sample SBOMs are under [`docs/security/`](security). Reports state their scanner database update time and artifact identities; a past passing report is not today's vulnerability assessment.
 
-## GitHub activation and signed deployment verification — pending
+## GitHub release and deployment verification
 
-1. Create the repository and upload the reviewed source, excluding the ignored private files. Public repositories support CodeQL and artifact attestations on current free plans; private availability depends on the required GitHub security/Enterprise features.
+1. Repository publication and hosted CI completed on 25 October 2026. Review the exact source run and the [published release evidence](RELEASE-v1.0.0.md), not merely the workflow definition.
 2. Run CI and review both CodeQL languages, source gate, all ten image gates, integration/contracts, browser/E2E and production rehearsal artifacts. Configure branch rules around those checks. The local actionlint pass is **not** evidence of GitHub execution.
-3. Configure the `release` environment with default-branch restrictions and required reviewers where the plan permits. Merely naming an environment in YAML does **not** configure those protections.
+3. The `release` environment is restricted to `main` by an actual deployment branch policy. Required reviewers and main-branch protection are not configured; consider them when adding collaborators.
 4. Manually dispatch `Publish verified container images` on the default branch. Inspect the signed provenance/SBOM and verification reports for every image. A failed matrix can leave some published images: treat the release as incomplete until all ten pass. Resolve images from the recorded digest, never a mutable label alone.
 5. Before rollout, verify the intended image using a trusted source commit and repository. After rollout, repeat with the container name to compare the running image:
 
@@ -94,14 +96,14 @@ Actual scan JSON, image archives, native inventory and all ten CycloneDX SBOMs a
 node scripts/verify-release.mjs --repo OWNER/REPO --commit EXACT_40_CHAR_COMMIT --image ghcr.io/owner/repo/booking-service@sha256:EXACT_64_CHAR_DIGEST --report .runtime/security/deployment-verification.json --container padel-e2e-booking-service-1
 ```
 
-The command rejects mutable tags, another repository, malformed commits, failed signatures, missing SBOM attestations and a different/stopped running image. It uses `gh attestation verify`; GitHub authentication and registry access are required. Policy tests use deliberate fixtures/mocks; **no cryptographic signed-release test has run locally** because there is no repository/release yet.
+The command rejects mutable tags, another repository, malformed commits, failed signatures, missing SBOM attestations and a different/stopped running image. It uses `gh attestation verify`; GitHub authentication and registry access are required. Policy tests use deliberate fixtures/mocks. The 26 October release additionally passed independent cryptographic verification of all ten published images. Verification of a future running deployment remains a separate check.
 
 ## Evidence and limits
 
-See [`results.json`](security/results.json) for actual local reports and [`backend-quality-results.json`](security/backend-quality-results.json) for the clean 135-test run. AI harness tests validate evaluation tooling; **the real-model quality gate remains failed** and was not rerun during this stage. Performance results remain the historical, bounded benchmark in [`PERFORMANCE.md`](PERFORMANCE.md).
+See [`results.json`](security/results.json) for the historical local reports and [`backend-quality-results.json`](security/backend-quality-results.json) for the stage-6 135-test run. At that stage, the real-model AI quality gate had failed and was not rerun as part of the security work; later local results are recorded separately in [AI natural search](AI-NATURAL-SEARCH.md). The release's AI harness tests validate evaluation tooling, not new real-model quality. Performance results remain the historical, bounded benchmark in [`PERFORMANCE.md`](PERFORMANCE.md).
 
-Scanning covers source configuration and the ten owned application release images. Third-party infrastructure images, build-stage images and scanner binaries are **not included in that ten-image vulnerability result**. Check the full deployment inventory before cloud/cluster rollout. Static dependency detection can miss shaded/native components and does not prove exploitability, absence of vulnerabilities, authorization correctness or production readiness. No penetration-test, deployed Kubernetes, completed GitHub CI, signed public release or SLSA level is claimed.
+Scanning covers source configuration and the ten owned application release images. Third-party infrastructure images, build-stage images and scanner binaries are **not included in that ten-image vulnerability result**. Check the full deployment inventory before cloud/cluster rollout. Static dependency detection can miss shaded/native components and does not prove exploitability, absence of vulnerabilities, authorization correctness or production readiness. Completed GitHub CI and the signed public container release are linked above. No penetration test, deployed Kubernetes, public application hosting or SLSA level is claimed.
 
-After the actual GitHub run and signed deployment verification, replace the final sentence with the measured release evidence and its link.
+[Release evidence and exact verification scope](RELEASE-v1.0.0.md). These results concern image publication and provenance; they do not claim a running cloud deployment.
 
 Primary documentation: [GitHub attestations](https://docs.github.com/en/actions/how-tos/secure-your-work/use-artifact-attestations/use-artifact-attestations), [verification CLI policy](https://cli.github.com/manual/gh_attestation_verify), [CodeQL](https://docs.github.com/en/code-security/concepts/code-scanning/codeql/codeql-code-scanning), [Trivy Java coverage](https://trivy.dev/docs/latest/coverage/language/java/), [Trivy SBOM scanning](https://trivy.dev/docs/latest/guide/target/sbom/), [Syft inventory](https://oss.anchore.com/docs/guides/sbom/). Version/hash selections used the official publishers' release APIs and registries on 4–5 October 2026. The Trivy publisher's [March incident disclosure](https://github.com/aquasecurity/trivy/discussions/10425) was checked before selecting a later pinned release.
