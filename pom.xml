@@ -20,8 +20,9 @@
     <jackson-bom.version>3.1.7</jackson-bom.version>
     <jackson-2-bom.version>2.21.7</jackson-2-bom.version>
     <httpcore5.version>5.4.3</httpcore5.version>
+    <httpclient5.version>5.6.5</httpclient5.version>
     <tomcat.version>11.0.26</tomcat.version>
-    <rabbit-amqp-client.version>5.34.0</rabbit-amqp-client.version>
+    <rabbit-amqp-client.version>5.37.0</rabbit-amqp-client.version>
     <freemarker.version>2.3.35</freemarker.version>
   </properties>
   <modules>
@@ -38,6 +39,11 @@
   </modules>
   <dependencyManagement>
     <dependencies>
+      <dependency>
+        <groupId>org.apache.httpcomponents</groupId>
+        <artifactId>httpclient</artifactId>
+        <version>4.5.14</version>
+      </dependency>
       <dependency>
         <groupId>org.springframework.cloud</groupId>
         <artifactId>spring-cloud-dependencies</artifactId>

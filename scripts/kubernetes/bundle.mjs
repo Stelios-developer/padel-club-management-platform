@@ -195,7 +195,7 @@ export async function prepareBundle(root, name, dnsIP) {
         env("OTEL_LOGS_EXPORTER", "none");
         container.resources = {
           requests: { cpu: "100m", memory: small ? "128Mi" : "256Mi" },
-          limits: { memory: small ? "384Mi" : "512Mi" },
+          limits: { cpu: "1000m", memory: small ? "384Mi" : "512Mi" },
         };
         if (!small) {
           env("KEYCLOAK_ISSUER", target.identityOrigin + "/realms/padel");
@@ -237,7 +237,7 @@ export async function prepareBundle(root, name, dnsIP) {
     if (service === "postgres") {
       container.resources = {
         requests: { cpu: "100m", memory: "128Mi" },
-        limits: { memory: "384Mi" },
+        limits: { cpu: "1000m", memory: "384Mi" },
       };
       container.startupProbe = {
         exec: { command: ["pg_isready", "-U", "padel", "-d", "postgres"] },
@@ -252,7 +252,7 @@ export async function prepareBundle(root, name, dnsIP) {
     if (service === "rabbitmq") {
       container.resources = {
         requests: { cpu: "100m", memory: "128Mi" },
-        limits: { memory: "384Mi" },
+        limits: { cpu: "1000m", memory: "384Mi" },
       };
       env("RABBITMQ_SERVER_ADDITIONAL_ERL_ARGS", "+S 2:2");
       container.startupProbe = {
@@ -270,7 +270,7 @@ export async function prepareBundle(root, name, dnsIP) {
     if (service === "mailpit") {
       container.resources = {
         requests: { cpu: "20m", memory: "32Mi" },
-        limits: { memory: "96Mi" },
+        limits: { cpu: "250m", memory: "96Mi" },
       };
       container.readinessProbe = {
         httpGet: { path: "/", port: 8025 },
@@ -284,7 +284,7 @@ export async function prepareBundle(root, name, dnsIP) {
       env("JAVA_OPTS_APPEND", "-Xms64m -Xmx256m -XX:ActiveProcessorCount=2");
       container.resources = {
         requests: { cpu: "100m", memory: "256Mi" },
-        limits: { memory: "640Mi" },
+        limits: { cpu: "1000m", memory: "640Mi" },
       };
       container.startupProbe = {
         httpGet: { path: "/health/started", port: 9000 },

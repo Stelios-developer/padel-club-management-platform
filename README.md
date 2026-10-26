@@ -116,6 +116,8 @@ Versions and pins live in the [POM](pom.xml), [Compose](compose.yml), [toolchain
 
 **Infrastructure hardening:** all four temporary security exceptions are closed. Source/configuration gates pass with **zero exceptions**, and actual Kubernetes checks verify read-only roots, non-root users and optimized Keycloak startup. [Implementation and scoped evidence](docs/SECURITY-HARDENING.md).
 
+**Security maintenance:** reviewed dependency updates and Kubernetes resource/Secret fixes reduced the source scan from **138 to 30 MEDIUM/LOW occurrences**, with no dependency vulnerabilities in that scan. [Scope and remaining work](docs/SECURITY-MAINTENANCE.md).
+
 The table below preserves earlier **dated local results**, with separate scopes. Counts are not combined into a single score.
 
 | Check                 | Recorded result                                                                                       | Evidence                                                                       |
