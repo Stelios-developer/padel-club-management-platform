@@ -1,0 +1,104 @@
+{
+  "schemaVersion": 1,
+  "verifiedAt": "2026-10-26T19:09:49.200Z",
+  "scope": "Local source/secrets plus fixture-rendered canonical Kubernetes; baseline is hosted source scan on 18e6f17. Image and CodeQL scans are separate scopes.",
+  "baselineRevision": "18e6f17ebd2ee550fa2e0fd38f5b6f23c2647c8f",
+  "gate": "PASSED",
+  "remainingExceptions": 0,
+  "before": {
+    "total": 138,
+    "vulnerabilities": 78,
+    "bySeverity": {
+      "CRITICAL": 0,
+      "HIGH": 0,
+      "MEDIUM": 90,
+      "LOW": 48,
+      "UNKNOWN": 0
+    }
+  },
+  "after": {
+    "total": 30,
+    "vulnerabilities": 0,
+    "bySeverity": {
+      "CRITICAL": 0,
+      "HIGH": 0,
+      "MEDIUM": 13,
+      "LOW": 17,
+      "UNKNOWN": 0
+    }
+  },
+  "remainingFindingGroups": [
+    {
+      "id": "AWS-0089",
+      "count": 2,
+      "severity": "LOW"
+    },
+    {
+      "id": "DS-0026",
+      "count": 1,
+      "severity": "LOW"
+    },
+    {
+      "id": "KSV-0020",
+      "count": 7,
+      "severity": "LOW"
+    },
+    {
+      "id": "KSV-0021",
+      "count": 7,
+      "severity": "LOW"
+    },
+    {
+      "id": "KSV-0125",
+      "count": 13,
+      "severity": "MEDIUM"
+    }
+  ],
+  "resolvedFindingIds": [
+    "CVE-2026-106121",
+    "CVE-2026-106122",
+    "CVE-2026-106123",
+    "CVE-2026-64607",
+    "CVE-2020-13956",
+    "CVE-2026-110180",
+    "CVE-2026-110306",
+    "CVE-2026-110095",
+    "CVE-2026-110725",
+    "CVE-2026-111997",
+    "KSV-0011",
+    "KSV-0015",
+    "KSV-0016",
+    "KSV-0018",
+    "KSV-01010"
+  ],
+  "changes": {
+    "rabbitJava": "5.37.0",
+    "httpclient5": "5.6.5",
+    "httpclient4": "4.5.14",
+    "fastUri3": "3.1.9",
+    "ipAddress10": "10.7.4",
+    "resourceBudgets": true,
+    "realmSecret": true,
+    "javaRuntimeHealthchecks": true
+  },
+  "localChecks": {
+    "workspace": {
+      "passed": 121,
+      "failed": 0,
+      "skipped": 0
+    },
+    "evaluatorHarness": {
+      "completed": true,
+      "realModel": false
+    },
+    "backend": {
+      "completed": true,
+      "scope": "Default Maven verify; hosted PostgreSQL/contracts suite is separate"
+    }
+  },
+  "limitations": [
+    "MEDIUM/LOW findings and CodeQL warnings remain visible",
+    "Canonical local image-name heuristic differs from digest-bound kind deployment",
+    "No AWS deployment or production-security certification"
+  ]
+}

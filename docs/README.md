@@ -48,6 +48,7 @@ The [code map](CODE-MAP.md) locates implementation owners and extension points. 
 
 - [Local kind Kubernetes deployment, signed images and pod/PVC recovery](KUBERNETES.md)
 - [Closure of all four infrastructure security exceptions](SECURITY-HARDENING.md)
+- [v1.1.0 dependency and Kubernetes security maintenance](SECURITY-MAINTENANCE.md)
 - [Production preparation, TLS/MFA, backups and restore](PRODUCTION.md)
 - [Verified v1.0.0 container release, digests and signed provenance/SBOM](RELEASE-v1.0.0.md)
 - [Supply chain, vulnerability exceptions and release verification](SUPPLY-CHAIN.md)

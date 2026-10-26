@@ -12,8 +12,6 @@ configMapGenerator:
         config/booking-service.yml,
         config/access-service.yml,
       ]
-  - name: padel-realm
-    files: [config/padel-realm.json]
   - name: padel-login-theme
     files:
       [
@@ -26,6 +24,8 @@ configMapGenerator:
   - name: padel-web-config
     files: [config/app-config.json]
 secretGenerator:
+  - name: padel-realm
+    files: [config/padel-realm.json]
   - name: padel-login-messages
     files: [config/padel-messages-el.properties]
   - name: padel-spring-config

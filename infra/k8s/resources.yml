@@ -61,7 +61,8 @@
                 "memory": "256Mi"
               },
               "limits": {
-                "memory": "768Mi"
+                "memory": "768Mi",
+                "cpu": "1000m"
               }
             },
             "volumeMounts": [
@@ -106,7 +107,8 @@
               "allowPrivilegeEscalation": false,
               "readOnlyRootFilesystem": true,
               "runAsNonRoot": true,
-              "runAsUser": 10001
+              "runAsUser": 10001,
+              "runAsGroup": 10001
             }
           }
         ],
@@ -201,7 +203,8 @@
                 "memory": "256Mi"
               },
               "limits": {
-                "memory": "768Mi"
+                "memory": "768Mi",
+                "cpu": "1000m"
               }
             },
             "volumeMounts": [
@@ -241,7 +244,8 @@
               "allowPrivilegeEscalation": false,
               "readOnlyRootFilesystem": true,
               "runAsNonRoot": true,
-              "runAsUser": 10001
+              "runAsUser": 10001,
+              "runAsGroup": 10001
             }
           }
         ],
@@ -374,7 +378,8 @@
                 "memory": "256Mi"
               },
               "limits": {
-                "memory": "768Mi"
+                "memory": "768Mi",
+                "cpu": "1000m"
               }
             },
             "volumeMounts": [
@@ -414,7 +419,8 @@
               "allowPrivilegeEscalation": false,
               "readOnlyRootFilesystem": true,
               "runAsNonRoot": true,
-              "runAsUser": 10001
+              "runAsUser": 10001,
+              "runAsGroup": 10001
             }
           }
         ],
@@ -547,7 +553,8 @@
                 "memory": "256Mi"
               },
               "limits": {
-                "memory": "768Mi"
+                "memory": "768Mi",
+                "cpu": "1000m"
               }
             },
             "volumeMounts": [
@@ -587,7 +594,8 @@
               "allowPrivilegeEscalation": false,
               "readOnlyRootFilesystem": true,
               "runAsNonRoot": true,
-              "runAsUser": 10001
+              "runAsUser": 10001,
+              "runAsGroup": 10001
             }
           }
         ],
@@ -720,7 +728,8 @@
                 "memory": "256Mi"
               },
               "limits": {
-                "memory": "768Mi"
+                "memory": "768Mi",
+                "cpu": "1000m"
               }
             },
             "volumeMounts": [
@@ -760,7 +769,8 @@
               "allowPrivilegeEscalation": false,
               "readOnlyRootFilesystem": true,
               "runAsNonRoot": true,
-              "runAsUser": 10001
+              "runAsUser": 10001,
+              "runAsGroup": 10001
             }
           }
         ],
@@ -893,7 +903,8 @@
                 "memory": "256Mi"
               },
               "limits": {
-                "memory": "768Mi"
+                "memory": "768Mi",
+                "cpu": "1000m"
               }
             },
             "volumeMounts": [
@@ -933,7 +944,8 @@
               "allowPrivilegeEscalation": false,
               "readOnlyRootFilesystem": true,
               "runAsNonRoot": true,
-              "runAsUser": 10001
+              "runAsUser": 10001,
+              "runAsGroup": 10001
             }
           }
         ],
@@ -1066,7 +1078,8 @@
                 "memory": "256Mi"
               },
               "limits": {
-                "memory": "768Mi"
+                "memory": "768Mi",
+                "cpu": "1000m"
               }
             },
             "volumeMounts": [
@@ -1106,7 +1119,8 @@
               "allowPrivilegeEscalation": false,
               "readOnlyRootFilesystem": true,
               "runAsNonRoot": true,
-              "runAsUser": 10001
+              "runAsUser": 10001,
+              "runAsGroup": 10001
             }
           }
         ],
@@ -1247,7 +1261,8 @@
                 "memory": "256Mi"
               },
               "limits": {
-                "memory": "768Mi"
+                "memory": "768Mi",
+                "cpu": "1000m"
               }
             },
             "volumeMounts": [
@@ -1287,7 +1302,8 @@
               "allowPrivilegeEscalation": false,
               "readOnlyRootFilesystem": true,
               "runAsNonRoot": true,
-              "runAsUser": 10001
+              "runAsUser": 10001,
+              "runAsGroup": 10001
             }
           }
         ],
@@ -1365,7 +1381,8 @@
                 "memory": "32Mi"
               },
               "limits": {
-                "memory": "128Mi"
+                "memory": "128Mi",
+                "cpu": "250m"
               }
             },
             "volumeMounts": [
@@ -1531,6 +1548,16 @@
                   "ALL"
                 ]
               }
+            },
+            "resources": {
+              "requests": {
+                "cpu": "100m",
+                "memory": "128Mi"
+              },
+              "limits": {
+                "memory": "384Mi",
+                "cpu": "1000m"
+              }
             }
           }
         ],
@@ -1672,6 +1699,16 @@
                 "drop": [
                   "ALL"
                 ]
+              }
+            },
+            "resources": {
+              "requests": {
+                "cpu": "100m",
+                "memory": "128Mi"
+              },
+              "limits": {
+                "memory": "384Mi",
+                "cpu": "1000m"
               }
             }
           }
@@ -1830,7 +1867,8 @@
                 "memory": "256Mi"
               },
               "limits": {
-                "memory": "768Mi"
+                "memory": "768Mi",
+                "cpu": "1000m"
               }
             },
             "volumeMounts": [
@@ -1880,8 +1918,8 @@
         "volumes": [
           {
             "name": "realm",
-            "configMap": {
-              "name": "padel-realm"
+            "secret": {
+              "secretName": "padel-realm"
             }
           },
           {
@@ -1975,7 +2013,7 @@
                 "memory": "32Mi"
               },
               "limits": {
-                "cpu": "1",
+                "cpu": "100m",
                 "memory": "96Mi"
               }
             },
@@ -2020,7 +2058,7 @@
                 "memory": "128Mi"
               },
               "limits": {
-                "cpu": "1",
+                "cpu": "1000m",
                 "memory": "512Mi"
               }
             },
@@ -2100,7 +2138,8 @@
                 "memory": "256Mi"
               },
               "limits": {
-                "memory": "768Mi"
+                "memory": "768Mi",
+                "cpu": "250m"
               }
             },
             "volumeMounts": [

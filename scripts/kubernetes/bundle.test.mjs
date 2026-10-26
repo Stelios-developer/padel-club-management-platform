@@ -52,6 +52,27 @@ test("kind preparation preserves canonical inputs, private credentials and persi
       ["Deployment", "StatefulSet"].includes(d.kind),
     );
     assert.equal(deployments.length, 13);
+    for (const deployment of deployments) {
+      const pod = deployment.spec.template.spec;
+      for (const container of [
+        ...pod.containers,
+        ...(pod.initContainers || []),
+      ]) {
+        assert(container.resources.requests.cpu);
+        assert(container.resources.requests.memory);
+        assert(container.resources.limits.cpu);
+        assert(container.resources.limits.memory);
+      }
+    }
+    const keycloakPod = deployments.find((d) => d.metadata.name === "keycloak")
+      .spec.template.spec;
+    assert.deepEqual(
+      keycloakPod.volumes.find((v) => v.name === "realm"),
+      {
+        name: "realm",
+        secret: { secretName: "padel-realm" },
+      },
+    );
     for (const service of applicationServices) {
       const d = deployments.find((d) => d.metadata.name === service);
       assert.equal(
