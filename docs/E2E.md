@@ -80,4 +80,10 @@ node scripts/repair-keycloak-basic.mjs
 
 Το GitHub Actions job `e2e` εκτελεί την ίδια σουίτα και αποθηκεύει τα αποτελέσματα ως artifact. Η τοπική επιτυχία δεν επιβεβαιώνει εκτέλεση του workflow στο GitHub.
 
-Η σουίτα δεν αντικαθιστά browser UI testing, load testing, penetration testing, έλεγχο monitoring ή deployment σε Kubernetes. Η επαναποστολή event ID ελέγχει deduplication μετά το commit, όχι ακριβώς μία αποστολή email σε κάθε πιθανό crash.
+Η σουίτα δεν αντικαθιστά browser UI testing, load testing, penetration testing ή έλεγχο monitoring. Η επαναποστολή event ID ελέγχει deduplication μετά το commit, όχι ακριβώς μία αποστολή email σε κάθε πιθανό crash.
+
+## Εκτέλεση σε Kubernetes
+
+Το [kind profile](KUBERNETES.md) επαναχρησιμοποιεί τα 60 σενάρια με adapter που επιτρέπει μόνο το ιδιόκτητο τοπικό cluster, και προσθέτει έναν πραγματικό έλεγχο αντικατάστασης PostgreSQL pod: νέο pod UID, ίδιο bound PVC/volume, ίδια δεδομένα κρατήσεων και ανάκαμψη booking HTTP/Keycloak DB. Συνολικά **61 σενάρια**. Το default παραμένει Compose.
+
+Το cleanup των καταγεγραμμένων προσωρινών ταυτοτήτων επαναλαμβάνει μόνο παροδικά server errors, αποδέχεται idempotent DELETE replay και απαιτεί ξεχωριστό GET 404. Μόνιμα errors, μη εξουσιοδοτημένες απαντήσεις ή ταυτότητες που επιβιώνουν αποτυγχάνουν το run. Τα προηγούμενα αποτυχημένα runs δεν αντικαθίστανται από νεότερα reports.

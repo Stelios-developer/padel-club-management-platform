@@ -20,6 +20,10 @@ Run tools from the repository root. The root `package.json` is the common entry 
 
 Use `--browser chromium|firefox|webkit` to select the walkthrough engine and keep separate output folders. Add `--accessibility` to scan the real Greek identity forms with axe; incomplete findings are retained for human review. Run live walkthroughs serially. [Browser and accessibility scope](../docs/BROWSER-ACCESSIBILITY.md).
 
+## Local Kubernetes
+
+`kubernetes-install.mjs` installs checksum-pinned tools in `.tools/kubernetes/`. `kubernetes.mjs up|status|test|report|diagnostics` manages the guarded local `padel-local` kind profile. Support modules and negative controls live in `kubernetes/`. Commands use an explicit workspace kubeconfig and leave global contexts untouched. [Deployment and recovery tests](../docs/KUBERNETES.md).
+
 ## Applied AI
 
 `evaluate-assistant-robustness.mjs --split discovery|confirmation --output-dir docs/ai-evals/<new-run>` runs the separate frozen 40-question challenge set with the same real local session and graders. It preserves first-use confirmation even when the gate fails. [Scope, failed attempts and interpretation](../docs/AI-NATURAL-SEARCH.md).

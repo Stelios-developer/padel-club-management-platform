@@ -1,5 +1,7 @@
 # AWS demo preparation — local evidence and activation runbook
 
+**Ενημέρωση 26/10/2026:** το δημόσιο GitHub CI και το [signed v1.0.0 release](RELEASE-v1.0.0.md) έχουν επαληθευτεί. Το [τοπικό Kubernetes/kind](KUBERNETES.md) πέρασε 61/61 integration/recovery cases. Η τρέχουσα πολιτική περιλαμβάνει τέσσερις προσωρινές εξαιρέσεις έως 04/11/2026. AWS/public hosting και production Kubernetes παραμένουν εκκρεμή. Οι παλαιότερες μετρήσεις και περιγραφές παρακάτω διατηρούν την αρχική ημερομηνία και ερμηνεία τους.
+
 Prepared **5 October 2026**. The user chose **local preparation only**: there is no AWS account, approved region/budget or GitHub repository. No AWS resources, public demo, IAM sessions or charges were created. This is the local portion of roadmap stage 7; a real deployment and observed operation remain pending.
 
 ## Architecture decision

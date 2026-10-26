@@ -200,6 +200,46 @@ jobs:
           if [ -f .runtime/production-check/compose.yml ]; then
             docker compose --env-file .runtime/production-check/.env -f .runtime/production-check/compose.yml -p padel-production-check down
           fi
+  kubernetes:
+    needs: [verify, security]
+    runs-on: ubuntu-latest
+    timeout-minutes: 35
+    permissions:
+      contents: read
+      attestations: read
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with: { persist-credentials: false }
+      - uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7.0.0
+        with: { node-version: "24" }
+      - name: Verify Kubernetes target guards and redacted reporting
+        run: node --test scripts/kubernetes/*.test.mjs scripts/e2e/*.test.mjs
+      - name: Reverify all nine deployed release images
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: node scripts/kubernetes/verify-release.mjs
+      - name: Create isolated kind cluster and deploy pinned images
+        run: node scripts/kubernetes.mjs up --cluster padel-ci
+      - name: Real Kubernetes OIDC, domain, messaging and pod/PVC recovery
+        run: node scripts/kubernetes.mjs test --cluster padel-ci
+      - name: Export redacted deployment evidence
+        if: always()
+        run: node scripts/kubernetes.mjs report --cluster padel-ci
+      - name: Private container diagnostics on failure
+        if: failure()
+        run: node scripts/kubernetes.mjs diagnostics --cluster padel-ci
+      - uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
+        if: always()
+        with:
+          name: kubernetes-results
+          path: test-results/kubernetes-*.json
+          if-no-files-found: warn
+      - name: Remove this runner's disposable test cluster
+        if: always()
+        run: |
+          if [ -x .tools/kubernetes/kind ]; then
+            .tools/kubernetes/kind delete cluster --name padel-ci
+          fi
   images:
     needs: [verify, security]
     runs-on: ubuntu-latest

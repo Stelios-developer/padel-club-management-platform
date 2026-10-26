@@ -14,7 +14,7 @@ The root [compose.yml](../compose.yml) starts the local application; [compose.ai
 | `security/`      | Scanner policy, tool pins, Maven settings and temporary exceptions; [supply chain](../docs/SUPPLY-CHAIN.md) |
 | `production/`    | Production preparation templates; [production runbook](../docs/PRODUCTION.md)                               |
 | `cloud/`         | AWS Terraform and mock tests; [cloud runbook](../docs/CLOUD.md)                                             |
-| `k8s/`           | Kubernetes manifests and generated configuration copies; undeployed scaffold                                |
+| `k8s/`           | Kubernetes manifests and tested local kind profile; [deployment and recovery](../docs/KUBERNETES.md)        |
 
 ## Configuration ownership
 
@@ -25,6 +25,6 @@ npm run sync:k8s
 npm run sync:k8s:check
 ```
 
-Do not edit `k8s/config/` directly. Keep credentials, Terraform state/plans, runtime bundles and backups outside publication. Example files contain local fixtures only. Production/cloud templates are preparation; the repository does not claim a deployed cluster or AWS environment.
+Do not edit `k8s/config/` directly. Keep credentials, Terraform state/plans, runtime bundles and backups outside publication. Example files contain local fixtures only. The kind profile deploys a real single-node local cluster; production Kubernetes and AWS deployment remain separate work.
 
 [Operator commands](../scripts/README.md) · [Architecture](../docs/ARCHITECTURE.md) · [Documentation index](../docs/README.md)

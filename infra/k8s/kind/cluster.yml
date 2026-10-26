@@ -1,0 +1,20 @@
+kind: Cluster
+apiVersion: kind.x-k8s.io/v1alpha4
+networking:
+  apiServerAddress: "127.0.0.1"
+  serviceSubnet: "10.96.0.0/16"
+nodes:
+  - role: control-plane
+    extraPortMappings:
+      - containerPort: 30000
+        hostPort: 13000
+        listenAddress: "127.0.0.1"
+      - containerPort: 30081
+        hostPort: 18081
+        listenAddress: "127.0.0.1"
+      - containerPort: 30025
+        hostPort: 18025
+        listenAddress: "127.0.0.1"
+      - containerPort: 30672
+        hostPort: 18072
+        listenAddress: "127.0.0.1"

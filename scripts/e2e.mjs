@@ -1,5 +1,5 @@
 // Real HTTP/OIDC, PostgreSQL, RabbitMQ and SMTP checks. No mocked services.
-// Run ONLY against the dedicated padel-e2e Compose project (see docs/E2E.md).
+// Run ONLY against padel-e2e Compose or the guarded local kind target.
 import assert from "node:assert/strict";
 import { notificationCopy } from "../web/ui/notifications.js";
 import { randomBytes, randomUUID, createHash } from "node:crypto";
@@ -11,21 +11,33 @@ import { verifyPadel } from "./e2e/padel.mjs";
 import { verifyReception } from "./e2e/reception.mjs";
 import { assertConcurrentExclusion } from "./e2e/sql-conflicts.mjs";
 import { recoveredRead } from "./e2e/readiness.mjs";
+import { removeIsolatedIdentity } from "./e2e/cleanup.mjs";
+import { loadKubernetesTestTarget } from "./kubernetes/test-target.mjs";
 
 const exec = promisify(execFile);
 const root = new URL("../", import.meta.url);
-const settings = Object.fromEntries(
-  (await readFile(new URL("../.env.example", import.meta.url), "utf8"))
-    .split(/\r?\n/)
-    .filter((line) => line && !line.startsWith("#"))
-    .map((line) => {
-      const i = line.indexOf("=");
-      return [line.slice(0, i), line.slice(i + 1)];
-    }),
-);
-const issuer = "http://localhost:8081/realms/padel";
-const base = "http://localhost:3000";
-const project = "padel-e2e";
+const kubernetesIndex = process.argv.indexOf("--kubernetes");
+const kubernetes =
+  kubernetesIndex < 0
+    ? null
+    : await loadKubernetesTestTarget(process.argv[kubernetesIndex + 1]);
+const settings =
+  kubernetes?.settings ??
+  Object.fromEntries(
+    (await readFile(new URL("../.env.example", import.meta.url), "utf8"))
+      .split(/\r?\n/)
+      .filter((line) => line && !line.startsWith("#"))
+      .map((line) => {
+        const i = line.indexOf("=");
+        return [line.slice(0, i), line.slice(i + 1)];
+      }),
+  );
+const identityOrigin = kubernetes?.identityOrigin ?? "http://localhost:8081";
+const issuer = identityOrigin + "/realms/padel";
+const base = kubernetes?.webOrigin ?? "http://localhost:3000";
+const mailpitOrigin = kubernetes?.mailpitOrigin ?? "http://localhost:8025";
+const rabbitOrigin = kubernetes?.rabbitOrigin ?? "http://localhost:15672";
+const project = kubernetes?.cluster ?? "padel-e2e";
 const resilience = process.argv.includes("--resilience");
 const runId = Date.now().toString(36) + randomBytes(3).toString("hex");
 const results = [],
@@ -65,6 +77,7 @@ async function http(url, options = {}) {
   return { status: response.status, data, headers: response.headers };
 }
 async function compose(...args) {
+  if (kubernetes) return kubernetes.command(...args);
   const result = await exec(
     "docker",
     ["compose", "--env-file", ".env.example", "-p", project, ...args],
@@ -163,7 +176,7 @@ function form(body) {
 }
 async function masterToken() {
   const response = await http(
-    "http://localhost:8081/realms/master/protocol/openid-connect/token",
+    identityOrigin + "/realms/master/protocol/openid-connect/token",
     form({
       grant_type: "password",
       client_id: "admin-cli",
@@ -175,7 +188,7 @@ async function masterToken() {
   return response.data.access_token;
 }
 async function identityAdmin(path, method = "GET", body) {
-  return http("http://localhost:8081/admin/realms/padel" + path, {
+  return http(identityOrigin + "/admin/realms/padel" + path, {
     method,
     headers: {
       Authorization: "Bearer " + (await masterToken()),
@@ -405,7 +418,8 @@ async function notificationsWith(title, timeout) {
 }
 async function mailFor(notification) {
   const response = await http(
-    "http://localhost:8025/api/v1/search?query=" +
+    mailpitOrigin +
+      "/api/v1/search?query=" +
       encodeURIComponent("to:" + member.email),
   );
   assert.equal(response.status, 200);
@@ -415,7 +429,7 @@ async function mailFor(notification) {
 }
 async function publish(event) {
   const response = await http(
-    "http://localhost:15672/api/exchanges/%2F/padel.events/publish",
+    rabbitOrigin + "/api/exchanges/%2F/padel.events/publish",
     {
       method: "POST",
       headers: {
@@ -440,12 +454,18 @@ async function publish(event) {
 
 try {
   // Verify project ownership before the optional stop/restart operations.
-  const container = await compose("ps", "-q", "postgres");
-  assert(container, "Start padel-e2e Compose first");
-  const inspection = JSON.parse(
-    (await exec("docker", ["inspect", container], { cwd: root })).stdout,
-  )[0];
-  assert.equal(inspection.Config.Labels["com.docker.compose.project"], project);
+  if (kubernetes) await kubernetes.verify();
+  else {
+    const container = await compose("ps", "-q", "postgres");
+    assert(container, "Start padel-e2e Compose first");
+    const inspection = JSON.parse(
+      (await exec("docker", ["inspect", container], { cwd: root })).stdout,
+    )[0];
+    assert.equal(
+      inspection.Config.Labels["com.docker.compose.project"],
+      project,
+    );
+  }
   await test("Real stack readiness and web proxy", async () => {
     await until(
       async () =>
@@ -1245,7 +1265,8 @@ try {
       "1",
     );
     const mail = await http(
-      "http://localhost:8025/api/v1/search?query=" +
+      mailpitOrigin +
+        "/api/v1/search?query=" +
         encodeURIComponent("to:" + member.email),
     );
     assert.equal(
@@ -1306,24 +1327,46 @@ try {
   });
   if (resilience) {
     infraTouched = true;
-    await test("Gateway container recreation keeps the existing Nginx proxy working", async () => {
-      const webId = await compose("ps", "-q", "web"),
-        gatewayId = await compose("ps", "-q", "api-gateway");
-      await compose("up", "-d", "--no-deps", "--force-recreate", "api-gateway");
-      assert.notEqual(await compose("ps", "-q", "api-gateway"), gatewayId);
-      assert.equal(
-        await compose("ps", "-q", "web"),
-        webId,
-        "Web must not need a restart",
-      );
-      await until(
-        async () =>
-          (await api(member, "/api/subscriptions/plans")).status === 200,
-        "Existing Nginx routes to recreated gateway",
-        180000,
-      );
-      assert.equal((await api(member, "/api/members/me")).data.id, profile.id);
-    });
+    await test(
+      kubernetes
+        ? "Gateway pod replacement keeps the existing web pod proxy working"
+        : "Gateway container recreation keeps the existing Nginx proxy working",
+      async () => {
+        const webId = await compose("ps", "-q", "web"),
+          gatewayId = await compose("ps", "-q", "api-gateway");
+        await compose(
+          "up",
+          "-d",
+          "--no-deps",
+          "--force-recreate",
+          "api-gateway",
+        );
+        assert.notEqual(await compose("ps", "-q", "api-gateway"), gatewayId);
+        assert.equal(
+          await compose("ps", "-q", "web"),
+          webId,
+          "Web must not need a restart",
+        );
+        await until(
+          async () =>
+            (await api(member, "/api/subscriptions/plans")).status === 200,
+          "Existing Nginx routes to recreated gateway",
+          180000,
+        );
+        // EndpointSlice/kube-proxy propagation can briefly reject a connection
+        // after the old gateway exits, even if its preceding request succeeded.
+        const recovered = await until(
+          async () => {
+            const response = await api(member, "/api/members/me");
+            return [502, 503].includes(response.status) ? false : response;
+          },
+          "Member route recovers through the existing web proxy",
+          180000,
+        );
+        assert.equal(recovered.status, 200, JSON.stringify(recovered.data));
+        assert.equal(recovered.data.id, profile.id);
+      },
+    );
     await test("Booking persists across a booking-service restart", async () => {
       await compose("restart", "booking-service");
       await until(
@@ -1650,6 +1693,38 @@ try {
     bookings,
     liveBooking,
   });
+  if (kubernetes)
+    await test("PostgreSQL pod replacement retains its PVC and booking data, and the API recovers", async () => {
+      const query =
+        "SELECT count(*) || ':' || md5(coalesce(string_agg(row_to_json(b)::text, '' ORDER BY id), '')) FROM bookings b;";
+      const before = await sql("padel_bookings", query);
+      assert(
+        Number(before.split(":")[0]) > 0,
+        "Require actual booking fixtures before the persistence check",
+      );
+      const storage = await kubernetes.postgresStorage(),
+        previousPod = await compose("ps", "-q", "postgres");
+      await compose("restart", "postgres");
+      assert.notEqual(await compose("ps", "-q", "postgres"), previousPod);
+      assert.deepEqual(await kubernetes.postgresStorage(), storage);
+      assert.equal(await sql("padel_bookings", query), before);
+      await until(
+        async () => {
+          const response = await api(member, `/api/bookings/${liveBooking.id}`);
+          return response.status === 200 && response.data.id === liveBooking.id;
+        },
+        "Booking API recovers after PostgreSQL pod replacement",
+        180000,
+      );
+      await until(
+        async () => {
+          const response = await identityAdmin(`/users/${admin.id}`);
+          return response.status === 200 && response.data.id === admin.id;
+        },
+        "Keycloak database access recovers after PostgreSQL pod replacement",
+        180000,
+      );
+    });
   await test("Cancelled subscription blocks further bookings", async () => {
     assert.equal(
       (await api(admin, `/api/subscriptions/${subscription.id}`, "DELETE"))
@@ -1743,7 +1818,7 @@ try {
   }
   for (const id of users) {
     try {
-      assert.equal((await identityAdmin(`/users/${id}`, "DELETE")).status, 204);
+      await removeIsolatedIdentity(identityAdmin, until, `/users/${id}`);
     } catch {
       console.error("Could not remove isolated test identity:", id);
       process.exitCode = 1;
@@ -1751,10 +1826,7 @@ try {
   }
   for (const id of clients) {
     try {
-      assert.equal(
-        (await identityAdmin(`/clients/${id}`, "DELETE")).status,
-        204,
-      );
+      await removeIsolatedIdentity(identityAdmin, until, `/clients/${id}`);
     } catch {
       console.error("Could not remove isolated test client:", id);
       process.exitCode = 1;
@@ -1767,6 +1839,7 @@ try {
     runId,
     finishedAt: new Date().toISOString(),
     project,
+    target: kubernetes ? "kubernetes" : "compose",
     resilience,
     passed: results.filter((r) => r.passed).length,
     failed: results.filter((r) => !r.passed).length,

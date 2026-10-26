@@ -26,9 +26,9 @@
 
 Το τοπικό μέρος του [σταδίου 6 — ασφάλεια και supply chain](SUPPLY-CHAIN.md) περιλαμβάνει Trivy gates, Syft/CycloneDX SBOM για 10 application images, pinned Actions/Docker bases και επαλήθευση ότι εγκαταστάθηκε το image που σαρώθηκε. Διορθώθηκαν runtime εξαρτήσεις και το νέο πλήρες backend verify πέρασε **135 tests**. Υπάρχουν **πέντε προσωρινές source/configuration εξαιρέσεις έως 04/11/2026**. [Πραγματικά αποτελέσματα και όρια](security/results.json).
 
-CodeQL και υπογεγραμμένα GitHub provenance/SBOM attestations έχουν διαμορφωθεί. Η εκτέλεσή τους παραμένει ανοικτή μέχρι τη δημιουργία του GitHub repository. Τα τοπικά tests δεν αποτελούν απόδειξη πραγματικού signed release ή production readiness.
+Τα GitHub Actions και CodeQL έχουν εκτελεστεί στο δημόσιο repository. Το [v1.0.0 release](RELEASE-v1.0.0.md) δημοσίευσε 10 images με επαληθευμένα provenance/SBOM attestations. Το πραγματικό release και η τοπική λειτουργία δεν αποτελούν πιστοποίηση production readiness.
 
-Προστέθηκε η [τοπική προετοιμασία AWS/Terraform](CLOUD.md): encrypted state/data, retained EBS, περιορισμένοι GitHub OIDC ρόλοι, deployment με signed image digests και έλεγχοι rollback. Η προετοιμασία ελέγχεται με mock AWS provider· δεν δημιουργήθηκαν AWS πόροι ή χρεώσεις. Υπάρχει μία επιπλέον προσωρινή cloud εξαίρεση για HTTPS egress, άρα η τρέχουσα πολιτική περιλαμβάνει συνολικά έξι εξαιρέσεις. [Πραγματικά αποτελέσματα και εκκρεμότητες](cloud/results.json).
+Προστέθηκε η [τοπική προετοιμασία AWS/Terraform](CLOUD.md): encrypted state/data, retained EBS, περιορισμένοι GitHub OIDC ρόλοι, deployment με signed image digests και έλεγχοι rollback. Η προετοιμασία ελέγχεται με mock AWS provider· δεν δημιουργήθηκαν AWS πόροι ή χρεώσεις. Η τρέχουσα [πολιτική εξαιρέσεων](../infra/security/exceptions.json) καταγράφει τέσσερις προσωρινές εξαιρέσεις, με λήξη 04/11/2026. [Πραγματικά αποτελέσματα και εκκρεμότητες](cloud/results.json).
 
 ## Γρήγορη προβολή χωρίς Docker
 
@@ -179,26 +179,24 @@ docker compose --env-file .env.example config --quiet
 
 Ο helper κατεβάζει Maven στο `.tools` και χρησιμοποιεί το Java που βρίσκεται στο PATH. Δεν αλλάζει τις ρυθμίσεις Java του συστήματος. Τα tests χρησιμοποιούν H2 και mock εξωτερικές υπηρεσίες. Περιλαμβάνουν concurrent κρατήσεις, ακυρώσεις, όρια συνδρομών, ownership/roles, υπογραφή/issuer/audience/expiry JWT, πρόσβαση και retry/deduplication email. Δεν αντικαθιστούν δοκιμή ολοκλήρωσης με PostgreSQL, RabbitMQ και Keycloak.
 
-Τα GitHub Actions κάνουν build/tests, έλεγχο Compose και build των Docker images. Το ξεχωριστό workflow «Publish container images» εκκινείται χειροκίνητα, επαναλαμβάνει τα tests και δημοσιεύει images στο GHCR με το tag που επιλέγεις. Δεν γίνεται publish ή deploy με απλό push. Δεν έχει εκτελεστεί release από την αρχική υλοποίηση.
+Τα GitHub Actions κάνουν build/tests, έλεγχο Compose και build των Docker images. Το ξεχωριστό workflow «Publish container images» εκκινείται χειροκίνητα, επαναλαμβάνει τα tests και δημοσιεύει images στο GHCR με το tag που επιλέγεις. Δεν γίνεται publish ή deploy με απλό push. Το [v1.0.0](RELEASE-v1.0.0.md) είναι το πρώτο επαληθευμένο release με 10 δημοσιευμένα images.
 
 ## Kubernetes — τοπικό development
 
-Τα manifests στο `infra/k8s` είναι για τοπικό cluster και development. Περιλαμβάνουν Deployments/Services, PostgreSQL/RabbitMQ StatefulSets με PVCs, ConfigMaps, Secrets και probes. Το monitoring stack παρέχεται μέσω Compose· δεν περιλαμβάνεται στα Kubernetes manifests.
+Το [kind profile](KUBERNETES.md) εκτελεί πραγματικό Kubernetes 1.37.0 με 9 signed application images και PostgreSQL, RabbitMQ, Keycloak και Mailpit: συνολικά 13 workloads. Η τοπική επαλήθευση της 26/10/2026 πέρασε **61/61** σενάρια, με επανεκκίνηση PostgreSQL, διατήρηση PVC/δεδομένων και ανάκαμψη HTTP/Keycloak. [Αποτελέσματα](results/backend/kubernetes-kind-2026-10-26.json).
 
-```powershell
-.\scripts\prepare-k8s.ps1
-Copy-Item infra/k8s/secrets.env.example infra/k8s/secrets.env
-# Συμπλήρωσε τα secrets.env με δικούς σου κωδικούς.
-docker compose --env-file .env.example build
-# Φόρτωσε τα padel/*:local images στο cluster αν δεν χρησιμοποιεί τον ίδιο Docker daemon.
-kubectl apply -k infra/k8s
-kubectl -n padel get pods
-kubectl -n padel port-forward service/web 3000:80
-# Σε δεύτερο terminal:
-kubectl -n padel port-forward service/keycloak 8081:8080
+Απαιτούνται Node.js 24+, Docker με Linux containers και περίπου 8 GiB RAM για Docker. Σε μικρό υπολογιστή σταμάτησε πρώτα τα δικά σου Padel Compose/AI stacks. Δεν επηρεάζονται αυτόματα άλλα projects.
+
+```sh
+node scripts/kubernetes.mjs up
+node scripts/kubernetes.mjs status
+node scripts/kubernetes.mjs test
+node scripts/kubernetes.mjs report
 ```
 
-Τα ConfigMaps ανανεώνονται από το prepare script όταν αλλάζουν το config repo ή το realm. Για εξωτερικό hostname χρειάζονται προσαρμογή Keycloak issuer/JWK URL, client redirect URIs και `app-config.json`.
+Η εφαρμογή ανοίγει στο **http://localhost:13000**, το Keycloak στο **http://localhost:18081** και το Mailpit στο **http://localhost:18025**. Τα tools εγκαθίστανται ιδιωτικά στο `.tools/kubernetes/` με checksum verification. Το workspace kubeconfig και τα τυχαία infrastructure secrets παραμένουν στο αγνοημένο `.runtime/`. Δεν αλλάζει το καθολικό kubeconfig.
+
+Τα StatefulSets χρησιμοποιούν PVCs, οι υπηρεσίες έχουν probes/resource limits και οι εντολές ελέγχουν την ιδιοκτησία cluster/namespace. Η επανάληψη του setup διατηρεί τους κωδικούς και τα δεδομένα. Το προαιρετικό AI και το Compose monitoring δεν περιλαμβάνονται σε αυτό το profile. Πρόκειται για τοπικό single-node development· η διαγραφή του cluster καταστρέφει την τοπική υποδομή, και δεν υποκαθιστά backup ή production εγκατάσταση.
 
 ## Όρια και επόμενες επεκτάσεις
 
