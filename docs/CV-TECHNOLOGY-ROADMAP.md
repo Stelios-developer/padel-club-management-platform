@@ -1,6 +1,6 @@
 # Padel — Technology roadmap για Java Backend / Cloud και Applied AI
 
-**Ενημέρωση 26/10/2026:** το δημόσιο GitHub CI και το [signed v1.0.0 release](RELEASE-v1.0.0.md) έχουν επαληθευτεί. Το [τοπικό Kubernetes/kind](KUBERNETES.md) πέρασε 61/61 integration/recovery cases. Η τρέχουσα πολιτική περιλαμβάνει τέσσερις προσωρινές εξαιρέσεις έως 04/11/2026. AWS/public hosting και production Kubernetes παραμένουν εκκρεμή. Οι παλαιότερες μετρήσεις και περιγραφές παρακάτω διατηρούν την αρχική ημερομηνία και ερμηνεία τους.
+**Ενημέρωση 26/10/2026:** το δημόσιο GitHub CI και το [signed v1.0.0 release](RELEASE-v1.0.0.md) έχουν επαληθευτεί. Το [τοπικό Kubernetes/kind](KUBERNETES.md) πέρασε 61/61 integration/recovery cases. Οι τέσσερις infrastructure εξαιρέσεις έκλεισαν με [read-only Kubernetes και περιορισμένο HTTPS egress](SECURITY-HARDENING.md). Η τρέχουσα πολιτική έχει μηδενικές εξαιρέσεις. AWS/public hosting και production Kubernetes παραμένουν εκκρεμή. Οι παλαιότερες μετρήσεις και περιγραφές παρακάτω διατηρούν την αρχική ημερομηνία και ερμηνεία τους.
 
 Νεότερη τοπική [v15](AI-NATURAL-SEARCH.md): φυσικές ώρες/διάρκειες/ημέρες, αυστηρότερο scope και grounded ανάκτηση, με **140/140 regression cases**, **38 unit tests**, **63 scoped browser/accessibility checks** και πραγματική mobile αναζήτηση μέχρι τη φόρμα επιβεβαίωσης. Η πρώτη νέα confirmation μέτρηση απέτυχε και διατηρείται· το τελικό αποτέλεσμα αφορά επιθεωρημένα regression δεδομένα, χωρίς ανεξάρτητη ανθρώπινη αξιολόγηση.
 

@@ -69,11 +69,11 @@ const report = {
     cloudCostMeasured: false,
   },
   limitations: [
-    "Nine Terraform tests use mocked AWS state, not AWS execution.",
+    `${local.modules.reduce((sum, module) => sum + module.passed, 0)} Terraform tests use mocked AWS state, not AWS execution.`,
     "Eleven cloud release tests use deliberate fixtures, not real signatures or a live rollout.",
-    "One cloud-specific HTTPS egress exception expires 2026-11-04; accepted destination restriction risk remains.",
+    `Accepted cloud configuration exceptions: ${configuration.findings.filter((finding) => finding.exception).length}. HTTPS destinations still require operator review and actual cloud connectivity checks.`,
     "Third-party infrastructure images and cloud host OS/runtime installations need a fresh inventory/rehearsal.",
-    "Stage-6 signed release/GitHub execution and real-model AI quality remain pending.",
+    "This local report does not perform additional release-signature verification or real-model AI evaluation; see their separately scoped evidence.",
   ],
 };
 await mkdir("docs/cloud", { recursive: true });

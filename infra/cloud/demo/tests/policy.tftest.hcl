@@ -29,6 +29,10 @@ variables {
 run "compute_off_by_default" {
   command = apply
   assert {
+    condition     = length(aws_vpc_security_group_egress_rule.https) == 0
+    error_message = "No HTTPS egress is permitted without reviewed destinations."
+  }
+  assert {
     condition     = length(aws_instance.host) == 0 && length(aws_ebs_volume.data) == 0 && length(aws_budgets_budget.demo) == 0
     error_message = "Do not invent a budget or provision compute by default."
   }
@@ -96,6 +100,11 @@ run "configured_host" {
     ami_id             = "ami-0123456789abcdef0"
     monthly_budget_usd = 50
     budget_email       = "fixture@example.com"
+    https_egress_cidrs = ["203.0.113.0/24", "198.51.100.42/32"]
+  }
+  assert {
+    condition     = toset([for rule in aws_vpc_security_group_egress_rule.https : rule.cidr_ipv4]) == toset(["203.0.113.0/24", "198.51.100.42/32"]) && alltrue([for rule in aws_vpc_security_group_egress_rule.https : rule.from_port == 443 && rule.to_port == 443 && rule.ip_protocol == "tcp"])
+    error_message = "HTTPS must reach exactly the reviewed fixture destinations on TCP 443."
   }
   assert {
     condition     = aws_instance.host[0].metadata_options[0].http_tokens == "required" && aws_instance.host[0].metadata_options[0].http_put_response_hop_limit == 1
@@ -113,8 +122,9 @@ run "configured_host" {
 run "budget_required" {
   command = plan
   variables {
-    enable_compute = true
-    ami_id         = "ami-0123456789abcdef0"
+    enable_compute     = true
+    ami_id             = "ami-0123456789abcdef0"
+    https_egress_cidrs = ["203.0.113.0/24"]
   }
   expect_failures = [aws_instance.host]
 }
@@ -126,6 +136,72 @@ run "wildcard_repository_rejected" {
     ami_id             = "ami-0123456789abcdef0"
     monthly_budget_usd = 50
     budget_email       = "fixture@example.com"
+    https_egress_cidrs = ["203.0.113.0/24"]
   }
   expect_failures = [var.github_repository]
+}
+run "compute_requires_reviewed_https_destinations" {
+  command = plan
+  variables {
+    enable_compute     = true
+    ami_id             = "ami-0123456789abcdef0"
+    monthly_budget_usd = 50
+    budget_email       = "fixture@example.com"
+  }
+  expect_failures = [aws_instance.host]
+}
+run "worldwide_https_rejected" {
+  command = plan
+  variables {
+    enable_compute     = true
+    ami_id             = "ami-0123456789abcdef0"
+    monthly_budget_usd = 50
+    budget_email       = "fixture@example.com"
+    https_egress_cidrs = ["0.0.0.0/0"]
+  }
+  expect_failures = [var.https_egress_cidrs]
+}
+run "split_world_https_rejected" {
+  command = plan
+  variables {
+    enable_compute     = true
+    ami_id             = "ami-0123456789abcdef0"
+    monthly_budget_usd = 50
+    budget_email       = "fixture@example.com"
+    https_egress_cidrs = ["0.0.0.0/1", "128.0.0.0/1"]
+  }
+  expect_failures = [var.https_egress_cidrs]
+}
+run "broad_https_network_rejected" {
+  command = plan
+  variables {
+    enable_compute     = true
+    ami_id             = "ami-0123456789abcdef0"
+    monthly_budget_usd = 50
+    budget_email       = "fixture@example.com"
+    https_egress_cidrs = ["10.0.0.0/8"]
+  }
+  expect_failures = [var.https_egress_cidrs]
+}
+run "malformed_https_destination_rejected" {
+  command = plan
+  variables {
+    enable_compute     = true
+    ami_id             = "ami-0123456789abcdef0"
+    monthly_budget_usd = 50
+    budget_email       = "fixture@example.com"
+    https_egress_cidrs = ["github.com"]
+  }
+  expect_failures = [var.https_egress_cidrs]
+}
+run "ipv6_https_destination_rejected" {
+  command = plan
+  variables {
+    enable_compute     = true
+    ami_id             = "ami-0123456789abcdef0"
+    monthly_budget_usd = 50
+    budget_email       = "fixture@example.com"
+    https_egress_cidrs = ["::/0"]
+  }
+  expect_failures = [var.https_egress_cidrs]
 }

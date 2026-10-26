@@ -11,6 +11,7 @@ import {
 } from "./kubernetes-install.mjs";
 import { prepareBundle } from "./kubernetes/bundle.mjs";
 import { deploymentReport } from "./kubernetes/report.mjs";
+import { verifyInfrastructureHardening } from "./kubernetes/hardening.mjs";
 import {
   clusterName,
   namespace,
@@ -25,13 +26,15 @@ const root = fileURLToPath(new URL("../", import.meta.url)),
   args = process.argv.slice(2),
   command = args.shift();
 if (
-  !["up", "status", "test", "diagnostics", "report"].includes(command) ||
+  !["up", "status", "test", "diagnostics", "report", "security"].includes(
+    command,
+  ) ||
   args.some((x, i) => i % 2 === 0 && x !== "--cluster") ||
   args.length > 2 ||
   args.length % 2
 )
   throw new Error(
-    "Usage: node scripts/kubernetes.mjs up|status|test|diagnostics|report [--cluster padel-local|padel-ci]",
+    "Usage: node scripts/kubernetes.mjs up|status|test|diagnostics|report|security [--cluster padel-local|padel-ci]",
   );
 const name = clusterName(args[1] || "padel-local"),
   directory = privatePath(root, `.runtime/kubernetes/${name}`),
@@ -226,6 +229,15 @@ async function up() {
 if (command === "up") await up();
 else {
   await guard(true);
+  if (command === "security") {
+    const report = await verifyInfrastructureHardening(kubectl, name);
+    await mkdir(resolve(root, "test-results"), { recursive: true });
+    await writeFile(
+      resolve(root, "test-results/kubernetes-security.json"),
+      JSON.stringify(report, null, 2) + "\n",
+    );
+    console.log(JSON.stringify(report));
+  }
   if (command === "status")
     console.log(
       await kubectl("-n", namespace, "get", "pods,services,pvc", "-o", "wide"),
@@ -263,6 +275,12 @@ else {
         process.env.GITHUB_ACTIONS === "true"
           ? process.env.GITHUB_SHA
           : undefined,
+      security: await read(
+        resolve(root, "test-results/kubernetes-security.json"),
+      ).catch((error) => {
+        if (error.code !== "ENOENT") throw error;
+        return null;
+      }),
     });
     await writeFile(
       resolve(root, "test-results/kubernetes-e2e.json"),

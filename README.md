@@ -114,6 +114,8 @@ Versions and pins live in the [POM](pom.xml), [Compose](compose.yml), [toolchain
 
 **Local Kubernetes, 26 October 2026:** **61/61 integration/recovery cases**, **13 ready workloads**, nine running application digests matching the release, and two bound PVCs. PostgreSQL pod replacement preserved the same volume and booking data. [Deployment evidence](docs/results/backend/kubernetes-kind-2026-10-26.json) · [Case results](docs/results/e2e/kubernetes-kind-2026-10-26.json) · [Run the kind profile](docs/KUBERNETES.md). This single-node development profile excludes the optional AI and Compose monitoring stacks; public hosting and production Kubernetes remain separate work.
 
+**Infrastructure hardening:** all four temporary security exceptions are closed. Source/configuration gates pass with **zero exceptions**, and actual Kubernetes checks verify read-only roots, non-root users and optimized Keycloak startup. [Implementation and scoped evidence](docs/SECURITY-HARDENING.md).
+
 The table below preserves earlier **dated local results**, with separate scopes. Counts are not combined into a single score.
 
 | Check                 | Recorded result                                                                                       | Evidence                                                                       |

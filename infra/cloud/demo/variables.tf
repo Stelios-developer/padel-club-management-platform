@@ -79,6 +79,17 @@ variable "web_ingress_cidrs" {
     error_message = "Use valid IPv4 CIDRs."
   }
 }
+variable "https_egress_cidrs" {
+  type        = set(string)
+  default     = []
+  description = "Operator-reviewed HTTPS destinations (/24 or narrower), such as a controlled egress proxy or explicit service ranges. Empty denies HTTPS egress and blocks compute activation."
+  validation {
+    condition = alltrue([for cidr in var.https_egress_cidrs :
+      can(cidrnetmask(cidr)) && try(tonumber(split("/", cidr)[1]) >= 24, false)
+    ])
+    error_message = "HTTPS egress requires valid, reviewed IPv4 CIDRs with prefix /24 or narrower; world-wide, split-world and broad network ranges are rejected."
+  }
+}
 variable "smtp_egress_cidrs" {
   type        = set(string)
   default     = []
