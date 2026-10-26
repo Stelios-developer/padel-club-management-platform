@@ -90,26 +90,29 @@ The Maven reactor owns nine Java runtime services, shared contracts and a consum
 
 ## Technology in context
 
-| Area                | Technologies                                                               | Purpose                                                                                         |
-| ------------------- | -------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------- |
-| Backend             | **Java 21 · Spring Boot 4.0.8 · Maven**                                    | Typed APIs, validation and transactional business rules                                         |
-| Coordination        | **Spring Cloud 2025.1.3 · Gateway · Config · Eureka · OpenFeign**          | Routing, canonical configuration, discovery and domain calls                                    |
-| Data integrity      | **PostgreSQL 17 · Flyway · Spring Data JPA**                               | Service-owned data, migrations, exclusion constraints and idempotency                           |
-| Messaging           | **RabbitMQ · transactional outbox**                                        | Publisher confirms, deduplication and notification delivery retries                             |
-| Identity            | **Keycloak · OAuth2/OIDC · PKCE · JWT**                                    | Browser sign-in, roles and resource ownership                                                   |
-| Local AI            | **Spring AI 2.0.1 · Ollama · pgvector · promptfoo**                        | Approved-policy retrieval, availability tools and regression evaluation                         |
-| Resilience          | **Resilience4j · Toxiproxy**                                               | Bounded concurrency, circuit behavior and real fault/recovery tests                             |
-| Observability       | **OpenTelemetry · Prometheus · Grafana · Loki · Tempo**                    | Instrumentation, metrics, dashboards, logs and traces                                           |
-| Verification        | **JUnit · Testcontainers · Spring Cloud Contract · Playwright · axe-core** | Business/security rules, real dependencies, API contracts and browser/accessibility checks      |
-| Web                 | **Native JavaScript modules · CSS · Nginx**                                | Responsive Greek UI, isolated demo and explicit session/data lifecycle guards                   |
-| Delivery            | **Docker · GitHub Actions · CodeQL · Trivy · Syft**                        | Reproducible builds, CI analysis, policy gates and SBOM inventory                               |
-| Prepared deployment | **Terraform/AWS · Kubernetes**                                             | Configuration, local/mock checks and guarded workflows; public deployment remains separate work |
+| Area                      | Technologies                                                               | Purpose                                                                                    |
+| ------------------------- | -------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------ |
+| Backend                   | **Java 21 · Spring Boot 4.0.8 · Maven**                                    | Typed APIs, validation and transactional business rules                                    |
+| Coordination              | **Spring Cloud 2025.1.3 · Gateway · Config · Eureka · OpenFeign**          | Routing, canonical configuration, discovery and domain calls                               |
+| Data integrity            | **PostgreSQL 17 · Flyway · Spring Data JPA**                               | Service-owned data, migrations, exclusion constraints and idempotency                      |
+| Messaging                 | **RabbitMQ · transactional outbox**                                        | Publisher confirms, deduplication and notification delivery retries                        |
+| Identity                  | **Keycloak · OAuth2/OIDC · PKCE · JWT**                                    | Browser sign-in, roles and resource ownership                                              |
+| Local AI                  | **Spring AI 2.0.1 · Ollama · pgvector · promptfoo**                        | Approved-policy retrieval, availability tools and regression evaluation                    |
+| Resilience                | **Resilience4j · Toxiproxy**                                               | Bounded concurrency, circuit behavior and real fault/recovery tests                        |
+| Observability             | **OpenTelemetry · Prometheus · Grafana · Loki · Tempo**                    | Instrumentation, metrics, dashboards, logs and traces                                      |
+| Verification              | **JUnit · Testcontainers · Spring Cloud Contract · Playwright · axe-core** | Business/security rules, real dependencies, API contracts and browser/accessibility checks |
+| Web                       | **Native JavaScript modules · CSS · Nginx**                                | Responsive Greek UI, isolated demo and explicit session/data lifecycle guards              |
+| Delivery                  | **Docker · GitHub Actions · CodeQL · Trivy · Syft**                        | Reproducible builds, CI analysis, policy gates and SBOM inventory                          |
+| Local orchestration       | **Kubernetes · kind · Kustomize**                                          | Nine signed app images, probes, StatefulSets/PVCs and actual pod/database recovery tests   |
+| Prepared cloud deployment | **Terraform/AWS**                                                          | Configuration, mock checks and guarded workflows; AWS deployment remains separate work     |
 
 Versions and pins live in the [POM](pom.xml), [Compose](compose.yml), [toolchain policy](infra/security/toolchain.json) and lockfiles. The web uses native modules; local AI does not require a paid model API.
 
 ## Verification you can inspect
 
 **Hosted verification:** [source CI](https://github.com/Stelios-developer/padel-club-management-platform/actions/runs/40231486708) passed **154 backend, 252 browser and 60 E2E/recovery cases**. The [v1.0.0 release](docs/RELEASE-v1.0.0.md) published **10 public images**, independently checked with **40 provenance/SBOM signature verifications** against the exact source commit.
+
+**Local Kubernetes, 26 October 2026:** **61/61 integration/recovery cases**, **13 ready workloads**, nine running application digests matching the release, and two bound PVCs. PostgreSQL pod replacement preserved the same volume and booking data. [Deployment evidence](docs/results/backend/kubernetes-kind-2026-10-26.json) · [Case results](docs/results/e2e/kubernetes-kind-2026-10-26.json) · [Run the kind profile](docs/KUBERNETES.md). This single-node development profile excludes the optional AI and Compose monitoring stacks; public hosting and production Kubernetes remain separate work.
 
 The table below preserves earlier **dated local results**, with separate scopes. Counts are not combined into a single score.
 

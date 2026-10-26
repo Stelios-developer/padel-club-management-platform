@@ -1,0 +1,290 @@
+{
+  "schemaVersion": 1,
+  "verifiedAt": "2026-10-26T15:02:33.268Z",
+  "scope": "Single-node local/CI kind development cluster; no AWS or production Kubernetes deployment",
+  "sourceRevision": null,
+  "configurationScope": "local working tree",
+  "cluster": "padel-local",
+  "kubernetesVersion": "v1.37.0",
+  "nodeImage": "kindest/node:v1.37.0@sha256:a1ed56cfb0e7b93589bdf97c8cd566405a265939e3620fc4f5de89adff580ae5",
+  "webOrigin": "http://localhost:13000",
+  "applicationReleaseSource": "201617b4886311982ccb7dfde9a8b6179c774ae8",
+  "optionalAIIncluded": false,
+  "nodeReady": true,
+  "workloads": [
+    {
+      "name": "access-service-7cbdf4c77d-ltrxb",
+      "service": "access-service",
+      "uid": "90773812-812b-4b45-b56f-a944a08ea20d",
+      "phase": "Running",
+      "ready": true,
+      "restarts": 0,
+      "images": [
+        {
+          "name": "access-service",
+          "requested": "ghcr.io/stelios-developer/padel-club-management-platform/access-service@sha256:c1dadc6e76d2b332a8c8507af84ea30009dec3c7d1f4361dfbcce1a7738fdf75",
+          "running": "ghcr.io/stelios-developer/padel-club-management-platform/access-service@sha256:c1dadc6e76d2b332a8c8507af84ea30009dec3c7d1f4361dfbcce1a7738fdf75"
+        }
+      ]
+    },
+    {
+      "name": "api-gateway-74c8965d7-smqcf",
+      "service": "api-gateway",
+      "uid": "0f37a08b-ea52-496f-8ee3-ff723389fdf0",
+      "phase": "Running",
+      "ready": true,
+      "restarts": 0,
+      "images": [
+        {
+          "name": "api-gateway",
+          "requested": "ghcr.io/stelios-developer/padel-club-management-platform/api-gateway@sha256:36accf8f3fbd1cad0ce68c53db09be82a76f1f81bab931a133cd9d396560a994",
+          "running": "ghcr.io/stelios-developer/padel-club-management-platform/api-gateway@sha256:36accf8f3fbd1cad0ce68c53db09be82a76f1f81bab931a133cd9d396560a994"
+        }
+      ]
+    },
+    {
+      "name": "booking-service-bdf8db788-fwv85",
+      "service": "booking-service",
+      "uid": "937f2986-3a92-465f-969b-d8c20df73768",
+      "phase": "Running",
+      "ready": true,
+      "restarts": 0,
+      "images": [
+        {
+          "name": "booking-service",
+          "requested": "ghcr.io/stelios-developer/padel-club-management-platform/booking-service@sha256:322d14586c73f4c32a3ae59a848600dfc9c3b96853e035bb1ba7ece180f362f4",
+          "running": "ghcr.io/stelios-developer/padel-club-management-platform/booking-service@sha256:322d14586c73f4c32a3ae59a848600dfc9c3b96853e035bb1ba7ece180f362f4"
+        }
+      ]
+    },
+    {
+      "name": "config-server-6d894446c8-4gt7m",
+      "service": "config-server",
+      "uid": "2c170dc7-62a9-424e-8c05-c3164365485f",
+      "phase": "Running",
+      "ready": true,
+      "restarts": 0,
+      "images": [
+        {
+          "name": "config-server",
+          "requested": "ghcr.io/stelios-developer/padel-club-management-platform/config-server@sha256:f8156ea2fc5a0eb896b4814fbe97a7b3ecfc6db8ed0293bae5b5b8da2daaa51f",
+          "running": "ghcr.io/stelios-developer/padel-club-management-platform/config-server@sha256:f8156ea2fc5a0eb896b4814fbe97a7b3ecfc6db8ed0293bae5b5b8da2daaa51f"
+        }
+      ]
+    },
+    {
+      "name": "discovery-server-99567cf4b-74lc9",
+      "service": "discovery-server",
+      "uid": "d8fb3280-ce89-4fd7-bcdb-b91fa238e3d7",
+      "phase": "Running",
+      "ready": true,
+      "restarts": 0,
+      "images": [
+        {
+          "name": "discovery-server",
+          "requested": "ghcr.io/stelios-developer/padel-club-management-platform/discovery-server@sha256:eacb413b34a749d78d745b045c18c1fab4a46d804765288a6479228535dd37dd",
+          "running": "ghcr.io/stelios-developer/padel-club-management-platform/discovery-server@sha256:eacb413b34a749d78d745b045c18c1fab4a46d804765288a6479228535dd37dd"
+        }
+      ]
+    },
+    {
+      "name": "keycloak-7fdb59dd67-c9dlb",
+      "service": "keycloak",
+      "uid": "b9a540d7-f17a-41c6-b9bf-2a90f56a2801",
+      "phase": "Running",
+      "ready": true,
+      "restarts": 0,
+      "images": [
+        {
+          "name": "keycloak",
+          "requested": "quay.io/keycloak/keycloak:26.7.4@sha256:82a77884f3af238beab1e7afd63b5f530e1b5c0590bd7aa60b40a40463e29b2c",
+          "running": "quay.io/keycloak/keycloak@sha256:82a77884f3af238beab1e7afd63b5f530e1b5c0590bd7aa60b40a40463e29b2c"
+        }
+      ]
+    },
+    {
+      "name": "mailpit-8547bfd8c8-r6hqb",
+      "service": "mailpit",
+      "uid": "7dacf278-192a-44e3-a6a8-22e317d23c1c",
+      "phase": "Running",
+      "ready": true,
+      "restarts": 0,
+      "images": [
+        {
+          "name": "mailpit",
+          "requested": "axllent/mailpit:v1.27@sha256:e22dce5b36f93c77082e204a3942fb6b283b7896e057458400a4c88344c3df68",
+          "running": "docker.io/axllent/mailpit@sha256:e22dce5b36f93c77082e204a3942fb6b283b7896e057458400a4c88344c3df68"
+        }
+      ]
+    },
+    {
+      "name": "member-service-559487cff8-zs82k",
+      "service": "member-service",
+      "uid": "08a368bb-f55d-4f91-a80f-c2cab2d25942",
+      "phase": "Running",
+      "ready": true,
+      "restarts": 0,
+      "images": [
+        {
+          "name": "member-service",
+          "requested": "ghcr.io/stelios-developer/padel-club-management-platform/member-service@sha256:c49efa2fd12e4b88f4817bdbdee271a44e6947dbe1b9123135558dccb93a236c",
+          "running": "ghcr.io/stelios-developer/padel-club-management-platform/member-service@sha256:c49efa2fd12e4b88f4817bdbdee271a44e6947dbe1b9123135558dccb93a236c"
+        }
+      ]
+    },
+    {
+      "name": "notification-service-7bbd9f49cd-zmgzb",
+      "service": "notification-service",
+      "uid": "0f4235ac-92a7-48bb-b684-456560e08777",
+      "phase": "Running",
+      "ready": true,
+      "restarts": 0,
+      "images": [
+        {
+          "name": "notification-service",
+          "requested": "ghcr.io/stelios-developer/padel-club-management-platform/notification-service@sha256:2dce40b493160183ebb5d36a8d6718ebd82d49fa5293d7ce02ae847c8ede66c4",
+          "running": "ghcr.io/stelios-developer/padel-club-management-platform/notification-service@sha256:2dce40b493160183ebb5d36a8d6718ebd82d49fa5293d7ce02ae847c8ede66c4"
+        }
+      ]
+    },
+    {
+      "name": "postgres-0",
+      "service": "postgres",
+      "uid": "e1a35fe8-b154-486e-8670-5084ef8c0b40",
+      "phase": "Running",
+      "ready": true,
+      "restarts": 0,
+      "images": [
+        {
+          "name": "postgres",
+          "requested": "postgres:17-alpine@sha256:266d3c257594e195b309ae9d1805e54c788f1d7b375f56bf6c367aac6c917e7b",
+          "running": "docker.io/library/postgres@sha256:266d3c257594e195b309ae9d1805e54c788f1d7b375f56bf6c367aac6c917e7b"
+        }
+      ]
+    },
+    {
+      "name": "rabbitmq-0",
+      "service": "rabbitmq",
+      "uid": "c3b40559-472f-407b-a9ad-ffe14bb0859a",
+      "phase": "Running",
+      "ready": true,
+      "restarts": 0,
+      "images": [
+        {
+          "name": "rabbitmq",
+          "requested": "rabbitmq:4.1-management-alpine@sha256:54ef5ff505352c1beef05a97ee9bd6ab95b3559a76629ba0119b1d63d8d6e4b2",
+          "running": "docker.io/library/rabbitmq@sha256:54ef5ff505352c1beef05a97ee9bd6ab95b3559a76629ba0119b1d63d8d6e4b2"
+        }
+      ]
+    },
+    {
+      "name": "subscription-service-85595c8fdd-qq7wk",
+      "service": "subscription-service",
+      "uid": "65d09bf8-2c60-4f4e-8cfe-c5ffb23af518",
+      "phase": "Running",
+      "ready": true,
+      "restarts": 0,
+      "images": [
+        {
+          "name": "subscription-service",
+          "requested": "ghcr.io/stelios-developer/padel-club-management-platform/subscription-service@sha256:eeabd4ea06b61645aade44dce4b08821685d54a153570e062ce2373b960d2b2d",
+          "running": "ghcr.io/stelios-developer/padel-club-management-platform/subscription-service@sha256:eeabd4ea06b61645aade44dce4b08821685d54a153570e062ce2373b960d2b2d"
+        }
+      ]
+    },
+    {
+      "name": "web-6b4446cdbf-vwbpz",
+      "service": "web",
+      "uid": "cb558738-9855-4fd7-8752-a8e6b6e979a0",
+      "phase": "Running",
+      "ready": true,
+      "restarts": 0,
+      "images": [
+        {
+          "name": "web",
+          "requested": "ghcr.io/stelios-developer/padel-club-management-platform/web@sha256:e058b810ff8fde1bf03241dfcd9d6adc3e7aee1bcc100d0c725a3072e596d4c3",
+          "running": "ghcr.io/stelios-developer/padel-club-management-platform/web@sha256:e058b810ff8fde1bf03241dfcd9d6adc3e7aee1bcc100d0c725a3072e596d4c3"
+        }
+      ]
+    }
+  ],
+  "applications": [
+    {
+      "service": "config-server",
+      "expected": "ghcr.io/stelios-developer/padel-club-management-platform/config-server@sha256:f8156ea2fc5a0eb896b4814fbe97a7b3ecfc6db8ed0293bae5b5b8da2daaa51f",
+      "running": "ghcr.io/stelios-developer/padel-club-management-platform/config-server@sha256:f8156ea2fc5a0eb896b4814fbe97a7b3ecfc6db8ed0293bae5b5b8da2daaa51f",
+      "digestMatches": true
+    },
+    {
+      "service": "discovery-server",
+      "expected": "ghcr.io/stelios-developer/padel-club-management-platform/discovery-server@sha256:eacb413b34a749d78d745b045c18c1fab4a46d804765288a6479228535dd37dd",
+      "running": "ghcr.io/stelios-developer/padel-club-management-platform/discovery-server@sha256:eacb413b34a749d78d745b045c18c1fab4a46d804765288a6479228535dd37dd",
+      "digestMatches": true
+    },
+    {
+      "service": "api-gateway",
+      "expected": "ghcr.io/stelios-developer/padel-club-management-platform/api-gateway@sha256:36accf8f3fbd1cad0ce68c53db09be82a76f1f81bab931a133cd9d396560a994",
+      "running": "ghcr.io/stelios-developer/padel-club-management-platform/api-gateway@sha256:36accf8f3fbd1cad0ce68c53db09be82a76f1f81bab931a133cd9d396560a994",
+      "digestMatches": true
+    },
+    {
+      "service": "member-service",
+      "expected": "ghcr.io/stelios-developer/padel-club-management-platform/member-service@sha256:c49efa2fd12e4b88f4817bdbdee271a44e6947dbe1b9123135558dccb93a236c",
+      "running": "ghcr.io/stelios-developer/padel-club-management-platform/member-service@sha256:c49efa2fd12e4b88f4817bdbdee271a44e6947dbe1b9123135558dccb93a236c",
+      "digestMatches": true
+    },
+    {
+      "service": "subscription-service",
+      "expected": "ghcr.io/stelios-developer/padel-club-management-platform/subscription-service@sha256:eeabd4ea06b61645aade44dce4b08821685d54a153570e062ce2373b960d2b2d",
+      "running": "ghcr.io/stelios-developer/padel-club-management-platform/subscription-service@sha256:eeabd4ea06b61645aade44dce4b08821685d54a153570e062ce2373b960d2b2d",
+      "digestMatches": true
+    },
+    {
+      "service": "booking-service",
+      "expected": "ghcr.io/stelios-developer/padel-club-management-platform/booking-service@sha256:322d14586c73f4c32a3ae59a848600dfc9c3b96853e035bb1ba7ece180f362f4",
+      "running": "ghcr.io/stelios-developer/padel-club-management-platform/booking-service@sha256:322d14586c73f4c32a3ae59a848600dfc9c3b96853e035bb1ba7ece180f362f4",
+      "digestMatches": true
+    },
+    {
+      "service": "access-service",
+      "expected": "ghcr.io/stelios-developer/padel-club-management-platform/access-service@sha256:c1dadc6e76d2b332a8c8507af84ea30009dec3c7d1f4361dfbcce1a7738fdf75",
+      "running": "ghcr.io/stelios-developer/padel-club-management-platform/access-service@sha256:c1dadc6e76d2b332a8c8507af84ea30009dec3c7d1f4361dfbcce1a7738fdf75",
+      "digestMatches": true
+    },
+    {
+      "service": "notification-service",
+      "expected": "ghcr.io/stelios-developer/padel-club-management-platform/notification-service@sha256:2dce40b493160183ebb5d36a8d6718ebd82d49fa5293d7ce02ae847c8ede66c4",
+      "running": "ghcr.io/stelios-developer/padel-club-management-platform/notification-service@sha256:2dce40b493160183ebb5d36a8d6718ebd82d49fa5293d7ce02ae847c8ede66c4",
+      "digestMatches": true
+    },
+    {
+      "service": "web",
+      "expected": "ghcr.io/stelios-developer/padel-club-management-platform/web@sha256:e058b810ff8fde1bf03241dfcd9d6adc3e7aee1bcc100d0c725a3072e596d4c3",
+      "running": "ghcr.io/stelios-developer/padel-club-management-platform/web@sha256:e058b810ff8fde1bf03241dfcd9d6adc3e7aee1bcc100d0c725a3072e596d4c3",
+      "digestMatches": true
+    }
+  ],
+  "storage": [
+    {
+      "name": "data-postgres-0",
+      "uid": "13f66b14-f566-4e62-8721-a09952cf31a1",
+      "volume": "pvc-13f66b14-f566-4e62-8721-a09952cf31a1",
+      "phase": "Bound"
+    },
+    {
+      "name": "data-rabbitmq-0",
+      "uid": "f9b005fb-f287-4cdb-b6d4-ed25834bc9a2",
+      "volume": "pvc-f9b005fb-f287-4cdb-b6d4-ed25834bc9a2",
+      "phase": "Bound"
+    }
+  ],
+  "e2e": {
+    "project": "padel-local",
+    "target": "kubernetes",
+    "passed": 61,
+    "failed": 0,
+    "completed": true,
+    "postgresPodReplacementPassed": true
+  },
+  "completed": true
+}

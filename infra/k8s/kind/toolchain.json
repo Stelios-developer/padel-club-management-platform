@@ -1,0 +1,37 @@
+{
+  "reviewedAt": "2026-10-26",
+  "kind": {
+    "version": "0.33.0",
+    "source": "https://github.com/kubernetes-sigs/kind/releases/tag/v0.33.0",
+    "assets": {
+      "win32-x64": {
+        "url": "https://github.com/kubernetes-sigs/kind/releases/download/v0.33.0/kind-windows-amd64",
+        "sha256": "4b22adaa135368c5a465d56bbd8e520cbea87272a06ca00b6078e7b81515c9fc"
+      },
+      "linux-x64": {
+        "url": "https://github.com/kubernetes-sigs/kind/releases/download/v0.33.0/kind-linux-amd64",
+        "sha256": "aee6151561422756b764a4ae28e7f44cda5af5a9eead3cc9985112b1de8d8e0d"
+      }
+    }
+  },
+  "kubectl": {
+    "version": "1.37.0",
+    "assets": {
+      "win32-x64": {
+        "url": "https://dl.k8s.io/release/v1.37.0/bin/windows/amd64/kubectl.exe",
+        "sha256": "4721b614a67bb4932a0369e61f4a323d8c6ca00943d3a2ff14837c124da06f0e"
+      },
+      "linux-x64": {
+        "url": "https://dl.k8s.io/release/v1.37.0/bin/linux/amd64/kubectl",
+        "sha256": "6129359f4e1f3848a5572ccb0b26cf28b8ca08cef38c95a765b2f64a2c961a2f"
+      }
+    }
+  },
+  "nodeImage": "kindest/node:v1.37.0@sha256:a1ed56cfb0e7b93589bdf97c8cd566405a265939e3620fc4f5de89adff580ae5",
+  "infrastructureImages": {
+    "postgres": "postgres:17-alpine@sha256:266d3c257594e195b309ae9d1805e54c788f1d7b375f56bf6c367aac6c917e7b",
+    "rabbitmq": "rabbitmq:4.1-management-alpine@sha256:54ef5ff505352c1beef05a97ee9bd6ab95b3559a76629ba0119b1d63d8d6e4b2",
+    "keycloak": "quay.io/keycloak/keycloak:26.7.4@sha256:82a77884f3af238beab1e7afd63b5f530e1b5c0590bd7aa60b40a40463e29b2c",
+    "mailpit": "axllent/mailpit:v1.27@sha256:e22dce5b36f93c77082e204a3942fb6b283b7896e057458400a4c88344c3df68"
+  }
+}

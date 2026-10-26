@@ -13,5 +13,15 @@ foreach ($taskSid in @($ownerSid.Value, 'S-1-5-18', 'S-1-5-32-544')) {
   $taskRule = New-Object Security.AccessControl.FileSystemAccessRule($taskIdentity, 'FullControl', 'ContainerInherit,ObjectInherit', 'None', 'Allow')
   $taskAcl.AddAccessRule($taskRule)
 }
-Set-Acl -LiteralPath $targetPath -AclObject $taskAcl
+# Persist only the modified owner/DACL sections. Audit rules are not changed
+# and do not require the account's SeSecurityPrivilege on repeated calls.
+$taskDirectory = New-Object System.IO.DirectoryInfo($targetPath)
+$taskDirectory.SetAccessControl($taskAcl)
+$taskActual = $taskDirectory.GetAccessControl([Security.AccessControl.AccessControlSections]::Access -bor [Security.AccessControl.AccessControlSections]::Owner)
+$taskAllowed = @($ownerSid.Value, 'S-1-5-18', 'S-1-5-32-544')
+$taskRules = $taskActual.GetAccessRules($true, $true, [Security.Principal.SecurityIdentifier])
+if (-not $taskActual.AreAccessRulesProtected -or $taskActual.GetOwner([Security.Principal.SecurityIdentifier]).Value -ne $ownerSid.Value -or $taskRules.Count -ne 3) { throw 'Private directory owner/DACL verification failed' }
+foreach ($taskRule in $taskRules) {
+  if ($taskRule.IdentityReference.Value -notin $taskAllowed -or $taskRule.AccessControlType -ne [Security.AccessControl.AccessControlType]::Allow -or ($taskRule.FileSystemRights -band [Security.AccessControl.FileSystemRights]::FullControl) -ne [Security.AccessControl.FileSystemRights]::FullControl) { throw 'Unexpected private directory access rule' }
+}
 Write-Output 'Protected deployment directory for the current user, SYSTEM and local administrators.'
