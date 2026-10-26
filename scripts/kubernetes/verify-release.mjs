@@ -7,7 +7,7 @@ import { verifyAttestations } from "../verify-release.mjs";
 const manifest = JSON.parse(
   await readFile(
     new URL(
-      "../../docs/security/releases/v1.0.0/manifest.json",
+      "../../docs/security/releases/v1.1.0/manifest.json",
       import.meta.url,
     ),
     "utf8",

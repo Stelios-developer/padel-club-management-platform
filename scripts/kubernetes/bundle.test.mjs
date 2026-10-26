@@ -18,7 +18,7 @@ test("kind preparation preserves canonical inputs, private credentials and persi
       "infra/k8s/resources.yml",
       "infra/k8s/kustomization.yaml",
       "infra/k8s/kind/toolchain.json",
-      "docs/security/releases/v1.0.0/manifest.json",
+      "docs/security/releases/v1.1.0/manifest.json",
       "web/nginx.conf",
     ]) {
       await mkdir(dirname(resolve(fixture, path)), { recursive: true });

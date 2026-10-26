@@ -1,6 +1,6 @@
 # Local Kubernetes with kind
 
-The `padel-local` profile deploys nine core application images from the verified [v1.0.0 release](RELEASE-v1.0.0.md), plus PostgreSQL, RabbitMQ, Keycloak and Mailpit. It uses a real, single-node Kubernetes **1.37.0** cluster with **kind 0.33.0**. CI uses a separate `padel-ci` cluster.
+The `padel-local` profile deploys nine core application images from the verified [v1.1.0 release](RELEASE-v1.1.0.md), plus PostgreSQL, RabbitMQ, Keycloak and Mailpit. It uses a real, single-node Kubernetes **1.37.0** cluster with **kind 0.33.0**. CI uses a separate `padel-ci` cluster.
 
 This is local development and integration-test infrastructure. Public hosting, production Kubernetes, high availability, the optional Ollama/pgvector/assistant stack and the Compose observability stack are outside this profile.
 
@@ -63,4 +63,4 @@ Fixture cleanup retries transient server failures, handles idempotent DELETE rep
 
 The `kubernetes` job in [CI](../.github/workflows/ci.yml) checks target guards, independently reverifies provenance/SBOM attestations for the nine deployed images, creates disposable `padel-ci`, runs the real suite and verifies actual kernel mounts/non-root users after recovery. Only the three redacted reports are uploaded. Cleanup removes only this GitHub runner's disposable cluster. Local commands do not delete cluster volumes.
 
-Application release source is `201617b4886311982ccb7dfde9a8b6179c774ae8`; Kubernetes tooling/configuration is versioned separately by the current checkout. A hosted report records its GitHub source revision; a local report explicitly identifies a local working tree.
+Application release source is `42632642774092717e7147d4eea35dd5696789c9`; Kubernetes tooling/configuration is versioned separately by the current checkout. A hosted report records its GitHub source revision; a local report explicitly identifies a local working tree.

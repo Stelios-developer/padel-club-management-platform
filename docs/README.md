@@ -50,6 +50,7 @@ The [code map](CODE-MAP.md) locates implementation owners and extension points. 
 - [Closure of all four infrastructure security exceptions](SECURITY-HARDENING.md)
 - [v1.1.0 dependency and Kubernetes security maintenance](SECURITY-MAINTENANCE.md)
 - [Production preparation, TLS/MFA, backups and restore](PRODUCTION.md)
+- [v1.1.0 Kubernetes and security maintenance release](RELEASE-v1.1.0.md)
 - [Verified v1.0.0 container release, digests and signed provenance/SBOM](RELEASE-v1.0.0.md)
 - [Supply chain, vulnerability exceptions and release verification](SUPPLY-CHAIN.md)
 - [AWS architecture decision and activation runbook](CLOUD.md)

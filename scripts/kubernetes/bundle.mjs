@@ -115,7 +115,7 @@ export async function prepareBundle(root, name, dnsIP) {
   );
   const release = JSON.parse(
     await readFile(
-      resolve(root, "docs/security/releases/v1.0.0/manifest.json"),
+      resolve(root, "docs/security/releases/v1.1.0/manifest.json"),
       "utf8",
     ),
   );
