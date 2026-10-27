@@ -2,6 +2,8 @@
 
 Εφαρμογή για διαχείριση λέσχης padel, με **Spring microservices backend** και **web περιβάλλον στα ελληνικά** για μέλη, reception και διαχειριστές.
 
+**Τρέχουσα έκδοση — [v1.1.0](RELEASE-v1.1.0.md):** 10 δημόσια container images με επαληθευμένες υπογραφές provenance/SBOM, δοκιμασμένη εγκατάσταση Kubernetes/kind και **μηδενικές ενεργές εξαιρέσεις ασφάλειας**. [Επίσημο release και αποδεικτικά](https://github.com/Stelios-developer/padel-club-management-platform/releases/tag/v1.1.0) · [Συντήρηση και υπόλοιπα ευρήματα](SECURITY-MAINTENANCE.md).
+
 Το project δημιουργήθηκε από την περιγραφή του Swimming Club Management System στην εικόνα αναφοράς. Είναι νέα υλοποίηση για padel· δεν αντιγράφει κώδικα του EAK-Swimming, καθώς το repository δεν ήταν διαθέσιμο κατά την υλοποίηση.
 
 ## Τι περιλαμβάνει
@@ -26,13 +28,13 @@
 
 Το τοπικό μέρος του [σταδίου 6 — ασφάλεια και supply chain](SUPPLY-CHAIN.md) περιλαμβάνει Trivy gates, Syft/CycloneDX SBOM για 10 application images, pinned Actions/Docker bases και επαλήθευση ότι εγκαταστάθηκε το image που σαρώθηκε. Διορθώθηκαν runtime εξαρτήσεις και το νέο πλήρες backend verify πέρασε **135 tests**. Η αρχική καταγραφή περιλάμβανε πέντε εξαιρέσεις· διατηρείται ως ιστορικό snapshot. Η [τρέχουσα πολιτική](SECURITY-HARDENING.md) δεν περιλαμβάνει εξαιρέσεις. [Πραγματικά αποτελέσματα και όρια](security/results.json).
 
-Τα GitHub Actions και CodeQL έχουν εκτελεστεί στο δημόσιο repository. Το [v1.0.0 release](RELEASE-v1.0.0.md) δημοσίευσε 10 images με επαληθευμένα provenance/SBOM attestations. Το πραγματικό release και η τοπική λειτουργία δεν αποτελούν πιστοποίηση production readiness.
+Τα GitHub Actions και CodeQL έχουν εκτελεστεί στο δημόσιο repository. Το [v1.1.0 release](RELEASE-v1.1.0.md) δημοσίευσε 10 images με 40 ανεξάρτητους κρυπτογραφικούς ελέγχους provenance/SBOM. Το CI του release tag πέρασε 21/21 jobs, με 154 backend, 252 browser, 60 Compose E2E/recovery και 61 Kubernetes cases· πέρασε και ο ξεχωριστός έλεγχος υποδομής. Η αντιστοίχιση image-source και release-tag commit καταγράφεται στα αποδεικτικά. Το [v1.0.0](RELEASE-v1.0.0.md) διατηρείται ως ιστορικό. Το πραγματικό release και η τοπική λειτουργία δεν αποτελούν πιστοποίηση production readiness.
 
 Προστέθηκε η [τοπική προετοιμασία AWS/Terraform](CLOUD.md): encrypted state/data, retained EBS, περιορισμένοι GitHub OIDC ρόλοι, deployment με signed image digests και έλεγχοι rollback. Η προετοιμασία ελέγχεται με mock AWS provider· δεν δημιουργήθηκαν AWS πόροι ή χρεώσεις. Η τρέχουσα [πολιτική εξαιρέσεων](../infra/security/exceptions.json) δεν περιλαμβάνει πλέον εξαιρέσεις: διορθώθηκαν τα read-only filesystems των τριών Kubernetes υπηρεσιών και η unrestricted HTTPS έξοδος του AWS template. [Αποδείξεις και όρια](SECURITY-HARDENING.md). [Πραγματικά αποτελέσματα και εκκρεμότητες](cloud/results.json).
 
 ## Γρήγορη προβολή χωρίς Docker
 
-Απαιτείται Node.js 22+. Η εφαρμογή δεν έχει runtime npm dependencies. Για browser tests χρειάζεται `npm --prefix web ci`.
+Απαιτείται Node.js 24+, σύμφωνα με το workspace toolchain. Η εφαρμογή δεν έχει runtime npm dependencies. Για browser tests χρειάζεται `npm --prefix web ci`.
 
 ```powershell
 node web/server.cjs

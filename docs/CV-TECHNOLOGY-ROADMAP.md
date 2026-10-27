@@ -1,6 +1,10 @@
 # Padel — Technology roadmap για Java Backend / Cloud και Applied AI
 
-**Ενημέρωση 26/10/2026:** το δημόσιο GitHub CI και το [signed v1.0.0 release](RELEASE-v1.0.0.md) έχουν επαληθευτεί. Το [τοπικό Kubernetes/kind](KUBERNETES.md) πέρασε 61/61 integration/recovery cases. Οι τέσσερις infrastructure εξαιρέσεις έκλεισαν με [read-only Kubernetes και περιορισμένο HTTPS egress](SECURITY-HARDENING.md). Η τρέχουσα πολιτική έχει μηδενικές εξαιρέσεις. AWS/public hosting και production Kubernetes παραμένουν εκκρεμή. Οι παλαιότερες μετρήσεις και περιγραφές παρακάτω διατηρούν την αρχική ημερομηνία και ερμηνεία τους.
+**Ενημέρωση 27/10/2026:** το δημόσιο GitHub CI και το [signed v1.1.0 release](RELEASE-v1.1.0.md) έχουν επαληθευτεί, με 10 δημόσια images και 40 ανεξάρτητους ελέγχους υπογραφών provenance/SBOM. Το CI του tag πέρασε 21/21 jobs και ο ξεχωριστός έλεγχος υποδομής πέρασε. Το [τοπικό Kubernetes/kind](KUBERNETES.md) πέρασε 61/61 integration/recovery cases· το CI επαλήθευσε και τα νέα release digests. Οι τέσσερις infrastructure εξαιρέσεις έκλεισαν με [read-only Kubernetes και περιορισμένο HTTPS egress](SECURITY-HARDENING.md). Η τρέχουσα πολιτική έχει μηδενικές εξαιρέσεις· τα υπόλοιπα ευρήματα καταγράφονται στη [συντήρηση ασφάλειας](SECURITY-MAINTENANCE.md). Το `main` προστατεύεται με PR, 22 απαιτούμενα checks και ενημερωμένο branch. AWS/public hosting, production Kubernetes, ανεξάρτητη αξιολόγηση AI και πραγματικό Safari/iPhone παραμένουν εκτός επαληθευμένου scope.
+
+## Ιστορικό υλοποίησης — Οκτώβριος 2026
+
+Οι παρακάτω μετρήσεις και περιγραφές διατηρούν την αρχική ημερομηνία και ερμηνεία τους. Αναφορές σε εκκρεμή GitHub execution/releases ή προσωρινές εξαιρέσεις αφορούν εκείνο το στάδιο· η τρέχουσα κατάσταση συνοψίζεται παραπάνω.
 
 Νεότερη τοπική [v15](AI-NATURAL-SEARCH.md): φυσικές ώρες/διάρκειες/ημέρες, αυστηρότερο scope και grounded ανάκτηση, με **140/140 regression cases**, **38 unit tests**, **63 scoped browser/accessibility checks** και πραγματική mobile αναζήτηση μέχρι τη φόρμα επιβεβαίωσης. Η πρώτη νέα confirmation μέτρηση απέτυχε και διατηρείται· το τελικό αποτέλεσμα αφορά επιθεωρημένα regression δεδομένα, χωρίς ανεξάρτητη ανθρώπινη αξιολόγηση.
 
