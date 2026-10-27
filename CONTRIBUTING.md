@@ -56,6 +56,8 @@ Use `clean` when switching Maven profiles so generated classes and old test repo
 
 ## Changes and review
 
+The active [main-protection ruleset](https://github.com/Stelios-developer/padel-club-management-platform/rules/25941018) applies to the default branch. Create a feature branch (for example, `codex/docs-update`), push it and open a pull request into `main`. Merge after all 22 required GitHub Actions checks pass and the branch is up to date. Force pushes and deletion of `main` are blocked, with no bypass actors. Zero review approvals are required for solo maintenance; this does not waive the PR or CI requirements. Reassess reviewer requirements when collaborators join.
+
 - Keep behavior refactors separate from dependency upgrades and historical evidence. Update the relevant tests when changing an invariant.
 - Preserve booking exclusion constraints, persisted idempotency, JWT ownership checks, outbox transaction boundaries and human confirmation for AI actions.
 - Add a new Flyway migration for a schema change. Check compatible deployment/rollback behavior; a container rollback does not undo a database migration.

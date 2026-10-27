@@ -19,6 +19,8 @@ The [source CI](https://github.com/Stelios-developer/padel-club-management-platf
 
 The publisher passed all **14 jobs**. Independent verification performed **40 cryptographic checks**: provenance and SBOM for each image, fetched separately from GitHub and GHCR. Verification requires the exact repository/owner IDs, source commit, main branch, publisher workflow, GitHub-hosted runner and publisher run invocation. Each signed SBOM matches its scan artifact; anonymous registry reads recomputed all ten manifest digests and checked the scanned image configuration identity.
 
+After binding the new image digests, the release-tag commit `dc0ea71b505b80733cad5af89f52c80471eadbdc` passed [Padel CI — 21/21 jobs](https://github.com/Stelios-developer/padel-club-management-platform/actions/runs/40397361436) and the [separate infrastructure checks](https://github.com/Stelios-developer/padel-club-management-platform/actions/runs/40397361418). This verification includes 61 Kubernetes cases, 13 ready workloads, nine matching application digests and two bound PVCs. It complements the image-source CI above: the source run tested the earlier deployment bindings, while the release-tag run tested the v1.1.0 bindings. The release assets preserve both source and deployment evidence.
+
 - [Immutable image manifest](security/releases/v1.1.0/manifest.json).
 - [Per-image independent verification](security/releases/v1.1.0/verification.json).
 - [Exact image-source CI report](security/releases/v1.1.0/source-ci.json).
