@@ -4,6 +4,8 @@ Start with the [English overview](../README.md), [Greek setup and product guide]
 
 [Public GitHub repository, demo release and publication scope](GITHUB-PUBLICATION.md).
 
+**Current release — [v1.1.0](RELEASE-v1.1.0.md):** ten signed application images, verified local/CI Kubernetes deployment and zero active infrastructure security exceptions. Start with the release's [published evidence](https://github.com/Stelios-developer/padel-club-management-platform/releases/tag/v1.1.0), [hardening](SECURITY-HARDENING.md) and [remaining security findings](SECURITY-MAINTENANCE.md). Earlier reports retain their original dates, results and exception policies.
+
 The [code map](CODE-MAP.md) locates implementation owners and extension points. Start with the directory guides for [backend](../backend/README.md), [web](../web/README.md), [infrastructure](../infra/README.md) and [operator tools](../scripts/README.md). The [folder organization](FOLDER-LAYOUT-2026-10-25.md) records path mappings and verification; the [earlier code refactoring](CODE-ORGANIZATION-2026-10-25.md) covers UI and operator composition.
 
 [Recruiter demo — 1:44](recruiter-demo/README.md) includes the narrated walkthrough, storyboard, English/Greek captions, cover and recording/verification scope.
@@ -64,4 +66,4 @@ The [code map](CODE-MAP.md) locates implementation owners and extension points. 
 
 Historical JSON evidence is grouped under `results/backend/`, `results/frontend/`, `results/e2e/`, `results/production/` and `results/ai/`. Later experiments retain their established `ai-evals/`, `performance/`, `security/` and `cloud/` directories. These files are reports, not runtime configuration; do not edit or reformat them to manufacture current results.
 
-The [verification history](VERIFICATION.md) links each result to its original date and scope. Local mocks and tests do not establish an AWS deployment or a successful GitHub release.
+The [verification history](VERIFICATION.md) links each result to its original date and scope. Hosted CI and signed releases have their own linked evidence; Terraform mocks establish no AWS deployment. Public hosting, production Kubernetes, independent AI evaluation and actual Safari/iPhone checks remain outside the verified scope.

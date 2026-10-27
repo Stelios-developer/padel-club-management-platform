@@ -9,7 +9,7 @@
 
 <p align="center">
   <a href="https://github.com/Stelios-developer/padel-club-management-platform/releases/tag/demo-v1">104-second demo</a> ·
-  <a href="https://github.com/Stelios-developer/padel-club-management-platform/releases/tag/v1.1.0">Signed container release</a> ·
+  <a href="https://github.com/Stelios-developer/padel-club-management-platform/releases/tag/v1.1.0">v1.1.0 signed release</a> ·
   <a href="#architecture">Architecture</a> ·
   <a href="#technology-in-context">Technology</a> ·
   <a href="#quick-start">Run locally</a> ·
@@ -37,7 +37,10 @@
 
 [![Padel CI](https://github.com/Stelios-developer/padel-club-management-platform/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/Stelios-developer/padel-club-management-platform/actions/workflows/ci.yml)
 [![Infrastructure checks](https://github.com/Stelios-developer/padel-club-management-platform/actions/workflows/cloud.yml/badge.svg?branch=main)](https://github.com/Stelios-developer/padel-club-management-platform/actions/workflows/cloud.yml)
+[![Release — v1.1.0](https://img.shields.io/badge/Release-v1.1.0-14253F?style=flat-square)](https://github.com/Stelios-developer/padel-club-management-platform/releases/tag/v1.1.0)
 [![Demo — 1 minute 44 seconds](https://img.shields.io/badge/Demo-1m_44s-D9F846?style=flat-square&labelColor=14253F)](https://github.com/Stelios-developer/padel-club-management-platform/releases/tag/demo-v1)
+
+**Latest release — [v1.1.0](docs/RELEASE-v1.1.0.md):** ten public container images with verified provenance/SBOM signatures, a tested local Kubernetes profile and all four infrastructure security exceptions closed. [Release assets and checksums](https://github.com/Stelios-developer/padel-club-management-platform/releases/tag/v1.1.0) · [Security maintenance and remaining findings](docs/SECURITY-MAINTENANCE.md).
 
 ## The product
 
@@ -110,7 +113,7 @@ Versions and pins live in the [POM](pom.xml), [Compose](compose.yml), [toolchain
 
 ## Verification you can inspect
 
-**Hosted verification:** [source CI](https://github.com/Stelios-developer/padel-club-management-platform/actions/runs/40231486708) passed **154 backend, 252 browser and 60 E2E/recovery cases**. The [v1.0.0 release](docs/RELEASE-v1.0.0.md) published **10 public images**, independently checked with **40 provenance/SBOM signature verifications** against the exact source commit.
+**Hosted v1.1.0 verification:** the [release-tag CI](https://github.com/Stelios-developer/padel-club-management-platform/actions/runs/40397361436) passed **21/21 jobs**, including **154 backend, 252 browser, 60 Compose E2E/recovery and 61 Kubernetes cases**. The [infrastructure checks](https://github.com/Stelios-developer/padel-club-management-platform/actions/runs/40397361418) also passed. The [v1.1.0 release](docs/RELEASE-v1.1.0.md) published **10 public images**, independently checked with **40 provenance/SBOM signature verifications**. Its evidence records the exact image-source commit separately from the release-tag commit and verifies the new Kubernetes image digests. The [v1.0.0 record](docs/RELEASE-v1.0.0.md) remains available as release history.
 
 **Local Kubernetes, 26 October 2026:** **61/61 integration/recovery cases**, **13 ready workloads**, nine running application digests matching the release, and two bound PVCs. PostgreSQL pod replacement preserved the same volume and booking data. [Deployment evidence](docs/results/backend/kubernetes-kind-2026-10-26.json) · [Case results](docs/results/e2e/kubernetes-kind-2026-10-26.json) · [Run the kind profile](docs/KUBERNETES.md). This single-node development profile excludes the optional AI and Compose monitoring stacks; public hosting and production Kubernetes remain separate work.
 
@@ -120,19 +123,19 @@ Versions and pins live in the [POM](pom.xml), [Compose](compose.yml), [toolchain
 
 The table below preserves earlier **dated local results**, with separate scopes. Counts are not combined into a single score.
 
-| Check                 | Recorded result                                                                                       | Evidence                                                                       |
-| --------------------- | ----------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------ |
-| Clean backend reactor | **150/150**; 30 integration, 13 producer and 5 consumer contract cases included                       | [25 October JUnit summary](docs/results/backend/folder-layout-2026-10-25.json) |
-| Node suites           | **103/103** across web, evaluator and operator/architecture policy                                    | [Folder verification](docs/quality/folder-layout-2026-10-25.json)              |
-| Real functional stack | **54/54** after folder migration and new image builds                                                 | [E2E report](docs/results/backend/folder-layout-e2e-final-2026-10-25.json)     |
-| New-member journey    | **17/17**; real registration, subscription, booking, mobile views, notifications and cleanup          | [Chromium journey](docs/results/frontend/folder-layout-2026-10-25.json)        |
-| Cross-browser matrix  | **252/252**, Chromium/Firefox/Windows WebKit at three viewport sizes, in the earlier 25 October audit | [Full audit and scope](docs/FINAL-AUDIT-2026-10-25.md)                         |
-| Local AI regressions  | **140/140** inspected cases on the local model                                                        | [AI results and limitations](docs/AI-NATURAL-SEARCH.md)                        |
-| Source security       | **0 blocking findings / 0 detected secrets** under four existing infrastructure exceptions            | [Source gate](docs/security/folder-layout-source-final-2026-10-25.json)        |
+| Check                       | Recorded result                                                                                                                  | Evidence                                                                                                                   |
+| --------------------------- | -------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------- |
+| Clean backend reactor       | **150/150**; 30 integration, 13 producer and 5 consumer contract cases included                                                  | [25 October JUnit summary](docs/results/backend/folder-layout-2026-10-25.json)                                             |
+| Node suites                 | **103/103** across web, evaluator and operator/architecture policy                                                               | [Folder verification](docs/quality/folder-layout-2026-10-25.json)                                                          |
+| Real functional stack       | **54/54** after folder migration and new image builds                                                                            | [E2E report](docs/results/backend/folder-layout-e2e-final-2026-10-25.json)                                                 |
+| New-member journey          | **17/17**; real registration, subscription, booking, mobile views, notifications and cleanup                                     | [Chromium journey](docs/results/frontend/folder-layout-2026-10-25.json)                                                    |
+| Cross-browser matrix        | **252/252**, Chromium/Firefox/Windows WebKit at three viewport sizes, in the earlier 25 October audit                            | [Full audit and scope](docs/FINAL-AUDIT-2026-10-25.md)                                                                     |
+| Local AI regressions        | **140/140** inspected cases on the local model                                                                                   | [AI results and limitations](docs/AI-NATURAL-SEARCH.md)                                                                    |
+| Source security, 25 October | **0 blocking findings / 0 detected secrets** with four infrastructure exceptions at that revision; all four closed on 26 October | [Historical source gate](docs/security/folder-layout-source-final-2026-10-25.json) · [Closure](docs/SECURITY-HARDENING.md) |
 
 A controlled experiment on **60,400 synthetic bookings** reduced median run availability p95 from **129.38 to 14.67 ms** after a projection/filtering change. This is a local comparison, not a production latency/capacity guarantee. [Benchmark, SQL plans and profiling](docs/PERFORMANCE.md).
 
-The AI cases are self-authored regressions, not an independent holdout. Windows WebKit does not establish actual Safari/iPhone support; automatic accessibility scans retain manual-review items. Four temporary undeployed-infrastructure exceptions expire **4 November 2026**, with accepted and MEDIUM/LOW findings retained. [Verification history](docs/VERIFICATION.md) preserves failed attempts and subsequent corrections.
+The AI cases are self-authored regressions, not an independent holdout. Windows WebKit does not establish actual Safari/iPhone support; automatic accessibility scans retain manual-review items. The current [security exception policy](infra/security/exceptions.json) is empty. Remaining MEDIUM/LOW findings and CodeQL tooling warnings stay visible in the [maintenance record](docs/SECURITY-MAINTENANCE.md). [Verification history](docs/VERIFICATION.md) preserves earlier exception snapshots, failed attempts and subsequent corrections.
 
 ## Quick start
 
@@ -215,6 +218,8 @@ mvn -B -Pcontracts,postgres-it clean verify
 Install the matching browsers from `web/` with `npx playwright install chromium firefox webkit`, then run `npm run test:browser` from the root. On Linux, add `--with-deps` if system libraries are missing.
 
 The [CI workflow](.github/workflows/ci.yml) defines quality, backend, browser, security and isolated stack jobs. [Cloud checks](.github/workflows/cloud.yml) validate configuration/mocks; [image publishing](.github/workflows/publish-images.yml), [cloud plan](.github/workflows/cloud-plan.yml) and [deployment](.github/workflows/cloud-deploy.yml) are separate guarded/manual workflows. Actual hosted execution is visible in Actions; local reports do not establish a GitHub CI result.
+
+The active [main-protection ruleset](https://github.com/Stelios-developer/padel-club-management-platform/rules/25941018) requires a pull request, all **22 GitHub Actions checks** and an up-to-date branch before merging. Force pushes and branch deletion are blocked, with no bypass actors. Required review approvals are **zero** for solo maintenance. [Contribution workflow](CONTRIBUTING.md#changes-and-review).
 
 [Contributing](CONTRIBUTING.md) · [Backend testing](docs/BACKEND-QUALITY.md) · [Supply chain](docs/SUPPLY-CHAIN.md) · [Cloud scope](docs/CLOUD.md)
 
