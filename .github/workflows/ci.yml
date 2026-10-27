@@ -119,7 +119,7 @@ jobs:
       - run: npm ci
       - name: Bound browser dependency downloads on the official Ubuntu mirror
         run: |
-          for apt_source in /etc/apt/sources.list /etc/apt/sources.list.d/ubuntu.sources; do
+          for apt_source in /etc/apt/sources.list /etc/apt/sources.list.d/*.list /etc/apt/sources.list.d/*.sources /etc/apt/apt-mirrors*.txt; do
             if [ -f "$apt_source" ]; then
               sudo sed -i -E 's|https?://azure.archive.ubuntu.com/ubuntu/?|https://archive.ubuntu.com/ubuntu/|g' "$apt_source"
             fi
