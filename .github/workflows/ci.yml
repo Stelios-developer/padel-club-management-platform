@@ -40,7 +40,7 @@ jobs:
       - run: npm --prefix web run check && npm --prefix web test
       - run: node --test scripts/operations/production-config.test.mjs
       - run: docker compose --env-file .env.example config --quiet
-      - uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
+      - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
         if: always()
         with: { name: test-results, path: "**/target/surefire-reports/*" }
   backend-quality:
@@ -67,7 +67,7 @@ jobs:
         run: |
           node scripts/backend-quality-report.mjs --output test-results/backend-quality.json
           node scripts/resilience-report.mjs --output test-results/resilience.json
-      - uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
+      - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
         if: always()
         with:
           name: backend-quality-results
@@ -94,7 +94,7 @@ jobs:
           cache-dependency-path: evals/package-lock.json
       - run: npm ci
       - run: npm test && npm run test:harness
-      - uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
+      - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
         if: always()
         with:
           name: ai-eval-harness
@@ -127,7 +127,7 @@ jobs:
           printf '%s\n' 'Acquire::Retries "3";' 'Acquire::http::Timeout "30";' 'Acquire::https::Timeout "30";' | sudo tee /etc/apt/apt.conf.d/80padel-network >/dev/null
       - run: npx playwright install --with-deps chromium firefox webkit
       - run: npm run format:check && npm run test:browser
-      - uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
+      - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
         if: always()
         with:
           name: browser-results
@@ -164,7 +164,7 @@ jobs:
           mkdir -p test-results
           docker compose --env-file .env.example -p padel-e2e ps -a > test-results/compose-status.txt
           docker compose --env-file .env.example -p padel-e2e logs --no-color > test-results/compose.log
-      - uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
+      - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
         if: always()
         with: { name: full-stack-results, path: "test-results/" }
       - name: Stop dedicated test stack
@@ -198,7 +198,7 @@ jobs:
           docker compose --env-file .runtime/production-check/.env -f .runtime/production-check/compose.yml -p padel-production-check stop keycloak
           docker compose --env-file .runtime/production-check/.env -f .runtime/production-check/compose.yml -p padel-production-check up -d --wait config-server discovery-server prometheus
           node scripts/production-services-check.mjs --project padel-production-check --compose .runtime/production-check/compose.yml --env-file .runtime/production-check/.env --user padel_admin --report test-results/production-services.json
-      - uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
+      - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
         if: always()
         with:
           { name: production-rehearsal-results, path: "test-results/*.json" }
@@ -238,7 +238,7 @@ jobs:
       - name: Private container diagnostics on failure
         if: failure()
         run: node scripts/kubernetes.mjs diagnostics --cluster padel-ci
-      - uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
+      - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
         if: always()
         with:
           name: kubernetes-results
@@ -286,7 +286,7 @@ jobs:
             docker build --build-arg SERVICE="$SERVICE" -t "padel/ci:$SERVICE" .
           fi
           node scripts/security-scan.mjs image "padel/ci:$SERVICE" "$SERVICE"
-      - uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
+      - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
         if: always()
         with:
           name: image-security-${{ matrix.service }}
