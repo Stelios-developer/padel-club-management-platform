@@ -1,6 +1,16 @@
 # Αποτελέσματα επαλήθευσης
 
-Τελευταία ενημέρωση: 25 Οκτωβρίου 2026, Europe/Athens.
+Τελευταία ενημέρωση: 27 Οκτωβρίου 2026, Europe/Athens.
+
+## Τρέχουσα κατάσταση — v1.1.0 και προστασία main
+
+Το [v1.1.0](RELEASE-v1.1.0.md), δημοσιευμένο στις **26 Οκτωβρίου 2026**, περιλαμβάνει 10 δημόσια application images με signed provenance/SBOM και **40 ανεξάρτητους κρυπτογραφικούς ελέγχους**. Το image-source commit και το release-tag commit καταγράφονται χωριστά· οι πηγές εφαρμογής είναι ίδιες. Το [CI του tag](https://github.com/Stelios-developer/padel-club-management-platform/actions/runs/40397361436) πέρασε **21/21 jobs** και ο [ξεχωριστός έλεγχος υποδομής](https://github.com/Stelios-developer/padel-club-management-platform/actions/runs/40397361418) ολοκληρώθηκε επιτυχώς. Οι επαληθευμένες σουίτες περιλαμβάνουν **154 backend, 252 browser, 60 Compose E2E/recovery και 61 Kubernetes cases**, αποκατάσταση έξι βάσεων και τέσσερις δικλίδες backup. Το Kubernetes CI επαλήθευσε 13 ready workloads, εννέα application digests της νέας έκδοσης και δύο bound PVCs. [Αποδεικτικά και ακριβές scope](https://github.com/Stelios-developer/padel-club-management-platform/releases/tag/v1.1.0).
+
+Και οι τέσσερις προσωρινές εξαιρέσεις έκλεισαν στις **26 Οκτωβρίου**. Η [εκτελέσιμη πολιτική](../infra/security/exceptions.json) έχει **μηδενικές εξαιρέσεις**. Το source scan συντήρησης κατέγραψε 30 MEDIUM/LOW εμφανίσεις (13 MEDIUM, 17 LOW)· τα υπόλοιπα ευρήματα και οι CodeQL προειδοποιήσεις εργαλείων παραμένουν ορατά. [Hardening και διατήρηση δεδομένων](SECURITY-HARDENING.md) · [Συντήρηση και όρια](SECURITY-MAINTENANCE.md).
+
+Στις **27 Οκτωβρίου**, το ενεργό [main-protection ruleset](https://github.com/Stelios-developer/padel-club-management-platform/rules/25941018) επαληθεύτηκε μέσω API: υποχρεωτικό Pull Request, 22 απαιτούμενα checks από GitHub Actions, ενημερωμένο branch, μηδενικές απαιτούμενες εγκρίσεις, απαγόρευση force push/διαγραφής και κενή bypass list.
+
+Οι καταγραφές παρακάτω είναι **ιστορικές**: διατηρούν την ημερομηνία, τις αποτυχίες και την πολιτική εξαιρέσεων της κάθε έκδοσης. Δεν περιγράφουν την τρέχουσα πολιτική. Δεν τεκμηριώνονται δημόσιο hosting/AWS deployment, production Kubernetes/HA, ανεξάρτητη αξιολόγηση AI ή πραγματικό Safari/iPhone.
 
 ## Οργάνωση φακέλων — 25/10/2026
 
