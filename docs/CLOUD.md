@@ -79,4 +79,4 @@ Automatic rollback defaults off. Enabling it requires `rollbackAllowed=true` **a
 
 The public IP can change with host lifecycle; configure DNS/TTL and verify certificates after such changes. Retained EBS is tied to one AZ; it is not an independent backup or cross-AZ recovery strategy. Termination protection and `prevent_destroy` require deliberate handling at teardown, and retained resources can continue charging. Teardown and restore must be reviewed with the actual account inventory, not a blanket `terraform destroy` copied from a tutorial.
 
-Actual AWS operation remains unverified until the activation evidence is recorded.
+Actual AWS operation remains unverified until the activation evidence above is recorded.
