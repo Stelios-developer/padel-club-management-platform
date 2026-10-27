@@ -98,9 +98,3 @@ docker compose -f infra/performance/compose.yml down
 Αρχικά JFR `disk=true` dumps ήταν κενά, ενώ η μεγάλη JSON εξαγωγή μέσα στο application container αποδείχθηκε ακατάλληλη και έδωσε timeout/παροδικές Docker API αποτυχίες. Η in-memory, περιορισμένη καταγραφή και host-side export επαληθεύτηκαν σε όλα τα έξι qualified runs. Δεν θεωρούμε τη συγκεκριμένη αστοχία απόδειξη γενικού JDK defect. Το localhost παρέμεινε διαθέσιμο στον έλεγχο αποκατάστασης και δεν χρειάστηκε Docker Desktop restart.
 
 Δεν επαναλήφθηκαν frontend/browser tests ή τα 100 AI quality cases σε αυτό το στάδιο. Το προηγούμενο AI quality gate παραμένει αποτυχημένο. Redis, νέα Java έκδοση, cloud scaling και production SLO δεν αποτελούν συμπεράσματα αυτού του benchmark.
-
-## Τεκμηριωμένη φράση για το CV
-
-> Optimized court availability queries in a Spring Boot/PostgreSQL backend, reducing median run p95 from 129 ms to 15 ms on a 60,400-booking local fixture at fixed load; validated with k6, Java Flight Recorder, EXPLAIN ANALYZE and automated booking-consistency checks.
-
-Το report συνοδεύει αυτή τη φράση, μαζί με τη διευκρίνιση ότι πρόκειται για σύντομο τοπικό benchmark με single replicas.

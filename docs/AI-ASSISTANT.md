@@ -88,7 +88,7 @@ node scripts/assistant-smoke.mjs --ui
 
 Πέρασαν επίσης **117 backend tests** στο πλήρες build, επανάληψη των **20 AI tests** μετά τη v2, **37 Node frontend tests** και **54 Chromium cases**. [Ακριβή build scopes](BACKEND-QUALITY.md), [browser report](results/ai/assistant-browser-results.json). Η ανανέωση του admin token πριν τον καθαρισμό επαληθεύτηκε στην τελική πραγματική εκτέλεση. Οι δύο fixtures παλιότερων runs αφαιρέθηκαν χωριστά μετά από αυστηρή ταυτοποίηση. [Recovery report](results/ai/assistant-cleanup-results.json).
 
-Για το CV, μια τεκμηριωμένη διατύπωση είναι: “Implemented a local Spring AI assistant with pgvector semantic retrieval, source-grounded responses, JWT-bound read-only availability tools and PKCE web integration; validated database behavior with Testcontainers and recorded real-model development evaluations.” Οι μετρήσεις development δεν πρέπει να περιγραφούν ως production accuracy ή ως held-out benchmark.
+Οι μετρήσεις development δεν τεκμηριώνουν production accuracy ή held-out benchmark.
 
 ## Επίσημη τεκμηρίωση
 
