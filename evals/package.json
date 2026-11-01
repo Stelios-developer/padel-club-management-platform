@@ -22,7 +22,7 @@
     "ip-address@10": "10.7.4"
   },
   "dependencies": {
-    "promptfoo": "0.125.0",
+    "promptfoo": "0.125.1",
     "ajv": "8.20.0",
     "ajv-formats": "3.0.1"
   }
