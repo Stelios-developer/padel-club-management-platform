@@ -1,4 +1,4 @@
-FROM nginx:1.30.6-alpine@sha256:47928bf67eb62a1863cb08d9ecb52d3e704304ba614eaee17884204677702951
+FROM nginx:1.31.7-alpine@sha256:892bb2152464f0c5d8972593a5f5afaf8054552580b699d95f8ff4af08c2d33d
 RUN apk upgrade --no-cache \
     && chown -R nginx:nginx /var/cache/nginx \
     && sed -i 's|^pid .*;|pid /tmp/nginx.pid;|; /^user /d' /etc/nginx/nginx.conf \
